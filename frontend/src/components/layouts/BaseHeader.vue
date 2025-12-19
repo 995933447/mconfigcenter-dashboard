@@ -91,7 +91,7 @@ const hanldeClickTab = (targetName: TabsPaneContext) => {
           </div>
         </template>
 
-        <el-menu-item index="/">个人信息</el-menu-item>
+        <el-menu-item index="/" @click='editableTabsValue="/"'>个人信息</el-menu-item>
         <el-menu-item index="/" @click="logout">登出</el-menu-item>
       </el-sub-menu>
     </el-menu-item>

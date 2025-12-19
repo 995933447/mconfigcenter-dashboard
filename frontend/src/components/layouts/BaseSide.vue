@@ -70,9 +70,6 @@ function handleClose(key: string, keyPath: string[]) {
         <el-menu-item index="/rbac/user" @click="clickMenuItem('/rbac/user', '用户管理')">
           用户管理
         </el-menu-item>
-        <el-menu-item index="1-2" @click="clickMenuItem('1-2', '操作菜单')">
-          操作菜单
-        </el-menu-item>
       </el-menu-item-group>
     </el-sub-menu>
 
