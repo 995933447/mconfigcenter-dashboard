@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package commonerr;
+option go_package = "github.com/995933447/mconfigcenter-dashboard/backend/api/commonerr";
+
+import "easymicro_ext.proto";
+
+enum ErrCode {
+  ErrCodeNil = 0;
+  ErrCodeNoAuth = 20001 [(easymicro_ext.err_message) = {message: "请重新登录"}];
+  ErrCodeInvalidParam = 20002 [(easymicro_ext.err_message) = {message: "参数错误"}];
+  ErrCodeInternal = 20003 [(easymicro_ext.err_message) = {message: "系统错误"}];
+}

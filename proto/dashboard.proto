@@ -1,0 +1,128 @@
+syntax = "proto3";
+
+package dashboard;
+option go_package = "github.com/995933447/mconfigcenter-dashboard/backend/api/dashboard";
+
+import "easymicro_ext.proto";
+import "mgorm_ext.proto";
+import "httpext.proto";
+
+option (easymicro_ext.proto_gen_opts) = {
+  server_package: "github.com/995933447/mconfigcenter-dashboard/backend/service/dashboardserver"
+};
+
+enum ErrCode {
+  ErrCodeNil = 0;
+  ErrCodeRSAKeysGenerating = 30001 [(easymicro_ext.err_message) = {message: "rsa key正在生成中"}];
+  ErrCodeUserNotFound = 30002 [(easymicro_ext.err_message) = {message: "用户不存在"}];
+  ErrCodePasswordIncorrect = 30003 [(easymicro_ext.err_message) = {message: "密码不正确"}];
+}
+
+service Dashboard {
+  rpc GetRSAPubKey(GetRSAPubKeyReq) returns (GetRSAPubKeyResp) {
+      option(httpext.http_rule) = {
+        method: "POST"
+        no_auth: true,
+      };
+  };
+
+  rpc Login(LoginReq) returns (LoginResp) {
+    option(httpext.http_rule) = {
+      method: "POST"
+      no_auth: true,
+    };
+  };
+
+  rpc GetUserInfo(GetUserInfoReq) returns (GetUserInfoResp) {
+    option(httpext.http_rule) = {
+      method: "GET"
+    };
+  }
+
+  rpc DisabledRBAC(DisabledRBACReq) returns (DisabledRBACResp) {
+    option(httpext.http_rule) = {
+      method: "GET"
+    };
+  }
+
+  rpc AuthUser(AuthUserReq) returns (AuthUserResp);
+
+  rpc ChangeUserPassword(ChangeUserPasswordReq) returns (ChangeUserPasswordResp) {
+    option(httpext.http_rule) = {
+      method: "POST"
+    };
+  };
+}
+
+message ChangeUserPasswordReq {
+  string new_password = 1;
+}
+
+message ChangeUserPasswordResp {
+
+}
+
+message AuthUserReq {
+  string token = 1;
+}
+
+message AuthUserResp {
+  uint64 user_id = 1;
+}
+
+message DisabledRBACReq {
+
+}
+
+message DisabledRBACResp {
+  bool disabled = 1;
+}
+
+message GetUserInfoReq {
+}
+
+message GetUserInfoResp {
+  uint64 user_id = 1;
+  string username = 2;
+  repeated string role_names = 3;
+  int64 last_login_at = 4;
+}
+
+message GetRSAPubKeyReq {
+
+}
+
+message GetRSAPubKeyResp {
+  string key = 1;
+}
+
+message LoginReq {
+  string username = 1;
+  string password = 2;
+}
+
+message LoginResp {
+  string token = 1;
+  int64 expire_at = 2;
+}
+
+enum UserStatus {
+  UserStatusNil = 0;
+  UserStatusNormal = 1; // 正常状态
+  UserStatusFrozen = 2; // 冻结状态
+}
+
+message User {
+  option (mgorm_ext.mgorm_opts) = {
+    conn: "default",
+    db: "mconfigcenter_dashboard",
+    tb: "user",
+    cached: true,
+    uniq_index_keys:["username", "user_id"]
+  };
+  string username = 1;
+  string password = 2;
+  uint32 status = 3;
+  uint64 user_id = 4;
+  int64 last_login_at = 5;
+}

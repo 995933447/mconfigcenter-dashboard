@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package gateway;
+option go_package = "github.com/995933447/mconfigcenter-dashboard/backend/api/gateway";
+
+import "easymicro_ext.proto";
+
+option (easymicro_ext.proto_gen_opts) = {
+  server_package: "github.com/995933447/mconfigcenter-dashboard/backend/service/gatewayserver"
+  disabled_elect: true,
+  disabled_load_mongo: true,
+  disabled_load_redis: true,
+};
+
+service gateway {
+
+}

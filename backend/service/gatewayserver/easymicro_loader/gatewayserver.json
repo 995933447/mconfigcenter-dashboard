@@ -1,0 +1,7 @@
+{
+	"sample_pprof_time_long_sec": 20,
+	"env": "dev",
+    "http_host_var": "0.0.0.0",
+    "http_port": 9120,
+    "rpc_timeout_ms": 50000
+}
