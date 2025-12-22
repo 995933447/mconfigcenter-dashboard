@@ -54,6 +54,34 @@ func RegisterNatsRPCRoutes() error {
 		return err
 	}
 
+	err = nats.HandleLikeGRPC(dashboard.EasymicroGRPCPbServiceNameDashboard, "ListMenuConf", handler.DashboardHandler.ListMenuConf, func() *dashboard.ListMenuConfReq {
+		return &dashboard.ListMenuConfReq{}
+	})
+	if err != nil {
+		return err
+	}
+
+	err = nats.HandleLikeGRPC(dashboard.EasymicroGRPCPbServiceNameDashboard, "AddMenuConf", handler.DashboardHandler.AddMenuConf, func() *dashboard.AddMenuConfReq {
+		return &dashboard.AddMenuConfReq{}
+	})
+	if err != nil {
+		return err
+	}
+
+	err = nats.HandleLikeGRPC(dashboard.EasymicroGRPCPbServiceNameDashboard, "UpdateMenuConf", handler.DashboardHandler.UpdateMenuConf, func() *dashboard.UpdateMenuConfReq {
+		return &dashboard.UpdateMenuConfReq{}
+	})
+	if err != nil {
+		return err
+	}
+
+	err = nats.HandleLikeGRPC(dashboard.EasymicroGRPCPbServiceNameDashboard, "DeleteMenuConf", handler.DashboardHandler.DeleteMenuConf, func() *dashboard.DeleteMenuConfReq {
+		return &dashboard.DeleteMenuConfReq{}
+	})
+	if err != nil {
+		return err
+	}
+
 	err = nats.HandleLikeGRPC("healthreporter.HealthReporter", "Ping", healthreporter.NewReporter(ServiceNames).Ping, func() *healthreporter.PingReq {
 		return &healthreporter.PingReq{}
 	})

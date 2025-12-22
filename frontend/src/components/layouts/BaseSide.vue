@@ -36,7 +36,7 @@ function handleClose(key: string, keyPath: string[]) {
     @open="handleOpen"
     @close="handleClose"
   >
-    <el-sub-menu index="1">
+    <el-sub-menu index="/config">
       <template #title>
         <el-icon>
           <Setting />
@@ -53,7 +53,7 @@ function handleClose(key: string, keyPath: string[]) {
       </el-menu-item-group>
     </el-sub-menu>
 
-    <el-sub-menu index="1">
+    <el-sub-menu index="/rbac">
       <template #title>
         <el-icon>
           <IconMenu />
@@ -72,6 +72,5 @@ function handleClose(key: string, keyPath: string[]) {
         </el-menu-item>
       </el-menu-item-group>
     </el-sub-menu>
-
   </el-menu>
 </template>

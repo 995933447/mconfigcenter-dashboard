@@ -10,8 +10,8 @@ import (
 )
 
 const (
-	EasymicroGRPCSchema    = ""
-	EasymicroDiscoveryName = ""
+	EasymicroGRPCSchema    = "easymicro"
+	EasymicroDiscoveryName = "default"
 )
 
 const EasymicroGRPCPbServiceNameDashboard = "dashboard.Dashboard"
@@ -111,4 +111,36 @@ func (s *Dashboard) ChangeUserPassword(ctx context.Context, in *ChangeUserPasswo
 	}
 
 	return s.c.ChangeUserPassword(ctx, in, opts...)
+}
+
+func (s *Dashboard) ListMenuConf(ctx context.Context, in *ListMenuConfReq, opts ...grpc.CallOption) (*ListMenuConfResp, error) {
+	if err := s.prepareConn(); err != nil {
+		return nil, err
+	}
+
+	return s.c.ListMenuConf(ctx, in, opts...)
+}
+
+func (s *Dashboard) AddMenuConf(ctx context.Context, in *AddMenuConfReq, opts ...grpc.CallOption) (*AddMenuConfResp, error) {
+	if err := s.prepareConn(); err != nil {
+		return nil, err
+	}
+
+	return s.c.AddMenuConf(ctx, in, opts...)
+}
+
+func (s *Dashboard) UpdateMenuConf(ctx context.Context, in *UpdateMenuConfReq, opts ...grpc.CallOption) (*UpdateMenuConfResp, error) {
+	if err := s.prepareConn(); err != nil {
+		return nil, err
+	}
+
+	return s.c.UpdateMenuConf(ctx, in, opts...)
+}
+
+func (s *Dashboard) DeleteMenuConf(ctx context.Context, in *DeleteMenuConfReq, opts ...grpc.CallOption) (*DeleteMenuConfResp, error) {
+	if err := s.prepareConn(); err != nil {
+		return nil, err
+	}
+
+	return s.c.DeleteMenuConf(ctx, in, opts...)
 }

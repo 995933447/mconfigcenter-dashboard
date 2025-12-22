@@ -264,7 +264,2377 @@ export const dashboard = $root.dashboard = (() => {
          * @variation 2
          */
 
+        /**
+         * Callback as used by {@link dashboard.Dashboard#listMenuConf}.
+         * @memberof dashboard.Dashboard
+         * @typedef ListMenuConfCallback
+         * @type {function}
+         * @param {Error|null} error Error, if any
+         * @param {dashboard.ListMenuConfResp} [response] ListMenuConfResp
+         */
+
+        /**
+         * Calls ListMenuConf.
+         * @function listMenuConf
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.IListMenuConfReq} request ListMenuConfReq message or plain object
+         * @param {dashboard.Dashboard.ListMenuConfCallback} callback Node-style callback called with the error, if any, and ListMenuConfResp
+         * @returns {undefined}
+         * @variation 1
+         */
+        Object.defineProperty(Dashboard.prototype.listMenuConf = function listMenuConf(request, callback) {
+            return this.rpcCall(listMenuConf, $root.dashboard.ListMenuConfReq, $root.dashboard.ListMenuConfResp, request, callback);
+        }, "name", { value: "ListMenuConf" });
+
+        /**
+         * Calls ListMenuConf.
+         * @function listMenuConf
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.IListMenuConfReq} request ListMenuConfReq message or plain object
+         * @returns {Promise<dashboard.ListMenuConfResp>} Promise
+         * @variation 2
+         */
+
+        /**
+         * Callback as used by {@link dashboard.Dashboard#addMenuConf}.
+         * @memberof dashboard.Dashboard
+         * @typedef AddMenuConfCallback
+         * @type {function}
+         * @param {Error|null} error Error, if any
+         * @param {dashboard.AddMenuConfResp} [response] AddMenuConfResp
+         */
+
+        /**
+         * Calls AddMenuConf.
+         * @function addMenuConf
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.IAddMenuConfReq} request AddMenuConfReq message or plain object
+         * @param {dashboard.Dashboard.AddMenuConfCallback} callback Node-style callback called with the error, if any, and AddMenuConfResp
+         * @returns {undefined}
+         * @variation 1
+         */
+        Object.defineProperty(Dashboard.prototype.addMenuConf = function addMenuConf(request, callback) {
+            return this.rpcCall(addMenuConf, $root.dashboard.AddMenuConfReq, $root.dashboard.AddMenuConfResp, request, callback);
+        }, "name", { value: "AddMenuConf" });
+
+        /**
+         * Calls AddMenuConf.
+         * @function addMenuConf
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.IAddMenuConfReq} request AddMenuConfReq message or plain object
+         * @returns {Promise<dashboard.AddMenuConfResp>} Promise
+         * @variation 2
+         */
+
+        /**
+         * Callback as used by {@link dashboard.Dashboard#updateMenuConf}.
+         * @memberof dashboard.Dashboard
+         * @typedef UpdateMenuConfCallback
+         * @type {function}
+         * @param {Error|null} error Error, if any
+         * @param {dashboard.UpdateMenuConfResp} [response] UpdateMenuConfResp
+         */
+
+        /**
+         * Calls UpdateMenuConf.
+         * @function updateMenuConf
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.IUpdateMenuConfReq} request UpdateMenuConfReq message or plain object
+         * @param {dashboard.Dashboard.UpdateMenuConfCallback} callback Node-style callback called with the error, if any, and UpdateMenuConfResp
+         * @returns {undefined}
+         * @variation 1
+         */
+        Object.defineProperty(Dashboard.prototype.updateMenuConf = function updateMenuConf(request, callback) {
+            return this.rpcCall(updateMenuConf, $root.dashboard.UpdateMenuConfReq, $root.dashboard.UpdateMenuConfResp, request, callback);
+        }, "name", { value: "UpdateMenuConf" });
+
+        /**
+         * Calls UpdateMenuConf.
+         * @function updateMenuConf
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.IUpdateMenuConfReq} request UpdateMenuConfReq message or plain object
+         * @returns {Promise<dashboard.UpdateMenuConfResp>} Promise
+         * @variation 2
+         */
+
+        /**
+         * Callback as used by {@link dashboard.Dashboard#deleteMenuConf}.
+         * @memberof dashboard.Dashboard
+         * @typedef DeleteMenuConfCallback
+         * @type {function}
+         * @param {Error|null} error Error, if any
+         * @param {dashboard.DeleteMenuConfResp} [response] DeleteMenuConfResp
+         */
+
+        /**
+         * Calls DeleteMenuConf.
+         * @function deleteMenuConf
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.IDeleteMenuConfReq} request DeleteMenuConfReq message or plain object
+         * @param {dashboard.Dashboard.DeleteMenuConfCallback} callback Node-style callback called with the error, if any, and DeleteMenuConfResp
+         * @returns {undefined}
+         * @variation 1
+         */
+        Object.defineProperty(Dashboard.prototype.deleteMenuConf = function deleteMenuConf(request, callback) {
+            return this.rpcCall(deleteMenuConf, $root.dashboard.DeleteMenuConfReq, $root.dashboard.DeleteMenuConfResp, request, callback);
+        }, "name", { value: "DeleteMenuConf" });
+
+        /**
+         * Calls DeleteMenuConf.
+         * @function deleteMenuConf
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.IDeleteMenuConfReq} request DeleteMenuConfReq message or plain object
+         * @returns {Promise<dashboard.DeleteMenuConfResp>} Promise
+         * @variation 2
+         */
+
         return Dashboard;
+    })();
+
+    dashboard.DeleteMenuConfReq = (function() {
+
+        /**
+         * Properties of a DeleteMenuConfReq.
+         * @memberof dashboard
+         * @interface IDeleteMenuConfReq
+         * @property {number|Long|null} [perm_id] DeleteMenuConfReq perm_id
+         */
+
+        /**
+         * Constructs a new DeleteMenuConfReq.
+         * @memberof dashboard
+         * @classdesc Represents a DeleteMenuConfReq.
+         * @implements IDeleteMenuConfReq
+         * @constructor
+         * @param {dashboard.IDeleteMenuConfReq=} [properties] Properties to set
+         */
+        function DeleteMenuConfReq(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * DeleteMenuConfReq perm_id.
+         * @member {number|Long} perm_id
+         * @memberof dashboard.DeleteMenuConfReq
+         * @instance
+         */
+        DeleteMenuConfReq.prototype.perm_id = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * Creates a new DeleteMenuConfReq instance using the specified properties.
+         * @function create
+         * @memberof dashboard.DeleteMenuConfReq
+         * @static
+         * @param {dashboard.IDeleteMenuConfReq=} [properties] Properties to set
+         * @returns {dashboard.DeleteMenuConfReq} DeleteMenuConfReq instance
+         */
+        DeleteMenuConfReq.create = function create(properties) {
+            return new DeleteMenuConfReq(properties);
+        };
+
+        /**
+         * Encodes the specified DeleteMenuConfReq message. Does not implicitly {@link dashboard.DeleteMenuConfReq.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.DeleteMenuConfReq
+         * @static
+         * @param {dashboard.IDeleteMenuConfReq} message DeleteMenuConfReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeleteMenuConfReq.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.perm_id != null && Object.hasOwnProperty.call(message, "perm_id"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.perm_id);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified DeleteMenuConfReq message, length delimited. Does not implicitly {@link dashboard.DeleteMenuConfReq.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.DeleteMenuConfReq
+         * @static
+         * @param {dashboard.IDeleteMenuConfReq} message DeleteMenuConfReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeleteMenuConfReq.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a DeleteMenuConfReq message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.DeleteMenuConfReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.DeleteMenuConfReq} DeleteMenuConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeleteMenuConfReq.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.DeleteMenuConfReq();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.perm_id = reader.uint64();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a DeleteMenuConfReq message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.DeleteMenuConfReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.DeleteMenuConfReq} DeleteMenuConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeleteMenuConfReq.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a DeleteMenuConfReq message.
+         * @function verify
+         * @memberof dashboard.DeleteMenuConfReq
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        DeleteMenuConfReq.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.perm_id != null && message.hasOwnProperty("perm_id"))
+                if (!$util.isInteger(message.perm_id) && !(message.perm_id && $util.isInteger(message.perm_id.low) && $util.isInteger(message.perm_id.high)))
+                    return "perm_id: integer|Long expected";
+            return null;
+        };
+
+        /**
+         * Creates a DeleteMenuConfReq message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.DeleteMenuConfReq
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.DeleteMenuConfReq} DeleteMenuConfReq
+         */
+        DeleteMenuConfReq.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.DeleteMenuConfReq)
+                return object;
+            let message = new $root.dashboard.DeleteMenuConfReq();
+            if (object.perm_id != null)
+                if ($util.Long)
+                    (message.perm_id = $util.Long.fromValue(object.perm_id)).unsigned = true;
+                else if (typeof object.perm_id === "string")
+                    message.perm_id = parseInt(object.perm_id, 10);
+                else if (typeof object.perm_id === "number")
+                    message.perm_id = object.perm_id;
+                else if (typeof object.perm_id === "object")
+                    message.perm_id = new $util.LongBits(object.perm_id.low >>> 0, object.perm_id.high >>> 0).toNumber(true);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a DeleteMenuConfReq message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.DeleteMenuConfReq
+         * @static
+         * @param {dashboard.DeleteMenuConfReq} message DeleteMenuConfReq
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        DeleteMenuConfReq.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults)
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, true);
+                    object.perm_id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.perm_id = options.longs === String ? "0" : 0;
+            if (message.perm_id != null && message.hasOwnProperty("perm_id"))
+                if (typeof message.perm_id === "number")
+                    object.perm_id = options.longs === String ? String(message.perm_id) : message.perm_id;
+                else
+                    object.perm_id = options.longs === String ? $util.Long.prototype.toString.call(message.perm_id) : options.longs === Number ? new $util.LongBits(message.perm_id.low >>> 0, message.perm_id.high >>> 0).toNumber(true) : message.perm_id;
+            return object;
+        };
+
+        /**
+         * Converts this DeleteMenuConfReq to JSON.
+         * @function toJSON
+         * @memberof dashboard.DeleteMenuConfReq
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        DeleteMenuConfReq.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for DeleteMenuConfReq
+         * @function getTypeUrl
+         * @memberof dashboard.DeleteMenuConfReq
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        DeleteMenuConfReq.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.DeleteMenuConfReq";
+        };
+
+        return DeleteMenuConfReq;
+    })();
+
+    dashboard.DeleteMenuConfResp = (function() {
+
+        /**
+         * Properties of a DeleteMenuConfResp.
+         * @memberof dashboard
+         * @interface IDeleteMenuConfResp
+         */
+
+        /**
+         * Constructs a new DeleteMenuConfResp.
+         * @memberof dashboard
+         * @classdesc Represents a DeleteMenuConfResp.
+         * @implements IDeleteMenuConfResp
+         * @constructor
+         * @param {dashboard.IDeleteMenuConfResp=} [properties] Properties to set
+         */
+        function DeleteMenuConfResp(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Creates a new DeleteMenuConfResp instance using the specified properties.
+         * @function create
+         * @memberof dashboard.DeleteMenuConfResp
+         * @static
+         * @param {dashboard.IDeleteMenuConfResp=} [properties] Properties to set
+         * @returns {dashboard.DeleteMenuConfResp} DeleteMenuConfResp instance
+         */
+        DeleteMenuConfResp.create = function create(properties) {
+            return new DeleteMenuConfResp(properties);
+        };
+
+        /**
+         * Encodes the specified DeleteMenuConfResp message. Does not implicitly {@link dashboard.DeleteMenuConfResp.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.DeleteMenuConfResp
+         * @static
+         * @param {dashboard.IDeleteMenuConfResp} message DeleteMenuConfResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeleteMenuConfResp.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified DeleteMenuConfResp message, length delimited. Does not implicitly {@link dashboard.DeleteMenuConfResp.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.DeleteMenuConfResp
+         * @static
+         * @param {dashboard.IDeleteMenuConfResp} message DeleteMenuConfResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeleteMenuConfResp.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a DeleteMenuConfResp message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.DeleteMenuConfResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.DeleteMenuConfResp} DeleteMenuConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeleteMenuConfResp.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.DeleteMenuConfResp();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a DeleteMenuConfResp message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.DeleteMenuConfResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.DeleteMenuConfResp} DeleteMenuConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeleteMenuConfResp.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a DeleteMenuConfResp message.
+         * @function verify
+         * @memberof dashboard.DeleteMenuConfResp
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        DeleteMenuConfResp.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            return null;
+        };
+
+        /**
+         * Creates a DeleteMenuConfResp message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.DeleteMenuConfResp
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.DeleteMenuConfResp} DeleteMenuConfResp
+         */
+        DeleteMenuConfResp.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.DeleteMenuConfResp)
+                return object;
+            return new $root.dashboard.DeleteMenuConfResp();
+        };
+
+        /**
+         * Creates a plain object from a DeleteMenuConfResp message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.DeleteMenuConfResp
+         * @static
+         * @param {dashboard.DeleteMenuConfResp} message DeleteMenuConfResp
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        DeleteMenuConfResp.toObject = function toObject() {
+            return {};
+        };
+
+        /**
+         * Converts this DeleteMenuConfResp to JSON.
+         * @function toJSON
+         * @memberof dashboard.DeleteMenuConfResp
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        DeleteMenuConfResp.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for DeleteMenuConfResp
+         * @function getTypeUrl
+         * @memberof dashboard.DeleteMenuConfResp
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        DeleteMenuConfResp.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.DeleteMenuConfResp";
+        };
+
+        return DeleteMenuConfResp;
+    })();
+
+    dashboard.UpdateMenuConfReq = (function() {
+
+        /**
+         * Properties of an UpdateMenuConfReq.
+         * @memberof dashboard
+         * @interface IUpdateMenuConfReq
+         * @property {string|null} [name] UpdateMenuConfReq name
+         * @property {string|null} [path] UpdateMenuConfReq path
+         * @property {Array.<string>|null} [services] UpdateMenuConfReq services
+         * @property {number|Long|null} [pid] UpdateMenuConfReq pid
+         * @property {number|Long|null} [perm_id] UpdateMenuConfReq perm_id
+         * @property {number|null} [path_type] UpdateMenuConfReq path_type
+         */
+
+        /**
+         * Constructs a new UpdateMenuConfReq.
+         * @memberof dashboard
+         * @classdesc Represents an UpdateMenuConfReq.
+         * @implements IUpdateMenuConfReq
+         * @constructor
+         * @param {dashboard.IUpdateMenuConfReq=} [properties] Properties to set
+         */
+        function UpdateMenuConfReq(properties) {
+            this.services = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * UpdateMenuConfReq name.
+         * @member {string} name
+         * @memberof dashboard.UpdateMenuConfReq
+         * @instance
+         */
+        UpdateMenuConfReq.prototype.name = "";
+
+        /**
+         * UpdateMenuConfReq path.
+         * @member {string} path
+         * @memberof dashboard.UpdateMenuConfReq
+         * @instance
+         */
+        UpdateMenuConfReq.prototype.path = "";
+
+        /**
+         * UpdateMenuConfReq services.
+         * @member {Array.<string>} services
+         * @memberof dashboard.UpdateMenuConfReq
+         * @instance
+         */
+        UpdateMenuConfReq.prototype.services = $util.emptyArray;
+
+        /**
+         * UpdateMenuConfReq pid.
+         * @member {number|Long} pid
+         * @memberof dashboard.UpdateMenuConfReq
+         * @instance
+         */
+        UpdateMenuConfReq.prototype.pid = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * UpdateMenuConfReq perm_id.
+         * @member {number|Long} perm_id
+         * @memberof dashboard.UpdateMenuConfReq
+         * @instance
+         */
+        UpdateMenuConfReq.prototype.perm_id = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * UpdateMenuConfReq path_type.
+         * @member {number} path_type
+         * @memberof dashboard.UpdateMenuConfReq
+         * @instance
+         */
+        UpdateMenuConfReq.prototype.path_type = 0;
+
+        /**
+         * Creates a new UpdateMenuConfReq instance using the specified properties.
+         * @function create
+         * @memberof dashboard.UpdateMenuConfReq
+         * @static
+         * @param {dashboard.IUpdateMenuConfReq=} [properties] Properties to set
+         * @returns {dashboard.UpdateMenuConfReq} UpdateMenuConfReq instance
+         */
+        UpdateMenuConfReq.create = function create(properties) {
+            return new UpdateMenuConfReq(properties);
+        };
+
+        /**
+         * Encodes the specified UpdateMenuConfReq message. Does not implicitly {@link dashboard.UpdateMenuConfReq.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.UpdateMenuConfReq
+         * @static
+         * @param {dashboard.IUpdateMenuConfReq} message UpdateMenuConfReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        UpdateMenuConfReq.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.name);
+            if (message.path != null && Object.hasOwnProperty.call(message, "path"))
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.path);
+            if (message.services != null && message.services.length)
+                for (let i = 0; i < message.services.length; ++i)
+                    writer.uint32(/* id 4, wireType 2 =*/34).string(message.services[i]);
+            if (message.pid != null && Object.hasOwnProperty.call(message, "pid"))
+                writer.uint32(/* id 5, wireType 0 =*/40).uint64(message.pid);
+            if (message.perm_id != null && Object.hasOwnProperty.call(message, "perm_id"))
+                writer.uint32(/* id 6, wireType 0 =*/48).uint64(message.perm_id);
+            if (message.path_type != null && Object.hasOwnProperty.call(message, "path_type"))
+                writer.uint32(/* id 7, wireType 0 =*/56).int32(message.path_type);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified UpdateMenuConfReq message, length delimited. Does not implicitly {@link dashboard.UpdateMenuConfReq.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.UpdateMenuConfReq
+         * @static
+         * @param {dashboard.IUpdateMenuConfReq} message UpdateMenuConfReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        UpdateMenuConfReq.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes an UpdateMenuConfReq message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.UpdateMenuConfReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.UpdateMenuConfReq} UpdateMenuConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        UpdateMenuConfReq.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.UpdateMenuConfReq();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 2: {
+                        message.name = reader.string();
+                        break;
+                    }
+                case 3: {
+                        message.path = reader.string();
+                        break;
+                    }
+                case 4: {
+                        if (!(message.services && message.services.length))
+                            message.services = [];
+                        message.services.push(reader.string());
+                        break;
+                    }
+                case 5: {
+                        message.pid = reader.uint64();
+                        break;
+                    }
+                case 6: {
+                        message.perm_id = reader.uint64();
+                        break;
+                    }
+                case 7: {
+                        message.path_type = reader.int32();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes an UpdateMenuConfReq message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.UpdateMenuConfReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.UpdateMenuConfReq} UpdateMenuConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        UpdateMenuConfReq.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an UpdateMenuConfReq message.
+         * @function verify
+         * @memberof dashboard.UpdateMenuConfReq
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        UpdateMenuConfReq.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.name != null && message.hasOwnProperty("name"))
+                if (!$util.isString(message.name))
+                    return "name: string expected";
+            if (message.path != null && message.hasOwnProperty("path"))
+                if (!$util.isString(message.path))
+                    return "path: string expected";
+            if (message.services != null && message.hasOwnProperty("services")) {
+                if (!Array.isArray(message.services))
+                    return "services: array expected";
+                for (let i = 0; i < message.services.length; ++i)
+                    if (!$util.isString(message.services[i]))
+                        return "services: string[] expected";
+            }
+            if (message.pid != null && message.hasOwnProperty("pid"))
+                if (!$util.isInteger(message.pid) && !(message.pid && $util.isInteger(message.pid.low) && $util.isInteger(message.pid.high)))
+                    return "pid: integer|Long expected";
+            if (message.perm_id != null && message.hasOwnProperty("perm_id"))
+                if (!$util.isInteger(message.perm_id) && !(message.perm_id && $util.isInteger(message.perm_id.low) && $util.isInteger(message.perm_id.high)))
+                    return "perm_id: integer|Long expected";
+            if (message.path_type != null && message.hasOwnProperty("path_type"))
+                if (!$util.isInteger(message.path_type))
+                    return "path_type: integer expected";
+            return null;
+        };
+
+        /**
+         * Creates an UpdateMenuConfReq message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.UpdateMenuConfReq
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.UpdateMenuConfReq} UpdateMenuConfReq
+         */
+        UpdateMenuConfReq.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.UpdateMenuConfReq)
+                return object;
+            let message = new $root.dashboard.UpdateMenuConfReq();
+            if (object.name != null)
+                message.name = String(object.name);
+            if (object.path != null)
+                message.path = String(object.path);
+            if (object.services) {
+                if (!Array.isArray(object.services))
+                    throw TypeError(".dashboard.UpdateMenuConfReq.services: array expected");
+                message.services = [];
+                for (let i = 0; i < object.services.length; ++i)
+                    message.services[i] = String(object.services[i]);
+            }
+            if (object.pid != null)
+                if ($util.Long)
+                    (message.pid = $util.Long.fromValue(object.pid)).unsigned = true;
+                else if (typeof object.pid === "string")
+                    message.pid = parseInt(object.pid, 10);
+                else if (typeof object.pid === "number")
+                    message.pid = object.pid;
+                else if (typeof object.pid === "object")
+                    message.pid = new $util.LongBits(object.pid.low >>> 0, object.pid.high >>> 0).toNumber(true);
+            if (object.perm_id != null)
+                if ($util.Long)
+                    (message.perm_id = $util.Long.fromValue(object.perm_id)).unsigned = true;
+                else if (typeof object.perm_id === "string")
+                    message.perm_id = parseInt(object.perm_id, 10);
+                else if (typeof object.perm_id === "number")
+                    message.perm_id = object.perm_id;
+                else if (typeof object.perm_id === "object")
+                    message.perm_id = new $util.LongBits(object.perm_id.low >>> 0, object.perm_id.high >>> 0).toNumber(true);
+            if (object.path_type != null)
+                message.path_type = object.path_type | 0;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from an UpdateMenuConfReq message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.UpdateMenuConfReq
+         * @static
+         * @param {dashboard.UpdateMenuConfReq} message UpdateMenuConfReq
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        UpdateMenuConfReq.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults)
+                object.services = [];
+            if (options.defaults) {
+                object.name = "";
+                object.path = "";
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, true);
+                    object.pid = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.pid = options.longs === String ? "0" : 0;
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, true);
+                    object.perm_id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.perm_id = options.longs === String ? "0" : 0;
+                object.path_type = 0;
+            }
+            if (message.name != null && message.hasOwnProperty("name"))
+                object.name = message.name;
+            if (message.path != null && message.hasOwnProperty("path"))
+                object.path = message.path;
+            if (message.services && message.services.length) {
+                object.services = [];
+                for (let j = 0; j < message.services.length; ++j)
+                    object.services[j] = message.services[j];
+            }
+            if (message.pid != null && message.hasOwnProperty("pid"))
+                if (typeof message.pid === "number")
+                    object.pid = options.longs === String ? String(message.pid) : message.pid;
+                else
+                    object.pid = options.longs === String ? $util.Long.prototype.toString.call(message.pid) : options.longs === Number ? new $util.LongBits(message.pid.low >>> 0, message.pid.high >>> 0).toNumber(true) : message.pid;
+            if (message.perm_id != null && message.hasOwnProperty("perm_id"))
+                if (typeof message.perm_id === "number")
+                    object.perm_id = options.longs === String ? String(message.perm_id) : message.perm_id;
+                else
+                    object.perm_id = options.longs === String ? $util.Long.prototype.toString.call(message.perm_id) : options.longs === Number ? new $util.LongBits(message.perm_id.low >>> 0, message.perm_id.high >>> 0).toNumber(true) : message.perm_id;
+            if (message.path_type != null && message.hasOwnProperty("path_type"))
+                object.path_type = message.path_type;
+            return object;
+        };
+
+        /**
+         * Converts this UpdateMenuConfReq to JSON.
+         * @function toJSON
+         * @memberof dashboard.UpdateMenuConfReq
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        UpdateMenuConfReq.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for UpdateMenuConfReq
+         * @function getTypeUrl
+         * @memberof dashboard.UpdateMenuConfReq
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        UpdateMenuConfReq.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.UpdateMenuConfReq";
+        };
+
+        return UpdateMenuConfReq;
+    })();
+
+    dashboard.UpdateMenuConfResp = (function() {
+
+        /**
+         * Properties of an UpdateMenuConfResp.
+         * @memberof dashboard
+         * @interface IUpdateMenuConfResp
+         */
+
+        /**
+         * Constructs a new UpdateMenuConfResp.
+         * @memberof dashboard
+         * @classdesc Represents an UpdateMenuConfResp.
+         * @implements IUpdateMenuConfResp
+         * @constructor
+         * @param {dashboard.IUpdateMenuConfResp=} [properties] Properties to set
+         */
+        function UpdateMenuConfResp(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Creates a new UpdateMenuConfResp instance using the specified properties.
+         * @function create
+         * @memberof dashboard.UpdateMenuConfResp
+         * @static
+         * @param {dashboard.IUpdateMenuConfResp=} [properties] Properties to set
+         * @returns {dashboard.UpdateMenuConfResp} UpdateMenuConfResp instance
+         */
+        UpdateMenuConfResp.create = function create(properties) {
+            return new UpdateMenuConfResp(properties);
+        };
+
+        /**
+         * Encodes the specified UpdateMenuConfResp message. Does not implicitly {@link dashboard.UpdateMenuConfResp.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.UpdateMenuConfResp
+         * @static
+         * @param {dashboard.IUpdateMenuConfResp} message UpdateMenuConfResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        UpdateMenuConfResp.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified UpdateMenuConfResp message, length delimited. Does not implicitly {@link dashboard.UpdateMenuConfResp.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.UpdateMenuConfResp
+         * @static
+         * @param {dashboard.IUpdateMenuConfResp} message UpdateMenuConfResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        UpdateMenuConfResp.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes an UpdateMenuConfResp message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.UpdateMenuConfResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.UpdateMenuConfResp} UpdateMenuConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        UpdateMenuConfResp.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.UpdateMenuConfResp();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes an UpdateMenuConfResp message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.UpdateMenuConfResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.UpdateMenuConfResp} UpdateMenuConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        UpdateMenuConfResp.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an UpdateMenuConfResp message.
+         * @function verify
+         * @memberof dashboard.UpdateMenuConfResp
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        UpdateMenuConfResp.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            return null;
+        };
+
+        /**
+         * Creates an UpdateMenuConfResp message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.UpdateMenuConfResp
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.UpdateMenuConfResp} UpdateMenuConfResp
+         */
+        UpdateMenuConfResp.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.UpdateMenuConfResp)
+                return object;
+            return new $root.dashboard.UpdateMenuConfResp();
+        };
+
+        /**
+         * Creates a plain object from an UpdateMenuConfResp message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.UpdateMenuConfResp
+         * @static
+         * @param {dashboard.UpdateMenuConfResp} message UpdateMenuConfResp
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        UpdateMenuConfResp.toObject = function toObject() {
+            return {};
+        };
+
+        /**
+         * Converts this UpdateMenuConfResp to JSON.
+         * @function toJSON
+         * @memberof dashboard.UpdateMenuConfResp
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        UpdateMenuConfResp.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for UpdateMenuConfResp
+         * @function getTypeUrl
+         * @memberof dashboard.UpdateMenuConfResp
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        UpdateMenuConfResp.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.UpdateMenuConfResp";
+        };
+
+        return UpdateMenuConfResp;
+    })();
+
+    dashboard.AddMenuConfReq = (function() {
+
+        /**
+         * Properties of an AddMenuConfReq.
+         * @memberof dashboard
+         * @interface IAddMenuConfReq
+         * @property {string|null} [name] AddMenuConfReq name
+         * @property {string|null} [path] AddMenuConfReq path
+         * @property {Array.<string>|null} [services] AddMenuConfReq services
+         * @property {number|Long|null} [pid] AddMenuConfReq pid
+         * @property {number|null} [path_type] AddMenuConfReq path_type
+         */
+
+        /**
+         * Constructs a new AddMenuConfReq.
+         * @memberof dashboard
+         * @classdesc Represents an AddMenuConfReq.
+         * @implements IAddMenuConfReq
+         * @constructor
+         * @param {dashboard.IAddMenuConfReq=} [properties] Properties to set
+         */
+        function AddMenuConfReq(properties) {
+            this.services = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * AddMenuConfReq name.
+         * @member {string} name
+         * @memberof dashboard.AddMenuConfReq
+         * @instance
+         */
+        AddMenuConfReq.prototype.name = "";
+
+        /**
+         * AddMenuConfReq path.
+         * @member {string} path
+         * @memberof dashboard.AddMenuConfReq
+         * @instance
+         */
+        AddMenuConfReq.prototype.path = "";
+
+        /**
+         * AddMenuConfReq services.
+         * @member {Array.<string>} services
+         * @memberof dashboard.AddMenuConfReq
+         * @instance
+         */
+        AddMenuConfReq.prototype.services = $util.emptyArray;
+
+        /**
+         * AddMenuConfReq pid.
+         * @member {number|Long} pid
+         * @memberof dashboard.AddMenuConfReq
+         * @instance
+         */
+        AddMenuConfReq.prototype.pid = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * AddMenuConfReq path_type.
+         * @member {number} path_type
+         * @memberof dashboard.AddMenuConfReq
+         * @instance
+         */
+        AddMenuConfReq.prototype.path_type = 0;
+
+        /**
+         * Creates a new AddMenuConfReq instance using the specified properties.
+         * @function create
+         * @memberof dashboard.AddMenuConfReq
+         * @static
+         * @param {dashboard.IAddMenuConfReq=} [properties] Properties to set
+         * @returns {dashboard.AddMenuConfReq} AddMenuConfReq instance
+         */
+        AddMenuConfReq.create = function create(properties) {
+            return new AddMenuConfReq(properties);
+        };
+
+        /**
+         * Encodes the specified AddMenuConfReq message. Does not implicitly {@link dashboard.AddMenuConfReq.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.AddMenuConfReq
+         * @static
+         * @param {dashboard.IAddMenuConfReq} message AddMenuConfReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        AddMenuConfReq.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.name);
+            if (message.path != null && Object.hasOwnProperty.call(message, "path"))
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.path);
+            if (message.services != null && message.services.length)
+                for (let i = 0; i < message.services.length; ++i)
+                    writer.uint32(/* id 4, wireType 2 =*/34).string(message.services[i]);
+            if (message.pid != null && Object.hasOwnProperty.call(message, "pid"))
+                writer.uint32(/* id 5, wireType 0 =*/40).uint64(message.pid);
+            if (message.path_type != null && Object.hasOwnProperty.call(message, "path_type"))
+                writer.uint32(/* id 6, wireType 0 =*/48).int32(message.path_type);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified AddMenuConfReq message, length delimited. Does not implicitly {@link dashboard.AddMenuConfReq.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.AddMenuConfReq
+         * @static
+         * @param {dashboard.IAddMenuConfReq} message AddMenuConfReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        AddMenuConfReq.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes an AddMenuConfReq message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.AddMenuConfReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.AddMenuConfReq} AddMenuConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        AddMenuConfReq.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.AddMenuConfReq();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 2: {
+                        message.name = reader.string();
+                        break;
+                    }
+                case 3: {
+                        message.path = reader.string();
+                        break;
+                    }
+                case 4: {
+                        if (!(message.services && message.services.length))
+                            message.services = [];
+                        message.services.push(reader.string());
+                        break;
+                    }
+                case 5: {
+                        message.pid = reader.uint64();
+                        break;
+                    }
+                case 6: {
+                        message.path_type = reader.int32();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes an AddMenuConfReq message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.AddMenuConfReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.AddMenuConfReq} AddMenuConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        AddMenuConfReq.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an AddMenuConfReq message.
+         * @function verify
+         * @memberof dashboard.AddMenuConfReq
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        AddMenuConfReq.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.name != null && message.hasOwnProperty("name"))
+                if (!$util.isString(message.name))
+                    return "name: string expected";
+            if (message.path != null && message.hasOwnProperty("path"))
+                if (!$util.isString(message.path))
+                    return "path: string expected";
+            if (message.services != null && message.hasOwnProperty("services")) {
+                if (!Array.isArray(message.services))
+                    return "services: array expected";
+                for (let i = 0; i < message.services.length; ++i)
+                    if (!$util.isString(message.services[i]))
+                        return "services: string[] expected";
+            }
+            if (message.pid != null && message.hasOwnProperty("pid"))
+                if (!$util.isInteger(message.pid) && !(message.pid && $util.isInteger(message.pid.low) && $util.isInteger(message.pid.high)))
+                    return "pid: integer|Long expected";
+            if (message.path_type != null && message.hasOwnProperty("path_type"))
+                if (!$util.isInteger(message.path_type))
+                    return "path_type: integer expected";
+            return null;
+        };
+
+        /**
+         * Creates an AddMenuConfReq message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.AddMenuConfReq
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.AddMenuConfReq} AddMenuConfReq
+         */
+        AddMenuConfReq.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.AddMenuConfReq)
+                return object;
+            let message = new $root.dashboard.AddMenuConfReq();
+            if (object.name != null)
+                message.name = String(object.name);
+            if (object.path != null)
+                message.path = String(object.path);
+            if (object.services) {
+                if (!Array.isArray(object.services))
+                    throw TypeError(".dashboard.AddMenuConfReq.services: array expected");
+                message.services = [];
+                for (let i = 0; i < object.services.length; ++i)
+                    message.services[i] = String(object.services[i]);
+            }
+            if (object.pid != null)
+                if ($util.Long)
+                    (message.pid = $util.Long.fromValue(object.pid)).unsigned = true;
+                else if (typeof object.pid === "string")
+                    message.pid = parseInt(object.pid, 10);
+                else if (typeof object.pid === "number")
+                    message.pid = object.pid;
+                else if (typeof object.pid === "object")
+                    message.pid = new $util.LongBits(object.pid.low >>> 0, object.pid.high >>> 0).toNumber(true);
+            if (object.path_type != null)
+                message.path_type = object.path_type | 0;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from an AddMenuConfReq message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.AddMenuConfReq
+         * @static
+         * @param {dashboard.AddMenuConfReq} message AddMenuConfReq
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        AddMenuConfReq.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults)
+                object.services = [];
+            if (options.defaults) {
+                object.name = "";
+                object.path = "";
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, true);
+                    object.pid = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.pid = options.longs === String ? "0" : 0;
+                object.path_type = 0;
+            }
+            if (message.name != null && message.hasOwnProperty("name"))
+                object.name = message.name;
+            if (message.path != null && message.hasOwnProperty("path"))
+                object.path = message.path;
+            if (message.services && message.services.length) {
+                object.services = [];
+                for (let j = 0; j < message.services.length; ++j)
+                    object.services[j] = message.services[j];
+            }
+            if (message.pid != null && message.hasOwnProperty("pid"))
+                if (typeof message.pid === "number")
+                    object.pid = options.longs === String ? String(message.pid) : message.pid;
+                else
+                    object.pid = options.longs === String ? $util.Long.prototype.toString.call(message.pid) : options.longs === Number ? new $util.LongBits(message.pid.low >>> 0, message.pid.high >>> 0).toNumber(true) : message.pid;
+            if (message.path_type != null && message.hasOwnProperty("path_type"))
+                object.path_type = message.path_type;
+            return object;
+        };
+
+        /**
+         * Converts this AddMenuConfReq to JSON.
+         * @function toJSON
+         * @memberof dashboard.AddMenuConfReq
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        AddMenuConfReq.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for AddMenuConfReq
+         * @function getTypeUrl
+         * @memberof dashboard.AddMenuConfReq
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        AddMenuConfReq.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.AddMenuConfReq";
+        };
+
+        return AddMenuConfReq;
+    })();
+
+    dashboard.AddMenuConfResp = (function() {
+
+        /**
+         * Properties of an AddMenuConfResp.
+         * @memberof dashboard
+         * @interface IAddMenuConfResp
+         */
+
+        /**
+         * Constructs a new AddMenuConfResp.
+         * @memberof dashboard
+         * @classdesc Represents an AddMenuConfResp.
+         * @implements IAddMenuConfResp
+         * @constructor
+         * @param {dashboard.IAddMenuConfResp=} [properties] Properties to set
+         */
+        function AddMenuConfResp(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Creates a new AddMenuConfResp instance using the specified properties.
+         * @function create
+         * @memberof dashboard.AddMenuConfResp
+         * @static
+         * @param {dashboard.IAddMenuConfResp=} [properties] Properties to set
+         * @returns {dashboard.AddMenuConfResp} AddMenuConfResp instance
+         */
+        AddMenuConfResp.create = function create(properties) {
+            return new AddMenuConfResp(properties);
+        };
+
+        /**
+         * Encodes the specified AddMenuConfResp message. Does not implicitly {@link dashboard.AddMenuConfResp.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.AddMenuConfResp
+         * @static
+         * @param {dashboard.IAddMenuConfResp} message AddMenuConfResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        AddMenuConfResp.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified AddMenuConfResp message, length delimited. Does not implicitly {@link dashboard.AddMenuConfResp.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.AddMenuConfResp
+         * @static
+         * @param {dashboard.IAddMenuConfResp} message AddMenuConfResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        AddMenuConfResp.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes an AddMenuConfResp message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.AddMenuConfResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.AddMenuConfResp} AddMenuConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        AddMenuConfResp.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.AddMenuConfResp();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes an AddMenuConfResp message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.AddMenuConfResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.AddMenuConfResp} AddMenuConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        AddMenuConfResp.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an AddMenuConfResp message.
+         * @function verify
+         * @memberof dashboard.AddMenuConfResp
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        AddMenuConfResp.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            return null;
+        };
+
+        /**
+         * Creates an AddMenuConfResp message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.AddMenuConfResp
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.AddMenuConfResp} AddMenuConfResp
+         */
+        AddMenuConfResp.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.AddMenuConfResp)
+                return object;
+            return new $root.dashboard.AddMenuConfResp();
+        };
+
+        /**
+         * Creates a plain object from an AddMenuConfResp message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.AddMenuConfResp
+         * @static
+         * @param {dashboard.AddMenuConfResp} message AddMenuConfResp
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        AddMenuConfResp.toObject = function toObject() {
+            return {};
+        };
+
+        /**
+         * Converts this AddMenuConfResp to JSON.
+         * @function toJSON
+         * @memberof dashboard.AddMenuConfResp
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        AddMenuConfResp.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for AddMenuConfResp
+         * @function getTypeUrl
+         * @memberof dashboard.AddMenuConfResp
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        AddMenuConfResp.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.AddMenuConfResp";
+        };
+
+        return AddMenuConfResp;
+    })();
+
+    dashboard.ListMenuConfReq = (function() {
+
+        /**
+         * Properties of a ListMenuConfReq.
+         * @memberof dashboard
+         * @interface IListMenuConfReq
+         */
+
+        /**
+         * Constructs a new ListMenuConfReq.
+         * @memberof dashboard
+         * @classdesc Represents a ListMenuConfReq.
+         * @implements IListMenuConfReq
+         * @constructor
+         * @param {dashboard.IListMenuConfReq=} [properties] Properties to set
+         */
+        function ListMenuConfReq(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Creates a new ListMenuConfReq instance using the specified properties.
+         * @function create
+         * @memberof dashboard.ListMenuConfReq
+         * @static
+         * @param {dashboard.IListMenuConfReq=} [properties] Properties to set
+         * @returns {dashboard.ListMenuConfReq} ListMenuConfReq instance
+         */
+        ListMenuConfReq.create = function create(properties) {
+            return new ListMenuConfReq(properties);
+        };
+
+        /**
+         * Encodes the specified ListMenuConfReq message. Does not implicitly {@link dashboard.ListMenuConfReq.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.ListMenuConfReq
+         * @static
+         * @param {dashboard.IListMenuConfReq} message ListMenuConfReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ListMenuConfReq.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified ListMenuConfReq message, length delimited. Does not implicitly {@link dashboard.ListMenuConfReq.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.ListMenuConfReq
+         * @static
+         * @param {dashboard.IListMenuConfReq} message ListMenuConfReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ListMenuConfReq.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a ListMenuConfReq message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.ListMenuConfReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.ListMenuConfReq} ListMenuConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ListMenuConfReq.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.ListMenuConfReq();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a ListMenuConfReq message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.ListMenuConfReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.ListMenuConfReq} ListMenuConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ListMenuConfReq.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a ListMenuConfReq message.
+         * @function verify
+         * @memberof dashboard.ListMenuConfReq
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        ListMenuConfReq.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            return null;
+        };
+
+        /**
+         * Creates a ListMenuConfReq message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.ListMenuConfReq
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.ListMenuConfReq} ListMenuConfReq
+         */
+        ListMenuConfReq.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.ListMenuConfReq)
+                return object;
+            return new $root.dashboard.ListMenuConfReq();
+        };
+
+        /**
+         * Creates a plain object from a ListMenuConfReq message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.ListMenuConfReq
+         * @static
+         * @param {dashboard.ListMenuConfReq} message ListMenuConfReq
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        ListMenuConfReq.toObject = function toObject() {
+            return {};
+        };
+
+        /**
+         * Converts this ListMenuConfReq to JSON.
+         * @function toJSON
+         * @memberof dashboard.ListMenuConfReq
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        ListMenuConfReq.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for ListMenuConfReq
+         * @function getTypeUrl
+         * @memberof dashboard.ListMenuConfReq
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        ListMenuConfReq.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.ListMenuConfReq";
+        };
+
+        return ListMenuConfReq;
+    })();
+
+    dashboard.ListMenuConfResp = (function() {
+
+        /**
+         * Properties of a ListMenuConfResp.
+         * @memberof dashboard
+         * @interface IListMenuConfResp
+         * @property {Array.<dashboard.ListMenuConfResp.IMenuConf>|null} [list] ListMenuConfResp list
+         * @property {number|null} [total] ListMenuConfResp total
+         */
+
+        /**
+         * Constructs a new ListMenuConfResp.
+         * @memberof dashboard
+         * @classdesc Represents a ListMenuConfResp.
+         * @implements IListMenuConfResp
+         * @constructor
+         * @param {dashboard.IListMenuConfResp=} [properties] Properties to set
+         */
+        function ListMenuConfResp(properties) {
+            this.list = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * ListMenuConfResp list.
+         * @member {Array.<dashboard.ListMenuConfResp.IMenuConf>} list
+         * @memberof dashboard.ListMenuConfResp
+         * @instance
+         */
+        ListMenuConfResp.prototype.list = $util.emptyArray;
+
+        /**
+         * ListMenuConfResp total.
+         * @member {number} total
+         * @memberof dashboard.ListMenuConfResp
+         * @instance
+         */
+        ListMenuConfResp.prototype.total = 0;
+
+        /**
+         * Creates a new ListMenuConfResp instance using the specified properties.
+         * @function create
+         * @memberof dashboard.ListMenuConfResp
+         * @static
+         * @param {dashboard.IListMenuConfResp=} [properties] Properties to set
+         * @returns {dashboard.ListMenuConfResp} ListMenuConfResp instance
+         */
+        ListMenuConfResp.create = function create(properties) {
+            return new ListMenuConfResp(properties);
+        };
+
+        /**
+         * Encodes the specified ListMenuConfResp message. Does not implicitly {@link dashboard.ListMenuConfResp.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.ListMenuConfResp
+         * @static
+         * @param {dashboard.IListMenuConfResp} message ListMenuConfResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ListMenuConfResp.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.list != null && message.list.length)
+                for (let i = 0; i < message.list.length; ++i)
+                    $root.dashboard.ListMenuConfResp.MenuConf.encode(message.list[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.total != null && Object.hasOwnProperty.call(message, "total"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.total);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified ListMenuConfResp message, length delimited. Does not implicitly {@link dashboard.ListMenuConfResp.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.ListMenuConfResp
+         * @static
+         * @param {dashboard.IListMenuConfResp} message ListMenuConfResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ListMenuConfResp.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a ListMenuConfResp message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.ListMenuConfResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.ListMenuConfResp} ListMenuConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ListMenuConfResp.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.ListMenuConfResp();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        if (!(message.list && message.list.length))
+                            message.list = [];
+                        message.list.push($root.dashboard.ListMenuConfResp.MenuConf.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 2: {
+                        message.total = reader.uint32();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a ListMenuConfResp message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.ListMenuConfResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.ListMenuConfResp} ListMenuConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ListMenuConfResp.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a ListMenuConfResp message.
+         * @function verify
+         * @memberof dashboard.ListMenuConfResp
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        ListMenuConfResp.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.list != null && message.hasOwnProperty("list")) {
+                if (!Array.isArray(message.list))
+                    return "list: array expected";
+                for (let i = 0; i < message.list.length; ++i) {
+                    let error = $root.dashboard.ListMenuConfResp.MenuConf.verify(message.list[i]);
+                    if (error)
+                        return "list." + error;
+                }
+            }
+            if (message.total != null && message.hasOwnProperty("total"))
+                if (!$util.isInteger(message.total))
+                    return "total: integer expected";
+            return null;
+        };
+
+        /**
+         * Creates a ListMenuConfResp message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.ListMenuConfResp
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.ListMenuConfResp} ListMenuConfResp
+         */
+        ListMenuConfResp.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.ListMenuConfResp)
+                return object;
+            let message = new $root.dashboard.ListMenuConfResp();
+            if (object.list) {
+                if (!Array.isArray(object.list))
+                    throw TypeError(".dashboard.ListMenuConfResp.list: array expected");
+                message.list = [];
+                for (let i = 0; i < object.list.length; ++i) {
+                    if (typeof object.list[i] !== "object")
+                        throw TypeError(".dashboard.ListMenuConfResp.list: object expected");
+                    message.list[i] = $root.dashboard.ListMenuConfResp.MenuConf.fromObject(object.list[i]);
+                }
+            }
+            if (object.total != null)
+                message.total = object.total >>> 0;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a ListMenuConfResp message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.ListMenuConfResp
+         * @static
+         * @param {dashboard.ListMenuConfResp} message ListMenuConfResp
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        ListMenuConfResp.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults)
+                object.list = [];
+            if (options.defaults)
+                object.total = 0;
+            if (message.list && message.list.length) {
+                object.list = [];
+                for (let j = 0; j < message.list.length; ++j)
+                    object.list[j] = $root.dashboard.ListMenuConfResp.MenuConf.toObject(message.list[j], options);
+            }
+            if (message.total != null && message.hasOwnProperty("total"))
+                object.total = message.total;
+            return object;
+        };
+
+        /**
+         * Converts this ListMenuConfResp to JSON.
+         * @function toJSON
+         * @memberof dashboard.ListMenuConfResp
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        ListMenuConfResp.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for ListMenuConfResp
+         * @function getTypeUrl
+         * @memberof dashboard.ListMenuConfResp
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        ListMenuConfResp.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.ListMenuConfResp";
+        };
+
+        ListMenuConfResp.MenuConf = (function() {
+
+            /**
+             * Properties of a MenuConf.
+             * @memberof dashboard.ListMenuConfResp
+             * @interface IMenuConf
+             * @property {number|Long|null} [perm_id] MenuConf perm_id
+             * @property {string|null} [name] MenuConf name
+             * @property {string|null} [path] MenuConf path
+             * @property {Array.<string>|null} [services] MenuConf services
+             * @property {number|Long|null} [pid] MenuConf pid
+             * @property {number|null} [path_type] MenuConf path_type
+             */
+
+            /**
+             * Constructs a new MenuConf.
+             * @memberof dashboard.ListMenuConfResp
+             * @classdesc Represents a MenuConf.
+             * @implements IMenuConf
+             * @constructor
+             * @param {dashboard.ListMenuConfResp.IMenuConf=} [properties] Properties to set
+             */
+            function MenuConf(properties) {
+                this.services = [];
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * MenuConf perm_id.
+             * @member {number|Long} perm_id
+             * @memberof dashboard.ListMenuConfResp.MenuConf
+             * @instance
+             */
+            MenuConf.prototype.perm_id = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+            /**
+             * MenuConf name.
+             * @member {string} name
+             * @memberof dashboard.ListMenuConfResp.MenuConf
+             * @instance
+             */
+            MenuConf.prototype.name = "";
+
+            /**
+             * MenuConf path.
+             * @member {string} path
+             * @memberof dashboard.ListMenuConfResp.MenuConf
+             * @instance
+             */
+            MenuConf.prototype.path = "";
+
+            /**
+             * MenuConf services.
+             * @member {Array.<string>} services
+             * @memberof dashboard.ListMenuConfResp.MenuConf
+             * @instance
+             */
+            MenuConf.prototype.services = $util.emptyArray;
+
+            /**
+             * MenuConf pid.
+             * @member {number|Long} pid
+             * @memberof dashboard.ListMenuConfResp.MenuConf
+             * @instance
+             */
+            MenuConf.prototype.pid = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+            /**
+             * MenuConf path_type.
+             * @member {number} path_type
+             * @memberof dashboard.ListMenuConfResp.MenuConf
+             * @instance
+             */
+            MenuConf.prototype.path_type = 0;
+
+            /**
+             * Creates a new MenuConf instance using the specified properties.
+             * @function create
+             * @memberof dashboard.ListMenuConfResp.MenuConf
+             * @static
+             * @param {dashboard.ListMenuConfResp.IMenuConf=} [properties] Properties to set
+             * @returns {dashboard.ListMenuConfResp.MenuConf} MenuConf instance
+             */
+            MenuConf.create = function create(properties) {
+                return new MenuConf(properties);
+            };
+
+            /**
+             * Encodes the specified MenuConf message. Does not implicitly {@link dashboard.ListMenuConfResp.MenuConf.verify|verify} messages.
+             * @function encode
+             * @memberof dashboard.ListMenuConfResp.MenuConf
+             * @static
+             * @param {dashboard.ListMenuConfResp.IMenuConf} message MenuConf message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MenuConf.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.perm_id != null && Object.hasOwnProperty.call(message, "perm_id"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.perm_id);
+                if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.name);
+                if (message.path != null && Object.hasOwnProperty.call(message, "path"))
+                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.path);
+                if (message.services != null && message.services.length)
+                    for (let i = 0; i < message.services.length; ++i)
+                        writer.uint32(/* id 4, wireType 2 =*/34).string(message.services[i]);
+                if (message.pid != null && Object.hasOwnProperty.call(message, "pid"))
+                    writer.uint32(/* id 5, wireType 0 =*/40).uint64(message.pid);
+                if (message.path_type != null && Object.hasOwnProperty.call(message, "path_type"))
+                    writer.uint32(/* id 6, wireType 0 =*/48).int32(message.path_type);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified MenuConf message, length delimited. Does not implicitly {@link dashboard.ListMenuConfResp.MenuConf.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof dashboard.ListMenuConfResp.MenuConf
+             * @static
+             * @param {dashboard.ListMenuConfResp.IMenuConf} message MenuConf message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MenuConf.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a MenuConf message from the specified reader or buffer.
+             * @function decode
+             * @memberof dashboard.ListMenuConfResp.MenuConf
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {dashboard.ListMenuConfResp.MenuConf} MenuConf
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MenuConf.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.ListMenuConfResp.MenuConf();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.perm_id = reader.uint64();
+                            break;
+                        }
+                    case 2: {
+                            message.name = reader.string();
+                            break;
+                        }
+                    case 3: {
+                            message.path = reader.string();
+                            break;
+                        }
+                    case 4: {
+                            if (!(message.services && message.services.length))
+                                message.services = [];
+                            message.services.push(reader.string());
+                            break;
+                        }
+                    case 5: {
+                            message.pid = reader.uint64();
+                            break;
+                        }
+                    case 6: {
+                            message.path_type = reader.int32();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a MenuConf message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof dashboard.ListMenuConfResp.MenuConf
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {dashboard.ListMenuConfResp.MenuConf} MenuConf
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MenuConf.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a MenuConf message.
+             * @function verify
+             * @memberof dashboard.ListMenuConfResp.MenuConf
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            MenuConf.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.perm_id != null && message.hasOwnProperty("perm_id"))
+                    if (!$util.isInteger(message.perm_id) && !(message.perm_id && $util.isInteger(message.perm_id.low) && $util.isInteger(message.perm_id.high)))
+                        return "perm_id: integer|Long expected";
+                if (message.name != null && message.hasOwnProperty("name"))
+                    if (!$util.isString(message.name))
+                        return "name: string expected";
+                if (message.path != null && message.hasOwnProperty("path"))
+                    if (!$util.isString(message.path))
+                        return "path: string expected";
+                if (message.services != null && message.hasOwnProperty("services")) {
+                    if (!Array.isArray(message.services))
+                        return "services: array expected";
+                    for (let i = 0; i < message.services.length; ++i)
+                        if (!$util.isString(message.services[i]))
+                            return "services: string[] expected";
+                }
+                if (message.pid != null && message.hasOwnProperty("pid"))
+                    if (!$util.isInteger(message.pid) && !(message.pid && $util.isInteger(message.pid.low) && $util.isInteger(message.pid.high)))
+                        return "pid: integer|Long expected";
+                if (message.path_type != null && message.hasOwnProperty("path_type"))
+                    if (!$util.isInteger(message.path_type))
+                        return "path_type: integer expected";
+                return null;
+            };
+
+            /**
+             * Creates a MenuConf message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof dashboard.ListMenuConfResp.MenuConf
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {dashboard.ListMenuConfResp.MenuConf} MenuConf
+             */
+            MenuConf.fromObject = function fromObject(object) {
+                if (object instanceof $root.dashboard.ListMenuConfResp.MenuConf)
+                    return object;
+                let message = new $root.dashboard.ListMenuConfResp.MenuConf();
+                if (object.perm_id != null)
+                    if ($util.Long)
+                        (message.perm_id = $util.Long.fromValue(object.perm_id)).unsigned = true;
+                    else if (typeof object.perm_id === "string")
+                        message.perm_id = parseInt(object.perm_id, 10);
+                    else if (typeof object.perm_id === "number")
+                        message.perm_id = object.perm_id;
+                    else if (typeof object.perm_id === "object")
+                        message.perm_id = new $util.LongBits(object.perm_id.low >>> 0, object.perm_id.high >>> 0).toNumber(true);
+                if (object.name != null)
+                    message.name = String(object.name);
+                if (object.path != null)
+                    message.path = String(object.path);
+                if (object.services) {
+                    if (!Array.isArray(object.services))
+                        throw TypeError(".dashboard.ListMenuConfResp.MenuConf.services: array expected");
+                    message.services = [];
+                    for (let i = 0; i < object.services.length; ++i)
+                        message.services[i] = String(object.services[i]);
+                }
+                if (object.pid != null)
+                    if ($util.Long)
+                        (message.pid = $util.Long.fromValue(object.pid)).unsigned = true;
+                    else if (typeof object.pid === "string")
+                        message.pid = parseInt(object.pid, 10);
+                    else if (typeof object.pid === "number")
+                        message.pid = object.pid;
+                    else if (typeof object.pid === "object")
+                        message.pid = new $util.LongBits(object.pid.low >>> 0, object.pid.high >>> 0).toNumber(true);
+                if (object.path_type != null)
+                    message.path_type = object.path_type | 0;
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a MenuConf message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof dashboard.ListMenuConfResp.MenuConf
+             * @static
+             * @param {dashboard.ListMenuConfResp.MenuConf} message MenuConf
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            MenuConf.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                let object = {};
+                if (options.arrays || options.defaults)
+                    object.services = [];
+                if (options.defaults) {
+                    if ($util.Long) {
+                        let long = new $util.Long(0, 0, true);
+                        object.perm_id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                    } else
+                        object.perm_id = options.longs === String ? "0" : 0;
+                    object.name = "";
+                    object.path = "";
+                    if ($util.Long) {
+                        let long = new $util.Long(0, 0, true);
+                        object.pid = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                    } else
+                        object.pid = options.longs === String ? "0" : 0;
+                    object.path_type = 0;
+                }
+                if (message.perm_id != null && message.hasOwnProperty("perm_id"))
+                    if (typeof message.perm_id === "number")
+                        object.perm_id = options.longs === String ? String(message.perm_id) : message.perm_id;
+                    else
+                        object.perm_id = options.longs === String ? $util.Long.prototype.toString.call(message.perm_id) : options.longs === Number ? new $util.LongBits(message.perm_id.low >>> 0, message.perm_id.high >>> 0).toNumber(true) : message.perm_id;
+                if (message.name != null && message.hasOwnProperty("name"))
+                    object.name = message.name;
+                if (message.path != null && message.hasOwnProperty("path"))
+                    object.path = message.path;
+                if (message.services && message.services.length) {
+                    object.services = [];
+                    for (let j = 0; j < message.services.length; ++j)
+                        object.services[j] = message.services[j];
+                }
+                if (message.pid != null && message.hasOwnProperty("pid"))
+                    if (typeof message.pid === "number")
+                        object.pid = options.longs === String ? String(message.pid) : message.pid;
+                    else
+                        object.pid = options.longs === String ? $util.Long.prototype.toString.call(message.pid) : options.longs === Number ? new $util.LongBits(message.pid.low >>> 0, message.pid.high >>> 0).toNumber(true) : message.pid;
+                if (message.path_type != null && message.hasOwnProperty("path_type"))
+                    object.path_type = message.path_type;
+                return object;
+            };
+
+            /**
+             * Converts this MenuConf to JSON.
+             * @function toJSON
+             * @memberof dashboard.ListMenuConfResp.MenuConf
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            MenuConf.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for MenuConf
+             * @function getTypeUrl
+             * @memberof dashboard.ListMenuConfResp.MenuConf
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            MenuConf.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/dashboard.ListMenuConfResp.MenuConf";
+            };
+
+            return MenuConf;
+        })();
+
+        return ListMenuConfResp;
     })();
 
     dashboard.ChangeUserPasswordReq = (function() {

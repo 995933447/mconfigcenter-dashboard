@@ -25,6 +25,10 @@ const (
 	Dashboard_DisabledRBAC_FullMethodName       = "/dashboard.Dashboard/DisabledRBAC"
 	Dashboard_AuthUser_FullMethodName           = "/dashboard.Dashboard/AuthUser"
 	Dashboard_ChangeUserPassword_FullMethodName = "/dashboard.Dashboard/ChangeUserPassword"
+	Dashboard_ListMenuConf_FullMethodName       = "/dashboard.Dashboard/ListMenuConf"
+	Dashboard_AddMenuConf_FullMethodName        = "/dashboard.Dashboard/AddMenuConf"
+	Dashboard_UpdateMenuConf_FullMethodName     = "/dashboard.Dashboard/UpdateMenuConf"
+	Dashboard_DeleteMenuConf_FullMethodName     = "/dashboard.Dashboard/DeleteMenuConf"
 )
 
 // DashboardClient is the client API for Dashboard service.
@@ -37,6 +41,10 @@ type DashboardClient interface {
 	DisabledRBAC(ctx context.Context, in *DisabledRBACReq, opts ...grpc.CallOption) (*DisabledRBACResp, error)
 	AuthUser(ctx context.Context, in *AuthUserReq, opts ...grpc.CallOption) (*AuthUserResp, error)
 	ChangeUserPassword(ctx context.Context, in *ChangeUserPasswordReq, opts ...grpc.CallOption) (*ChangeUserPasswordResp, error)
+	ListMenuConf(ctx context.Context, in *ListMenuConfReq, opts ...grpc.CallOption) (*ListMenuConfResp, error)
+	AddMenuConf(ctx context.Context, in *AddMenuConfReq, opts ...grpc.CallOption) (*AddMenuConfResp, error)
+	UpdateMenuConf(ctx context.Context, in *UpdateMenuConfReq, opts ...grpc.CallOption) (*UpdateMenuConfResp, error)
+	DeleteMenuConf(ctx context.Context, in *DeleteMenuConfReq, opts ...grpc.CallOption) (*DeleteMenuConfResp, error)
 }
 
 type dashboardClient struct {
@@ -107,6 +115,46 @@ func (c *dashboardClient) ChangeUserPassword(ctx context.Context, in *ChangeUser
 	return out, nil
 }
 
+func (c *dashboardClient) ListMenuConf(ctx context.Context, in *ListMenuConfReq, opts ...grpc.CallOption) (*ListMenuConfResp, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListMenuConfResp)
+	err := c.cc.Invoke(ctx, Dashboard_ListMenuConf_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dashboardClient) AddMenuConf(ctx context.Context, in *AddMenuConfReq, opts ...grpc.CallOption) (*AddMenuConfResp, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AddMenuConfResp)
+	err := c.cc.Invoke(ctx, Dashboard_AddMenuConf_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dashboardClient) UpdateMenuConf(ctx context.Context, in *UpdateMenuConfReq, opts ...grpc.CallOption) (*UpdateMenuConfResp, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateMenuConfResp)
+	err := c.cc.Invoke(ctx, Dashboard_UpdateMenuConf_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dashboardClient) DeleteMenuConf(ctx context.Context, in *DeleteMenuConfReq, opts ...grpc.CallOption) (*DeleteMenuConfResp, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteMenuConfResp)
+	err := c.cc.Invoke(ctx, Dashboard_DeleteMenuConf_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // DashboardServer is the server API for Dashboard service.
 // All implementations must embed UnimplementedDashboardServer
 // for forward compatibility.
@@ -117,6 +165,10 @@ type DashboardServer interface {
 	DisabledRBAC(context.Context, *DisabledRBACReq) (*DisabledRBACResp, error)
 	AuthUser(context.Context, *AuthUserReq) (*AuthUserResp, error)
 	ChangeUserPassword(context.Context, *ChangeUserPasswordReq) (*ChangeUserPasswordResp, error)
+	ListMenuConf(context.Context, *ListMenuConfReq) (*ListMenuConfResp, error)
+	AddMenuConf(context.Context, *AddMenuConfReq) (*AddMenuConfResp, error)
+	UpdateMenuConf(context.Context, *UpdateMenuConfReq) (*UpdateMenuConfResp, error)
+	DeleteMenuConf(context.Context, *DeleteMenuConfReq) (*DeleteMenuConfResp, error)
 	mustEmbedUnimplementedDashboardServer()
 }
 
@@ -144,6 +196,18 @@ func (UnimplementedDashboardServer) AuthUser(context.Context, *AuthUserReq) (*Au
 }
 func (UnimplementedDashboardServer) ChangeUserPassword(context.Context, *ChangeUserPasswordReq) (*ChangeUserPasswordResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChangeUserPassword not implemented")
+}
+func (UnimplementedDashboardServer) ListMenuConf(context.Context, *ListMenuConfReq) (*ListMenuConfResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListMenuConf not implemented")
+}
+func (UnimplementedDashboardServer) AddMenuConf(context.Context, *AddMenuConfReq) (*AddMenuConfResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddMenuConf not implemented")
+}
+func (UnimplementedDashboardServer) UpdateMenuConf(context.Context, *UpdateMenuConfReq) (*UpdateMenuConfResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateMenuConf not implemented")
+}
+func (UnimplementedDashboardServer) DeleteMenuConf(context.Context, *DeleteMenuConfReq) (*DeleteMenuConfResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteMenuConf not implemented")
 }
 func (UnimplementedDashboardServer) mustEmbedUnimplementedDashboardServer() {}
 func (UnimplementedDashboardServer) testEmbeddedByValue()                   {}
@@ -274,6 +338,78 @@ func _Dashboard_ChangeUserPassword_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Dashboard_ListMenuConf_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListMenuConfReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DashboardServer).ListMenuConf(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Dashboard_ListMenuConf_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DashboardServer).ListMenuConf(ctx, req.(*ListMenuConfReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Dashboard_AddMenuConf_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddMenuConfReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DashboardServer).AddMenuConf(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Dashboard_AddMenuConf_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DashboardServer).AddMenuConf(ctx, req.(*AddMenuConfReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Dashboard_UpdateMenuConf_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateMenuConfReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DashboardServer).UpdateMenuConf(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Dashboard_UpdateMenuConf_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DashboardServer).UpdateMenuConf(ctx, req.(*UpdateMenuConfReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Dashboard_DeleteMenuConf_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteMenuConfReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DashboardServer).DeleteMenuConf(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Dashboard_DeleteMenuConf_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DashboardServer).DeleteMenuConf(ctx, req.(*DeleteMenuConfReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Dashboard_ServiceDesc is the grpc.ServiceDesc for Dashboard service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -304,6 +440,22 @@ var Dashboard_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ChangeUserPassword",
 			Handler:    _Dashboard_ChangeUserPassword_Handler,
+		},
+		{
+			MethodName: "ListMenuConf",
+			Handler:    _Dashboard_ListMenuConf_Handler,
+		},
+		{
+			MethodName: "AddMenuConf",
+			Handler:    _Dashboard_AddMenuConf_Handler,
+		},
+		{
+			MethodName: "UpdateMenuConf",
+			Handler:    _Dashboard_UpdateMenuConf_Handler,
+		},
+		{
+			MethodName: "DeleteMenuConf",
+			Handler:    _Dashboard_DeleteMenuConf_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

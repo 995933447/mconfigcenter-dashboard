@@ -52,6 +52,108 @@ service Dashboard {
       method: "POST"
     };
   };
+
+  rpc ListMenuConf(ListMenuConfReq) returns (ListMenuConfResp) {
+    option(httpext.http_rule) = {
+      method: "GET"
+    };
+  }
+
+  rpc AddMenuConf(AddMenuConfReq) returns (AddMenuConfResp) {
+    option(httpext.http_rule) = {
+      method: "POST"
+    };
+  }
+
+  rpc UpdateMenuConf(UpdateMenuConfReq) returns (UpdateMenuConfResp) {
+    option(httpext.http_rule) = {
+      method: "POST"
+    };
+  }
+
+  rpc DeleteMenuConf(DeleteMenuConfReq) returns (DeleteMenuConfResp) {
+    option (httpext.http_rule) = {
+      method: "POST"
+    };
+  }
+
+  rpc ListRoleConf(ListRoleConfReq) returns (ListRoleConfResp) {
+      option (httpext.http_rule) = {
+        method: "GET"
+      };
+  };
+}
+
+message ListRoleConfReq {
+  string name = 1;
+  int32 status = 2;
+  bool only_super_admin = 3;
+  bool without_super_admin = 4;
+}
+
+message ListRoleConfResp {
+  message Role {
+    uint64 role_id = 1; // 角色id
+    string name = 2; // 角色名称
+    int32 status = 3; // 状态，参考enum RoleStatus
+    repeated uint64 perm_ids = 4; // 权限id
+    string remark = 5; // 备注
+    bool is_super_admin = 6; // 是否超级管理员
+  }
+
+  repeated Role list = 1;
+  uint32 total = 2;
+}
+
+message DeleteMenuConfReq {
+  uint64 perm_id = 1;
+}
+
+message DeleteMenuConfResp {
+
+}
+
+message UpdateMenuConfReq {
+  string name = 2; // 权限名称
+  string path = 3;
+  repeated string services = 4;
+  uint64 pid = 5;
+  uint64 perm_id = 6;
+  int32 path_type = 7;
+}
+
+message UpdateMenuConfResp {
+
+}
+
+message AddMenuConfReq {
+  string name = 2; // 权限名称
+  string path = 3;
+  repeated string services = 4;
+  uint64 pid = 5;
+  int32 path_type = 6;
+}
+
+message AddMenuConfResp {
+
+}
+
+message ListMenuConfReq {
+
+}
+
+message ListMenuConfResp {
+  message MenuConf {
+    uint64 perm_id = 1; // 权限id
+    string name = 2; // 权限名称
+    string path = 3;
+    repeated string services = 4;
+    uint64 pid = 5;
+    int32 path_type = 6;
+  }
+
+  repeated MenuConf list = 1;
+  uint32 total = 2;
 }
 
 message ChangeUserPasswordReq {

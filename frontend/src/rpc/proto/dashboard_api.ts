@@ -29,4 +29,24 @@ export class DashboardService {
     return await request.post('/dashboard/Dashboard/ChangeUserPassword', req)
   };
 
+  /** no comment **/
+  static async ListMenuConf(req: api.dashboard.IListMenuConfReq): Promise<api.dashboard.IListMenuConfResp> {
+    return await request.get('/dashboard/Dashboard/ListMenuConf', { params: req })
+  };
+
+  /** no comment **/
+  static async AddMenuConf(req: api.dashboard.IAddMenuConfReq): Promise<api.dashboard.IAddMenuConfResp> {
+    return await request.post('/dashboard/Dashboard/AddMenuConf', req)
+  };
+
+  /** no comment **/
+  static async UpdateMenuConf(req: api.dashboard.IUpdateMenuConfReq): Promise<api.dashboard.IUpdateMenuConfResp> {
+    return await request.post('/dashboard/Dashboard/UpdateMenuConf', req)
+  };
+
+  /** no comment **/
+  static async DeleteMenuConf(req: api.dashboard.IDeleteMenuConfReq): Promise<api.dashboard.IDeleteMenuConfResp> {
+    return await request.post('/dashboard/Dashboard/DeleteMenuConf', req)
+  };
+
 };

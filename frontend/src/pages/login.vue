@@ -52,7 +52,6 @@ import { DashboardService } from '~/rpc/proto/dashboard_api'
 import { UserAuthState, saveAuthState } from '~/composables/auth'
 import { encryptRSA } from '~/composables/encrypt'
 import { getRouter } from '~/composables/route'
-import { ca, lo } from 'element-plus/es/locales.mjs'
 
 const formRef = ref<FormInstance>()
 

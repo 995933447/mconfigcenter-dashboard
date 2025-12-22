@@ -24,7 +24,6 @@ import 'element-plus/theme-chalk/src/overlay.scss' // the modal class for messag
 import { setRouter } from './composables/route'
 import { isLogin  }  from './composables/auth'
 import '~/rpc/axios-interceptor'
-import { p } from 'vue-router/dist/router-CWoNjPRp.mjs'
 
 // if you do not need ssg:
 // import { createApp } from "vue";

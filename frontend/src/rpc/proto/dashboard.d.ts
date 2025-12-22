@@ -114,6 +114,62 @@ export namespace dashboard {
          * @returns Promise
          */
         public changeUserPassword(request: dashboard.IChangeUserPasswordReq): Promise<dashboard.ChangeUserPasswordResp>;
+
+        /**
+         * Calls ListMenuConf.
+         * @param request ListMenuConfReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and ListMenuConfResp
+         */
+        public listMenuConf(request: dashboard.IListMenuConfReq, callback: dashboard.Dashboard.ListMenuConfCallback): void;
+
+        /**
+         * Calls ListMenuConf.
+         * @param request ListMenuConfReq message or plain object
+         * @returns Promise
+         */
+        public listMenuConf(request: dashboard.IListMenuConfReq): Promise<dashboard.ListMenuConfResp>;
+
+        /**
+         * Calls AddMenuConf.
+         * @param request AddMenuConfReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and AddMenuConfResp
+         */
+        public addMenuConf(request: dashboard.IAddMenuConfReq, callback: dashboard.Dashboard.AddMenuConfCallback): void;
+
+        /**
+         * Calls AddMenuConf.
+         * @param request AddMenuConfReq message or plain object
+         * @returns Promise
+         */
+        public addMenuConf(request: dashboard.IAddMenuConfReq): Promise<dashboard.AddMenuConfResp>;
+
+        /**
+         * Calls UpdateMenuConf.
+         * @param request UpdateMenuConfReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and UpdateMenuConfResp
+         */
+        public updateMenuConf(request: dashboard.IUpdateMenuConfReq, callback: dashboard.Dashboard.UpdateMenuConfCallback): void;
+
+        /**
+         * Calls UpdateMenuConf.
+         * @param request UpdateMenuConfReq message or plain object
+         * @returns Promise
+         */
+        public updateMenuConf(request: dashboard.IUpdateMenuConfReq): Promise<dashboard.UpdateMenuConfResp>;
+
+        /**
+         * Calls DeleteMenuConf.
+         * @param request DeleteMenuConfReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and DeleteMenuConfResp
+         */
+        public deleteMenuConf(request: dashboard.IDeleteMenuConfReq, callback: dashboard.Dashboard.DeleteMenuConfCallback): void;
+
+        /**
+         * Calls DeleteMenuConf.
+         * @param request DeleteMenuConfReq message or plain object
+         * @returns Promise
+         */
+        public deleteMenuConf(request: dashboard.IDeleteMenuConfReq): Promise<dashboard.DeleteMenuConfResp>;
     }
 
     namespace Dashboard {
@@ -159,6 +215,976 @@ export namespace dashboard {
          * @param [response] ChangeUserPasswordResp
          */
         type ChangeUserPasswordCallback = (error: (Error|null), response?: dashboard.ChangeUserPasswordResp) => void;
+
+        /**
+         * Callback as used by {@link dashboard.Dashboard#listMenuConf}.
+         * @param error Error, if any
+         * @param [response] ListMenuConfResp
+         */
+        type ListMenuConfCallback = (error: (Error|null), response?: dashboard.ListMenuConfResp) => void;
+
+        /**
+         * Callback as used by {@link dashboard.Dashboard#addMenuConf}.
+         * @param error Error, if any
+         * @param [response] AddMenuConfResp
+         */
+        type AddMenuConfCallback = (error: (Error|null), response?: dashboard.AddMenuConfResp) => void;
+
+        /**
+         * Callback as used by {@link dashboard.Dashboard#updateMenuConf}.
+         * @param error Error, if any
+         * @param [response] UpdateMenuConfResp
+         */
+        type UpdateMenuConfCallback = (error: (Error|null), response?: dashboard.UpdateMenuConfResp) => void;
+
+        /**
+         * Callback as used by {@link dashboard.Dashboard#deleteMenuConf}.
+         * @param error Error, if any
+         * @param [response] DeleteMenuConfResp
+         */
+        type DeleteMenuConfCallback = (error: (Error|null), response?: dashboard.DeleteMenuConfResp) => void;
+    }
+
+    /** Properties of a DeleteMenuConfReq. */
+    interface IDeleteMenuConfReq {
+
+        /** DeleteMenuConfReq perm_id */
+        perm_id?: (number|Long|null);
+    }
+
+    /** Represents a DeleteMenuConfReq. */
+    class DeleteMenuConfReq implements IDeleteMenuConfReq {
+
+        /**
+         * Constructs a new DeleteMenuConfReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IDeleteMenuConfReq);
+
+        /** DeleteMenuConfReq perm_id. */
+        public perm_id: (number|Long);
+
+        /**
+         * Creates a new DeleteMenuConfReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns DeleteMenuConfReq instance
+         */
+        public static create(properties?: dashboard.IDeleteMenuConfReq): dashboard.DeleteMenuConfReq;
+
+        /**
+         * Encodes the specified DeleteMenuConfReq message. Does not implicitly {@link dashboard.DeleteMenuConfReq.verify|verify} messages.
+         * @param message DeleteMenuConfReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IDeleteMenuConfReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified DeleteMenuConfReq message, length delimited. Does not implicitly {@link dashboard.DeleteMenuConfReq.verify|verify} messages.
+         * @param message DeleteMenuConfReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IDeleteMenuConfReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a DeleteMenuConfReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns DeleteMenuConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.DeleteMenuConfReq;
+
+        /**
+         * Decodes a DeleteMenuConfReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns DeleteMenuConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.DeleteMenuConfReq;
+
+        /**
+         * Verifies a DeleteMenuConfReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a DeleteMenuConfReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns DeleteMenuConfReq
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.DeleteMenuConfReq;
+
+        /**
+         * Creates a plain object from a DeleteMenuConfReq message. Also converts values to other types if specified.
+         * @param message DeleteMenuConfReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.DeleteMenuConfReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this DeleteMenuConfReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for DeleteMenuConfReq
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a DeleteMenuConfResp. */
+    interface IDeleteMenuConfResp {
+    }
+
+    /** Represents a DeleteMenuConfResp. */
+    class DeleteMenuConfResp implements IDeleteMenuConfResp {
+
+        /**
+         * Constructs a new DeleteMenuConfResp.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IDeleteMenuConfResp);
+
+        /**
+         * Creates a new DeleteMenuConfResp instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns DeleteMenuConfResp instance
+         */
+        public static create(properties?: dashboard.IDeleteMenuConfResp): dashboard.DeleteMenuConfResp;
+
+        /**
+         * Encodes the specified DeleteMenuConfResp message. Does not implicitly {@link dashboard.DeleteMenuConfResp.verify|verify} messages.
+         * @param message DeleteMenuConfResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IDeleteMenuConfResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified DeleteMenuConfResp message, length delimited. Does not implicitly {@link dashboard.DeleteMenuConfResp.verify|verify} messages.
+         * @param message DeleteMenuConfResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IDeleteMenuConfResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a DeleteMenuConfResp message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns DeleteMenuConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.DeleteMenuConfResp;
+
+        /**
+         * Decodes a DeleteMenuConfResp message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns DeleteMenuConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.DeleteMenuConfResp;
+
+        /**
+         * Verifies a DeleteMenuConfResp message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a DeleteMenuConfResp message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns DeleteMenuConfResp
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.DeleteMenuConfResp;
+
+        /**
+         * Creates a plain object from a DeleteMenuConfResp message. Also converts values to other types if specified.
+         * @param message DeleteMenuConfResp
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.DeleteMenuConfResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this DeleteMenuConfResp to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for DeleteMenuConfResp
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of an UpdateMenuConfReq. */
+    interface IUpdateMenuConfReq {
+
+        /** UpdateMenuConfReq name */
+        name?: (string|null);
+
+        /** UpdateMenuConfReq path */
+        path?: (string|null);
+
+        /** UpdateMenuConfReq services */
+        services?: (string[]|null);
+
+        /** UpdateMenuConfReq pid */
+        pid?: (number|Long|null);
+
+        /** UpdateMenuConfReq perm_id */
+        perm_id?: (number|Long|null);
+
+        /** UpdateMenuConfReq path_type */
+        path_type?: (number|null);
+    }
+
+    /** Represents an UpdateMenuConfReq. */
+    class UpdateMenuConfReq implements IUpdateMenuConfReq {
+
+        /**
+         * Constructs a new UpdateMenuConfReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IUpdateMenuConfReq);
+
+        /** UpdateMenuConfReq name. */
+        public name: string;
+
+        /** UpdateMenuConfReq path. */
+        public path: string;
+
+        /** UpdateMenuConfReq services. */
+        public services: string[];
+
+        /** UpdateMenuConfReq pid. */
+        public pid: (number|Long);
+
+        /** UpdateMenuConfReq perm_id. */
+        public perm_id: (number|Long);
+
+        /** UpdateMenuConfReq path_type. */
+        public path_type: number;
+
+        /**
+         * Creates a new UpdateMenuConfReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns UpdateMenuConfReq instance
+         */
+        public static create(properties?: dashboard.IUpdateMenuConfReq): dashboard.UpdateMenuConfReq;
+
+        /**
+         * Encodes the specified UpdateMenuConfReq message. Does not implicitly {@link dashboard.UpdateMenuConfReq.verify|verify} messages.
+         * @param message UpdateMenuConfReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IUpdateMenuConfReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified UpdateMenuConfReq message, length delimited. Does not implicitly {@link dashboard.UpdateMenuConfReq.verify|verify} messages.
+         * @param message UpdateMenuConfReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IUpdateMenuConfReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes an UpdateMenuConfReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns UpdateMenuConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.UpdateMenuConfReq;
+
+        /**
+         * Decodes an UpdateMenuConfReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns UpdateMenuConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.UpdateMenuConfReq;
+
+        /**
+         * Verifies an UpdateMenuConfReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates an UpdateMenuConfReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns UpdateMenuConfReq
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.UpdateMenuConfReq;
+
+        /**
+         * Creates a plain object from an UpdateMenuConfReq message. Also converts values to other types if specified.
+         * @param message UpdateMenuConfReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.UpdateMenuConfReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this UpdateMenuConfReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for UpdateMenuConfReq
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of an UpdateMenuConfResp. */
+    interface IUpdateMenuConfResp {
+    }
+
+    /** Represents an UpdateMenuConfResp. */
+    class UpdateMenuConfResp implements IUpdateMenuConfResp {
+
+        /**
+         * Constructs a new UpdateMenuConfResp.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IUpdateMenuConfResp);
+
+        /**
+         * Creates a new UpdateMenuConfResp instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns UpdateMenuConfResp instance
+         */
+        public static create(properties?: dashboard.IUpdateMenuConfResp): dashboard.UpdateMenuConfResp;
+
+        /**
+         * Encodes the specified UpdateMenuConfResp message. Does not implicitly {@link dashboard.UpdateMenuConfResp.verify|verify} messages.
+         * @param message UpdateMenuConfResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IUpdateMenuConfResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified UpdateMenuConfResp message, length delimited. Does not implicitly {@link dashboard.UpdateMenuConfResp.verify|verify} messages.
+         * @param message UpdateMenuConfResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IUpdateMenuConfResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes an UpdateMenuConfResp message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns UpdateMenuConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.UpdateMenuConfResp;
+
+        /**
+         * Decodes an UpdateMenuConfResp message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns UpdateMenuConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.UpdateMenuConfResp;
+
+        /**
+         * Verifies an UpdateMenuConfResp message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates an UpdateMenuConfResp message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns UpdateMenuConfResp
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.UpdateMenuConfResp;
+
+        /**
+         * Creates a plain object from an UpdateMenuConfResp message. Also converts values to other types if specified.
+         * @param message UpdateMenuConfResp
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.UpdateMenuConfResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this UpdateMenuConfResp to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for UpdateMenuConfResp
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of an AddMenuConfReq. */
+    interface IAddMenuConfReq {
+
+        /** AddMenuConfReq name */
+        name?: (string|null);
+
+        /** AddMenuConfReq path */
+        path?: (string|null);
+
+        /** AddMenuConfReq services */
+        services?: (string[]|null);
+
+        /** AddMenuConfReq pid */
+        pid?: (number|Long|null);
+
+        /** AddMenuConfReq path_type */
+        path_type?: (number|null);
+    }
+
+    /** Represents an AddMenuConfReq. */
+    class AddMenuConfReq implements IAddMenuConfReq {
+
+        /**
+         * Constructs a new AddMenuConfReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IAddMenuConfReq);
+
+        /** AddMenuConfReq name. */
+        public name: string;
+
+        /** AddMenuConfReq path. */
+        public path: string;
+
+        /** AddMenuConfReq services. */
+        public services: string[];
+
+        /** AddMenuConfReq pid. */
+        public pid: (number|Long);
+
+        /** AddMenuConfReq path_type. */
+        public path_type: number;
+
+        /**
+         * Creates a new AddMenuConfReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns AddMenuConfReq instance
+         */
+        public static create(properties?: dashboard.IAddMenuConfReq): dashboard.AddMenuConfReq;
+
+        /**
+         * Encodes the specified AddMenuConfReq message. Does not implicitly {@link dashboard.AddMenuConfReq.verify|verify} messages.
+         * @param message AddMenuConfReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IAddMenuConfReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified AddMenuConfReq message, length delimited. Does not implicitly {@link dashboard.AddMenuConfReq.verify|verify} messages.
+         * @param message AddMenuConfReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IAddMenuConfReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes an AddMenuConfReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns AddMenuConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.AddMenuConfReq;
+
+        /**
+         * Decodes an AddMenuConfReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns AddMenuConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.AddMenuConfReq;
+
+        /**
+         * Verifies an AddMenuConfReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates an AddMenuConfReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns AddMenuConfReq
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.AddMenuConfReq;
+
+        /**
+         * Creates a plain object from an AddMenuConfReq message. Also converts values to other types if specified.
+         * @param message AddMenuConfReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.AddMenuConfReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this AddMenuConfReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for AddMenuConfReq
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of an AddMenuConfResp. */
+    interface IAddMenuConfResp {
+    }
+
+    /** Represents an AddMenuConfResp. */
+    class AddMenuConfResp implements IAddMenuConfResp {
+
+        /**
+         * Constructs a new AddMenuConfResp.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IAddMenuConfResp);
+
+        /**
+         * Creates a new AddMenuConfResp instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns AddMenuConfResp instance
+         */
+        public static create(properties?: dashboard.IAddMenuConfResp): dashboard.AddMenuConfResp;
+
+        /**
+         * Encodes the specified AddMenuConfResp message. Does not implicitly {@link dashboard.AddMenuConfResp.verify|verify} messages.
+         * @param message AddMenuConfResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IAddMenuConfResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified AddMenuConfResp message, length delimited. Does not implicitly {@link dashboard.AddMenuConfResp.verify|verify} messages.
+         * @param message AddMenuConfResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IAddMenuConfResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes an AddMenuConfResp message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns AddMenuConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.AddMenuConfResp;
+
+        /**
+         * Decodes an AddMenuConfResp message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns AddMenuConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.AddMenuConfResp;
+
+        /**
+         * Verifies an AddMenuConfResp message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates an AddMenuConfResp message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns AddMenuConfResp
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.AddMenuConfResp;
+
+        /**
+         * Creates a plain object from an AddMenuConfResp message. Also converts values to other types if specified.
+         * @param message AddMenuConfResp
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.AddMenuConfResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this AddMenuConfResp to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for AddMenuConfResp
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a ListMenuConfReq. */
+    interface IListMenuConfReq {
+    }
+
+    /** Represents a ListMenuConfReq. */
+    class ListMenuConfReq implements IListMenuConfReq {
+
+        /**
+         * Constructs a new ListMenuConfReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IListMenuConfReq);
+
+        /**
+         * Creates a new ListMenuConfReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns ListMenuConfReq instance
+         */
+        public static create(properties?: dashboard.IListMenuConfReq): dashboard.ListMenuConfReq;
+
+        /**
+         * Encodes the specified ListMenuConfReq message. Does not implicitly {@link dashboard.ListMenuConfReq.verify|verify} messages.
+         * @param message ListMenuConfReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IListMenuConfReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified ListMenuConfReq message, length delimited. Does not implicitly {@link dashboard.ListMenuConfReq.verify|verify} messages.
+         * @param message ListMenuConfReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IListMenuConfReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a ListMenuConfReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns ListMenuConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.ListMenuConfReq;
+
+        /**
+         * Decodes a ListMenuConfReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns ListMenuConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.ListMenuConfReq;
+
+        /**
+         * Verifies a ListMenuConfReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a ListMenuConfReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns ListMenuConfReq
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.ListMenuConfReq;
+
+        /**
+         * Creates a plain object from a ListMenuConfReq message. Also converts values to other types if specified.
+         * @param message ListMenuConfReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.ListMenuConfReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this ListMenuConfReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for ListMenuConfReq
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a ListMenuConfResp. */
+    interface IListMenuConfResp {
+
+        /** ListMenuConfResp list */
+        list?: (dashboard.ListMenuConfResp.IMenuConf[]|null);
+
+        /** ListMenuConfResp total */
+        total?: (number|null);
+    }
+
+    /** Represents a ListMenuConfResp. */
+    class ListMenuConfResp implements IListMenuConfResp {
+
+        /**
+         * Constructs a new ListMenuConfResp.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IListMenuConfResp);
+
+        /** ListMenuConfResp list. */
+        public list: dashboard.ListMenuConfResp.IMenuConf[];
+
+        /** ListMenuConfResp total. */
+        public total: number;
+
+        /**
+         * Creates a new ListMenuConfResp instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns ListMenuConfResp instance
+         */
+        public static create(properties?: dashboard.IListMenuConfResp): dashboard.ListMenuConfResp;
+
+        /**
+         * Encodes the specified ListMenuConfResp message. Does not implicitly {@link dashboard.ListMenuConfResp.verify|verify} messages.
+         * @param message ListMenuConfResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IListMenuConfResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified ListMenuConfResp message, length delimited. Does not implicitly {@link dashboard.ListMenuConfResp.verify|verify} messages.
+         * @param message ListMenuConfResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IListMenuConfResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a ListMenuConfResp message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns ListMenuConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.ListMenuConfResp;
+
+        /**
+         * Decodes a ListMenuConfResp message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns ListMenuConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.ListMenuConfResp;
+
+        /**
+         * Verifies a ListMenuConfResp message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a ListMenuConfResp message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns ListMenuConfResp
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.ListMenuConfResp;
+
+        /**
+         * Creates a plain object from a ListMenuConfResp message. Also converts values to other types if specified.
+         * @param message ListMenuConfResp
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.ListMenuConfResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this ListMenuConfResp to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for ListMenuConfResp
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace ListMenuConfResp {
+
+        /** Properties of a MenuConf. */
+        interface IMenuConf {
+
+            /** MenuConf perm_id */
+            perm_id?: (number|Long|null);
+
+            /** MenuConf name */
+            name?: (string|null);
+
+            /** MenuConf path */
+            path?: (string|null);
+
+            /** MenuConf services */
+            services?: (string[]|null);
+
+            /** MenuConf pid */
+            pid?: (number|Long|null);
+
+            /** MenuConf path_type */
+            path_type?: (number|null);
+        }
+
+        /** Represents a MenuConf. */
+        class MenuConf implements IMenuConf {
+
+            /**
+             * Constructs a new MenuConf.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: dashboard.ListMenuConfResp.IMenuConf);
+
+            /** MenuConf perm_id. */
+            public perm_id: (number|Long);
+
+            /** MenuConf name. */
+            public name: string;
+
+            /** MenuConf path. */
+            public path: string;
+
+            /** MenuConf services. */
+            public services: string[];
+
+            /** MenuConf pid. */
+            public pid: (number|Long);
+
+            /** MenuConf path_type. */
+            public path_type: number;
+
+            /**
+             * Creates a new MenuConf instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns MenuConf instance
+             */
+            public static create(properties?: dashboard.ListMenuConfResp.IMenuConf): dashboard.ListMenuConfResp.MenuConf;
+
+            /**
+             * Encodes the specified MenuConf message. Does not implicitly {@link dashboard.ListMenuConfResp.MenuConf.verify|verify} messages.
+             * @param message MenuConf message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: dashboard.ListMenuConfResp.IMenuConf, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified MenuConf message, length delimited. Does not implicitly {@link dashboard.ListMenuConfResp.MenuConf.verify|verify} messages.
+             * @param message MenuConf message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: dashboard.ListMenuConfResp.IMenuConf, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a MenuConf message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns MenuConf
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.ListMenuConfResp.MenuConf;
+
+            /**
+             * Decodes a MenuConf message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns MenuConf
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.ListMenuConfResp.MenuConf;
+
+            /**
+             * Verifies a MenuConf message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a MenuConf message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns MenuConf
+             */
+            public static fromObject(object: { [k: string]: any }): dashboard.ListMenuConfResp.MenuConf;
+
+            /**
+             * Creates a plain object from a MenuConf message. Also converts values to other types if specified.
+             * @param message MenuConf
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: dashboard.ListMenuConfResp.MenuConf, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this MenuConf to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for MenuConf
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
     }
 
     /** Properties of a ChangeUserPasswordReq. */

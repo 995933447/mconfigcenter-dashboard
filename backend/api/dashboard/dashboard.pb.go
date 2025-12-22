@@ -125,6 +125,406 @@ func (UserStatus) EnumDescriptor() ([]byte, []int) {
 	return file_dashboard_proto_rawDescGZIP(), []int{1}
 }
 
+type DeleteMenuConfReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PermId        uint64                 `protobuf:"varint,1,opt,name=perm_id,json=permId,proto3" json:"perm_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteMenuConfReq) Reset() {
+	*x = DeleteMenuConfReq{}
+	mi := &file_dashboard_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteMenuConfReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteMenuConfReq) ProtoMessage() {}
+
+func (x *DeleteMenuConfReq) ProtoReflect() protoreflect.Message {
+	mi := &file_dashboard_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteMenuConfReq.ProtoReflect.Descriptor instead.
+func (*DeleteMenuConfReq) Descriptor() ([]byte, []int) {
+	return file_dashboard_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *DeleteMenuConfReq) GetPermId() uint64 {
+	if x != nil {
+		return x.PermId
+	}
+	return 0
+}
+
+type DeleteMenuConfResp struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteMenuConfResp) Reset() {
+	*x = DeleteMenuConfResp{}
+	mi := &file_dashboard_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteMenuConfResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteMenuConfResp) ProtoMessage() {}
+
+func (x *DeleteMenuConfResp) ProtoReflect() protoreflect.Message {
+	mi := &file_dashboard_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteMenuConfResp.ProtoReflect.Descriptor instead.
+func (*DeleteMenuConfResp) Descriptor() ([]byte, []int) {
+	return file_dashboard_proto_rawDescGZIP(), []int{1}
+}
+
+type UpdateMenuConfReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"` // 权限名称
+	Path          string                 `protobuf:"bytes,3,opt,name=path,proto3" json:"path,omitempty"`
+	Services      []string               `protobuf:"bytes,4,rep,name=services,proto3" json:"services,omitempty"`
+	Pid           uint64                 `protobuf:"varint,5,opt,name=pid,proto3" json:"pid,omitempty"`
+	PermId        uint64                 `protobuf:"varint,6,opt,name=perm_id,json=permId,proto3" json:"perm_id,omitempty"`
+	PathType      int32                  `protobuf:"varint,7,opt,name=path_type,json=pathType,proto3" json:"path_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateMenuConfReq) Reset() {
+	*x = UpdateMenuConfReq{}
+	mi := &file_dashboard_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateMenuConfReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateMenuConfReq) ProtoMessage() {}
+
+func (x *UpdateMenuConfReq) ProtoReflect() protoreflect.Message {
+	mi := &file_dashboard_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateMenuConfReq.ProtoReflect.Descriptor instead.
+func (*UpdateMenuConfReq) Descriptor() ([]byte, []int) {
+	return file_dashboard_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *UpdateMenuConfReq) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *UpdateMenuConfReq) GetPath() string {
+	if x != nil {
+		return x.Path
+	}
+	return ""
+}
+
+func (x *UpdateMenuConfReq) GetServices() []string {
+	if x != nil {
+		return x.Services
+	}
+	return nil
+}
+
+func (x *UpdateMenuConfReq) GetPid() uint64 {
+	if x != nil {
+		return x.Pid
+	}
+	return 0
+}
+
+func (x *UpdateMenuConfReq) GetPermId() uint64 {
+	if x != nil {
+		return x.PermId
+	}
+	return 0
+}
+
+func (x *UpdateMenuConfReq) GetPathType() int32 {
+	if x != nil {
+		return x.PathType
+	}
+	return 0
+}
+
+type UpdateMenuConfResp struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateMenuConfResp) Reset() {
+	*x = UpdateMenuConfResp{}
+	mi := &file_dashboard_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateMenuConfResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateMenuConfResp) ProtoMessage() {}
+
+func (x *UpdateMenuConfResp) ProtoReflect() protoreflect.Message {
+	mi := &file_dashboard_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateMenuConfResp.ProtoReflect.Descriptor instead.
+func (*UpdateMenuConfResp) Descriptor() ([]byte, []int) {
+	return file_dashboard_proto_rawDescGZIP(), []int{3}
+}
+
+type AddMenuConfReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"` // 权限名称
+	Path          string                 `protobuf:"bytes,3,opt,name=path,proto3" json:"path,omitempty"`
+	Services      []string               `protobuf:"bytes,4,rep,name=services,proto3" json:"services,omitempty"`
+	Pid           uint64                 `protobuf:"varint,5,opt,name=pid,proto3" json:"pid,omitempty"`
+	PathType      int32                  `protobuf:"varint,6,opt,name=path_type,json=pathType,proto3" json:"path_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddMenuConfReq) Reset() {
+	*x = AddMenuConfReq{}
+	mi := &file_dashboard_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddMenuConfReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddMenuConfReq) ProtoMessage() {}
+
+func (x *AddMenuConfReq) ProtoReflect() protoreflect.Message {
+	mi := &file_dashboard_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddMenuConfReq.ProtoReflect.Descriptor instead.
+func (*AddMenuConfReq) Descriptor() ([]byte, []int) {
+	return file_dashboard_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *AddMenuConfReq) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *AddMenuConfReq) GetPath() string {
+	if x != nil {
+		return x.Path
+	}
+	return ""
+}
+
+func (x *AddMenuConfReq) GetServices() []string {
+	if x != nil {
+		return x.Services
+	}
+	return nil
+}
+
+func (x *AddMenuConfReq) GetPid() uint64 {
+	if x != nil {
+		return x.Pid
+	}
+	return 0
+}
+
+func (x *AddMenuConfReq) GetPathType() int32 {
+	if x != nil {
+		return x.PathType
+	}
+	return 0
+}
+
+type AddMenuConfResp struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddMenuConfResp) Reset() {
+	*x = AddMenuConfResp{}
+	mi := &file_dashboard_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddMenuConfResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddMenuConfResp) ProtoMessage() {}
+
+func (x *AddMenuConfResp) ProtoReflect() protoreflect.Message {
+	mi := &file_dashboard_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddMenuConfResp.ProtoReflect.Descriptor instead.
+func (*AddMenuConfResp) Descriptor() ([]byte, []int) {
+	return file_dashboard_proto_rawDescGZIP(), []int{5}
+}
+
+type ListMenuConfReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListMenuConfReq) Reset() {
+	*x = ListMenuConfReq{}
+	mi := &file_dashboard_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListMenuConfReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListMenuConfReq) ProtoMessage() {}
+
+func (x *ListMenuConfReq) ProtoReflect() protoreflect.Message {
+	mi := &file_dashboard_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListMenuConfReq.ProtoReflect.Descriptor instead.
+func (*ListMenuConfReq) Descriptor() ([]byte, []int) {
+	return file_dashboard_proto_rawDescGZIP(), []int{6}
+}
+
+type ListMenuConfResp struct {
+	state         protoimpl.MessageState       `protogen:"open.v1"`
+	List          []*ListMenuConfResp_MenuConf `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Total         uint32                       `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListMenuConfResp) Reset() {
+	*x = ListMenuConfResp{}
+	mi := &file_dashboard_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListMenuConfResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListMenuConfResp) ProtoMessage() {}
+
+func (x *ListMenuConfResp) ProtoReflect() protoreflect.Message {
+	mi := &file_dashboard_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListMenuConfResp.ProtoReflect.Descriptor instead.
+func (*ListMenuConfResp) Descriptor() ([]byte, []int) {
+	return file_dashboard_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *ListMenuConfResp) GetList() []*ListMenuConfResp_MenuConf {
+	if x != nil {
+		return x.List
+	}
+	return nil
+}
+
+func (x *ListMenuConfResp) GetTotal() uint32 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
 type ChangeUserPasswordReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	NewPassword   string                 `protobuf:"bytes,1,opt,name=new_password,json=newPassword,proto3" json:"new_password,omitempty"`
@@ -134,7 +534,7 @@ type ChangeUserPasswordReq struct {
 
 func (x *ChangeUserPasswordReq) Reset() {
 	*x = ChangeUserPasswordReq{}
-	mi := &file_dashboard_proto_msgTypes[0]
+	mi := &file_dashboard_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -146,7 +546,7 @@ func (x *ChangeUserPasswordReq) String() string {
 func (*ChangeUserPasswordReq) ProtoMessage() {}
 
 func (x *ChangeUserPasswordReq) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[0]
+	mi := &file_dashboard_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -159,7 +559,7 @@ func (x *ChangeUserPasswordReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeUserPasswordReq.ProtoReflect.Descriptor instead.
 func (*ChangeUserPasswordReq) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{0}
+	return file_dashboard_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *ChangeUserPasswordReq) GetNewPassword() string {
@@ -177,7 +577,7 @@ type ChangeUserPasswordResp struct {
 
 func (x *ChangeUserPasswordResp) Reset() {
 	*x = ChangeUserPasswordResp{}
-	mi := &file_dashboard_proto_msgTypes[1]
+	mi := &file_dashboard_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -189,7 +589,7 @@ func (x *ChangeUserPasswordResp) String() string {
 func (*ChangeUserPasswordResp) ProtoMessage() {}
 
 func (x *ChangeUserPasswordResp) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[1]
+	mi := &file_dashboard_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -202,7 +602,7 @@ func (x *ChangeUserPasswordResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeUserPasswordResp.ProtoReflect.Descriptor instead.
 func (*ChangeUserPasswordResp) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{1}
+	return file_dashboard_proto_rawDescGZIP(), []int{9}
 }
 
 type AuthUserReq struct {
@@ -214,7 +614,7 @@ type AuthUserReq struct {
 
 func (x *AuthUserReq) Reset() {
 	*x = AuthUserReq{}
-	mi := &file_dashboard_proto_msgTypes[2]
+	mi := &file_dashboard_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -226,7 +626,7 @@ func (x *AuthUserReq) String() string {
 func (*AuthUserReq) ProtoMessage() {}
 
 func (x *AuthUserReq) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[2]
+	mi := &file_dashboard_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -239,7 +639,7 @@ func (x *AuthUserReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AuthUserReq.ProtoReflect.Descriptor instead.
 func (*AuthUserReq) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{2}
+	return file_dashboard_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *AuthUserReq) GetToken() string {
@@ -258,7 +658,7 @@ type AuthUserResp struct {
 
 func (x *AuthUserResp) Reset() {
 	*x = AuthUserResp{}
-	mi := &file_dashboard_proto_msgTypes[3]
+	mi := &file_dashboard_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -270,7 +670,7 @@ func (x *AuthUserResp) String() string {
 func (*AuthUserResp) ProtoMessage() {}
 
 func (x *AuthUserResp) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[3]
+	mi := &file_dashboard_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -283,7 +683,7 @@ func (x *AuthUserResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AuthUserResp.ProtoReflect.Descriptor instead.
 func (*AuthUserResp) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{3}
+	return file_dashboard_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *AuthUserResp) GetUserId() uint64 {
@@ -301,7 +701,7 @@ type DisabledRBACReq struct {
 
 func (x *DisabledRBACReq) Reset() {
 	*x = DisabledRBACReq{}
-	mi := &file_dashboard_proto_msgTypes[4]
+	mi := &file_dashboard_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -313,7 +713,7 @@ func (x *DisabledRBACReq) String() string {
 func (*DisabledRBACReq) ProtoMessage() {}
 
 func (x *DisabledRBACReq) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[4]
+	mi := &file_dashboard_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -326,7 +726,7 @@ func (x *DisabledRBACReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DisabledRBACReq.ProtoReflect.Descriptor instead.
 func (*DisabledRBACReq) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{4}
+	return file_dashboard_proto_rawDescGZIP(), []int{12}
 }
 
 type DisabledRBACResp struct {
@@ -338,7 +738,7 @@ type DisabledRBACResp struct {
 
 func (x *DisabledRBACResp) Reset() {
 	*x = DisabledRBACResp{}
-	mi := &file_dashboard_proto_msgTypes[5]
+	mi := &file_dashboard_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -350,7 +750,7 @@ func (x *DisabledRBACResp) String() string {
 func (*DisabledRBACResp) ProtoMessage() {}
 
 func (x *DisabledRBACResp) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[5]
+	mi := &file_dashboard_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -363,7 +763,7 @@ func (x *DisabledRBACResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DisabledRBACResp.ProtoReflect.Descriptor instead.
 func (*DisabledRBACResp) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{5}
+	return file_dashboard_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *DisabledRBACResp) GetDisabled() bool {
@@ -381,7 +781,7 @@ type GetUserInfoReq struct {
 
 func (x *GetUserInfoReq) Reset() {
 	*x = GetUserInfoReq{}
-	mi := &file_dashboard_proto_msgTypes[6]
+	mi := &file_dashboard_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -393,7 +793,7 @@ func (x *GetUserInfoReq) String() string {
 func (*GetUserInfoReq) ProtoMessage() {}
 
 func (x *GetUserInfoReq) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[6]
+	mi := &file_dashboard_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -406,7 +806,7 @@ func (x *GetUserInfoReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserInfoReq.ProtoReflect.Descriptor instead.
 func (*GetUserInfoReq) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{6}
+	return file_dashboard_proto_rawDescGZIP(), []int{14}
 }
 
 type GetUserInfoResp struct {
@@ -421,7 +821,7 @@ type GetUserInfoResp struct {
 
 func (x *GetUserInfoResp) Reset() {
 	*x = GetUserInfoResp{}
-	mi := &file_dashboard_proto_msgTypes[7]
+	mi := &file_dashboard_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -433,7 +833,7 @@ func (x *GetUserInfoResp) String() string {
 func (*GetUserInfoResp) ProtoMessage() {}
 
 func (x *GetUserInfoResp) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[7]
+	mi := &file_dashboard_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -446,7 +846,7 @@ func (x *GetUserInfoResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserInfoResp.ProtoReflect.Descriptor instead.
 func (*GetUserInfoResp) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{7}
+	return file_dashboard_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *GetUserInfoResp) GetUserId() uint64 {
@@ -485,7 +885,7 @@ type GetRSAPubKeyReq struct {
 
 func (x *GetRSAPubKeyReq) Reset() {
 	*x = GetRSAPubKeyReq{}
-	mi := &file_dashboard_proto_msgTypes[8]
+	mi := &file_dashboard_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -497,7 +897,7 @@ func (x *GetRSAPubKeyReq) String() string {
 func (*GetRSAPubKeyReq) ProtoMessage() {}
 
 func (x *GetRSAPubKeyReq) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[8]
+	mi := &file_dashboard_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -510,7 +910,7 @@ func (x *GetRSAPubKeyReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRSAPubKeyReq.ProtoReflect.Descriptor instead.
 func (*GetRSAPubKeyReq) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{8}
+	return file_dashboard_proto_rawDescGZIP(), []int{16}
 }
 
 type GetRSAPubKeyResp struct {
@@ -522,7 +922,7 @@ type GetRSAPubKeyResp struct {
 
 func (x *GetRSAPubKeyResp) Reset() {
 	*x = GetRSAPubKeyResp{}
-	mi := &file_dashboard_proto_msgTypes[9]
+	mi := &file_dashboard_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -534,7 +934,7 @@ func (x *GetRSAPubKeyResp) String() string {
 func (*GetRSAPubKeyResp) ProtoMessage() {}
 
 func (x *GetRSAPubKeyResp) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[9]
+	mi := &file_dashboard_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -547,7 +947,7 @@ func (x *GetRSAPubKeyResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRSAPubKeyResp.ProtoReflect.Descriptor instead.
 func (*GetRSAPubKeyResp) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{9}
+	return file_dashboard_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *GetRSAPubKeyResp) GetKey() string {
@@ -567,7 +967,7 @@ type LoginReq struct {
 
 func (x *LoginReq) Reset() {
 	*x = LoginReq{}
-	mi := &file_dashboard_proto_msgTypes[10]
+	mi := &file_dashboard_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -579,7 +979,7 @@ func (x *LoginReq) String() string {
 func (*LoginReq) ProtoMessage() {}
 
 func (x *LoginReq) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[10]
+	mi := &file_dashboard_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -592,7 +992,7 @@ func (x *LoginReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginReq.ProtoReflect.Descriptor instead.
 func (*LoginReq) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{10}
+	return file_dashboard_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *LoginReq) GetUsername() string {
@@ -619,7 +1019,7 @@ type LoginResp struct {
 
 func (x *LoginResp) Reset() {
 	*x = LoginResp{}
-	mi := &file_dashboard_proto_msgTypes[11]
+	mi := &file_dashboard_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -631,7 +1031,7 @@ func (x *LoginResp) String() string {
 func (*LoginResp) ProtoMessage() {}
 
 func (x *LoginResp) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[11]
+	mi := &file_dashboard_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -644,7 +1044,7 @@ func (x *LoginResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginResp.ProtoReflect.Descriptor instead.
 func (*LoginResp) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{11}
+	return file_dashboard_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *LoginResp) GetToken() string {
@@ -674,7 +1074,7 @@ type User struct {
 
 func (x *User) Reset() {
 	*x = User{}
-	mi := &file_dashboard_proto_msgTypes[12]
+	mi := &file_dashboard_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -686,7 +1086,7 @@ func (x *User) String() string {
 func (*User) ProtoMessage() {}
 
 func (x *User) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[12]
+	mi := &file_dashboard_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -699,7 +1099,7 @@ func (x *User) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use User.ProtoReflect.Descriptor instead.
 func (*User) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{12}
+	return file_dashboard_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *User) GetUsername() string {
@@ -737,11 +1137,124 @@ func (x *User) GetLastLoginAt() int64 {
 	return 0
 }
 
+type ListMenuConfResp_MenuConf struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PermId        uint64                 `protobuf:"varint,1,opt,name=perm_id,json=permId,proto3" json:"perm_id,omitempty"` // 权限id
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`                    // 权限名称
+	Path          string                 `protobuf:"bytes,3,opt,name=path,proto3" json:"path,omitempty"`
+	Services      []string               `protobuf:"bytes,4,rep,name=services,proto3" json:"services,omitempty"`
+	Pid           uint64                 `protobuf:"varint,5,opt,name=pid,proto3" json:"pid,omitempty"`
+	PathType      int32                  `protobuf:"varint,6,opt,name=path_type,json=pathType,proto3" json:"path_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListMenuConfResp_MenuConf) Reset() {
+	*x = ListMenuConfResp_MenuConf{}
+	mi := &file_dashboard_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListMenuConfResp_MenuConf) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListMenuConfResp_MenuConf) ProtoMessage() {}
+
+func (x *ListMenuConfResp_MenuConf) ProtoReflect() protoreflect.Message {
+	mi := &file_dashboard_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListMenuConfResp_MenuConf.ProtoReflect.Descriptor instead.
+func (*ListMenuConfResp_MenuConf) Descriptor() ([]byte, []int) {
+	return file_dashboard_proto_rawDescGZIP(), []int{7, 0}
+}
+
+func (x *ListMenuConfResp_MenuConf) GetPermId() uint64 {
+	if x != nil {
+		return x.PermId
+	}
+	return 0
+}
+
+func (x *ListMenuConfResp_MenuConf) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *ListMenuConfResp_MenuConf) GetPath() string {
+	if x != nil {
+		return x.Path
+	}
+	return ""
+}
+
+func (x *ListMenuConfResp_MenuConf) GetServices() []string {
+	if x != nil {
+		return x.Services
+	}
+	return nil
+}
+
+func (x *ListMenuConfResp_MenuConf) GetPid() uint64 {
+	if x != nil {
+		return x.Pid
+	}
+	return 0
+}
+
+func (x *ListMenuConfResp_MenuConf) GetPathType() int32 {
+	if x != nil {
+		return x.PathType
+	}
+	return 0
+}
+
 var File_dashboard_proto protoreflect.FileDescriptor
 
 const file_dashboard_proto_rawDesc = "" +
 	"\n" +
-	"\x0fdashboard.proto\x12\tdashboard\x1a\x13easymicro_ext.proto\x1a\x0fmgorm_ext.proto\x1a\rhttpext.proto\":\n" +
+	"\x0fdashboard.proto\x12\tdashboard\x1a\x13easymicro_ext.proto\x1a\x0fmgorm_ext.proto\x1a\rhttpext.proto\",\n" +
+	"\x11DeleteMenuConfReq\x12\x17\n" +
+	"\aperm_id\x18\x01 \x01(\x04R\x06permId\"\x14\n" +
+	"\x12DeleteMenuConfResp\"\x9f\x01\n" +
+	"\x11UpdateMenuConfReq\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
+	"\x04path\x18\x03 \x01(\tR\x04path\x12\x1a\n" +
+	"\bservices\x18\x04 \x03(\tR\bservices\x12\x10\n" +
+	"\x03pid\x18\x05 \x01(\x04R\x03pid\x12\x17\n" +
+	"\aperm_id\x18\x06 \x01(\x04R\x06permId\x12\x1b\n" +
+	"\tpath_type\x18\a \x01(\x05R\bpathType\"\x14\n" +
+	"\x12UpdateMenuConfResp\"\x83\x01\n" +
+	"\x0eAddMenuConfReq\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
+	"\x04path\x18\x03 \x01(\tR\x04path\x12\x1a\n" +
+	"\bservices\x18\x04 \x03(\tR\bservices\x12\x10\n" +
+	"\x03pid\x18\x05 \x01(\x04R\x03pid\x12\x1b\n" +
+	"\tpath_type\x18\x06 \x01(\x05R\bpathType\"\x11\n" +
+	"\x0fAddMenuConfResp\"\x11\n" +
+	"\x0fListMenuConfReq\"\xfb\x01\n" +
+	"\x10ListMenuConfResp\x128\n" +
+	"\x04list\x18\x01 \x03(\v2$.dashboard.ListMenuConfResp.MenuConfR\x04list\x12\x14\n" +
+	"\x05total\x18\x02 \x01(\rR\x05total\x1a\x96\x01\n" +
+	"\bMenuConf\x12\x17\n" +
+	"\aperm_id\x18\x01 \x01(\x04R\x06permId\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
+	"\x04path\x18\x03 \x01(\tR\x04path\x12\x1a\n" +
+	"\bservices\x18\x04 \x03(\tR\bservices\x12\x10\n" +
+	"\x03pid\x18\x05 \x01(\x04R\x03pid\x12\x1b\n" +
+	"\tpath_type\x18\x06 \x01(\x05R\bpathType\":\n" +
 	"\x15ChangeUserPasswordReq\x12!\n" +
 	"\fnew_password\x18\x01 \x01(\tR\vnewPassword\"\x18\n" +
 	"\x16ChangeUserPasswordResp\"#\n" +
@@ -788,7 +1301,7 @@ const file_dashboard_proto_rawDesc = "" +
 	"UserStatus\x12\x11\n" +
 	"\rUserStatusNil\x10\x00\x12\x14\n" +
 	"\x10UserStatusNormal\x10\x01\x12\x14\n" +
-	"\x10UserStatusFrozen\x10\x022\xed\x03\n" +
+	"\x10UserStatusFrozen\x10\x022\xc9\x06\n" +
 	"\tDashboard\x12U\n" +
 	"\fGetRSAPubKey\x12\x1a.dashboard.GetRSAPubKeyReq\x1a\x1b.dashboard.GetRSAPubKeyResp\"\f\xca\xf3\x18\b\n" +
 	"\x04POST\x18\x01\x12@\n" +
@@ -800,6 +1313,17 @@ const file_dashboard_proto_rawDesc = "" +
 	"\x03GET\x12;\n" +
 	"\bAuthUser\x12\x16.dashboard.AuthUserReq\x1a\x17.dashboard.AuthUserResp\x12e\n" +
 	"\x12ChangeUserPassword\x12 .dashboard.ChangeUserPasswordReq\x1a!.dashboard.ChangeUserPasswordResp\"\n" +
+	"\xca\xf3\x18\x06\n" +
+	"\x04POST\x12R\n" +
+	"\fListMenuConf\x12\x1a.dashboard.ListMenuConfReq\x1a\x1b.dashboard.ListMenuConfResp\"\t\xca\xf3\x18\x05\n" +
+	"\x03GET\x12P\n" +
+	"\vAddMenuConf\x12\x19.dashboard.AddMenuConfReq\x1a\x1a.dashboard.AddMenuConfResp\"\n" +
+	"\xca\xf3\x18\x06\n" +
+	"\x04POST\x12Y\n" +
+	"\x0eUpdateMenuConf\x12\x1c.dashboard.UpdateMenuConfReq\x1a\x1d.dashboard.UpdateMenuConfResp\"\n" +
+	"\xca\xf3\x18\x06\n" +
+	"\x04POST\x12Y\n" +
+	"\x0eDeleteMenuConf\x12\x1c.dashboard.DeleteMenuConfReq\x1a\x1d.dashboard.DeleteMenuConfResp\"\n" +
 	"\xca\xf3\x18\x06\n" +
 	"\x04POSTB\x96\x01\x8a\x9d N\n" +
 	"Lgithub.com/995933447/mconfigcenter-dashboard/backend/service/dashboardserverZBgithub.com/995933447/mconfigcenter-dashboard/backend/api/dashboardb\x06proto3"
@@ -817,42 +1341,60 @@ func file_dashboard_proto_rawDescGZIP() []byte {
 }
 
 var file_dashboard_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_dashboard_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_dashboard_proto_msgTypes = make([]protoimpl.MessageInfo, 22)
 var file_dashboard_proto_goTypes = []any{
-	(ErrCode)(0),                   // 0: dashboard.ErrCode
-	(UserStatus)(0),                // 1: dashboard.UserStatus
-	(*ChangeUserPasswordReq)(nil),  // 2: dashboard.ChangeUserPasswordReq
-	(*ChangeUserPasswordResp)(nil), // 3: dashboard.ChangeUserPasswordResp
-	(*AuthUserReq)(nil),            // 4: dashboard.AuthUserReq
-	(*AuthUserResp)(nil),           // 5: dashboard.AuthUserResp
-	(*DisabledRBACReq)(nil),        // 6: dashboard.DisabledRBACReq
-	(*DisabledRBACResp)(nil),       // 7: dashboard.DisabledRBACResp
-	(*GetUserInfoReq)(nil),         // 8: dashboard.GetUserInfoReq
-	(*GetUserInfoResp)(nil),        // 9: dashboard.GetUserInfoResp
-	(*GetRSAPubKeyReq)(nil),        // 10: dashboard.GetRSAPubKeyReq
-	(*GetRSAPubKeyResp)(nil),       // 11: dashboard.GetRSAPubKeyResp
-	(*LoginReq)(nil),               // 12: dashboard.LoginReq
-	(*LoginResp)(nil),              // 13: dashboard.LoginResp
-	(*User)(nil),                   // 14: dashboard.User
+	(ErrCode)(0),                      // 0: dashboard.ErrCode
+	(UserStatus)(0),                   // 1: dashboard.UserStatus
+	(*DeleteMenuConfReq)(nil),         // 2: dashboard.DeleteMenuConfReq
+	(*DeleteMenuConfResp)(nil),        // 3: dashboard.DeleteMenuConfResp
+	(*UpdateMenuConfReq)(nil),         // 4: dashboard.UpdateMenuConfReq
+	(*UpdateMenuConfResp)(nil),        // 5: dashboard.UpdateMenuConfResp
+	(*AddMenuConfReq)(nil),            // 6: dashboard.AddMenuConfReq
+	(*AddMenuConfResp)(nil),           // 7: dashboard.AddMenuConfResp
+	(*ListMenuConfReq)(nil),           // 8: dashboard.ListMenuConfReq
+	(*ListMenuConfResp)(nil),          // 9: dashboard.ListMenuConfResp
+	(*ChangeUserPasswordReq)(nil),     // 10: dashboard.ChangeUserPasswordReq
+	(*ChangeUserPasswordResp)(nil),    // 11: dashboard.ChangeUserPasswordResp
+	(*AuthUserReq)(nil),               // 12: dashboard.AuthUserReq
+	(*AuthUserResp)(nil),              // 13: dashboard.AuthUserResp
+	(*DisabledRBACReq)(nil),           // 14: dashboard.DisabledRBACReq
+	(*DisabledRBACResp)(nil),          // 15: dashboard.DisabledRBACResp
+	(*GetUserInfoReq)(nil),            // 16: dashboard.GetUserInfoReq
+	(*GetUserInfoResp)(nil),           // 17: dashboard.GetUserInfoResp
+	(*GetRSAPubKeyReq)(nil),           // 18: dashboard.GetRSAPubKeyReq
+	(*GetRSAPubKeyResp)(nil),          // 19: dashboard.GetRSAPubKeyResp
+	(*LoginReq)(nil),                  // 20: dashboard.LoginReq
+	(*LoginResp)(nil),                 // 21: dashboard.LoginResp
+	(*User)(nil),                      // 22: dashboard.User
+	(*ListMenuConfResp_MenuConf)(nil), // 23: dashboard.ListMenuConfResp.MenuConf
 }
 var file_dashboard_proto_depIdxs = []int32{
-	10, // 0: dashboard.Dashboard.GetRSAPubKey:input_type -> dashboard.GetRSAPubKeyReq
-	12, // 1: dashboard.Dashboard.Login:input_type -> dashboard.LoginReq
-	8,  // 2: dashboard.Dashboard.GetUserInfo:input_type -> dashboard.GetUserInfoReq
-	6,  // 3: dashboard.Dashboard.DisabledRBAC:input_type -> dashboard.DisabledRBACReq
-	4,  // 4: dashboard.Dashboard.AuthUser:input_type -> dashboard.AuthUserReq
-	2,  // 5: dashboard.Dashboard.ChangeUserPassword:input_type -> dashboard.ChangeUserPasswordReq
-	11, // 6: dashboard.Dashboard.GetRSAPubKey:output_type -> dashboard.GetRSAPubKeyResp
-	13, // 7: dashboard.Dashboard.Login:output_type -> dashboard.LoginResp
-	9,  // 8: dashboard.Dashboard.GetUserInfo:output_type -> dashboard.GetUserInfoResp
-	7,  // 9: dashboard.Dashboard.DisabledRBAC:output_type -> dashboard.DisabledRBACResp
-	5,  // 10: dashboard.Dashboard.AuthUser:output_type -> dashboard.AuthUserResp
-	3,  // 11: dashboard.Dashboard.ChangeUserPassword:output_type -> dashboard.ChangeUserPasswordResp
-	6,  // [6:12] is the sub-list for method output_type
-	0,  // [0:6] is the sub-list for method input_type
-	0,  // [0:0] is the sub-list for extension type_name
-	0,  // [0:0] is the sub-list for extension extendee
-	0,  // [0:0] is the sub-list for field type_name
+	23, // 0: dashboard.ListMenuConfResp.list:type_name -> dashboard.ListMenuConfResp.MenuConf
+	18, // 1: dashboard.Dashboard.GetRSAPubKey:input_type -> dashboard.GetRSAPubKeyReq
+	20, // 2: dashboard.Dashboard.Login:input_type -> dashboard.LoginReq
+	16, // 3: dashboard.Dashboard.GetUserInfo:input_type -> dashboard.GetUserInfoReq
+	14, // 4: dashboard.Dashboard.DisabledRBAC:input_type -> dashboard.DisabledRBACReq
+	12, // 5: dashboard.Dashboard.AuthUser:input_type -> dashboard.AuthUserReq
+	10, // 6: dashboard.Dashboard.ChangeUserPassword:input_type -> dashboard.ChangeUserPasswordReq
+	8,  // 7: dashboard.Dashboard.ListMenuConf:input_type -> dashboard.ListMenuConfReq
+	6,  // 8: dashboard.Dashboard.AddMenuConf:input_type -> dashboard.AddMenuConfReq
+	4,  // 9: dashboard.Dashboard.UpdateMenuConf:input_type -> dashboard.UpdateMenuConfReq
+	2,  // 10: dashboard.Dashboard.DeleteMenuConf:input_type -> dashboard.DeleteMenuConfReq
+	19, // 11: dashboard.Dashboard.GetRSAPubKey:output_type -> dashboard.GetRSAPubKeyResp
+	21, // 12: dashboard.Dashboard.Login:output_type -> dashboard.LoginResp
+	17, // 13: dashboard.Dashboard.GetUserInfo:output_type -> dashboard.GetUserInfoResp
+	15, // 14: dashboard.Dashboard.DisabledRBAC:output_type -> dashboard.DisabledRBACResp
+	13, // 15: dashboard.Dashboard.AuthUser:output_type -> dashboard.AuthUserResp
+	11, // 16: dashboard.Dashboard.ChangeUserPassword:output_type -> dashboard.ChangeUserPasswordResp
+	9,  // 17: dashboard.Dashboard.ListMenuConf:output_type -> dashboard.ListMenuConfResp
+	7,  // 18: dashboard.Dashboard.AddMenuConf:output_type -> dashboard.AddMenuConfResp
+	5,  // 19: dashboard.Dashboard.UpdateMenuConf:output_type -> dashboard.UpdateMenuConfResp
+	3,  // 20: dashboard.Dashboard.DeleteMenuConf:output_type -> dashboard.DeleteMenuConfResp
+	11, // [11:21] is the sub-list for method output_type
+	1,  // [1:11] is the sub-list for method input_type
+	1,  // [1:1] is the sub-list for extension type_name
+	1,  // [1:1] is the sub-list for extension extendee
+	0,  // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_dashboard_proto_init() }
@@ -866,7 +1408,7 @@ func file_dashboard_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_dashboard_proto_rawDesc), len(file_dashboard_proto_rawDesc)),
 			NumEnums:      2,
-			NumMessages:   13,
+			NumMessages:   22,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
