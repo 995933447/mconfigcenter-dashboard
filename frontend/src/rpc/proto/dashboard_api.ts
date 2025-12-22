@@ -49,4 +49,24 @@ export class DashboardService {
     return await request.post('/dashboard/Dashboard/DeleteMenuConf', req)
   };
 
+  /** no comment **/
+  static async ListRoleConf(req: api.dashboard.IListRoleConfReq): Promise<api.dashboard.IListRoleConfResp> {
+    return await request.get('/dashboard/Dashboard/ListRoleConf', { params: req })
+  };
+
+  /** no comment **/
+  static async AddRoleConf(req: api.dashboard.IAddRoleConfReq): Promise<api.dashboard.IAddRoleConfResp> {
+    return await request.post('/dashboard/Dashboard/AddRoleConf', req)
+  };
+
+  /** no comment **/
+  static async UpdateRoleConf(req: api.dashboard.IUpdateRoleConfReq): Promise<api.dashboard.IUpdateRoleConfResp> {
+    return await request.post('/dashboard/Dashboard/UpdateRoleConf', req)
+  };
+
+  /** no comment **/
+  static async DeleteRoleConf(req: api.dashboard.IDeleteRoleConfReq): Promise<api.dashboard.IDeleteRoleConfResp> {
+    return await request.post('/dashboard/Dashboard/DeleteRoleConf', req)
+  };
+
 };

@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import { M } from 'vue-router/dist/router-CWoNjPRp.mjs';
 
 interface MenuConfState {
     menuTree: Array<any>;

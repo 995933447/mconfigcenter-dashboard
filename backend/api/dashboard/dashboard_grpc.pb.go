@@ -29,6 +29,10 @@ const (
 	Dashboard_AddMenuConf_FullMethodName        = "/dashboard.Dashboard/AddMenuConf"
 	Dashboard_UpdateMenuConf_FullMethodName     = "/dashboard.Dashboard/UpdateMenuConf"
 	Dashboard_DeleteMenuConf_FullMethodName     = "/dashboard.Dashboard/DeleteMenuConf"
+	Dashboard_ListRoleConf_FullMethodName       = "/dashboard.Dashboard/ListRoleConf"
+	Dashboard_AddRoleConf_FullMethodName        = "/dashboard.Dashboard/AddRoleConf"
+	Dashboard_UpdateRoleConf_FullMethodName     = "/dashboard.Dashboard/UpdateRoleConf"
+	Dashboard_DeleteRoleConf_FullMethodName     = "/dashboard.Dashboard/DeleteRoleConf"
 )
 
 // DashboardClient is the client API for Dashboard service.
@@ -45,6 +49,10 @@ type DashboardClient interface {
 	AddMenuConf(ctx context.Context, in *AddMenuConfReq, opts ...grpc.CallOption) (*AddMenuConfResp, error)
 	UpdateMenuConf(ctx context.Context, in *UpdateMenuConfReq, opts ...grpc.CallOption) (*UpdateMenuConfResp, error)
 	DeleteMenuConf(ctx context.Context, in *DeleteMenuConfReq, opts ...grpc.CallOption) (*DeleteMenuConfResp, error)
+	ListRoleConf(ctx context.Context, in *ListRoleConfReq, opts ...grpc.CallOption) (*ListRoleConfResp, error)
+	AddRoleConf(ctx context.Context, in *AddRoleConfReq, opts ...grpc.CallOption) (*AddRoleConfResp, error)
+	UpdateRoleConf(ctx context.Context, in *UpdateRoleConfReq, opts ...grpc.CallOption) (*UpdateRoleConfResp, error)
+	DeleteRoleConf(ctx context.Context, in *DeleteRoleConfReq, opts ...grpc.CallOption) (*DeleteRoleConfResp, error)
 }
 
 type dashboardClient struct {
@@ -155,6 +163,46 @@ func (c *dashboardClient) DeleteMenuConf(ctx context.Context, in *DeleteMenuConf
 	return out, nil
 }
 
+func (c *dashboardClient) ListRoleConf(ctx context.Context, in *ListRoleConfReq, opts ...grpc.CallOption) (*ListRoleConfResp, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListRoleConfResp)
+	err := c.cc.Invoke(ctx, Dashboard_ListRoleConf_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dashboardClient) AddRoleConf(ctx context.Context, in *AddRoleConfReq, opts ...grpc.CallOption) (*AddRoleConfResp, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AddRoleConfResp)
+	err := c.cc.Invoke(ctx, Dashboard_AddRoleConf_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dashboardClient) UpdateRoleConf(ctx context.Context, in *UpdateRoleConfReq, opts ...grpc.CallOption) (*UpdateRoleConfResp, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateRoleConfResp)
+	err := c.cc.Invoke(ctx, Dashboard_UpdateRoleConf_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dashboardClient) DeleteRoleConf(ctx context.Context, in *DeleteRoleConfReq, opts ...grpc.CallOption) (*DeleteRoleConfResp, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteRoleConfResp)
+	err := c.cc.Invoke(ctx, Dashboard_DeleteRoleConf_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // DashboardServer is the server API for Dashboard service.
 // All implementations must embed UnimplementedDashboardServer
 // for forward compatibility.
@@ -169,6 +217,10 @@ type DashboardServer interface {
 	AddMenuConf(context.Context, *AddMenuConfReq) (*AddMenuConfResp, error)
 	UpdateMenuConf(context.Context, *UpdateMenuConfReq) (*UpdateMenuConfResp, error)
 	DeleteMenuConf(context.Context, *DeleteMenuConfReq) (*DeleteMenuConfResp, error)
+	ListRoleConf(context.Context, *ListRoleConfReq) (*ListRoleConfResp, error)
+	AddRoleConf(context.Context, *AddRoleConfReq) (*AddRoleConfResp, error)
+	UpdateRoleConf(context.Context, *UpdateRoleConfReq) (*UpdateRoleConfResp, error)
+	DeleteRoleConf(context.Context, *DeleteRoleConfReq) (*DeleteRoleConfResp, error)
 	mustEmbedUnimplementedDashboardServer()
 }
 
@@ -208,6 +260,18 @@ func (UnimplementedDashboardServer) UpdateMenuConf(context.Context, *UpdateMenuC
 }
 func (UnimplementedDashboardServer) DeleteMenuConf(context.Context, *DeleteMenuConfReq) (*DeleteMenuConfResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteMenuConf not implemented")
+}
+func (UnimplementedDashboardServer) ListRoleConf(context.Context, *ListRoleConfReq) (*ListRoleConfResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListRoleConf not implemented")
+}
+func (UnimplementedDashboardServer) AddRoleConf(context.Context, *AddRoleConfReq) (*AddRoleConfResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddRoleConf not implemented")
+}
+func (UnimplementedDashboardServer) UpdateRoleConf(context.Context, *UpdateRoleConfReq) (*UpdateRoleConfResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateRoleConf not implemented")
+}
+func (UnimplementedDashboardServer) DeleteRoleConf(context.Context, *DeleteRoleConfReq) (*DeleteRoleConfResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteRoleConf not implemented")
 }
 func (UnimplementedDashboardServer) mustEmbedUnimplementedDashboardServer() {}
 func (UnimplementedDashboardServer) testEmbeddedByValue()                   {}
@@ -410,6 +474,78 @@ func _Dashboard_DeleteMenuConf_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Dashboard_ListRoleConf_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListRoleConfReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DashboardServer).ListRoleConf(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Dashboard_ListRoleConf_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DashboardServer).ListRoleConf(ctx, req.(*ListRoleConfReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Dashboard_AddRoleConf_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddRoleConfReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DashboardServer).AddRoleConf(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Dashboard_AddRoleConf_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DashboardServer).AddRoleConf(ctx, req.(*AddRoleConfReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Dashboard_UpdateRoleConf_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateRoleConfReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DashboardServer).UpdateRoleConf(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Dashboard_UpdateRoleConf_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DashboardServer).UpdateRoleConf(ctx, req.(*UpdateRoleConfReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Dashboard_DeleteRoleConf_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteRoleConfReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DashboardServer).DeleteRoleConf(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Dashboard_DeleteRoleConf_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DashboardServer).DeleteRoleConf(ctx, req.(*DeleteRoleConfReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Dashboard_ServiceDesc is the grpc.ServiceDesc for Dashboard service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -456,6 +592,22 @@ var Dashboard_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteMenuConf",
 			Handler:    _Dashboard_DeleteMenuConf_Handler,
+		},
+		{
+			MethodName: "ListRoleConf",
+			Handler:    _Dashboard_ListRoleConf_Handler,
+		},
+		{
+			MethodName: "AddRoleConf",
+			Handler:    _Dashboard_AddRoleConf_Handler,
+		},
+		{
+			MethodName: "UpdateRoleConf",
+			Handler:    _Dashboard_UpdateRoleConf_Handler,
+		},
+		{
+			MethodName: "DeleteRoleConf",
+			Handler:    _Dashboard_DeleteRoleConf_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

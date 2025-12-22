@@ -144,3 +144,35 @@ func (s *Dashboard) DeleteMenuConf(ctx context.Context, in *DeleteMenuConfReq, o
 
 	return s.c.DeleteMenuConf(ctx, in, opts...)
 }
+
+func (s *Dashboard) ListRoleConf(ctx context.Context, in *ListRoleConfReq, opts ...grpc.CallOption) (*ListRoleConfResp, error) {
+	if err := s.prepareConn(); err != nil {
+		return nil, err
+	}
+
+	return s.c.ListRoleConf(ctx, in, opts...)
+}
+
+func (s *Dashboard) AddRoleConf(ctx context.Context, in *AddRoleConfReq, opts ...grpc.CallOption) (*AddRoleConfResp, error) {
+	if err := s.prepareConn(); err != nil {
+		return nil, err
+	}
+
+	return s.c.AddRoleConf(ctx, in, opts...)
+}
+
+func (s *Dashboard) UpdateRoleConf(ctx context.Context, in *UpdateRoleConfReq, opts ...grpc.CallOption) (*UpdateRoleConfResp, error) {
+	if err := s.prepareConn(); err != nil {
+		return nil, err
+	}
+
+	return s.c.UpdateRoleConf(ctx, in, opts...)
+}
+
+func (s *Dashboard) DeleteRoleConf(ctx context.Context, in *DeleteRoleConfReq, opts ...grpc.CallOption) (*DeleteRoleConfResp, error) {
+	if err := s.prepareConn(); err != nil {
+		return nil, err
+	}
+
+	return s.c.DeleteRoleConf(ctx, in, opts...)
+}

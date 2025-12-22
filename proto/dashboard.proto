@@ -82,6 +82,55 @@ service Dashboard {
         method: "GET"
       };
   };
+
+  rpc AddRoleConf(AddRoleConfReq) returns (AddRoleConfResp) {
+      option (httpext.http_rule) = {
+        method: "POST"
+      };
+  }
+
+  rpc UpdateRoleConf(UpdateRoleConfReq) returns (UpdateRoleConfResp) {
+      option (httpext.http_rule) = {
+        method: "POST"
+      };
+  }
+
+  rpc DeleteRoleConf(DeleteRoleConfReq) returns (DeleteRoleConfResp) {
+      option (httpext.http_rule) = {
+        method: "POST"
+      };
+  };
+}
+
+message DeleteRoleConfReq {
+  uint64 role_id = 1;
+}
+
+message DeleteRoleConfResp {
+
+}
+
+message AddRoleConfReq {
+  string name = 1;
+  int32 status = 2;
+  bool is_super_admin = 3;
+  repeated uint64 perm_ids = 4;
+}
+
+message AddRoleConfResp {
+
+}
+
+message UpdateRoleConfReq {
+  uint64 role_id = 1;
+  string name = 2;
+  int32 status = 3;
+  bool is_super_admin = 4;
+  repeated uint64 perm_ids = 5;
+}
+
+message UpdateRoleConfResp {
+
 }
 
 message ListRoleConfReq {

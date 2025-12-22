@@ -97,7 +97,7 @@ const saveMenuFormRules = reactive({
     path: [
         { required: true, message: '菜单标识不能为空', trigger: 'blur' },
     ],
-    path_type: [
+    pathType: [
         { required: true, message: '菜单类型不能为空', trigger: 'change' },
     ],
 })
@@ -108,7 +108,7 @@ const saveMenuForm = reactive({
     path: '',
     services: [] as RouteService[],
     pid: null as number | null,
-    path_type: 0,
+    pathType: 0,
 })
 
 const resetSaveMenuForm = () => {
@@ -117,15 +117,15 @@ const resetSaveMenuForm = () => {
     saveMenuForm.path = ''
     saveMenuForm.services = []
     saveMenuForm.pid = null
-    saveMenuForm.path_type = 0
+    saveMenuForm.pathType = 0
 }
 
 const saveMenuFormPathTypeStr = computed({
     get: () => {
-        return String(saveMenuForm.path_type)
+        return String(saveMenuForm.pathType)
     },
     set: (val: string) => {
-        saveMenuForm.path_type = Number(val)
+        saveMenuForm.pathType = Number(val)
     },
 })
 
@@ -140,7 +140,7 @@ const handleEditMenu = function (row: Menu) {
     saveMenuForm.id = row.id
     saveMenuForm.name = row.name
     saveMenuForm.path = row.path
-    saveMenuForm.path_type = Number(Object.keys(menuTypeNameMap).find(key => menuTypeNameMap[key as menuType] === row.pathTypeName))
+    saveMenuForm.pathType = Number(Object.keys(menuTypeNameMap).find(key => menuTypeNameMap[key as menuType] === row.pathTypeName))
     saveMenuForm.services = []
     for (const service of row.services) {
         saveMenuForm.services.push({
@@ -184,11 +184,6 @@ const handleDeleteSaveMenuForm = async function (id: number) {
     resetSaveMenuForm()
 }
 
-const handleCancelResetMenu = () => {
-    dialogVisible.value = false
-    resetSaveMenuForm()
-}
-
 const handleResetSaveMenuForm = () => {
     saveMenuForm.name = ''
     saveMenuForm.path = ''
@@ -206,7 +201,7 @@ const handleCommitSaveMenuForm = async () => {
             path: saveMenuForm.path,
             pid: saveMenuForm.pid ? saveMenuForm.pid : 0,
             services: saveMenuForm.services.map((s) => s.service),
-            path_type: saveMenuForm.path_type,
+            path_type: saveMenuForm.pathType,
         })
         ElMessage.success('修改菜单成功')
         fetchMenuList()
@@ -220,7 +215,7 @@ const handleCommitSaveMenuForm = async () => {
         path: saveMenuForm.path,
         pid: saveMenuForm.pid ? saveMenuForm.pid : 0,
         services: saveMenuForm.services.map((s) => s.service),
-        path_type: saveMenuForm.path_type,
+        path_type: saveMenuForm.pathType,
     })
     ElMessage.success('新增菜单成功')
     fetchMenuList()

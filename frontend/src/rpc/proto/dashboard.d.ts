@@ -170,6 +170,62 @@ export namespace dashboard {
          * @returns Promise
          */
         public deleteMenuConf(request: dashboard.IDeleteMenuConfReq): Promise<dashboard.DeleteMenuConfResp>;
+
+        /**
+         * Calls ListRoleConf.
+         * @param request ListRoleConfReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and ListRoleConfResp
+         */
+        public listRoleConf(request: dashboard.IListRoleConfReq, callback: dashboard.Dashboard.ListRoleConfCallback): void;
+
+        /**
+         * Calls ListRoleConf.
+         * @param request ListRoleConfReq message or plain object
+         * @returns Promise
+         */
+        public listRoleConf(request: dashboard.IListRoleConfReq): Promise<dashboard.ListRoleConfResp>;
+
+        /**
+         * Calls AddRoleConf.
+         * @param request AddRoleConfReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and AddRoleConfResp
+         */
+        public addRoleConf(request: dashboard.IAddRoleConfReq, callback: dashboard.Dashboard.AddRoleConfCallback): void;
+
+        /**
+         * Calls AddRoleConf.
+         * @param request AddRoleConfReq message or plain object
+         * @returns Promise
+         */
+        public addRoleConf(request: dashboard.IAddRoleConfReq): Promise<dashboard.AddRoleConfResp>;
+
+        /**
+         * Calls UpdateRoleConf.
+         * @param request UpdateRoleConfReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and UpdateRoleConfResp
+         */
+        public updateRoleConf(request: dashboard.IUpdateRoleConfReq, callback: dashboard.Dashboard.UpdateRoleConfCallback): void;
+
+        /**
+         * Calls UpdateRoleConf.
+         * @param request UpdateRoleConfReq message or plain object
+         * @returns Promise
+         */
+        public updateRoleConf(request: dashboard.IUpdateRoleConfReq): Promise<dashboard.UpdateRoleConfResp>;
+
+        /**
+         * Calls DeleteRoleConf.
+         * @param request DeleteRoleConfReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and DeleteRoleConfResp
+         */
+        public deleteRoleConf(request: dashboard.IDeleteRoleConfReq, callback: dashboard.Dashboard.DeleteRoleConfCallback): void;
+
+        /**
+         * Calls DeleteRoleConf.
+         * @param request DeleteRoleConfReq message or plain object
+         * @returns Promise
+         */
+        public deleteRoleConf(request: dashboard.IDeleteRoleConfReq): Promise<dashboard.DeleteRoleConfResp>;
     }
 
     namespace Dashboard {
@@ -243,6 +299,988 @@ export namespace dashboard {
          * @param [response] DeleteMenuConfResp
          */
         type DeleteMenuConfCallback = (error: (Error|null), response?: dashboard.DeleteMenuConfResp) => void;
+
+        /**
+         * Callback as used by {@link dashboard.Dashboard#listRoleConf}.
+         * @param error Error, if any
+         * @param [response] ListRoleConfResp
+         */
+        type ListRoleConfCallback = (error: (Error|null), response?: dashboard.ListRoleConfResp) => void;
+
+        /**
+         * Callback as used by {@link dashboard.Dashboard#addRoleConf}.
+         * @param error Error, if any
+         * @param [response] AddRoleConfResp
+         */
+        type AddRoleConfCallback = (error: (Error|null), response?: dashboard.AddRoleConfResp) => void;
+
+        /**
+         * Callback as used by {@link dashboard.Dashboard#updateRoleConf}.
+         * @param error Error, if any
+         * @param [response] UpdateRoleConfResp
+         */
+        type UpdateRoleConfCallback = (error: (Error|null), response?: dashboard.UpdateRoleConfResp) => void;
+
+        /**
+         * Callback as used by {@link dashboard.Dashboard#deleteRoleConf}.
+         * @param error Error, if any
+         * @param [response] DeleteRoleConfResp
+         */
+        type DeleteRoleConfCallback = (error: (Error|null), response?: dashboard.DeleteRoleConfResp) => void;
+    }
+
+    /** Properties of a DeleteRoleConfReq. */
+    interface IDeleteRoleConfReq {
+
+        /** DeleteRoleConfReq role_id */
+        role_id?: (number|Long|null);
+    }
+
+    /** Represents a DeleteRoleConfReq. */
+    class DeleteRoleConfReq implements IDeleteRoleConfReq {
+
+        /**
+         * Constructs a new DeleteRoleConfReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IDeleteRoleConfReq);
+
+        /** DeleteRoleConfReq role_id. */
+        public role_id: (number|Long);
+
+        /**
+         * Creates a new DeleteRoleConfReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns DeleteRoleConfReq instance
+         */
+        public static create(properties?: dashboard.IDeleteRoleConfReq): dashboard.DeleteRoleConfReq;
+
+        /**
+         * Encodes the specified DeleteRoleConfReq message. Does not implicitly {@link dashboard.DeleteRoleConfReq.verify|verify} messages.
+         * @param message DeleteRoleConfReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IDeleteRoleConfReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified DeleteRoleConfReq message, length delimited. Does not implicitly {@link dashboard.DeleteRoleConfReq.verify|verify} messages.
+         * @param message DeleteRoleConfReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IDeleteRoleConfReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a DeleteRoleConfReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns DeleteRoleConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.DeleteRoleConfReq;
+
+        /**
+         * Decodes a DeleteRoleConfReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns DeleteRoleConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.DeleteRoleConfReq;
+
+        /**
+         * Verifies a DeleteRoleConfReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a DeleteRoleConfReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns DeleteRoleConfReq
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.DeleteRoleConfReq;
+
+        /**
+         * Creates a plain object from a DeleteRoleConfReq message. Also converts values to other types if specified.
+         * @param message DeleteRoleConfReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.DeleteRoleConfReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this DeleteRoleConfReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for DeleteRoleConfReq
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a DeleteRoleConfResp. */
+    interface IDeleteRoleConfResp {
+    }
+
+    /** Represents a DeleteRoleConfResp. */
+    class DeleteRoleConfResp implements IDeleteRoleConfResp {
+
+        /**
+         * Constructs a new DeleteRoleConfResp.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IDeleteRoleConfResp);
+
+        /**
+         * Creates a new DeleteRoleConfResp instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns DeleteRoleConfResp instance
+         */
+        public static create(properties?: dashboard.IDeleteRoleConfResp): dashboard.DeleteRoleConfResp;
+
+        /**
+         * Encodes the specified DeleteRoleConfResp message. Does not implicitly {@link dashboard.DeleteRoleConfResp.verify|verify} messages.
+         * @param message DeleteRoleConfResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IDeleteRoleConfResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified DeleteRoleConfResp message, length delimited. Does not implicitly {@link dashboard.DeleteRoleConfResp.verify|verify} messages.
+         * @param message DeleteRoleConfResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IDeleteRoleConfResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a DeleteRoleConfResp message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns DeleteRoleConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.DeleteRoleConfResp;
+
+        /**
+         * Decodes a DeleteRoleConfResp message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns DeleteRoleConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.DeleteRoleConfResp;
+
+        /**
+         * Verifies a DeleteRoleConfResp message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a DeleteRoleConfResp message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns DeleteRoleConfResp
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.DeleteRoleConfResp;
+
+        /**
+         * Creates a plain object from a DeleteRoleConfResp message. Also converts values to other types if specified.
+         * @param message DeleteRoleConfResp
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.DeleteRoleConfResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this DeleteRoleConfResp to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for DeleteRoleConfResp
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of an AddRoleConfReq. */
+    interface IAddRoleConfReq {
+
+        /** AddRoleConfReq name */
+        name?: (string|null);
+
+        /** AddRoleConfReq status */
+        status?: (number|null);
+
+        /** AddRoleConfReq is_super_admin */
+        is_super_admin?: (boolean|null);
+
+        /** AddRoleConfReq perm_ids */
+        perm_ids?: ((number|Long)[]|null);
+    }
+
+    /** Represents an AddRoleConfReq. */
+    class AddRoleConfReq implements IAddRoleConfReq {
+
+        /**
+         * Constructs a new AddRoleConfReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IAddRoleConfReq);
+
+        /** AddRoleConfReq name. */
+        public name: string;
+
+        /** AddRoleConfReq status. */
+        public status: number;
+
+        /** AddRoleConfReq is_super_admin. */
+        public is_super_admin: boolean;
+
+        /** AddRoleConfReq perm_ids. */
+        public perm_ids: (number|Long)[];
+
+        /**
+         * Creates a new AddRoleConfReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns AddRoleConfReq instance
+         */
+        public static create(properties?: dashboard.IAddRoleConfReq): dashboard.AddRoleConfReq;
+
+        /**
+         * Encodes the specified AddRoleConfReq message. Does not implicitly {@link dashboard.AddRoleConfReq.verify|verify} messages.
+         * @param message AddRoleConfReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IAddRoleConfReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified AddRoleConfReq message, length delimited. Does not implicitly {@link dashboard.AddRoleConfReq.verify|verify} messages.
+         * @param message AddRoleConfReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IAddRoleConfReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes an AddRoleConfReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns AddRoleConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.AddRoleConfReq;
+
+        /**
+         * Decodes an AddRoleConfReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns AddRoleConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.AddRoleConfReq;
+
+        /**
+         * Verifies an AddRoleConfReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates an AddRoleConfReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns AddRoleConfReq
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.AddRoleConfReq;
+
+        /**
+         * Creates a plain object from an AddRoleConfReq message. Also converts values to other types if specified.
+         * @param message AddRoleConfReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.AddRoleConfReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this AddRoleConfReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for AddRoleConfReq
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of an AddRoleConfResp. */
+    interface IAddRoleConfResp {
+    }
+
+    /** Represents an AddRoleConfResp. */
+    class AddRoleConfResp implements IAddRoleConfResp {
+
+        /**
+         * Constructs a new AddRoleConfResp.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IAddRoleConfResp);
+
+        /**
+         * Creates a new AddRoleConfResp instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns AddRoleConfResp instance
+         */
+        public static create(properties?: dashboard.IAddRoleConfResp): dashboard.AddRoleConfResp;
+
+        /**
+         * Encodes the specified AddRoleConfResp message. Does not implicitly {@link dashboard.AddRoleConfResp.verify|verify} messages.
+         * @param message AddRoleConfResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IAddRoleConfResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified AddRoleConfResp message, length delimited. Does not implicitly {@link dashboard.AddRoleConfResp.verify|verify} messages.
+         * @param message AddRoleConfResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IAddRoleConfResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes an AddRoleConfResp message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns AddRoleConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.AddRoleConfResp;
+
+        /**
+         * Decodes an AddRoleConfResp message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns AddRoleConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.AddRoleConfResp;
+
+        /**
+         * Verifies an AddRoleConfResp message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates an AddRoleConfResp message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns AddRoleConfResp
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.AddRoleConfResp;
+
+        /**
+         * Creates a plain object from an AddRoleConfResp message. Also converts values to other types if specified.
+         * @param message AddRoleConfResp
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.AddRoleConfResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this AddRoleConfResp to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for AddRoleConfResp
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of an UpdateRoleConfReq. */
+    interface IUpdateRoleConfReq {
+
+        /** UpdateRoleConfReq role_id */
+        role_id?: (number|Long|null);
+
+        /** UpdateRoleConfReq name */
+        name?: (string|null);
+
+        /** UpdateRoleConfReq status */
+        status?: (number|null);
+
+        /** UpdateRoleConfReq is_super_admin */
+        is_super_admin?: (boolean|null);
+
+        /** UpdateRoleConfReq perm_ids */
+        perm_ids?: ((number|Long)[]|null);
+    }
+
+    /** Represents an UpdateRoleConfReq. */
+    class UpdateRoleConfReq implements IUpdateRoleConfReq {
+
+        /**
+         * Constructs a new UpdateRoleConfReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IUpdateRoleConfReq);
+
+        /** UpdateRoleConfReq role_id. */
+        public role_id: (number|Long);
+
+        /** UpdateRoleConfReq name. */
+        public name: string;
+
+        /** UpdateRoleConfReq status. */
+        public status: number;
+
+        /** UpdateRoleConfReq is_super_admin. */
+        public is_super_admin: boolean;
+
+        /** UpdateRoleConfReq perm_ids. */
+        public perm_ids: (number|Long)[];
+
+        /**
+         * Creates a new UpdateRoleConfReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns UpdateRoleConfReq instance
+         */
+        public static create(properties?: dashboard.IUpdateRoleConfReq): dashboard.UpdateRoleConfReq;
+
+        /**
+         * Encodes the specified UpdateRoleConfReq message. Does not implicitly {@link dashboard.UpdateRoleConfReq.verify|verify} messages.
+         * @param message UpdateRoleConfReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IUpdateRoleConfReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified UpdateRoleConfReq message, length delimited. Does not implicitly {@link dashboard.UpdateRoleConfReq.verify|verify} messages.
+         * @param message UpdateRoleConfReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IUpdateRoleConfReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes an UpdateRoleConfReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns UpdateRoleConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.UpdateRoleConfReq;
+
+        /**
+         * Decodes an UpdateRoleConfReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns UpdateRoleConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.UpdateRoleConfReq;
+
+        /**
+         * Verifies an UpdateRoleConfReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates an UpdateRoleConfReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns UpdateRoleConfReq
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.UpdateRoleConfReq;
+
+        /**
+         * Creates a plain object from an UpdateRoleConfReq message. Also converts values to other types if specified.
+         * @param message UpdateRoleConfReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.UpdateRoleConfReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this UpdateRoleConfReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for UpdateRoleConfReq
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of an UpdateRoleConfResp. */
+    interface IUpdateRoleConfResp {
+    }
+
+    /** Represents an UpdateRoleConfResp. */
+    class UpdateRoleConfResp implements IUpdateRoleConfResp {
+
+        /**
+         * Constructs a new UpdateRoleConfResp.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IUpdateRoleConfResp);
+
+        /**
+         * Creates a new UpdateRoleConfResp instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns UpdateRoleConfResp instance
+         */
+        public static create(properties?: dashboard.IUpdateRoleConfResp): dashboard.UpdateRoleConfResp;
+
+        /**
+         * Encodes the specified UpdateRoleConfResp message. Does not implicitly {@link dashboard.UpdateRoleConfResp.verify|verify} messages.
+         * @param message UpdateRoleConfResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IUpdateRoleConfResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified UpdateRoleConfResp message, length delimited. Does not implicitly {@link dashboard.UpdateRoleConfResp.verify|verify} messages.
+         * @param message UpdateRoleConfResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IUpdateRoleConfResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes an UpdateRoleConfResp message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns UpdateRoleConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.UpdateRoleConfResp;
+
+        /**
+         * Decodes an UpdateRoleConfResp message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns UpdateRoleConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.UpdateRoleConfResp;
+
+        /**
+         * Verifies an UpdateRoleConfResp message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates an UpdateRoleConfResp message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns UpdateRoleConfResp
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.UpdateRoleConfResp;
+
+        /**
+         * Creates a plain object from an UpdateRoleConfResp message. Also converts values to other types if specified.
+         * @param message UpdateRoleConfResp
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.UpdateRoleConfResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this UpdateRoleConfResp to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for UpdateRoleConfResp
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a ListRoleConfReq. */
+    interface IListRoleConfReq {
+
+        /** ListRoleConfReq name */
+        name?: (string|null);
+
+        /** ListRoleConfReq status */
+        status?: (number|null);
+
+        /** ListRoleConfReq only_super_admin */
+        only_super_admin?: (boolean|null);
+
+        /** ListRoleConfReq without_super_admin */
+        without_super_admin?: (boolean|null);
+    }
+
+    /** Represents a ListRoleConfReq. */
+    class ListRoleConfReq implements IListRoleConfReq {
+
+        /**
+         * Constructs a new ListRoleConfReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IListRoleConfReq);
+
+        /** ListRoleConfReq name. */
+        public name: string;
+
+        /** ListRoleConfReq status. */
+        public status: number;
+
+        /** ListRoleConfReq only_super_admin. */
+        public only_super_admin: boolean;
+
+        /** ListRoleConfReq without_super_admin. */
+        public without_super_admin: boolean;
+
+        /**
+         * Creates a new ListRoleConfReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns ListRoleConfReq instance
+         */
+        public static create(properties?: dashboard.IListRoleConfReq): dashboard.ListRoleConfReq;
+
+        /**
+         * Encodes the specified ListRoleConfReq message. Does not implicitly {@link dashboard.ListRoleConfReq.verify|verify} messages.
+         * @param message ListRoleConfReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IListRoleConfReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified ListRoleConfReq message, length delimited. Does not implicitly {@link dashboard.ListRoleConfReq.verify|verify} messages.
+         * @param message ListRoleConfReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IListRoleConfReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a ListRoleConfReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns ListRoleConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.ListRoleConfReq;
+
+        /**
+         * Decodes a ListRoleConfReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns ListRoleConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.ListRoleConfReq;
+
+        /**
+         * Verifies a ListRoleConfReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a ListRoleConfReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns ListRoleConfReq
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.ListRoleConfReq;
+
+        /**
+         * Creates a plain object from a ListRoleConfReq message. Also converts values to other types if specified.
+         * @param message ListRoleConfReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.ListRoleConfReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this ListRoleConfReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for ListRoleConfReq
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a ListRoleConfResp. */
+    interface IListRoleConfResp {
+
+        /** ListRoleConfResp list */
+        list?: (dashboard.ListRoleConfResp.IRole[]|null);
+
+        /** ListRoleConfResp total */
+        total?: (number|null);
+    }
+
+    /** Represents a ListRoleConfResp. */
+    class ListRoleConfResp implements IListRoleConfResp {
+
+        /**
+         * Constructs a new ListRoleConfResp.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IListRoleConfResp);
+
+        /** ListRoleConfResp list. */
+        public list: dashboard.ListRoleConfResp.IRole[];
+
+        /** ListRoleConfResp total. */
+        public total: number;
+
+        /**
+         * Creates a new ListRoleConfResp instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns ListRoleConfResp instance
+         */
+        public static create(properties?: dashboard.IListRoleConfResp): dashboard.ListRoleConfResp;
+
+        /**
+         * Encodes the specified ListRoleConfResp message. Does not implicitly {@link dashboard.ListRoleConfResp.verify|verify} messages.
+         * @param message ListRoleConfResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IListRoleConfResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified ListRoleConfResp message, length delimited. Does not implicitly {@link dashboard.ListRoleConfResp.verify|verify} messages.
+         * @param message ListRoleConfResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IListRoleConfResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a ListRoleConfResp message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns ListRoleConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.ListRoleConfResp;
+
+        /**
+         * Decodes a ListRoleConfResp message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns ListRoleConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.ListRoleConfResp;
+
+        /**
+         * Verifies a ListRoleConfResp message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a ListRoleConfResp message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns ListRoleConfResp
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.ListRoleConfResp;
+
+        /**
+         * Creates a plain object from a ListRoleConfResp message. Also converts values to other types if specified.
+         * @param message ListRoleConfResp
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.ListRoleConfResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this ListRoleConfResp to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for ListRoleConfResp
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace ListRoleConfResp {
+
+        /** Properties of a Role. */
+        interface IRole {
+
+            /** Role role_id */
+            role_id?: (number|Long|null);
+
+            /** Role name */
+            name?: (string|null);
+
+            /** Role status */
+            status?: (number|null);
+
+            /** Role perm_ids */
+            perm_ids?: ((number|Long)[]|null);
+
+            /** Role remark */
+            remark?: (string|null);
+
+            /** Role is_super_admin */
+            is_super_admin?: (boolean|null);
+        }
+
+        /** Represents a Role. */
+        class Role implements IRole {
+
+            /**
+             * Constructs a new Role.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: dashboard.ListRoleConfResp.IRole);
+
+            /** Role role_id. */
+            public role_id: (number|Long);
+
+            /** Role name. */
+            public name: string;
+
+            /** Role status. */
+            public status: number;
+
+            /** Role perm_ids. */
+            public perm_ids: (number|Long)[];
+
+            /** Role remark. */
+            public remark: string;
+
+            /** Role is_super_admin. */
+            public is_super_admin: boolean;
+
+            /**
+             * Creates a new Role instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns Role instance
+             */
+            public static create(properties?: dashboard.ListRoleConfResp.IRole): dashboard.ListRoleConfResp.Role;
+
+            /**
+             * Encodes the specified Role message. Does not implicitly {@link dashboard.ListRoleConfResp.Role.verify|verify} messages.
+             * @param message Role message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: dashboard.ListRoleConfResp.IRole, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Role message, length delimited. Does not implicitly {@link dashboard.ListRoleConfResp.Role.verify|verify} messages.
+             * @param message Role message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: dashboard.ListRoleConfResp.IRole, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a Role message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Role
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.ListRoleConfResp.Role;
+
+            /**
+             * Decodes a Role message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Role
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.ListRoleConfResp.Role;
+
+            /**
+             * Verifies a Role message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a Role message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Role
+             */
+            public static fromObject(object: { [k: string]: any }): dashboard.ListRoleConfResp.Role;
+
+            /**
+             * Creates a plain object from a Role message. Also converts values to other types if specified.
+             * @param message Role
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: dashboard.ListRoleConfResp.Role, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Role to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for Role
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
     }
 
     /** Properties of a DeleteMenuConfReq. */
