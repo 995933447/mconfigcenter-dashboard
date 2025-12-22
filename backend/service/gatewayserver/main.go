@@ -67,6 +67,8 @@ func main() {
 		log.Fatal(runtimeutil.NewStackErr(err))
 	}
 
+	boot.ServerHttp()
+
 	err = grpc.ServeGRPC(context.TODO(), &grpc.ServeGRPCOptions{
 		DiscoveryName:   gateway.EasymicroDiscoveryName,
 		ServiceNames:    boot.ServiceNames,

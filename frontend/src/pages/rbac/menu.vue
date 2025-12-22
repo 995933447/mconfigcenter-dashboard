@@ -83,7 +83,6 @@ import { DashboardService } from '~/rpc/proto/dashboard_api'
 import { ElMessage, FormInstance } from 'element-plus'
 import { InfoFilled } from '@element-plus/icons-vue'
 import { useMenuConfStore } from '~/stores/menuConf'
-import { M } from 'vue-router/dist/router-CWoNjPRp.mjs'
 
 const loading = ref(false)
 
@@ -141,7 +140,7 @@ const handleEditMenu = function (row: Menu) {
     saveMenuForm.id = row.id
     saveMenuForm.name = row.name
     saveMenuForm.path = row.path
-    saveMenuForm.path_type = Number(Object.keys(menuTypeNameMap).find(key => menuTypeNameMap[Number(key) as 1 | 2 | 3] === row.pathTypeName)) || 3
+    saveMenuForm.path_type = Number(Object.keys(menuTypeNameMap).find(key => menuTypeNameMap[key as menuType] === row.pathTypeName))
     saveMenuForm.services = []
     for (const service of row.services) {
         saveMenuForm.services.push({
