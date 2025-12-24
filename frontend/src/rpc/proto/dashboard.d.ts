@@ -226,6 +226,20 @@ export namespace dashboard {
          * @returns Promise
          */
         public deleteRoleConf(request: dashboard.IDeleteRoleConfReq): Promise<dashboard.DeleteRoleConfResp>;
+
+        /**
+         * Calls ListUser.
+         * @param request ListUserReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and ListUserResp
+         */
+        public listUser(request: dashboard.IListUserReq, callback: dashboard.Dashboard.ListUserCallback): void;
+
+        /**
+         * Calls ListUser.
+         * @param request ListUserReq message or plain object
+         * @returns Promise
+         */
+        public listUser(request: dashboard.IListUserReq): Promise<dashboard.ListUserResp>;
     }
 
     namespace Dashboard {
@@ -327,6 +341,343 @@ export namespace dashboard {
          * @param [response] DeleteRoleConfResp
          */
         type DeleteRoleConfCallback = (error: (Error|null), response?: dashboard.DeleteRoleConfResp) => void;
+
+        /**
+         * Callback as used by {@link dashboard.Dashboard#listUser}.
+         * @param error Error, if any
+         * @param [response] ListUserResp
+         */
+        type ListUserCallback = (error: (Error|null), response?: dashboard.ListUserResp) => void;
+    }
+
+    /** Properties of a ListUserReq. */
+    interface IListUserReq {
+
+        /** ListUserReq name */
+        name?: (string|null);
+
+        /** ListUserReq user_id */
+        user_id?: (number|Long|null);
+
+        /** ListUserReq status */
+        status?: (number|null);
+
+        /** ListUserReq role_id */
+        role_id?: (number|Long|null);
+
+        /** ListUserReq page */
+        page?: (dashboard.IPage|null);
+    }
+
+    /** Represents a ListUserReq. */
+    class ListUserReq implements IListUserReq {
+
+        /**
+         * Constructs a new ListUserReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IListUserReq);
+
+        /** ListUserReq name. */
+        public name: string;
+
+        /** ListUserReq user_id. */
+        public user_id: (number|Long);
+
+        /** ListUserReq status. */
+        public status: number;
+
+        /** ListUserReq role_id. */
+        public role_id: (number|Long);
+
+        /** ListUserReq page. */
+        public page?: (dashboard.IPage|null);
+
+        /**
+         * Creates a new ListUserReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns ListUserReq instance
+         */
+        public static create(properties?: dashboard.IListUserReq): dashboard.ListUserReq;
+
+        /**
+         * Encodes the specified ListUserReq message. Does not implicitly {@link dashboard.ListUserReq.verify|verify} messages.
+         * @param message ListUserReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IListUserReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified ListUserReq message, length delimited. Does not implicitly {@link dashboard.ListUserReq.verify|verify} messages.
+         * @param message ListUserReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IListUserReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a ListUserReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns ListUserReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.ListUserReq;
+
+        /**
+         * Decodes a ListUserReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns ListUserReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.ListUserReq;
+
+        /**
+         * Verifies a ListUserReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a ListUserReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns ListUserReq
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.ListUserReq;
+
+        /**
+         * Creates a plain object from a ListUserReq message. Also converts values to other types if specified.
+         * @param message ListUserReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.ListUserReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this ListUserReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for ListUserReq
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a ListUserResp. */
+    interface IListUserResp {
+
+        /** ListUserResp list */
+        list?: (dashboard.ListUserResp.IItem[]|null);
+
+        /** ListUserResp total */
+        total?: (number|null);
+    }
+
+    /** Represents a ListUserResp. */
+    class ListUserResp implements IListUserResp {
+
+        /**
+         * Constructs a new ListUserResp.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IListUserResp);
+
+        /** ListUserResp list. */
+        public list: dashboard.ListUserResp.IItem[];
+
+        /** ListUserResp total. */
+        public total: number;
+
+        /**
+         * Creates a new ListUserResp instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns ListUserResp instance
+         */
+        public static create(properties?: dashboard.IListUserResp): dashboard.ListUserResp;
+
+        /**
+         * Encodes the specified ListUserResp message. Does not implicitly {@link dashboard.ListUserResp.verify|verify} messages.
+         * @param message ListUserResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IListUserResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified ListUserResp message, length delimited. Does not implicitly {@link dashboard.ListUserResp.verify|verify} messages.
+         * @param message ListUserResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IListUserResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a ListUserResp message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns ListUserResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.ListUserResp;
+
+        /**
+         * Decodes a ListUserResp message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns ListUserResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.ListUserResp;
+
+        /**
+         * Verifies a ListUserResp message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a ListUserResp message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns ListUserResp
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.ListUserResp;
+
+        /**
+         * Creates a plain object from a ListUserResp message. Also converts values to other types if specified.
+         * @param message ListUserResp
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.ListUserResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this ListUserResp to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for ListUserResp
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace ListUserResp {
+
+        /** Properties of an Item. */
+        interface IItem {
+
+            /** Item user */
+            user?: (dashboard.IUser|null);
+
+            /** Item roles */
+            roles?: (dashboard.IRole[]|null);
+        }
+
+        /** Represents an Item. */
+        class Item implements IItem {
+
+            /**
+             * Constructs a new Item.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: dashboard.ListUserResp.IItem);
+
+            /** Item user. */
+            public user?: (dashboard.IUser|null);
+
+            /** Item roles. */
+            public roles: dashboard.IRole[];
+
+            /**
+             * Creates a new Item instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns Item instance
+             */
+            public static create(properties?: dashboard.ListUserResp.IItem): dashboard.ListUserResp.Item;
+
+            /**
+             * Encodes the specified Item message. Does not implicitly {@link dashboard.ListUserResp.Item.verify|verify} messages.
+             * @param message Item message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: dashboard.ListUserResp.IItem, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Item message, length delimited. Does not implicitly {@link dashboard.ListUserResp.Item.verify|verify} messages.
+             * @param message Item message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: dashboard.ListUserResp.IItem, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes an Item message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Item
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.ListUserResp.Item;
+
+            /**
+             * Decodes an Item message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Item
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.ListUserResp.Item;
+
+            /**
+             * Verifies an Item message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates an Item message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Item
+             */
+            public static fromObject(object: { [k: string]: any }): dashboard.ListUserResp.Item;
+
+            /**
+             * Creates a plain object from an Item message. Also converts values to other types if specified.
+             * @param message Item
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: dashboard.ListUserResp.Item, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Item to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for Item
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
     }
 
     /** Properties of a DeleteRoleConfReq. */
@@ -949,6 +1300,9 @@ export namespace dashboard {
 
         /** ListRoleConfReq without_super_admin */
         without_super_admin?: (boolean|null);
+
+        /** ListRoleConfReq page */
+        page?: (dashboard.IPage|null);
     }
 
     /** Represents a ListRoleConfReq. */
@@ -971,6 +1325,9 @@ export namespace dashboard {
 
         /** ListRoleConfReq without_super_admin. */
         public without_super_admin: boolean;
+
+        /** ListRoleConfReq page. */
+        public page?: (dashboard.IPage|null);
 
         /**
          * Creates a new ListRoleConfReq instance using the specified properties.
@@ -1054,7 +1411,7 @@ export namespace dashboard {
     interface IListRoleConfResp {
 
         /** ListRoleConfResp list */
-        list?: (dashboard.ListRoleConfResp.IRole[]|null);
+        list?: (dashboard.IRole[]|null);
 
         /** ListRoleConfResp total */
         total?: (number|null);
@@ -1070,7 +1427,7 @@ export namespace dashboard {
         constructor(properties?: dashboard.IListRoleConfResp);
 
         /** ListRoleConfResp list. */
-        public list: dashboard.ListRoleConfResp.IRole[];
+        public list: dashboard.IRole[];
 
         /** ListRoleConfResp total. */
         public total: number;
@@ -1153,134 +1510,131 @@ export namespace dashboard {
         public static getTypeUrl(typeUrlPrefix?: string): string;
     }
 
-    namespace ListRoleConfResp {
+    /** Properties of a Role. */
+    interface IRole {
 
-        /** Properties of a Role. */
-        interface IRole {
+        /** Role role_id */
+        role_id?: (number|Long|null);
 
-            /** Role role_id */
-            role_id?: (number|Long|null);
+        /** Role name */
+        name?: (string|null);
 
-            /** Role name */
-            name?: (string|null);
+        /** Role status */
+        status?: (number|null);
 
-            /** Role status */
-            status?: (number|null);
+        /** Role perm_ids */
+        perm_ids?: ((number|Long)[]|null);
 
-            /** Role perm_ids */
-            perm_ids?: ((number|Long)[]|null);
+        /** Role remark */
+        remark?: (string|null);
 
-            /** Role remark */
-            remark?: (string|null);
+        /** Role is_super_admin */
+        is_super_admin?: (boolean|null);
+    }
 
-            /** Role is_super_admin */
-            is_super_admin?: (boolean|null);
-        }
+    /** Represents a Role. */
+    class Role implements IRole {
 
-        /** Represents a Role. */
-        class Role implements IRole {
+        /**
+         * Constructs a new Role.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IRole);
 
-            /**
-             * Constructs a new Role.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: dashboard.ListRoleConfResp.IRole);
+        /** Role role_id. */
+        public role_id: (number|Long);
 
-            /** Role role_id. */
-            public role_id: (number|Long);
+        /** Role name. */
+        public name: string;
 
-            /** Role name. */
-            public name: string;
+        /** Role status. */
+        public status: number;
 
-            /** Role status. */
-            public status: number;
+        /** Role perm_ids. */
+        public perm_ids: (number|Long)[];
 
-            /** Role perm_ids. */
-            public perm_ids: (number|Long)[];
+        /** Role remark. */
+        public remark: string;
 
-            /** Role remark. */
-            public remark: string;
+        /** Role is_super_admin. */
+        public is_super_admin: boolean;
 
-            /** Role is_super_admin. */
-            public is_super_admin: boolean;
+        /**
+         * Creates a new Role instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns Role instance
+         */
+        public static create(properties?: dashboard.IRole): dashboard.Role;
 
-            /**
-             * Creates a new Role instance using the specified properties.
-             * @param [properties] Properties to set
-             * @returns Role instance
-             */
-            public static create(properties?: dashboard.ListRoleConfResp.IRole): dashboard.ListRoleConfResp.Role;
+        /**
+         * Encodes the specified Role message. Does not implicitly {@link dashboard.Role.verify|verify} messages.
+         * @param message Role message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IRole, writer?: $protobuf.Writer): $protobuf.Writer;
 
-            /**
-             * Encodes the specified Role message. Does not implicitly {@link dashboard.ListRoleConfResp.Role.verify|verify} messages.
-             * @param message Role message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: dashboard.ListRoleConfResp.IRole, writer?: $protobuf.Writer): $protobuf.Writer;
+        /**
+         * Encodes the specified Role message, length delimited. Does not implicitly {@link dashboard.Role.verify|verify} messages.
+         * @param message Role message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IRole, writer?: $protobuf.Writer): $protobuf.Writer;
 
-            /**
-             * Encodes the specified Role message, length delimited. Does not implicitly {@link dashboard.ListRoleConfResp.Role.verify|verify} messages.
-             * @param message Role message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: dashboard.ListRoleConfResp.IRole, writer?: $protobuf.Writer): $protobuf.Writer;
+        /**
+         * Decodes a Role message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns Role
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.Role;
 
-            /**
-             * Decodes a Role message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns Role
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.ListRoleConfResp.Role;
+        /**
+         * Decodes a Role message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns Role
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.Role;
 
-            /**
-             * Decodes a Role message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns Role
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.ListRoleConfResp.Role;
+        /**
+         * Verifies a Role message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
 
-            /**
-             * Verifies a Role message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
+        /**
+         * Creates a Role message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns Role
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.Role;
 
-            /**
-             * Creates a Role message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns Role
-             */
-            public static fromObject(object: { [k: string]: any }): dashboard.ListRoleConfResp.Role;
+        /**
+         * Creates a plain object from a Role message. Also converts values to other types if specified.
+         * @param message Role
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.Role, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
-            /**
-             * Creates a plain object from a Role message. Also converts values to other types if specified.
-             * @param message Role
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: dashboard.ListRoleConfResp.Role, options?: $protobuf.IConversionOptions): { [k: string]: any };
+        /**
+         * Converts this Role to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
 
-            /**
-             * Converts this Role to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-
-            /**
-             * Gets the default type url for Role
-             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-             * @returns The default type url
-             */
-            public static getTypeUrl(typeUrlPrefix?: string): string;
-        }
+        /**
+         * Gets the default type url for Role
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
     }
 
     /** Properties of a DeleteMenuConfReq. */
@@ -3517,6 +3871,109 @@ export namespace dashboard {
 
         /**
          * Gets the default type url for User
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a Page. */
+    interface IPage {
+
+        /** Page page_size */
+        page_size?: (number|null);
+
+        /** Page page */
+        page?: (number|null);
+    }
+
+    /** Represents a Page. */
+    class Page implements IPage {
+
+        /**
+         * Constructs a new Page.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IPage);
+
+        /** Page page_size. */
+        public page_size: number;
+
+        /** Page page. */
+        public page: number;
+
+        /**
+         * Creates a new Page instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns Page instance
+         */
+        public static create(properties?: dashboard.IPage): dashboard.Page;
+
+        /**
+         * Encodes the specified Page message. Does not implicitly {@link dashboard.Page.verify|verify} messages.
+         * @param message Page message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IPage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified Page message, length delimited. Does not implicitly {@link dashboard.Page.verify|verify} messages.
+         * @param message Page message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IPage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a Page message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns Page
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.Page;
+
+        /**
+         * Decodes a Page message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns Page
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.Page;
+
+        /**
+         * Verifies a Page message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a Page message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns Page
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.Page;
+
+        /**
+         * Creates a plain object from a Page message. Also converts values to other types if specified.
+         * @param message Page
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.Page, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this Page to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for Page
          * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns The default type url
          */

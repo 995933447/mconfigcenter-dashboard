@@ -6,8 +6,9 @@ import {
   Setting,
 } from '@element-plus/icons-vue'
 
-import { defineEmits } from 'vue'
+import { defineEmits, onMounted } from 'vue'
 import type { BaseSideMenuItem } from '~/types/emit'
+import { useRoute } from 'vue-router'
 
 const emit = defineEmits<{
   (e: 'base-side-menu-item-click', data: BaseSideMenuItem): void
@@ -26,6 +27,40 @@ function handleClose(key: string, keyPath: string[]) {
   // eslint-disable-next-line no-console
   console.log(key, keyPath)
 }
+
+interface Menu {
+  title: string
+  index: string
+}
+
+const configMangementMenus:Menu[] = [
+  { title: '通用配置', index: '/general-config' },
+  { title: 'key-value配置', index: '/kv-config' },
+]
+
+const rbacMenus:Menu[] = [
+  { title: '角色管理', index: '/rbac/role' },
+  { title: '菜单管理', index: '/rbac/menu' },
+  { title: '用户管理', index: '/rbac/user' },
+]
+
+onMounted(() => {
+  const path = useRoute().path
+  for (const menu of configMangementMenus) {
+    if (path.startsWith(menu.index)) {
+      clickMenuItem(menu.index, menu.title)
+      return
+    }
+  }
+
+  for (const menu of rbacMenus) {
+    if (path.startsWith(menu.index)) {
+      clickMenuItem(menu.index, menu.title)
+      return
+    }
+  }
+})
+
 </script>
 
 <template>
@@ -44,11 +79,8 @@ function handleClose(key: string, keyPath: string[]) {
         <span>配置管理</span>
       </template>
       <el-menu-item-group>
-        <el-menu-item index="/general-config" @click="clickMenuItem('/general-config', '通用配置')">
-          通用配置
-        </el-menu-item>
-        <el-menu-item index="/kv-config" @click="clickMenuItem('/kv-config', 'key-value配置')">
-          key-value配置
+        <el-menu-item v-for="item in configMangementMenus" :index="item.index" @click="clickMenuItem(item.index, item.title)">
+          {{ item.title }}
         </el-menu-item>
       </el-menu-item-group>
     </el-sub-menu>
@@ -61,14 +93,8 @@ function handleClose(key: string, keyPath: string[]) {
         <span>权限管理</span>
       </template>
       <el-menu-item-group>
-        <el-menu-item index="/rbac/role" @click="clickMenuItem('/rbac/role', '角色管理')">
-          角色管理
-        </el-menu-item>
-        <el-menu-item index="/rbac/menu" @click="clickMenuItem('/rbac/menu', '菜单管理')">
-          菜单管理
-        </el-menu-item>
-        <el-menu-item index="/rbac/user" @click="clickMenuItem('/rbac/user', '用户管理')">
-          用户管理
+        <el-menu-item v-for="item in rbacMenus" :index="item.index" @click="clickMenuItem(item.index, item.title)">
+          {{ item.title }}
         </el-menu-item>
       </el-menu-item-group>
     </el-sub-menu>

@@ -528,7 +528,876 @@ export const dashboard = $root.dashboard = (() => {
          * @variation 2
          */
 
+        /**
+         * Callback as used by {@link dashboard.Dashboard#listUser}.
+         * @memberof dashboard.Dashboard
+         * @typedef ListUserCallback
+         * @type {function}
+         * @param {Error|null} error Error, if any
+         * @param {dashboard.ListUserResp} [response] ListUserResp
+         */
+
+        /**
+         * Calls ListUser.
+         * @function listUser
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.IListUserReq} request ListUserReq message or plain object
+         * @param {dashboard.Dashboard.ListUserCallback} callback Node-style callback called with the error, if any, and ListUserResp
+         * @returns {undefined}
+         * @variation 1
+         */
+        Object.defineProperty(Dashboard.prototype.listUser = function listUser(request, callback) {
+            return this.rpcCall(listUser, $root.dashboard.ListUserReq, $root.dashboard.ListUserResp, request, callback);
+        }, "name", { value: "ListUser" });
+
+        /**
+         * Calls ListUser.
+         * @function listUser
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.IListUserReq} request ListUserReq message or plain object
+         * @returns {Promise<dashboard.ListUserResp>} Promise
+         * @variation 2
+         */
+
         return Dashboard;
+    })();
+
+    dashboard.ListUserReq = (function() {
+
+        /**
+         * Properties of a ListUserReq.
+         * @memberof dashboard
+         * @interface IListUserReq
+         * @property {string|null} [name] ListUserReq name
+         * @property {number|Long|null} [user_id] ListUserReq user_id
+         * @property {number|null} [status] ListUserReq status
+         * @property {number|Long|null} [role_id] ListUserReq role_id
+         * @property {dashboard.IPage|null} [page] ListUserReq page
+         */
+
+        /**
+         * Constructs a new ListUserReq.
+         * @memberof dashboard
+         * @classdesc Represents a ListUserReq.
+         * @implements IListUserReq
+         * @constructor
+         * @param {dashboard.IListUserReq=} [properties] Properties to set
+         */
+        function ListUserReq(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * ListUserReq name.
+         * @member {string} name
+         * @memberof dashboard.ListUserReq
+         * @instance
+         */
+        ListUserReq.prototype.name = "";
+
+        /**
+         * ListUserReq user_id.
+         * @member {number|Long} user_id
+         * @memberof dashboard.ListUserReq
+         * @instance
+         */
+        ListUserReq.prototype.user_id = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * ListUserReq status.
+         * @member {number} status
+         * @memberof dashboard.ListUserReq
+         * @instance
+         */
+        ListUserReq.prototype.status = 0;
+
+        /**
+         * ListUserReq role_id.
+         * @member {number|Long} role_id
+         * @memberof dashboard.ListUserReq
+         * @instance
+         */
+        ListUserReq.prototype.role_id = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * ListUserReq page.
+         * @member {dashboard.IPage|null|undefined} page
+         * @memberof dashboard.ListUserReq
+         * @instance
+         */
+        ListUserReq.prototype.page = null;
+
+        /**
+         * Creates a new ListUserReq instance using the specified properties.
+         * @function create
+         * @memberof dashboard.ListUserReq
+         * @static
+         * @param {dashboard.IListUserReq=} [properties] Properties to set
+         * @returns {dashboard.ListUserReq} ListUserReq instance
+         */
+        ListUserReq.create = function create(properties) {
+            return new ListUserReq(properties);
+        };
+
+        /**
+         * Encodes the specified ListUserReq message. Does not implicitly {@link dashboard.ListUserReq.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.ListUserReq
+         * @static
+         * @param {dashboard.IListUserReq} message ListUserReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ListUserReq.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+            if (message.user_id != null && Object.hasOwnProperty.call(message, "user_id"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.user_id);
+            if (message.status != null && Object.hasOwnProperty.call(message, "status"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.status);
+            if (message.role_id != null && Object.hasOwnProperty.call(message, "role_id"))
+                writer.uint32(/* id 4, wireType 0 =*/32).uint64(message.role_id);
+            if (message.page != null && Object.hasOwnProperty.call(message, "page"))
+                $root.dashboard.Page.encode(message.page, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified ListUserReq message, length delimited. Does not implicitly {@link dashboard.ListUserReq.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.ListUserReq
+         * @static
+         * @param {dashboard.IListUserReq} message ListUserReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ListUserReq.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a ListUserReq message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.ListUserReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.ListUserReq} ListUserReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ListUserReq.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.ListUserReq();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.name = reader.string();
+                        break;
+                    }
+                case 2: {
+                        message.user_id = reader.uint64();
+                        break;
+                    }
+                case 3: {
+                        message.status = reader.uint32();
+                        break;
+                    }
+                case 4: {
+                        message.role_id = reader.uint64();
+                        break;
+                    }
+                case 5: {
+                        message.page = $root.dashboard.Page.decode(reader, reader.uint32());
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a ListUserReq message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.ListUserReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.ListUserReq} ListUserReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ListUserReq.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a ListUserReq message.
+         * @function verify
+         * @memberof dashboard.ListUserReq
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        ListUserReq.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.name != null && message.hasOwnProperty("name"))
+                if (!$util.isString(message.name))
+                    return "name: string expected";
+            if (message.user_id != null && message.hasOwnProperty("user_id"))
+                if (!$util.isInteger(message.user_id) && !(message.user_id && $util.isInteger(message.user_id.low) && $util.isInteger(message.user_id.high)))
+                    return "user_id: integer|Long expected";
+            if (message.status != null && message.hasOwnProperty("status"))
+                if (!$util.isInteger(message.status))
+                    return "status: integer expected";
+            if (message.role_id != null && message.hasOwnProperty("role_id"))
+                if (!$util.isInteger(message.role_id) && !(message.role_id && $util.isInteger(message.role_id.low) && $util.isInteger(message.role_id.high)))
+                    return "role_id: integer|Long expected";
+            if (message.page != null && message.hasOwnProperty("page")) {
+                let error = $root.dashboard.Page.verify(message.page);
+                if (error)
+                    return "page." + error;
+            }
+            return null;
+        };
+
+        /**
+         * Creates a ListUserReq message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.ListUserReq
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.ListUserReq} ListUserReq
+         */
+        ListUserReq.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.ListUserReq)
+                return object;
+            let message = new $root.dashboard.ListUserReq();
+            if (object.name != null)
+                message.name = String(object.name);
+            if (object.user_id != null)
+                if ($util.Long)
+                    (message.user_id = $util.Long.fromValue(object.user_id)).unsigned = true;
+                else if (typeof object.user_id === "string")
+                    message.user_id = parseInt(object.user_id, 10);
+                else if (typeof object.user_id === "number")
+                    message.user_id = object.user_id;
+                else if (typeof object.user_id === "object")
+                    message.user_id = new $util.LongBits(object.user_id.low >>> 0, object.user_id.high >>> 0).toNumber(true);
+            if (object.status != null)
+                message.status = object.status >>> 0;
+            if (object.role_id != null)
+                if ($util.Long)
+                    (message.role_id = $util.Long.fromValue(object.role_id)).unsigned = true;
+                else if (typeof object.role_id === "string")
+                    message.role_id = parseInt(object.role_id, 10);
+                else if (typeof object.role_id === "number")
+                    message.role_id = object.role_id;
+                else if (typeof object.role_id === "object")
+                    message.role_id = new $util.LongBits(object.role_id.low >>> 0, object.role_id.high >>> 0).toNumber(true);
+            if (object.page != null) {
+                if (typeof object.page !== "object")
+                    throw TypeError(".dashboard.ListUserReq.page: object expected");
+                message.page = $root.dashboard.Page.fromObject(object.page);
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a ListUserReq message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.ListUserReq
+         * @static
+         * @param {dashboard.ListUserReq} message ListUserReq
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        ListUserReq.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.name = "";
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, true);
+                    object.user_id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.user_id = options.longs === String ? "0" : 0;
+                object.status = 0;
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, true);
+                    object.role_id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.role_id = options.longs === String ? "0" : 0;
+                object.page = null;
+            }
+            if (message.name != null && message.hasOwnProperty("name"))
+                object.name = message.name;
+            if (message.user_id != null && message.hasOwnProperty("user_id"))
+                if (typeof message.user_id === "number")
+                    object.user_id = options.longs === String ? String(message.user_id) : message.user_id;
+                else
+                    object.user_id = options.longs === String ? $util.Long.prototype.toString.call(message.user_id) : options.longs === Number ? new $util.LongBits(message.user_id.low >>> 0, message.user_id.high >>> 0).toNumber(true) : message.user_id;
+            if (message.status != null && message.hasOwnProperty("status"))
+                object.status = message.status;
+            if (message.role_id != null && message.hasOwnProperty("role_id"))
+                if (typeof message.role_id === "number")
+                    object.role_id = options.longs === String ? String(message.role_id) : message.role_id;
+                else
+                    object.role_id = options.longs === String ? $util.Long.prototype.toString.call(message.role_id) : options.longs === Number ? new $util.LongBits(message.role_id.low >>> 0, message.role_id.high >>> 0).toNumber(true) : message.role_id;
+            if (message.page != null && message.hasOwnProperty("page"))
+                object.page = $root.dashboard.Page.toObject(message.page, options);
+            return object;
+        };
+
+        /**
+         * Converts this ListUserReq to JSON.
+         * @function toJSON
+         * @memberof dashboard.ListUserReq
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        ListUserReq.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for ListUserReq
+         * @function getTypeUrl
+         * @memberof dashboard.ListUserReq
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        ListUserReq.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.ListUserReq";
+        };
+
+        return ListUserReq;
+    })();
+
+    dashboard.ListUserResp = (function() {
+
+        /**
+         * Properties of a ListUserResp.
+         * @memberof dashboard
+         * @interface IListUserResp
+         * @property {Array.<dashboard.ListUserResp.IItem>|null} [list] ListUserResp list
+         * @property {number|null} [total] ListUserResp total
+         */
+
+        /**
+         * Constructs a new ListUserResp.
+         * @memberof dashboard
+         * @classdesc Represents a ListUserResp.
+         * @implements IListUserResp
+         * @constructor
+         * @param {dashboard.IListUserResp=} [properties] Properties to set
+         */
+        function ListUserResp(properties) {
+            this.list = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * ListUserResp list.
+         * @member {Array.<dashboard.ListUserResp.IItem>} list
+         * @memberof dashboard.ListUserResp
+         * @instance
+         */
+        ListUserResp.prototype.list = $util.emptyArray;
+
+        /**
+         * ListUserResp total.
+         * @member {number} total
+         * @memberof dashboard.ListUserResp
+         * @instance
+         */
+        ListUserResp.prototype.total = 0;
+
+        /**
+         * Creates a new ListUserResp instance using the specified properties.
+         * @function create
+         * @memberof dashboard.ListUserResp
+         * @static
+         * @param {dashboard.IListUserResp=} [properties] Properties to set
+         * @returns {dashboard.ListUserResp} ListUserResp instance
+         */
+        ListUserResp.create = function create(properties) {
+            return new ListUserResp(properties);
+        };
+
+        /**
+         * Encodes the specified ListUserResp message. Does not implicitly {@link dashboard.ListUserResp.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.ListUserResp
+         * @static
+         * @param {dashboard.IListUserResp} message ListUserResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ListUserResp.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.list != null && message.list.length)
+                for (let i = 0; i < message.list.length; ++i)
+                    $root.dashboard.ListUserResp.Item.encode(message.list[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.total != null && Object.hasOwnProperty.call(message, "total"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.total);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified ListUserResp message, length delimited. Does not implicitly {@link dashboard.ListUserResp.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.ListUserResp
+         * @static
+         * @param {dashboard.IListUserResp} message ListUserResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ListUserResp.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a ListUserResp message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.ListUserResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.ListUserResp} ListUserResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ListUserResp.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.ListUserResp();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        if (!(message.list && message.list.length))
+                            message.list = [];
+                        message.list.push($root.dashboard.ListUserResp.Item.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 2: {
+                        message.total = reader.uint32();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a ListUserResp message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.ListUserResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.ListUserResp} ListUserResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ListUserResp.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a ListUserResp message.
+         * @function verify
+         * @memberof dashboard.ListUserResp
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        ListUserResp.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.list != null && message.hasOwnProperty("list")) {
+                if (!Array.isArray(message.list))
+                    return "list: array expected";
+                for (let i = 0; i < message.list.length; ++i) {
+                    let error = $root.dashboard.ListUserResp.Item.verify(message.list[i]);
+                    if (error)
+                        return "list." + error;
+                }
+            }
+            if (message.total != null && message.hasOwnProperty("total"))
+                if (!$util.isInteger(message.total))
+                    return "total: integer expected";
+            return null;
+        };
+
+        /**
+         * Creates a ListUserResp message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.ListUserResp
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.ListUserResp} ListUserResp
+         */
+        ListUserResp.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.ListUserResp)
+                return object;
+            let message = new $root.dashboard.ListUserResp();
+            if (object.list) {
+                if (!Array.isArray(object.list))
+                    throw TypeError(".dashboard.ListUserResp.list: array expected");
+                message.list = [];
+                for (let i = 0; i < object.list.length; ++i) {
+                    if (typeof object.list[i] !== "object")
+                        throw TypeError(".dashboard.ListUserResp.list: object expected");
+                    message.list[i] = $root.dashboard.ListUserResp.Item.fromObject(object.list[i]);
+                }
+            }
+            if (object.total != null)
+                message.total = object.total >>> 0;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a ListUserResp message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.ListUserResp
+         * @static
+         * @param {dashboard.ListUserResp} message ListUserResp
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        ListUserResp.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults)
+                object.list = [];
+            if (options.defaults)
+                object.total = 0;
+            if (message.list && message.list.length) {
+                object.list = [];
+                for (let j = 0; j < message.list.length; ++j)
+                    object.list[j] = $root.dashboard.ListUserResp.Item.toObject(message.list[j], options);
+            }
+            if (message.total != null && message.hasOwnProperty("total"))
+                object.total = message.total;
+            return object;
+        };
+
+        /**
+         * Converts this ListUserResp to JSON.
+         * @function toJSON
+         * @memberof dashboard.ListUserResp
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        ListUserResp.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for ListUserResp
+         * @function getTypeUrl
+         * @memberof dashboard.ListUserResp
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        ListUserResp.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.ListUserResp";
+        };
+
+        ListUserResp.Item = (function() {
+
+            /**
+             * Properties of an Item.
+             * @memberof dashboard.ListUserResp
+             * @interface IItem
+             * @property {dashboard.IUser|null} [user] Item user
+             * @property {Array.<dashboard.IRole>|null} [roles] Item roles
+             */
+
+            /**
+             * Constructs a new Item.
+             * @memberof dashboard.ListUserResp
+             * @classdesc Represents an Item.
+             * @implements IItem
+             * @constructor
+             * @param {dashboard.ListUserResp.IItem=} [properties] Properties to set
+             */
+            function Item(properties) {
+                this.roles = [];
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Item user.
+             * @member {dashboard.IUser|null|undefined} user
+             * @memberof dashboard.ListUserResp.Item
+             * @instance
+             */
+            Item.prototype.user = null;
+
+            /**
+             * Item roles.
+             * @member {Array.<dashboard.IRole>} roles
+             * @memberof dashboard.ListUserResp.Item
+             * @instance
+             */
+            Item.prototype.roles = $util.emptyArray;
+
+            /**
+             * Creates a new Item instance using the specified properties.
+             * @function create
+             * @memberof dashboard.ListUserResp.Item
+             * @static
+             * @param {dashboard.ListUserResp.IItem=} [properties] Properties to set
+             * @returns {dashboard.ListUserResp.Item} Item instance
+             */
+            Item.create = function create(properties) {
+                return new Item(properties);
+            };
+
+            /**
+             * Encodes the specified Item message. Does not implicitly {@link dashboard.ListUserResp.Item.verify|verify} messages.
+             * @function encode
+             * @memberof dashboard.ListUserResp.Item
+             * @static
+             * @param {dashboard.ListUserResp.IItem} message Item message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Item.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.user != null && Object.hasOwnProperty.call(message, "user"))
+                    $root.dashboard.User.encode(message.user, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                if (message.roles != null && message.roles.length)
+                    for (let i = 0; i < message.roles.length; ++i)
+                        $root.dashboard.Role.encode(message.roles[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified Item message, length delimited. Does not implicitly {@link dashboard.ListUserResp.Item.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof dashboard.ListUserResp.Item
+             * @static
+             * @param {dashboard.ListUserResp.IItem} message Item message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Item.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes an Item message from the specified reader or buffer.
+             * @function decode
+             * @memberof dashboard.ListUserResp.Item
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {dashboard.ListUserResp.Item} Item
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Item.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.ListUserResp.Item();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.user = $root.dashboard.User.decode(reader, reader.uint32());
+                            break;
+                        }
+                    case 3: {
+                            if (!(message.roles && message.roles.length))
+                                message.roles = [];
+                            message.roles.push($root.dashboard.Role.decode(reader, reader.uint32()));
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes an Item message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof dashboard.ListUserResp.Item
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {dashboard.ListUserResp.Item} Item
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Item.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies an Item message.
+             * @function verify
+             * @memberof dashboard.ListUserResp.Item
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            Item.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.user != null && message.hasOwnProperty("user")) {
+                    let error = $root.dashboard.User.verify(message.user);
+                    if (error)
+                        return "user." + error;
+                }
+                if (message.roles != null && message.hasOwnProperty("roles")) {
+                    if (!Array.isArray(message.roles))
+                        return "roles: array expected";
+                    for (let i = 0; i < message.roles.length; ++i) {
+                        let error = $root.dashboard.Role.verify(message.roles[i]);
+                        if (error)
+                            return "roles." + error;
+                    }
+                }
+                return null;
+            };
+
+            /**
+             * Creates an Item message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof dashboard.ListUserResp.Item
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {dashboard.ListUserResp.Item} Item
+             */
+            Item.fromObject = function fromObject(object) {
+                if (object instanceof $root.dashboard.ListUserResp.Item)
+                    return object;
+                let message = new $root.dashboard.ListUserResp.Item();
+                if (object.user != null) {
+                    if (typeof object.user !== "object")
+                        throw TypeError(".dashboard.ListUserResp.Item.user: object expected");
+                    message.user = $root.dashboard.User.fromObject(object.user);
+                }
+                if (object.roles) {
+                    if (!Array.isArray(object.roles))
+                        throw TypeError(".dashboard.ListUserResp.Item.roles: array expected");
+                    message.roles = [];
+                    for (let i = 0; i < object.roles.length; ++i) {
+                        if (typeof object.roles[i] !== "object")
+                            throw TypeError(".dashboard.ListUserResp.Item.roles: object expected");
+                        message.roles[i] = $root.dashboard.Role.fromObject(object.roles[i]);
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from an Item message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof dashboard.ListUserResp.Item
+             * @static
+             * @param {dashboard.ListUserResp.Item} message Item
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            Item.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                let object = {};
+                if (options.arrays || options.defaults)
+                    object.roles = [];
+                if (options.defaults)
+                    object.user = null;
+                if (message.user != null && message.hasOwnProperty("user"))
+                    object.user = $root.dashboard.User.toObject(message.user, options);
+                if (message.roles && message.roles.length) {
+                    object.roles = [];
+                    for (let j = 0; j < message.roles.length; ++j)
+                        object.roles[j] = $root.dashboard.Role.toObject(message.roles[j], options);
+                }
+                return object;
+            };
+
+            /**
+             * Converts this Item to JSON.
+             * @function toJSON
+             * @memberof dashboard.ListUserResp.Item
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            Item.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for Item
+             * @function getTypeUrl
+             * @memberof dashboard.ListUserResp.Item
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            Item.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/dashboard.ListUserResp.Item";
+            };
+
+            return Item;
+        })();
+
+        return ListUserResp;
     })();
 
     dashboard.DeleteRoleConfReq = (function() {
@@ -1948,6 +2817,7 @@ export const dashboard = $root.dashboard = (() => {
          * @property {number|null} [status] ListRoleConfReq status
          * @property {boolean|null} [only_super_admin] ListRoleConfReq only_super_admin
          * @property {boolean|null} [without_super_admin] ListRoleConfReq without_super_admin
+         * @property {dashboard.IPage|null} [page] ListRoleConfReq page
          */
 
         /**
@@ -1998,6 +2868,14 @@ export const dashboard = $root.dashboard = (() => {
         ListRoleConfReq.prototype.without_super_admin = false;
 
         /**
+         * ListRoleConfReq page.
+         * @member {dashboard.IPage|null|undefined} page
+         * @memberof dashboard.ListRoleConfReq
+         * @instance
+         */
+        ListRoleConfReq.prototype.page = null;
+
+        /**
          * Creates a new ListRoleConfReq instance using the specified properties.
          * @function create
          * @memberof dashboard.ListRoleConfReq
@@ -2029,6 +2907,8 @@ export const dashboard = $root.dashboard = (() => {
                 writer.uint32(/* id 3, wireType 0 =*/24).bool(message.only_super_admin);
             if (message.without_super_admin != null && Object.hasOwnProperty.call(message, "without_super_admin"))
                 writer.uint32(/* id 4, wireType 0 =*/32).bool(message.without_super_admin);
+            if (message.page != null && Object.hasOwnProperty.call(message, "page"))
+                $root.dashboard.Page.encode(message.page, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
             return writer;
         };
 
@@ -2081,6 +2961,10 @@ export const dashboard = $root.dashboard = (() => {
                         message.without_super_admin = reader.bool();
                         break;
                     }
+                case 5: {
+                        message.page = $root.dashboard.Page.decode(reader, reader.uint32());
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -2128,6 +3012,11 @@ export const dashboard = $root.dashboard = (() => {
             if (message.without_super_admin != null && message.hasOwnProperty("without_super_admin"))
                 if (typeof message.without_super_admin !== "boolean")
                     return "without_super_admin: boolean expected";
+            if (message.page != null && message.hasOwnProperty("page")) {
+                let error = $root.dashboard.Page.verify(message.page);
+                if (error)
+                    return "page." + error;
+            }
             return null;
         };
 
@@ -2151,6 +3040,11 @@ export const dashboard = $root.dashboard = (() => {
                 message.only_super_admin = Boolean(object.only_super_admin);
             if (object.without_super_admin != null)
                 message.without_super_admin = Boolean(object.without_super_admin);
+            if (object.page != null) {
+                if (typeof object.page !== "object")
+                    throw TypeError(".dashboard.ListRoleConfReq.page: object expected");
+                message.page = $root.dashboard.Page.fromObject(object.page);
+            }
             return message;
         };
 
@@ -2172,6 +3066,7 @@ export const dashboard = $root.dashboard = (() => {
                 object.status = 0;
                 object.only_super_admin = false;
                 object.without_super_admin = false;
+                object.page = null;
             }
             if (message.name != null && message.hasOwnProperty("name"))
                 object.name = message.name;
@@ -2181,6 +3076,8 @@ export const dashboard = $root.dashboard = (() => {
                 object.only_super_admin = message.only_super_admin;
             if (message.without_super_admin != null && message.hasOwnProperty("without_super_admin"))
                 object.without_super_admin = message.without_super_admin;
+            if (message.page != null && message.hasOwnProperty("page"))
+                object.page = $root.dashboard.Page.toObject(message.page, options);
             return object;
         };
 
@@ -2219,7 +3116,7 @@ export const dashboard = $root.dashboard = (() => {
          * Properties of a ListRoleConfResp.
          * @memberof dashboard
          * @interface IListRoleConfResp
-         * @property {Array.<dashboard.ListRoleConfResp.IRole>|null} [list] ListRoleConfResp list
+         * @property {Array.<dashboard.IRole>|null} [list] ListRoleConfResp list
          * @property {number|null} [total] ListRoleConfResp total
          */
 
@@ -2241,7 +3138,7 @@ export const dashboard = $root.dashboard = (() => {
 
         /**
          * ListRoleConfResp list.
-         * @member {Array.<dashboard.ListRoleConfResp.IRole>} list
+         * @member {Array.<dashboard.IRole>} list
          * @memberof dashboard.ListRoleConfResp
          * @instance
          */
@@ -2281,7 +3178,7 @@ export const dashboard = $root.dashboard = (() => {
                 writer = $Writer.create();
             if (message.list != null && message.list.length)
                 for (let i = 0; i < message.list.length; ++i)
-                    $root.dashboard.ListRoleConfResp.Role.encode(message.list[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                    $root.dashboard.Role.encode(message.list[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
             if (message.total != null && Object.hasOwnProperty.call(message, "total"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.total);
             return writer;
@@ -2323,7 +3220,7 @@ export const dashboard = $root.dashboard = (() => {
                 case 1: {
                         if (!(message.list && message.list.length))
                             message.list = [];
-                        message.list.push($root.dashboard.ListRoleConfResp.Role.decode(reader, reader.uint32()));
+                        message.list.push($root.dashboard.Role.decode(reader, reader.uint32()));
                         break;
                     }
                 case 2: {
@@ -2369,7 +3266,7 @@ export const dashboard = $root.dashboard = (() => {
                 if (!Array.isArray(message.list))
                     return "list: array expected";
                 for (let i = 0; i < message.list.length; ++i) {
-                    let error = $root.dashboard.ListRoleConfResp.Role.verify(message.list[i]);
+                    let error = $root.dashboard.Role.verify(message.list[i]);
                     if (error)
                         return "list." + error;
                 }
@@ -2399,7 +3296,7 @@ export const dashboard = $root.dashboard = (() => {
                 for (let i = 0; i < object.list.length; ++i) {
                     if (typeof object.list[i] !== "object")
                         throw TypeError(".dashboard.ListRoleConfResp.list: object expected");
-                    message.list[i] = $root.dashboard.ListRoleConfResp.Role.fromObject(object.list[i]);
+                    message.list[i] = $root.dashboard.Role.fromObject(object.list[i]);
                 }
             }
             if (object.total != null)
@@ -2427,7 +3324,7 @@ export const dashboard = $root.dashboard = (() => {
             if (message.list && message.list.length) {
                 object.list = [];
                 for (let j = 0; j < message.list.length; ++j)
-                    object.list[j] = $root.dashboard.ListRoleConfResp.Role.toObject(message.list[j], options);
+                    object.list[j] = $root.dashboard.Role.toObject(message.list[j], options);
             }
             if (message.total != null && message.hasOwnProperty("total"))
                 object.total = message.total;
@@ -2460,377 +3357,377 @@ export const dashboard = $root.dashboard = (() => {
             return typeUrlPrefix + "/dashboard.ListRoleConfResp";
         };
 
-        ListRoleConfResp.Role = (function() {
+        return ListRoleConfResp;
+    })();
 
-            /**
-             * Properties of a Role.
-             * @memberof dashboard.ListRoleConfResp
-             * @interface IRole
-             * @property {number|Long|null} [role_id] Role role_id
-             * @property {string|null} [name] Role name
-             * @property {number|null} [status] Role status
-             * @property {Array.<number|Long>|null} [perm_ids] Role perm_ids
-             * @property {string|null} [remark] Role remark
-             * @property {boolean|null} [is_super_admin] Role is_super_admin
-             */
+    dashboard.Role = (function() {
 
-            /**
-             * Constructs a new Role.
-             * @memberof dashboard.ListRoleConfResp
-             * @classdesc Represents a Role.
-             * @implements IRole
-             * @constructor
-             * @param {dashboard.ListRoleConfResp.IRole=} [properties] Properties to set
-             */
-            function Role(properties) {
-                this.perm_ids = [];
-                if (properties)
-                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                        if (properties[keys[i]] != null)
-                            this[keys[i]] = properties[keys[i]];
+        /**
+         * Properties of a Role.
+         * @memberof dashboard
+         * @interface IRole
+         * @property {number|Long|null} [role_id] Role role_id
+         * @property {string|null} [name] Role name
+         * @property {number|null} [status] Role status
+         * @property {Array.<number|Long>|null} [perm_ids] Role perm_ids
+         * @property {string|null} [remark] Role remark
+         * @property {boolean|null} [is_super_admin] Role is_super_admin
+         */
+
+        /**
+         * Constructs a new Role.
+         * @memberof dashboard
+         * @classdesc Represents a Role.
+         * @implements IRole
+         * @constructor
+         * @param {dashboard.IRole=} [properties] Properties to set
+         */
+        function Role(properties) {
+            this.perm_ids = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Role role_id.
+         * @member {number|Long} role_id
+         * @memberof dashboard.Role
+         * @instance
+         */
+        Role.prototype.role_id = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * Role name.
+         * @member {string} name
+         * @memberof dashboard.Role
+         * @instance
+         */
+        Role.prototype.name = "";
+
+        /**
+         * Role status.
+         * @member {number} status
+         * @memberof dashboard.Role
+         * @instance
+         */
+        Role.prototype.status = 0;
+
+        /**
+         * Role perm_ids.
+         * @member {Array.<number|Long>} perm_ids
+         * @memberof dashboard.Role
+         * @instance
+         */
+        Role.prototype.perm_ids = $util.emptyArray;
+
+        /**
+         * Role remark.
+         * @member {string} remark
+         * @memberof dashboard.Role
+         * @instance
+         */
+        Role.prototype.remark = "";
+
+        /**
+         * Role is_super_admin.
+         * @member {boolean} is_super_admin
+         * @memberof dashboard.Role
+         * @instance
+         */
+        Role.prototype.is_super_admin = false;
+
+        /**
+         * Creates a new Role instance using the specified properties.
+         * @function create
+         * @memberof dashboard.Role
+         * @static
+         * @param {dashboard.IRole=} [properties] Properties to set
+         * @returns {dashboard.Role} Role instance
+         */
+        Role.create = function create(properties) {
+            return new Role(properties);
+        };
+
+        /**
+         * Encodes the specified Role message. Does not implicitly {@link dashboard.Role.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.Role
+         * @static
+         * @param {dashboard.IRole} message Role message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Role.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.role_id != null && Object.hasOwnProperty.call(message, "role_id"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.role_id);
+            if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.name);
+            if (message.status != null && Object.hasOwnProperty.call(message, "status"))
+                writer.uint32(/* id 3, wireType 0 =*/24).int32(message.status);
+            if (message.perm_ids != null && message.perm_ids.length) {
+                writer.uint32(/* id 4, wireType 2 =*/34).fork();
+                for (let i = 0; i < message.perm_ids.length; ++i)
+                    writer.uint64(message.perm_ids[i]);
+                writer.ldelim();
             }
+            if (message.remark != null && Object.hasOwnProperty.call(message, "remark"))
+                writer.uint32(/* id 5, wireType 2 =*/42).string(message.remark);
+            if (message.is_super_admin != null && Object.hasOwnProperty.call(message, "is_super_admin"))
+                writer.uint32(/* id 6, wireType 0 =*/48).bool(message.is_super_admin);
+            return writer;
+        };
 
-            /**
-             * Role role_id.
-             * @member {number|Long} role_id
-             * @memberof dashboard.ListRoleConfResp.Role
-             * @instance
-             */
-            Role.prototype.role_id = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+        /**
+         * Encodes the specified Role message, length delimited. Does not implicitly {@link dashboard.Role.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.Role
+         * @static
+         * @param {dashboard.IRole} message Role message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Role.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
 
-            /**
-             * Role name.
-             * @member {string} name
-             * @memberof dashboard.ListRoleConfResp.Role
-             * @instance
-             */
-            Role.prototype.name = "";
-
-            /**
-             * Role status.
-             * @member {number} status
-             * @memberof dashboard.ListRoleConfResp.Role
-             * @instance
-             */
-            Role.prototype.status = 0;
-
-            /**
-             * Role perm_ids.
-             * @member {Array.<number|Long>} perm_ids
-             * @memberof dashboard.ListRoleConfResp.Role
-             * @instance
-             */
-            Role.prototype.perm_ids = $util.emptyArray;
-
-            /**
-             * Role remark.
-             * @member {string} remark
-             * @memberof dashboard.ListRoleConfResp.Role
-             * @instance
-             */
-            Role.prototype.remark = "";
-
-            /**
-             * Role is_super_admin.
-             * @member {boolean} is_super_admin
-             * @memberof dashboard.ListRoleConfResp.Role
-             * @instance
-             */
-            Role.prototype.is_super_admin = false;
-
-            /**
-             * Creates a new Role instance using the specified properties.
-             * @function create
-             * @memberof dashboard.ListRoleConfResp.Role
-             * @static
-             * @param {dashboard.ListRoleConfResp.IRole=} [properties] Properties to set
-             * @returns {dashboard.ListRoleConfResp.Role} Role instance
-             */
-            Role.create = function create(properties) {
-                return new Role(properties);
-            };
-
-            /**
-             * Encodes the specified Role message. Does not implicitly {@link dashboard.ListRoleConfResp.Role.verify|verify} messages.
-             * @function encode
-             * @memberof dashboard.ListRoleConfResp.Role
-             * @static
-             * @param {dashboard.ListRoleConfResp.IRole} message Role message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
-             */
-            Role.encode = function encode(message, writer) {
-                if (!writer)
-                    writer = $Writer.create();
-                if (message.role_id != null && Object.hasOwnProperty.call(message, "role_id"))
-                    writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.role_id);
-                if (message.name != null && Object.hasOwnProperty.call(message, "name"))
-                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.name);
-                if (message.status != null && Object.hasOwnProperty.call(message, "status"))
-                    writer.uint32(/* id 3, wireType 0 =*/24).int32(message.status);
-                if (message.perm_ids != null && message.perm_ids.length) {
-                    writer.uint32(/* id 4, wireType 2 =*/34).fork();
-                    for (let i = 0; i < message.perm_ids.length; ++i)
-                        writer.uint64(message.perm_ids[i]);
-                    writer.ldelim();
-                }
-                if (message.remark != null && Object.hasOwnProperty.call(message, "remark"))
-                    writer.uint32(/* id 5, wireType 2 =*/42).string(message.remark);
-                if (message.is_super_admin != null && Object.hasOwnProperty.call(message, "is_super_admin"))
-                    writer.uint32(/* id 6, wireType 0 =*/48).bool(message.is_super_admin);
-                return writer;
-            };
-
-            /**
-             * Encodes the specified Role message, length delimited. Does not implicitly {@link dashboard.ListRoleConfResp.Role.verify|verify} messages.
-             * @function encodeDelimited
-             * @memberof dashboard.ListRoleConfResp.Role
-             * @static
-             * @param {dashboard.ListRoleConfResp.IRole} message Role message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
-             */
-            Role.encodeDelimited = function encodeDelimited(message, writer) {
-                return this.encode(message, writer).ldelim();
-            };
-
-            /**
-             * Decodes a Role message from the specified reader or buffer.
-             * @function decode
-             * @memberof dashboard.ListRoleConfResp.Role
-             * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @param {number} [length] Message length if known beforehand
-             * @returns {dashboard.ListRoleConfResp.Role} Role
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            Role.decode = function decode(reader, length, error) {
-                if (!(reader instanceof $Reader))
-                    reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.ListRoleConfResp.Role();
-                while (reader.pos < end) {
-                    let tag = reader.uint32();
-                    if (tag === error)
-                        break;
-                    switch (tag >>> 3) {
-                    case 1: {
-                            message.role_id = reader.uint64();
-                            break;
-                        }
-                    case 2: {
-                            message.name = reader.string();
-                            break;
-                        }
-                    case 3: {
-                            message.status = reader.int32();
-                            break;
-                        }
-                    case 4: {
-                            if (!(message.perm_ids && message.perm_ids.length))
-                                message.perm_ids = [];
-                            if ((tag & 7) === 2) {
-                                let end2 = reader.uint32() + reader.pos;
-                                while (reader.pos < end2)
-                                    message.perm_ids.push(reader.uint64());
-                            } else
-                                message.perm_ids.push(reader.uint64());
-                            break;
-                        }
-                    case 5: {
-                            message.remark = reader.string();
-                            break;
-                        }
-                    case 6: {
-                            message.is_super_admin = reader.bool();
-                            break;
-                        }
-                    default:
-                        reader.skipType(tag & 7);
+        /**
+         * Decodes a Role message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.Role
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.Role} Role
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Role.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.Role();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.role_id = reader.uint64();
                         break;
                     }
+                case 2: {
+                        message.name = reader.string();
+                        break;
+                    }
+                case 3: {
+                        message.status = reader.int32();
+                        break;
+                    }
+                case 4: {
+                        if (!(message.perm_ids && message.perm_ids.length))
+                            message.perm_ids = [];
+                        if ((tag & 7) === 2) {
+                            let end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.perm_ids.push(reader.uint64());
+                        } else
+                            message.perm_ids.push(reader.uint64());
+                        break;
+                    }
+                case 5: {
+                        message.remark = reader.string();
+                        break;
+                    }
+                case 6: {
+                        message.is_super_admin = reader.bool();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
-                return message;
-            };
+            }
+            return message;
+        };
 
-            /**
-             * Decodes a Role message from the specified reader or buffer, length delimited.
-             * @function decodeDelimited
-             * @memberof dashboard.ListRoleConfResp.Role
-             * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {dashboard.ListRoleConfResp.Role} Role
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            Role.decodeDelimited = function decodeDelimited(reader) {
-                if (!(reader instanceof $Reader))
-                    reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
-            };
+        /**
+         * Decodes a Role message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.Role
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.Role} Role
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Role.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
 
-            /**
-             * Verifies a Role message.
-             * @function verify
-             * @memberof dashboard.ListRoleConfResp.Role
-             * @static
-             * @param {Object.<string,*>} message Plain object to verify
-             * @returns {string|null} `null` if valid, otherwise the reason why it is not
-             */
-            Role.verify = function verify(message) {
-                if (typeof message !== "object" || message === null)
-                    return "object expected";
-                if (message.role_id != null && message.hasOwnProperty("role_id"))
-                    if (!$util.isInteger(message.role_id) && !(message.role_id && $util.isInteger(message.role_id.low) && $util.isInteger(message.role_id.high)))
-                        return "role_id: integer|Long expected";
-                if (message.name != null && message.hasOwnProperty("name"))
-                    if (!$util.isString(message.name))
-                        return "name: string expected";
-                if (message.status != null && message.hasOwnProperty("status"))
-                    if (!$util.isInteger(message.status))
-                        return "status: integer expected";
-                if (message.perm_ids != null && message.hasOwnProperty("perm_ids")) {
-                    if (!Array.isArray(message.perm_ids))
-                        return "perm_ids: array expected";
-                    for (let i = 0; i < message.perm_ids.length; ++i)
-                        if (!$util.isInteger(message.perm_ids[i]) && !(message.perm_ids[i] && $util.isInteger(message.perm_ids[i].low) && $util.isInteger(message.perm_ids[i].high)))
-                            return "perm_ids: integer|Long[] expected";
-                }
-                if (message.remark != null && message.hasOwnProperty("remark"))
-                    if (!$util.isString(message.remark))
-                        return "remark: string expected";
-                if (message.is_super_admin != null && message.hasOwnProperty("is_super_admin"))
-                    if (typeof message.is_super_admin !== "boolean")
-                        return "is_super_admin: boolean expected";
-                return null;
-            };
+        /**
+         * Verifies a Role message.
+         * @function verify
+         * @memberof dashboard.Role
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Role.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.role_id != null && message.hasOwnProperty("role_id"))
+                if (!$util.isInteger(message.role_id) && !(message.role_id && $util.isInteger(message.role_id.low) && $util.isInteger(message.role_id.high)))
+                    return "role_id: integer|Long expected";
+            if (message.name != null && message.hasOwnProperty("name"))
+                if (!$util.isString(message.name))
+                    return "name: string expected";
+            if (message.status != null && message.hasOwnProperty("status"))
+                if (!$util.isInteger(message.status))
+                    return "status: integer expected";
+            if (message.perm_ids != null && message.hasOwnProperty("perm_ids")) {
+                if (!Array.isArray(message.perm_ids))
+                    return "perm_ids: array expected";
+                for (let i = 0; i < message.perm_ids.length; ++i)
+                    if (!$util.isInteger(message.perm_ids[i]) && !(message.perm_ids[i] && $util.isInteger(message.perm_ids[i].low) && $util.isInteger(message.perm_ids[i].high)))
+                        return "perm_ids: integer|Long[] expected";
+            }
+            if (message.remark != null && message.hasOwnProperty("remark"))
+                if (!$util.isString(message.remark))
+                    return "remark: string expected";
+            if (message.is_super_admin != null && message.hasOwnProperty("is_super_admin"))
+                if (typeof message.is_super_admin !== "boolean")
+                    return "is_super_admin: boolean expected";
+            return null;
+        };
 
-            /**
-             * Creates a Role message from a plain object. Also converts values to their respective internal types.
-             * @function fromObject
-             * @memberof dashboard.ListRoleConfResp.Role
-             * @static
-             * @param {Object.<string,*>} object Plain object
-             * @returns {dashboard.ListRoleConfResp.Role} Role
-             */
-            Role.fromObject = function fromObject(object) {
-                if (object instanceof $root.dashboard.ListRoleConfResp.Role)
-                    return object;
-                let message = new $root.dashboard.ListRoleConfResp.Role();
-                if (object.role_id != null)
-                    if ($util.Long)
-                        (message.role_id = $util.Long.fromValue(object.role_id)).unsigned = true;
-                    else if (typeof object.role_id === "string")
-                        message.role_id = parseInt(object.role_id, 10);
-                    else if (typeof object.role_id === "number")
-                        message.role_id = object.role_id;
-                    else if (typeof object.role_id === "object")
-                        message.role_id = new $util.LongBits(object.role_id.low >>> 0, object.role_id.high >>> 0).toNumber(true);
-                if (object.name != null)
-                    message.name = String(object.name);
-                if (object.status != null)
-                    message.status = object.status | 0;
-                if (object.perm_ids) {
-                    if (!Array.isArray(object.perm_ids))
-                        throw TypeError(".dashboard.ListRoleConfResp.Role.perm_ids: array expected");
-                    message.perm_ids = [];
-                    for (let i = 0; i < object.perm_ids.length; ++i)
-                        if ($util.Long)
-                            (message.perm_ids[i] = $util.Long.fromValue(object.perm_ids[i])).unsigned = true;
-                        else if (typeof object.perm_ids[i] === "string")
-                            message.perm_ids[i] = parseInt(object.perm_ids[i], 10);
-                        else if (typeof object.perm_ids[i] === "number")
-                            message.perm_ids[i] = object.perm_ids[i];
-                        else if (typeof object.perm_ids[i] === "object")
-                            message.perm_ids[i] = new $util.LongBits(object.perm_ids[i].low >>> 0, object.perm_ids[i].high >>> 0).toNumber(true);
-                }
-                if (object.remark != null)
-                    message.remark = String(object.remark);
-                if (object.is_super_admin != null)
-                    message.is_super_admin = Boolean(object.is_super_admin);
-                return message;
-            };
-
-            /**
-             * Creates a plain object from a Role message. Also converts values to other types if specified.
-             * @function toObject
-             * @memberof dashboard.ListRoleConfResp.Role
-             * @static
-             * @param {dashboard.ListRoleConfResp.Role} message Role
-             * @param {$protobuf.IConversionOptions} [options] Conversion options
-             * @returns {Object.<string,*>} Plain object
-             */
-            Role.toObject = function toObject(message, options) {
-                if (!options)
-                    options = {};
-                let object = {};
-                if (options.arrays || options.defaults)
-                    object.perm_ids = [];
-                if (options.defaults) {
-                    if ($util.Long) {
-                        let long = new $util.Long(0, 0, true);
-                        object.role_id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                    } else
-                        object.role_id = options.longs === String ? "0" : 0;
-                    object.name = "";
-                    object.status = 0;
-                    object.remark = "";
-                    object.is_super_admin = false;
-                }
-                if (message.role_id != null && message.hasOwnProperty("role_id"))
-                    if (typeof message.role_id === "number")
-                        object.role_id = options.longs === String ? String(message.role_id) : message.role_id;
-                    else
-                        object.role_id = options.longs === String ? $util.Long.prototype.toString.call(message.role_id) : options.longs === Number ? new $util.LongBits(message.role_id.low >>> 0, message.role_id.high >>> 0).toNumber(true) : message.role_id;
-                if (message.name != null && message.hasOwnProperty("name"))
-                    object.name = message.name;
-                if (message.status != null && message.hasOwnProperty("status"))
-                    object.status = message.status;
-                if (message.perm_ids && message.perm_ids.length) {
-                    object.perm_ids = [];
-                    for (let j = 0; j < message.perm_ids.length; ++j)
-                        if (typeof message.perm_ids[j] === "number")
-                            object.perm_ids[j] = options.longs === String ? String(message.perm_ids[j]) : message.perm_ids[j];
-                        else
-                            object.perm_ids[j] = options.longs === String ? $util.Long.prototype.toString.call(message.perm_ids[j]) : options.longs === Number ? new $util.LongBits(message.perm_ids[j].low >>> 0, message.perm_ids[j].high >>> 0).toNumber(true) : message.perm_ids[j];
-                }
-                if (message.remark != null && message.hasOwnProperty("remark"))
-                    object.remark = message.remark;
-                if (message.is_super_admin != null && message.hasOwnProperty("is_super_admin"))
-                    object.is_super_admin = message.is_super_admin;
+        /**
+         * Creates a Role message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.Role
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.Role} Role
+         */
+        Role.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.Role)
                 return object;
-            };
+            let message = new $root.dashboard.Role();
+            if (object.role_id != null)
+                if ($util.Long)
+                    (message.role_id = $util.Long.fromValue(object.role_id)).unsigned = true;
+                else if (typeof object.role_id === "string")
+                    message.role_id = parseInt(object.role_id, 10);
+                else if (typeof object.role_id === "number")
+                    message.role_id = object.role_id;
+                else if (typeof object.role_id === "object")
+                    message.role_id = new $util.LongBits(object.role_id.low >>> 0, object.role_id.high >>> 0).toNumber(true);
+            if (object.name != null)
+                message.name = String(object.name);
+            if (object.status != null)
+                message.status = object.status | 0;
+            if (object.perm_ids) {
+                if (!Array.isArray(object.perm_ids))
+                    throw TypeError(".dashboard.Role.perm_ids: array expected");
+                message.perm_ids = [];
+                for (let i = 0; i < object.perm_ids.length; ++i)
+                    if ($util.Long)
+                        (message.perm_ids[i] = $util.Long.fromValue(object.perm_ids[i])).unsigned = true;
+                    else if (typeof object.perm_ids[i] === "string")
+                        message.perm_ids[i] = parseInt(object.perm_ids[i], 10);
+                    else if (typeof object.perm_ids[i] === "number")
+                        message.perm_ids[i] = object.perm_ids[i];
+                    else if (typeof object.perm_ids[i] === "object")
+                        message.perm_ids[i] = new $util.LongBits(object.perm_ids[i].low >>> 0, object.perm_ids[i].high >>> 0).toNumber(true);
+            }
+            if (object.remark != null)
+                message.remark = String(object.remark);
+            if (object.is_super_admin != null)
+                message.is_super_admin = Boolean(object.is_super_admin);
+            return message;
+        };
 
-            /**
-             * Converts this Role to JSON.
-             * @function toJSON
-             * @memberof dashboard.ListRoleConfResp.Role
-             * @instance
-             * @returns {Object.<string,*>} JSON object
-             */
-            Role.prototype.toJSON = function toJSON() {
-                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-            };
+        /**
+         * Creates a plain object from a Role message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.Role
+         * @static
+         * @param {dashboard.Role} message Role
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Role.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults)
+                object.perm_ids = [];
+            if (options.defaults) {
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, true);
+                    object.role_id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.role_id = options.longs === String ? "0" : 0;
+                object.name = "";
+                object.status = 0;
+                object.remark = "";
+                object.is_super_admin = false;
+            }
+            if (message.role_id != null && message.hasOwnProperty("role_id"))
+                if (typeof message.role_id === "number")
+                    object.role_id = options.longs === String ? String(message.role_id) : message.role_id;
+                else
+                    object.role_id = options.longs === String ? $util.Long.prototype.toString.call(message.role_id) : options.longs === Number ? new $util.LongBits(message.role_id.low >>> 0, message.role_id.high >>> 0).toNumber(true) : message.role_id;
+            if (message.name != null && message.hasOwnProperty("name"))
+                object.name = message.name;
+            if (message.status != null && message.hasOwnProperty("status"))
+                object.status = message.status;
+            if (message.perm_ids && message.perm_ids.length) {
+                object.perm_ids = [];
+                for (let j = 0; j < message.perm_ids.length; ++j)
+                    if (typeof message.perm_ids[j] === "number")
+                        object.perm_ids[j] = options.longs === String ? String(message.perm_ids[j]) : message.perm_ids[j];
+                    else
+                        object.perm_ids[j] = options.longs === String ? $util.Long.prototype.toString.call(message.perm_ids[j]) : options.longs === Number ? new $util.LongBits(message.perm_ids[j].low >>> 0, message.perm_ids[j].high >>> 0).toNumber(true) : message.perm_ids[j];
+            }
+            if (message.remark != null && message.hasOwnProperty("remark"))
+                object.remark = message.remark;
+            if (message.is_super_admin != null && message.hasOwnProperty("is_super_admin"))
+                object.is_super_admin = message.is_super_admin;
+            return object;
+        };
 
-            /**
-             * Gets the default type url for Role
-             * @function getTypeUrl
-             * @memberof dashboard.ListRoleConfResp.Role
-             * @static
-             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-             * @returns {string} The default type url
-             */
-            Role.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-                if (typeUrlPrefix === undefined) {
-                    typeUrlPrefix = "type.googleapis.com";
-                }
-                return typeUrlPrefix + "/dashboard.ListRoleConfResp.Role";
-            };
+        /**
+         * Converts this Role to JSON.
+         * @function toJSON
+         * @memberof dashboard.Role
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Role.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
 
-            return Role;
-        })();
+        /**
+         * Gets the default type url for Role
+         * @function getTypeUrl
+         * @memberof dashboard.Role
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        Role.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.Role";
+        };
 
-        return ListRoleConfResp;
+        return Role;
     })();
 
     dashboard.DeleteMenuConfReq = (function() {
@@ -7950,6 +8847,235 @@ export const dashboard = $root.dashboard = (() => {
         };
 
         return User;
+    })();
+
+    dashboard.Page = (function() {
+
+        /**
+         * Properties of a Page.
+         * @memberof dashboard
+         * @interface IPage
+         * @property {number|null} [page_size] Page page_size
+         * @property {number|null} [page] Page page
+         */
+
+        /**
+         * Constructs a new Page.
+         * @memberof dashboard
+         * @classdesc Represents a Page.
+         * @implements IPage
+         * @constructor
+         * @param {dashboard.IPage=} [properties] Properties to set
+         */
+        function Page(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Page page_size.
+         * @member {number} page_size
+         * @memberof dashboard.Page
+         * @instance
+         */
+        Page.prototype.page_size = 0;
+
+        /**
+         * Page page.
+         * @member {number} page
+         * @memberof dashboard.Page
+         * @instance
+         */
+        Page.prototype.page = 0;
+
+        /**
+         * Creates a new Page instance using the specified properties.
+         * @function create
+         * @memberof dashboard.Page
+         * @static
+         * @param {dashboard.IPage=} [properties] Properties to set
+         * @returns {dashboard.Page} Page instance
+         */
+        Page.create = function create(properties) {
+            return new Page(properties);
+        };
+
+        /**
+         * Encodes the specified Page message. Does not implicitly {@link dashboard.Page.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.Page
+         * @static
+         * @param {dashboard.IPage} message Page message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Page.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.page_size != null && Object.hasOwnProperty.call(message, "page_size"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.page_size);
+            if (message.page != null && Object.hasOwnProperty.call(message, "page"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.page);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified Page message, length delimited. Does not implicitly {@link dashboard.Page.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.Page
+         * @static
+         * @param {dashboard.IPage} message Page message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Page.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a Page message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.Page
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.Page} Page
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Page.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.Page();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.page_size = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.page = reader.uint32();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a Page message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.Page
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.Page} Page
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Page.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a Page message.
+         * @function verify
+         * @memberof dashboard.Page
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Page.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.page_size != null && message.hasOwnProperty("page_size"))
+                if (!$util.isInteger(message.page_size))
+                    return "page_size: integer expected";
+            if (message.page != null && message.hasOwnProperty("page"))
+                if (!$util.isInteger(message.page))
+                    return "page: integer expected";
+            return null;
+        };
+
+        /**
+         * Creates a Page message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.Page
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.Page} Page
+         */
+        Page.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.Page)
+                return object;
+            let message = new $root.dashboard.Page();
+            if (object.page_size != null)
+                message.page_size = object.page_size >>> 0;
+            if (object.page != null)
+                message.page = object.page >>> 0;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a Page message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.Page
+         * @static
+         * @param {dashboard.Page} message Page
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Page.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.page_size = 0;
+                object.page = 0;
+            }
+            if (message.page_size != null && message.hasOwnProperty("page_size"))
+                object.page_size = message.page_size;
+            if (message.page != null && message.hasOwnProperty("page"))
+                object.page = message.page;
+            return object;
+        };
+
+        /**
+         * Converts this Page to JSON.
+         * @function toJSON
+         * @memberof dashboard.Page
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Page.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for Page
+         * @function getTypeUrl
+         * @memberof dashboard.Page
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        Page.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.Page";
+        };
+
+        return Page;
     })();
 
     return dashboard;

@@ -47,6 +47,11 @@ import { DashboardService } from '~/rpc/proto/dashboard_api'
 import { encryptRSA } from '~/composables/encrypt'
 import { useUserStore } from '~/stores/user'
 
+// keep-alive 匹配的是组件的 name 选项，不是 route.name 本身,所以要定义一下组件name
+defineOptions({
+  name: '/rbac/role'
+})
+
 const loading = ref(false)
 const userInfo = reactive({
   id: '',

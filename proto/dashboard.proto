@@ -100,6 +100,30 @@ service Dashboard {
         method: "POST"
       };
   };
+
+  rpc ListUser(ListUserReq) returns (ListUserResp) {
+      option (httpext.http_rule) = {
+        method: "GET"
+      };
+  };
+}
+
+message ListUserReq {
+  string name = 1;
+  uint64 user_id = 2;
+  uint32 status = 3;
+  uint64 role_id = 4;
+  Page page = 5;
+}
+
+message ListUserResp {
+  message Item {
+    User user = 1;
+    repeated Role roles = 3;
+  }
+
+  repeated Item list = 1;
+  uint32 total = 2;
 }
 
 message DeleteRoleConfReq {
@@ -138,20 +162,21 @@ message ListRoleConfReq {
   int32 status = 2;
   bool only_super_admin = 3;
   bool without_super_admin = 4;
+  Page page = 5;
 }
 
 message ListRoleConfResp {
-  message Role {
-    uint64 role_id = 1; // 角色id
-    string name = 2; // 角色名称
-    int32 status = 3; // 状态，参考enum RoleStatus
-    repeated uint64 perm_ids = 4; // 权限id
-    string remark = 5; // 备注
-    bool is_super_admin = 6; // 是否超级管理员
-  }
-
   repeated Role list = 1;
   uint32 total = 2;
+}
+
+message Role {
+  uint64 role_id = 1; // 角色id
+  string name = 2; // 角色名称
+  int32 status = 3; // 状态，参考enum RoleStatus
+  repeated uint64 perm_ids = 4; // 权限id
+  string remark = 5; // 备注
+  bool is_super_admin = 6; // 是否超级管理员
 }
 
 message DeleteMenuConfReq {
@@ -276,4 +301,9 @@ message User {
   uint32 status = 3;
   uint64 user_id = 4;
   int64 last_login_at = 5;
+}
+
+message Page {
+  uint32 page_size = 1;
+  uint32 page = 2;
 }

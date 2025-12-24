@@ -14,8 +14,7 @@
                 <template #default="scope">
                     <el-button link type="primary" size="small" @click="handleEditMenu(scope.row)">修改</el-button>
                     <el-popconfirm confirm-button-text="Yes" cancel-button-text="No" :icon="InfoFilled"
-                        icon-color="#626AEF" title="确定删除此菜单(如果有自菜单会被一起移除)?"
-                        @confirm="handleDeleteSaveMenuForm(scope.row.id)">
+                        icon-color="#626AEF" title="确定删除此菜单(如果有自菜单会被一起移除)?" @confirm="handleDeleteMenu(scope.row.id)">
                         <template #reference>
                             <el-button link type="danger" size="small">删除</el-button>
                         </template>
@@ -25,8 +24,10 @@
         </el-table>
     </div>
 
-    <el-dialog v-model="dialogVisible" title="增加菜单" width="30%" :before-close="handleBeforeCloseSaveMenuForm">
-        <el-form ref="saveMenuFormRef" :model="saveMenuForm" status-icon :rules="saveMenuFormRules" label-width="120px">
+    <el-dialog v-model="dialogVisible" :title="saveMenuForm.formTitle" width="30%"
+        :before-close="handleBeforeCloseSaveMenuForm">
+        <el-form ref="saveMenuFormRef" :model="saveMenuForm" status-icon :rules="saveMenuFormRules" label-width="120px"
+            v-loading="loading">
             <el-form-item label="菜单名称" prop="name">
                 <el-input v-model="saveMenuForm.name" autocomplete="off" />
             </el-form-item>
@@ -59,30 +60,33 @@
                 <el-button @click="handleAddMenuService">新增可访问接口</el-button>
             </el-form-item>
             <el-form-item label="父菜单">
-                <el-select v-model="saveMenuForm.pid" placeholder="请选择父菜单" filterable clearable>
+                <el-select v-model="saveMenuForm.pid" placeholder="请选择父菜单" filterable clearable
+                    :filter-method="onSearchParsentMenuSelectOption" ref="parentMenuOptionSelectRef">
                     <el-option :label="menu.name" :value="menu.id" v-for="menu in menuList" style="display: none;" />
-                    <el-tree :data="menuTree" node-key="id" :props="treeProps" highlight-current default-expand-all
-                        @node-click="handleSelectParentMenuForSaveMenu" />
+                    <el-tree :data="parentMenuOptionTree" node-key="id" :props="treeProps" highlight-current
+                        default-expand-all @node-click="handleSelectParentMenuForSaveMenu"
+                        :current-node-key="saveMenuForm.pid ?? undefined" />
                 </el-select>
             </el-form-item>
+            <el-button @click="handleBeforeCloseSaveMenuForm">取消</el-button>
+            <el-button type="primary" @click="handleResetSaveMenuForm">重置</el-button>
+            <el-button type="primary" @click="handleCommitSaveMenuForm">确认</el-button>
         </el-form>
-        <template #footer>
-            <span class="dialog-footer">
-                <el-button @click="handleBeforeCloseSaveMenuForm">取消</el-button>
-                <el-button type="primary" @click="handleResetSaveMenuForm">重置</el-button>
-                <el-button type="primary" @click="handleCommitSaveMenuForm">确认</el-button>
-            </span>
-        </template>
     </el-dialog>
 </template>
 
 <script setup lang="ts">
-import { onMounted, reactive, ref, computed, toRaw } from 'vue'
-import { dashboard } from '~/rpc/proto/dashboard'
+import { onMounted, reactive, ref, computed } from 'vue'
 import { DashboardService } from '~/rpc/proto/dashboard_api'
 import { ElMessage, FormInstance } from 'element-plus'
 import { InfoFilled } from '@element-plus/icons-vue'
-import { useMenuConfStore } from '~/stores/menuConf'
+import { getPathTypeByName, fetchMenuConfs, getOrFetchMenuConfs, genNextRouteServiceId } from '~/composables/menuConf'
+import type { Menu, RouteService, MenuSimpleInfo } from '~/types/menuConf'
+
+// keep-alive 匹配的是组件的 name 选项，不是 route.name 本身,所以要定义一下组件name
+defineOptions({
+    name: '/rbac/menu'
+})
 
 const loading = ref(false)
 
@@ -103,6 +107,7 @@ const saveMenuFormRules = reactive({
 })
 
 const saveMenuForm = reactive({
+    formTitle: '增加菜单',
     id: null as number | null,
     name: '',
     path: '',
@@ -118,6 +123,7 @@ const resetSaveMenuForm = () => {
     saveMenuForm.services = []
     saveMenuForm.pid = null
     saveMenuForm.pathType = 0
+    saveMenuForm.formTitle = '增加菜单'
 }
 
 const saveMenuFormPathTypeStr = computed({
@@ -129,18 +135,56 @@ const saveMenuFormPathTypeStr = computed({
     },
 })
 
-interface RouteService {
-    service: string
-    id: number
+const parentMenuOptionTree = ref<Menu[]>([])
+
+const onSearchParsentMenuSelectOption = function (query: string) {
+    if (!query) {
+        parentMenuOptionTree.value = menuTree.value
+        return
+    }
+
+    parentMenuOptionTree.value = []
+    const hitQueryKeywardMenus: Menu[] = []
+    menuMap.forEach((menu) => {
+        if (menu.name.includes(query)) {
+            hitQueryKeywardMenus.push(menu)
+            return true
+        }
+    })
+
+    const hitQueryKeywardTopMenus: Map<number, Menu> = new Map()
+    for (const menu of hitQueryKeywardMenus) {
+        if (!menu.pid) {
+            parentMenuOptionTree.value.push(menu)
+            hitQueryKeywardTopMenus.set(menu.id, menu)
+            continue
+        }
+
+        let parentMenu = menuMap.get(menu.pid)
+        if (!parentMenu) {
+            continue
+        }
+
+        while (parentMenu.pid > 0) {
+            parentMenu = menuMap.get(parentMenu.pid)
+            if (!parentMenu) {
+                break
+            }
+        }
+
+        if (parentMenu && !hitQueryKeywardTopMenus.has(parentMenu.id)) {
+            parentMenuOptionTree.value.push(parentMenu)
+            hitQueryKeywardTopMenus.set(parentMenu.id, parentMenu)
+        }
+    }
 }
 
-let routeServiceNextId: number = 0
-
 const handleEditMenu = function (row: Menu) {
+    saveMenuForm.formTitle = '编辑菜单'
     saveMenuForm.id = row.id
     saveMenuForm.name = row.name
     saveMenuForm.path = row.path
-    saveMenuForm.pathType = Number(Object.keys(menuTypeNameMap).find(key => menuTypeNameMap[key as menuType] === row.pathTypeName))
+    saveMenuForm.pathType = getPathTypeByName(row.pathTypeName)
     saveMenuForm.services = []
     for (const service of row.services) {
         saveMenuForm.services.push({
@@ -153,16 +197,17 @@ const handleEditMenu = function (row: Menu) {
     dialogVisible.value = true
 }
 
-const handleSelectParentMenuForSaveMenu = (node: any) => {
+const parentMenuOptionSelectRef = ref<HTMLSelectElement>()
+
+const handleSelectParentMenuForSaveMenu = (node: Menu) => {
     saveMenuForm.pid = node.id
 }
 
 const handleAddMenuService = () => {
     saveMenuForm.services.push({
         service: '',
-        id: ++routeServiceNextId,
+        id: genNextRouteServiceId(),
     })
-    console.log(saveMenuForm.services)
 }
 
 const removeServiceForReadySaveMenu = (index: number) => {
@@ -174,7 +219,7 @@ const removeServiceForReadySaveMenu = (index: number) => {
     }
 }
 
-const handleDeleteSaveMenuForm = async function (id: number) {
+const handleDeleteMenu = async function (id: number) {
     loading.value = true
     await DashboardService.DeleteMenuConf({
         perm_id: id,
@@ -192,9 +237,21 @@ const handleResetSaveMenuForm = () => {
 }
 
 const handleCommitSaveMenuForm = async () => {
-    console.log(saveMenuForm)
+    let validated: boolean | undefined = false
+    try {
+        validated = await saveMenuFormRef.value?.validate()
+    } catch (err) {
+        ElMessage.error('表单验证失败')
+        return
+    }
+
+    if (!validated) {
+        return
+    }
+
     loading.value = true
     if (saveMenuForm.id) {
+        try {
         await DashboardService.UpdateMenuConf({
             perm_id: saveMenuForm.id,
             name: saveMenuForm.name,
@@ -207,78 +264,58 @@ const handleCommitSaveMenuForm = async () => {
         fetchMenuList()
         dialogVisible.value = false
         resetSaveMenuForm()
+        } catch (error) {
+            ElMessage.error('修改菜单失败')
+            loading.value = false
+        }
         return
     }
 
-    await DashboardService.AddMenuConf({
-        name: saveMenuForm.name,
-        path: saveMenuForm.path,
-        pid: saveMenuForm.pid ? saveMenuForm.pid : 0,
-        services: saveMenuForm.services.map((s) => s.service),
-        path_type: saveMenuForm.pathType,
-    })
-    ElMessage.success('新增菜单成功')
-    fetchMenuList()
-    dialogVisible.value = false
-    resetSaveMenuForm()
+    try {
+        await DashboardService.AddMenuConf({
+            name: saveMenuForm.name,
+            path: saveMenuForm.path,
+            pid: saveMenuForm.pid ? saveMenuForm.pid : 0,
+            services: saveMenuForm.services.map((s) => s.service),
+            path_type: saveMenuForm.pathType,
+        })
+        ElMessage.success('新增菜单成功')
+        fetchMenuList()
+        dialogVisible.value = false
+        resetSaveMenuForm()
+    } catch (error) {
+        ElMessage.error('新增菜单失败')
+        loading.value = false
+    }
 }
 
 const handleBeforeCloseSaveMenuForm = () => {
     dialogVisible.value = false
+    // 清空表单的校验状态
+    saveMenuFormRef.value?.resetFields();
     resetSaveMenuForm()
-}
-
-interface Menu {
-    id: number
-    pid: number
-    name: string
-    path: string
-    services: RouteService[]
-    pathTypeName: string
-    children: Menu[]
 }
 
 let menuTree = ref<Menu[]>([])
 
-interface MenuSimpleInfo {
-    id: number
-    name: string
-}
-
 let menuList = ref<MenuSimpleInfo[]>([])
 
-enum menuType {
-    PAGE = '1',
-    BUTTON = '2',
-    GUIDE = '3',
-    OTHER = '4',
-}
+let menuMap = new Map<number, Menu>()
 
-const menuTypeNameMap = {
-    [menuType.PAGE]: '页面',
-    [menuType.BUTTON]: '按钮',
-    [menuType.GUIDE]: '导航',
-    [menuType.OTHER]: '其他',
-}
-
-const getMenuTypeName = function (menuType: number): string {
-    let pathType = menuType.toString()
-    if (pathType in menuTypeNameMap === false) {
-        pathType = '4'
-    }
-    return menuTypeNameMap[pathType as menuType] || '未知'
-}
-
-onMounted(() => {
-    const menuConfStore = useMenuConfStore()
-    const menuConfState = menuConfStore.menuConfState
-    if (menuConfState) {
-        menuTree.value = menuConfState.menuTree
-        menuList.value = menuConfState.menuSimpleInfoList
+onMounted(async () => {
+    const menus = await getOrFetchMenuConfs(function () {
+        loading.value = true
+    }, function () {
         loading.value = false
+    })
+    if (!menus) {
         return
     }
-    fetchMenuList()
+
+    menuTree.value = menus.menuTree
+    menuList.value = menus.menuList
+    menuMap = menus.menuMap
+    loading.value = false
 })
 
 async function fetchMenuList() {
@@ -286,67 +323,19 @@ async function fetchMenuList() {
 
     menuTree.value = []
     menuList.value = []
+    menuMap.clear()
 
-    let listMenuResp
-    try {
-        listMenuResp = await DashboardService.ListMenuConf({})
-    } catch (error) {
+    const fetchMenusResp = await fetchMenuConfs(function () {
         loading.value = false
+    })
+
+    if (!fetchMenusResp) {
         return
     }
 
-    const menuMap = new Map<number, Menu>()
-    const subMenuList: dashboard.ListMenuConfResp.IMenuConf[] = []
-    for (const item of listMenuResp.list || []) {
-        const services: RouteService[] = []
-        for (const service of item.services || []) {
-            services.push({
-                service: service,
-                id: ++routeServiceNextId,
-            })
-        }
-        const menu = {
-            id: item.perm_id,
-            pid: item.pid,
-            name: item.name,
-            path: item.path,
-            pathTypeName: getMenuTypeName(item.path_type || 3),
-            services: services,
-        } as Menu
-
-        menuList.value.push({
-            id: item.perm_id,
-            name: item.name ? item.name : '',
-        })
-
-        menuMap.set(item.perm_id, menu)
-
-        if (!item.pid) {
-            menuTree.value.push(menu)
-            continue
-        }
-
-        subMenuList.push(item)
-    }
-
-    for (const item of subMenuList) {
-        const parentMenu = menuMap.get(item.pid)
-        if (parentMenu) {
-            if (!parentMenu.children) {
-                parentMenu.children = []
-            }
-
-            const subMenu = menuMap.get(item.perm_id)
-            if (subMenu) {
-                parentMenu.children.push(subMenu)
-            }
-        }
-    }
-
-    useMenuConfStore().setMenuConf({
-        menuTree: toRaw(menuTree.value),
-        menuSimpleInfoList: toRaw(menuList.value),
-    })
+    menuTree.value = fetchMenusResp.menuTree
+    menuList.value = fetchMenusResp.menuList
+    menuMap = fetchMenusResp.menuMap
 
     loading.value = false
 }

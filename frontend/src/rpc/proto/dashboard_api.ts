@@ -69,4 +69,9 @@ export class DashboardService {
     return await request.post('/dashboard/Dashboard/DeleteRoleConf', req)
   };
 
+  /** no comment **/
+  static async ListUser(req: api.dashboard.IListUserReq): Promise<api.dashboard.IListUserResp> {
+    return await request.get('/dashboard/Dashboard/ListUser', { params: req })
+  };
+
 };

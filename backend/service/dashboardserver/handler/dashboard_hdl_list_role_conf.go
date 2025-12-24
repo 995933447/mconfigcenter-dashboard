@@ -16,10 +16,16 @@ func (s *Dashboard) ListRoleConf(ctx context.Context, req *dashboard.ListRoleCon
 
 	listRoleReq := &rbac.ListRoleReq{
 		Scope: rbacx.Scope,
+		Page:  &rbac.Page{},
+	}
+
+	if req.Page != nil {
+		listRoleReq.Page.Page = req.Page.Page
+		listRoleReq.Page.PageSize = req.Page.PageSize
 	}
 
 	if req.Name != "" {
-		listRoleReq.Name = req.Name
+		listRoleReq.NameLike = req.Name
 	}
 
 	if req.Status != 0 {
@@ -41,7 +47,7 @@ func (s *Dashboard) ListRoleConf(ctx context.Context, req *dashboard.ListRoleCon
 	}
 
 	for _, item := range listRoleResp.List {
-		resp.List = append(resp.List, &dashboard.ListRoleConfResp_Role{
+		resp.List = append(resp.List, &dashboard.Role{
 			RoleId:       item.RoleId,
 			Name:         item.Name,
 			Status:       item.Status,

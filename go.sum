@@ -1,9 +1,15 @@
+github.com/995933447/elemutil v0.0.0-20251223195530-dad95e63a6d2 h1:IAijfefbIs06LrB2XqPO85uoB5Cv85Kw0p4MeqH0X4o=
+github.com/995933447/elemutil v0.0.0-20251223195530-dad95e63a6d2/go.mod h1:EF87ykGl7PIcSCF1lmqMHwohMtc8p0uzgP8F2Swg9XA=
 github.com/995933447/rbac v0.0.0-20251208110518-9dc4e2140cea h1:1v2bpfSUVBB78C7itRz23z4ceWyPGwJdSH9ILjzJBEM=
 github.com/995933447/rbac v0.0.0-20251208110518-9dc4e2140cea/go.mod h1:NfR+lzQ4Q77g+8z06FcxjgeIaTM5fHcHvsZa5lsrk0A=
 github.com/995933447/rbac v0.0.0-20251209110059-642f9ebb324e h1:1EK8Pqqxd9Lvcz84Ct23kgh28j7BA1N7IQ+8crQREO4=
 github.com/995933447/rbac v0.0.0-20251209110059-642f9ebb324e/go.mod h1:NfR+lzQ4Q77g+8z06FcxjgeIaTM5fHcHvsZa5lsrk0A=
+github.com/995933447/reflectutil v0.0.0-20230630100141-2cf8599f7a82 h1:2tx2JOVFQ8tUlWWzH7BvLMORFeLLXdIh8KXl9j+FoBQ=
+github.com/995933447/reflectutil v0.0.0-20230630100141-2cf8599f7a82/go.mod h1:Tkho/yq1vuQTuZSuacoXxDkMvU1qtjjbAsB6VEamfa0=
 github.com/995933447/routeredis v0.0.0-20251209050640-6fa810301650 h1:zBNLGbFZ7m0tBKa+UfzRI4SDm4qMChTNQ3iOQGBO8xY=
 github.com/995933447/routeredis v0.0.0-20251209050640-6fa810301650/go.mod h1:0ke5n5XR9NXw8aTQAoPJ1zO3m4LFxOM1LUZxjuH6m5M=
+github.com/995933447/stringhelper-go v0.0.0-20221220072216-628db3bc29d8 h1:q37SO0GTj/dk35jov187h3CACffZle6KjVzgGOrLkBM=
+github.com/995933447/stringhelper-go v0.0.0-20221220072216-628db3bc29d8/go.mod h1:cwkwj1/zndmaLbRYgQqy6qwY/ITAiEMdR+1BGssgXik=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/deatil/go-cryptobin v1.1.1012 h1:Wk3eQfQi0Aa8ZL90RFd34ISj4qPfGye3XWZbrxktrlc=

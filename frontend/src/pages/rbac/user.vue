@@ -51,9 +51,7 @@
     </div>
 
     <div flex justify-center mt-1rem>
-        <el-pagination v-model:current-page="fetchRoleListCond.page" v-model:page-size="fetchRoleListCond.pageSize"
-            :page-sizes="[20, 40, 80, 100]" layout="total, sizes, prev, pager, next, jumper" :total="pageTotal" @size-change="fetchRoleList"
-            @current-change="fetchRoleList"/>
+        <el-pagination background layout="prev, pager, next" :total="pageTotal" />
     </div>
 
     <el-dialog v-model="saveRoleFormDialogVisible" :title="saveRoleForm.formTitle" width="30%"
@@ -112,7 +110,7 @@ import type { Role } from '~/types/roleConf'
 
 // keep-alive 匹配的是组件的 name 选项，不是 route.name 本身,所以要定义一下组件name
 defineOptions({
-    name: '/rbac/role'
+  name: '/rbac/user'
 })
 
 const setRoleMenuDialogVisible = ref(false)
@@ -232,13 +230,13 @@ const handleCommitSaveRoleForm = async function () {
 
     loading.value = true
     try {
-        if (!saveRoleForm.id) {
+        if (!saveRoleForm.id) { 
             await DashboardService.AddRoleConf({
                 name: saveRoleForm.name,
                 perm_ids: saveRoleForm.permIds,
                 status: saveRoleForm.status,
                 is_super_admin: saveRoleForm.isSuperAdmin,
-            })
+            })            
         } else {
             await DashboardService.UpdateRoleConf({
                 role_id: saveRoleForm.id,
@@ -329,9 +327,7 @@ const roleList = ref<Role[]>([])
 const fetchRoleListCond = reactive({
     name: "",
     status: null as number | null,
-    filterSuperAdminStatus: null as number | null,
-    page: 1,
-    pageSize: 20
+    filterSuperAdminStatus: null as number | null
 })
 
 enum statusEnum {
@@ -375,10 +371,6 @@ const fetchRoleList = async function () {
                 listRoleConfReq.without_super_admin = true
                 break
         }
-        listRoleConfReq.page = {
-            page_size: fetchRoleListCond.pageSize,
-            page: fetchRoleListCond.page,
-        }
         const listRoleConfResp = await DashboardService.ListRoleConf(listRoleConfReq)
         pageTotal.value = listRoleConfResp.total as number
         for (const item of listRoleConfResp.list || []) {
@@ -387,7 +379,7 @@ const fetchRoleList = async function () {
                 name: item.name,
                 status: item.status,
                 isSuperAdmin: item.is_super_admin ? item.is_super_admin : false,
-                permIds: item.perm_ids && item.perm_ids.length > 0 ? item.perm_ids : [],
+                permIds: item.perm_ids && item.perm_ids.length > 0 ? item.perm_ids : []
             } as Role)
         }
     } catch (error) {

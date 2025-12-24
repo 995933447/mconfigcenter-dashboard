@@ -1,8 +1,10 @@
 import { defineStore } from 'pinia'
+import type { Menu, MenuSimpleInfo } from '~/composables/menu';
 
 interface MenuConfState {
-    menuTree: Array<any>;
-    menuSimpleInfoList: Array<any>;
+    menuTree: Array<Menu>;
+    menuSimpleInfoList: Array<MenuSimpleInfo>;
+    menuMap: Map<number, Menu>;
 }
 
 export const useMenuConfStore = defineStore('menuConf', {

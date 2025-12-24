@@ -2,6 +2,7 @@
 import { useRoute } from 'vue-router'
 import type { BaseSideMenuItem } from '~/types/emit'
 import { ref, provide } from "vue"
+import { ca } from 'element-plus/es/locales.mjs'
 
 const route = useRoute()
 
@@ -27,6 +28,7 @@ const editableTabs = ref<editableTab[]>([
 provide("base-header-tabs", editableTabs)
 provide("base-header-active-tab", editableTabsValue)
 
+const cachedTabs = ref<string[]>(['/']); // 缓存的路由名称
 const handleBaseSideMenuItemClick = (data: BaseSideMenuItem) => {
   let isNewTab = true
   for (const tab of editableTabs.value) {
@@ -47,17 +49,27 @@ const handleBaseSideMenuItemClick = (data: BaseSideMenuItem) => {
     content: data.title,
   })
   editableTabsValue.value = data.index
+
+  if (!cachedTabs.value.includes(data.index)) {
+    cachedTabs.value.push(data.index);
+  }
 }
 </script>
 
 <template>
   <el-config-provider namespace="ep">
     <template v-if="!isLoginPage">
-      <BaseHeader/>
+      <BaseHeader />
       <div class="main-container flex">
-        <BaseSide @base-side-menu-item-click="handleBaseSideMenuItemClick"/>
+        <BaseSide @base-side-menu-item-click="handleBaseSideMenuItemClick" />
         <div w="full" py="4">
-          <RouterView />
+
+          <router-view v-slot="{ Component, route }">
+            <keep-alive :include="cachedTabs">
+              <component :is="Component" :key="route.name" />
+            </keep-alive>
+          </router-view>
+
         </div>
       </div>
     </template>

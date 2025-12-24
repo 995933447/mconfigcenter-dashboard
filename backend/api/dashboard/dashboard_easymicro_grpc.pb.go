@@ -176,3 +176,11 @@ func (s *Dashboard) DeleteRoleConf(ctx context.Context, in *DeleteRoleConfReq, o
 
 	return s.c.DeleteRoleConf(ctx, in, opts...)
 }
+
+func (s *Dashboard) ListUser(ctx context.Context, in *ListUserReq, opts ...grpc.CallOption) (*ListUserResp, error) {
+	if err := s.prepareConn(); err != nil {
+		return nil, err
+	}
+
+	return s.c.ListUser(ctx, in, opts...)
+}

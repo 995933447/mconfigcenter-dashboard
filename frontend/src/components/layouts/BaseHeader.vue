@@ -39,9 +39,12 @@ const removeTab = (targetName: string) => {
   editableTabs.value = tabs.filter((tab) => tab.name !== targetName)
 }
 
-const hanldeClickTab = (targetName: TabsPaneContext) => {
-  editableTabsValue.value = targetName.paneName as string
-  getRouter()?.push(editableTabsValue.value)
+const hanldeClickTab = (target: TabsPaneContext) => {
+  const targetName = target.paneName as string
+  if (editableTabsValue.value !== targetName) {
+    editableTabsValue.value = targetName
+    getRouter()?.push(targetName); // 仅在目标路由不同的情况下跳转
+  }
 }
 
 </script>
@@ -70,7 +73,6 @@ const hanldeClickTab = (targetName: TabsPaneContext) => {
         :label="item.title"
         :name="item.name"
       >
-        {{ item.content }}
       </el-tab-pane>
     </el-tabs>
 
