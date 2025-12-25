@@ -8,11 +8,8 @@ import (
 	"github.com/995933447/fastlog"
 	"github.com/995933447/mconfigcenter-dashboard/backend/api/commonerr"
 	"github.com/995933447/mconfigcenter-dashboard/backend/api/dashboard"
-	"github.com/995933447/mconfigcenter-dashboard/backend/service/dashboardserver/cache"
 	"github.com/995933447/mconfigcenter-dashboard/backend/service/dashboardserver/util"
-	"github.com/995933447/routeredis"
 	"github.com/995933447/runtimeutil"
-	"github.com/deatil/go-cryptobin/cryptobin/rsa"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 )
@@ -36,37 +33,13 @@ func (s *Dashboard) Login(ctx context.Context, req *dashboard.LoginReq) (*dashbo
 		}
 	}
 
-	priKey, ok, err := routeredis.Hget(cache.GenRSAKeyHashRKey(), cache.RSAKeyHashRKeyFieldPriKey)
+	password, err := util.DecryptUserPassword(req.Password)
 	if err != nil {
 		fastlog.Error(err)
 		return nil, err
 	}
 
-	if !ok {
-		return nil, grpc.NewRPCErr(dashboard.ErrCode_ErrCodeRSAKeysGenerating)
-	}
-
-	rsaObj := rsa.New()
-	decrypted := rsaObj.FromBase64String(req.Password).FromPrivateKey([]byte(priKey)).Decrypt()
-	if decrypted.Error() != nil {
-		priKey, ok, err = routeredis.Hget(cache.GenLastRSAKeyHashRKey(), cache.RSAKeyHashRKeyFieldPriKey)
-		if err != nil {
-			fastlog.Error(err)
-			return nil, err
-		}
-
-		if !ok {
-			return nil, grpc.NewRPCErr(dashboard.ErrCode_ErrCodePasswordIncorrect)
-		}
-
-		decrypted = rsaObj.FromBase64String(req.Password).FromPrivateKey([]byte(priKey)).Decrypt()
-		if decrypted.Error() != nil {
-			return nil, grpc.NewRPCErr(dashboard.ErrCode_ErrCodePasswordIncorrect)
-		}
-	}
-
-	password := decrypted.ToString()
-	ok, err = util.EqualUserPassword(password, user.Password)
+	ok, err := util.EqualUserPassword(password, user.Password)
 	if err != nil {
 		return nil, err
 	}

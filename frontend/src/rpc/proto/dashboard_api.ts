@@ -74,4 +74,19 @@ export class DashboardService {
     return await request.get('/dashboard/Dashboard/ListUser', { params: req })
   };
 
+  /** no comment **/
+  static async AddUser(req: api.dashboard.IAddUserReq): Promise<api.dashboard.IAddUserResp> {
+    return await request.post('/dashboard/Dashboard/AddUser', req)
+  };
+
+  /** no comment **/
+  static async UpdateUser(req: api.dashboard.IUpdateUserReq): Promise<api.dashboard.IUpdateUserResp> {
+    return await request.post('/dashboard/Dashboard/UpdateUser', req)
+  };
+
+  /** no comment **/
+  static async DeleteUser(req: api.dashboard.IDeleteUserReq): Promise<api.dashboard.IDeleteUserResp> {
+    return await request.post('/dashboard/Dashboard/DeleteUser', req)
+  };
+
 };

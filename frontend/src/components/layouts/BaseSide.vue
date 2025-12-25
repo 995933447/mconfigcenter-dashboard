@@ -6,9 +6,11 @@ import {
   Setting,
 } from '@element-plus/icons-vue'
 
-import { defineEmits, onMounted } from 'vue'
+import { defineEmits, ref, watchEffect } from 'vue'
 import type { BaseSideMenuItem } from '~/types/emit'
 import { useRoute } from 'vue-router'
+import { MenuInstance, SubMenuInstance } from 'element-plus';
+import SubMenu from 'element-plus/es/components/menu/src/utils/submenu.mjs';
 
 const emit = defineEmits<{
   (e: 'base-side-menu-item-click', data: BaseSideMenuItem): void
@@ -44,18 +46,23 @@ const rbacMenus:Menu[] = [
   { title: '用户管理', index: '/rbac/user' },
 ]
 
-onMounted(() => {
-  const path = useRoute().path
+const route = useRoute()
+
+const menuRef = ref<MenuInstance>()
+
+watchEffect(() => {
   for (const menu of configMangementMenus) {
-    if (path.startsWith(menu.index)) {
+    if (route.path.startsWith(menu.index)) {
       clickMenuItem(menu.index, menu.title)
+      menuRef.value?.updateActiveIndex(menu.index)
       return
     }
   }
 
   for (const menu of rbacMenus) {
-    if (path.startsWith(menu.index)) {
+    if (route.path.startsWith(menu.index)) {
       clickMenuItem(menu.index, menu.title)
+      menuRef.value?.updateActiveIndex(menu.index)
       return
     }
   }
@@ -70,6 +77,7 @@ onMounted(() => {
     class="el-menu-vertical-demo"
     @open="handleOpen"
     @close="handleClose"
+    ref="menuRef"
   >
     <el-sub-menu index="/config">
       <template #title>

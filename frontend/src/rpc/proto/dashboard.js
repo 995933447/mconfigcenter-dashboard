@@ -561,7 +561,1513 @@ export const dashboard = $root.dashboard = (() => {
          * @variation 2
          */
 
+        /**
+         * Callback as used by {@link dashboard.Dashboard#addUser}.
+         * @memberof dashboard.Dashboard
+         * @typedef AddUserCallback
+         * @type {function}
+         * @param {Error|null} error Error, if any
+         * @param {dashboard.AddUserResp} [response] AddUserResp
+         */
+
+        /**
+         * Calls AddUser.
+         * @function addUser
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.IAddUserReq} request AddUserReq message or plain object
+         * @param {dashboard.Dashboard.AddUserCallback} callback Node-style callback called with the error, if any, and AddUserResp
+         * @returns {undefined}
+         * @variation 1
+         */
+        Object.defineProperty(Dashboard.prototype.addUser = function addUser(request, callback) {
+            return this.rpcCall(addUser, $root.dashboard.AddUserReq, $root.dashboard.AddUserResp, request, callback);
+        }, "name", { value: "AddUser" });
+
+        /**
+         * Calls AddUser.
+         * @function addUser
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.IAddUserReq} request AddUserReq message or plain object
+         * @returns {Promise<dashboard.AddUserResp>} Promise
+         * @variation 2
+         */
+
+        /**
+         * Callback as used by {@link dashboard.Dashboard#updateUser}.
+         * @memberof dashboard.Dashboard
+         * @typedef UpdateUserCallback
+         * @type {function}
+         * @param {Error|null} error Error, if any
+         * @param {dashboard.UpdateUserResp} [response] UpdateUserResp
+         */
+
+        /**
+         * Calls UpdateUser.
+         * @function updateUser
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.IUpdateUserReq} request UpdateUserReq message or plain object
+         * @param {dashboard.Dashboard.UpdateUserCallback} callback Node-style callback called with the error, if any, and UpdateUserResp
+         * @returns {undefined}
+         * @variation 1
+         */
+        Object.defineProperty(Dashboard.prototype.updateUser = function updateUser(request, callback) {
+            return this.rpcCall(updateUser, $root.dashboard.UpdateUserReq, $root.dashboard.UpdateUserResp, request, callback);
+        }, "name", { value: "UpdateUser" });
+
+        /**
+         * Calls UpdateUser.
+         * @function updateUser
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.IUpdateUserReq} request UpdateUserReq message or plain object
+         * @returns {Promise<dashboard.UpdateUserResp>} Promise
+         * @variation 2
+         */
+
+        /**
+         * Callback as used by {@link dashboard.Dashboard#deleteUser}.
+         * @memberof dashboard.Dashboard
+         * @typedef DeleteUserCallback
+         * @type {function}
+         * @param {Error|null} error Error, if any
+         * @param {dashboard.DeleteUserResp} [response] DeleteUserResp
+         */
+
+        /**
+         * Calls DeleteUser.
+         * @function deleteUser
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.IDeleteUserReq} request DeleteUserReq message or plain object
+         * @param {dashboard.Dashboard.DeleteUserCallback} callback Node-style callback called with the error, if any, and DeleteUserResp
+         * @returns {undefined}
+         * @variation 1
+         */
+        Object.defineProperty(Dashboard.prototype.deleteUser = function deleteUser(request, callback) {
+            return this.rpcCall(deleteUser, $root.dashboard.DeleteUserReq, $root.dashboard.DeleteUserResp, request, callback);
+        }, "name", { value: "DeleteUser" });
+
+        /**
+         * Calls DeleteUser.
+         * @function deleteUser
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.IDeleteUserReq} request DeleteUserReq message or plain object
+         * @returns {Promise<dashboard.DeleteUserResp>} Promise
+         * @variation 2
+         */
+
         return Dashboard;
+    })();
+
+    dashboard.DeleteUserReq = (function() {
+
+        /**
+         * Properties of a DeleteUserReq.
+         * @memberof dashboard
+         * @interface IDeleteUserReq
+         * @property {number|Long|null} [user_id] DeleteUserReq user_id
+         */
+
+        /**
+         * Constructs a new DeleteUserReq.
+         * @memberof dashboard
+         * @classdesc Represents a DeleteUserReq.
+         * @implements IDeleteUserReq
+         * @constructor
+         * @param {dashboard.IDeleteUserReq=} [properties] Properties to set
+         */
+        function DeleteUserReq(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * DeleteUserReq user_id.
+         * @member {number|Long} user_id
+         * @memberof dashboard.DeleteUserReq
+         * @instance
+         */
+        DeleteUserReq.prototype.user_id = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * Creates a new DeleteUserReq instance using the specified properties.
+         * @function create
+         * @memberof dashboard.DeleteUserReq
+         * @static
+         * @param {dashboard.IDeleteUserReq=} [properties] Properties to set
+         * @returns {dashboard.DeleteUserReq} DeleteUserReq instance
+         */
+        DeleteUserReq.create = function create(properties) {
+            return new DeleteUserReq(properties);
+        };
+
+        /**
+         * Encodes the specified DeleteUserReq message. Does not implicitly {@link dashboard.DeleteUserReq.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.DeleteUserReq
+         * @static
+         * @param {dashboard.IDeleteUserReq} message DeleteUserReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeleteUserReq.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.user_id != null && Object.hasOwnProperty.call(message, "user_id"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.user_id);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified DeleteUserReq message, length delimited. Does not implicitly {@link dashboard.DeleteUserReq.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.DeleteUserReq
+         * @static
+         * @param {dashboard.IDeleteUserReq} message DeleteUserReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeleteUserReq.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a DeleteUserReq message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.DeleteUserReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.DeleteUserReq} DeleteUserReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeleteUserReq.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.DeleteUserReq();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.user_id = reader.uint64();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a DeleteUserReq message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.DeleteUserReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.DeleteUserReq} DeleteUserReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeleteUserReq.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a DeleteUserReq message.
+         * @function verify
+         * @memberof dashboard.DeleteUserReq
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        DeleteUserReq.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.user_id != null && message.hasOwnProperty("user_id"))
+                if (!$util.isInteger(message.user_id) && !(message.user_id && $util.isInteger(message.user_id.low) && $util.isInteger(message.user_id.high)))
+                    return "user_id: integer|Long expected";
+            return null;
+        };
+
+        /**
+         * Creates a DeleteUserReq message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.DeleteUserReq
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.DeleteUserReq} DeleteUserReq
+         */
+        DeleteUserReq.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.DeleteUserReq)
+                return object;
+            let message = new $root.dashboard.DeleteUserReq();
+            if (object.user_id != null)
+                if ($util.Long)
+                    (message.user_id = $util.Long.fromValue(object.user_id)).unsigned = true;
+                else if (typeof object.user_id === "string")
+                    message.user_id = parseInt(object.user_id, 10);
+                else if (typeof object.user_id === "number")
+                    message.user_id = object.user_id;
+                else if (typeof object.user_id === "object")
+                    message.user_id = new $util.LongBits(object.user_id.low >>> 0, object.user_id.high >>> 0).toNumber(true);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a DeleteUserReq message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.DeleteUserReq
+         * @static
+         * @param {dashboard.DeleteUserReq} message DeleteUserReq
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        DeleteUserReq.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults)
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, true);
+                    object.user_id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.user_id = options.longs === String ? "0" : 0;
+            if (message.user_id != null && message.hasOwnProperty("user_id"))
+                if (typeof message.user_id === "number")
+                    object.user_id = options.longs === String ? String(message.user_id) : message.user_id;
+                else
+                    object.user_id = options.longs === String ? $util.Long.prototype.toString.call(message.user_id) : options.longs === Number ? new $util.LongBits(message.user_id.low >>> 0, message.user_id.high >>> 0).toNumber(true) : message.user_id;
+            return object;
+        };
+
+        /**
+         * Converts this DeleteUserReq to JSON.
+         * @function toJSON
+         * @memberof dashboard.DeleteUserReq
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        DeleteUserReq.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for DeleteUserReq
+         * @function getTypeUrl
+         * @memberof dashboard.DeleteUserReq
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        DeleteUserReq.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.DeleteUserReq";
+        };
+
+        return DeleteUserReq;
+    })();
+
+    dashboard.DeleteUserResp = (function() {
+
+        /**
+         * Properties of a DeleteUserResp.
+         * @memberof dashboard
+         * @interface IDeleteUserResp
+         */
+
+        /**
+         * Constructs a new DeleteUserResp.
+         * @memberof dashboard
+         * @classdesc Represents a DeleteUserResp.
+         * @implements IDeleteUserResp
+         * @constructor
+         * @param {dashboard.IDeleteUserResp=} [properties] Properties to set
+         */
+        function DeleteUserResp(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Creates a new DeleteUserResp instance using the specified properties.
+         * @function create
+         * @memberof dashboard.DeleteUserResp
+         * @static
+         * @param {dashboard.IDeleteUserResp=} [properties] Properties to set
+         * @returns {dashboard.DeleteUserResp} DeleteUserResp instance
+         */
+        DeleteUserResp.create = function create(properties) {
+            return new DeleteUserResp(properties);
+        };
+
+        /**
+         * Encodes the specified DeleteUserResp message. Does not implicitly {@link dashboard.DeleteUserResp.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.DeleteUserResp
+         * @static
+         * @param {dashboard.IDeleteUserResp} message DeleteUserResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeleteUserResp.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified DeleteUserResp message, length delimited. Does not implicitly {@link dashboard.DeleteUserResp.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.DeleteUserResp
+         * @static
+         * @param {dashboard.IDeleteUserResp} message DeleteUserResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeleteUserResp.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a DeleteUserResp message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.DeleteUserResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.DeleteUserResp} DeleteUserResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeleteUserResp.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.DeleteUserResp();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a DeleteUserResp message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.DeleteUserResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.DeleteUserResp} DeleteUserResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeleteUserResp.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a DeleteUserResp message.
+         * @function verify
+         * @memberof dashboard.DeleteUserResp
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        DeleteUserResp.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            return null;
+        };
+
+        /**
+         * Creates a DeleteUserResp message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.DeleteUserResp
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.DeleteUserResp} DeleteUserResp
+         */
+        DeleteUserResp.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.DeleteUserResp)
+                return object;
+            return new $root.dashboard.DeleteUserResp();
+        };
+
+        /**
+         * Creates a plain object from a DeleteUserResp message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.DeleteUserResp
+         * @static
+         * @param {dashboard.DeleteUserResp} message DeleteUserResp
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        DeleteUserResp.toObject = function toObject() {
+            return {};
+        };
+
+        /**
+         * Converts this DeleteUserResp to JSON.
+         * @function toJSON
+         * @memberof dashboard.DeleteUserResp
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        DeleteUserResp.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for DeleteUserResp
+         * @function getTypeUrl
+         * @memberof dashboard.DeleteUserResp
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        DeleteUserResp.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.DeleteUserResp";
+        };
+
+        return DeleteUserResp;
+    })();
+
+    dashboard.UpdateUserReq = (function() {
+
+        /**
+         * Properties of an UpdateUserReq.
+         * @memberof dashboard
+         * @interface IUpdateUserReq
+         * @property {string|null} [name] UpdateUserReq name
+         * @property {number|null} [status] UpdateUserReq status
+         * @property {Array.<number|Long>|null} [role_ids] UpdateUserReq role_ids
+         * @property {string|null} [password] UpdateUserReq password
+         * @property {number|Long|null} [user_id] UpdateUserReq user_id
+         */
+
+        /**
+         * Constructs a new UpdateUserReq.
+         * @memberof dashboard
+         * @classdesc Represents an UpdateUserReq.
+         * @implements IUpdateUserReq
+         * @constructor
+         * @param {dashboard.IUpdateUserReq=} [properties] Properties to set
+         */
+        function UpdateUserReq(properties) {
+            this.role_ids = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * UpdateUserReq name.
+         * @member {string} name
+         * @memberof dashboard.UpdateUserReq
+         * @instance
+         */
+        UpdateUserReq.prototype.name = "";
+
+        /**
+         * UpdateUserReq status.
+         * @member {number} status
+         * @memberof dashboard.UpdateUserReq
+         * @instance
+         */
+        UpdateUserReq.prototype.status = 0;
+
+        /**
+         * UpdateUserReq role_ids.
+         * @member {Array.<number|Long>} role_ids
+         * @memberof dashboard.UpdateUserReq
+         * @instance
+         */
+        UpdateUserReq.prototype.role_ids = $util.emptyArray;
+
+        /**
+         * UpdateUserReq password.
+         * @member {string} password
+         * @memberof dashboard.UpdateUserReq
+         * @instance
+         */
+        UpdateUserReq.prototype.password = "";
+
+        /**
+         * UpdateUserReq user_id.
+         * @member {number|Long} user_id
+         * @memberof dashboard.UpdateUserReq
+         * @instance
+         */
+        UpdateUserReq.prototype.user_id = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * Creates a new UpdateUserReq instance using the specified properties.
+         * @function create
+         * @memberof dashboard.UpdateUserReq
+         * @static
+         * @param {dashboard.IUpdateUserReq=} [properties] Properties to set
+         * @returns {dashboard.UpdateUserReq} UpdateUserReq instance
+         */
+        UpdateUserReq.create = function create(properties) {
+            return new UpdateUserReq(properties);
+        };
+
+        /**
+         * Encodes the specified UpdateUserReq message. Does not implicitly {@link dashboard.UpdateUserReq.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.UpdateUserReq
+         * @static
+         * @param {dashboard.IUpdateUserReq} message UpdateUserReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        UpdateUserReq.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+            if (message.status != null && Object.hasOwnProperty.call(message, "status"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.status);
+            if (message.role_ids != null && message.role_ids.length) {
+                writer.uint32(/* id 4, wireType 2 =*/34).fork();
+                for (let i = 0; i < message.role_ids.length; ++i)
+                    writer.uint64(message.role_ids[i]);
+                writer.ldelim();
+            }
+            if (message.password != null && Object.hasOwnProperty.call(message, "password"))
+                writer.uint32(/* id 5, wireType 2 =*/42).string(message.password);
+            if (message.user_id != null && Object.hasOwnProperty.call(message, "user_id"))
+                writer.uint32(/* id 7, wireType 0 =*/56).uint64(message.user_id);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified UpdateUserReq message, length delimited. Does not implicitly {@link dashboard.UpdateUserReq.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.UpdateUserReq
+         * @static
+         * @param {dashboard.IUpdateUserReq} message UpdateUserReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        UpdateUserReq.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes an UpdateUserReq message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.UpdateUserReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.UpdateUserReq} UpdateUserReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        UpdateUserReq.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.UpdateUserReq();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.name = reader.string();
+                        break;
+                    }
+                case 3: {
+                        message.status = reader.uint32();
+                        break;
+                    }
+                case 4: {
+                        if (!(message.role_ids && message.role_ids.length))
+                            message.role_ids = [];
+                        if ((tag & 7) === 2) {
+                            let end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.role_ids.push(reader.uint64());
+                        } else
+                            message.role_ids.push(reader.uint64());
+                        break;
+                    }
+                case 5: {
+                        message.password = reader.string();
+                        break;
+                    }
+                case 7: {
+                        message.user_id = reader.uint64();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes an UpdateUserReq message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.UpdateUserReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.UpdateUserReq} UpdateUserReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        UpdateUserReq.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an UpdateUserReq message.
+         * @function verify
+         * @memberof dashboard.UpdateUserReq
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        UpdateUserReq.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.name != null && message.hasOwnProperty("name"))
+                if (!$util.isString(message.name))
+                    return "name: string expected";
+            if (message.status != null && message.hasOwnProperty("status"))
+                if (!$util.isInteger(message.status))
+                    return "status: integer expected";
+            if (message.role_ids != null && message.hasOwnProperty("role_ids")) {
+                if (!Array.isArray(message.role_ids))
+                    return "role_ids: array expected";
+                for (let i = 0; i < message.role_ids.length; ++i)
+                    if (!$util.isInteger(message.role_ids[i]) && !(message.role_ids[i] && $util.isInteger(message.role_ids[i].low) && $util.isInteger(message.role_ids[i].high)))
+                        return "role_ids: integer|Long[] expected";
+            }
+            if (message.password != null && message.hasOwnProperty("password"))
+                if (!$util.isString(message.password))
+                    return "password: string expected";
+            if (message.user_id != null && message.hasOwnProperty("user_id"))
+                if (!$util.isInteger(message.user_id) && !(message.user_id && $util.isInteger(message.user_id.low) && $util.isInteger(message.user_id.high)))
+                    return "user_id: integer|Long expected";
+            return null;
+        };
+
+        /**
+         * Creates an UpdateUserReq message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.UpdateUserReq
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.UpdateUserReq} UpdateUserReq
+         */
+        UpdateUserReq.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.UpdateUserReq)
+                return object;
+            let message = new $root.dashboard.UpdateUserReq();
+            if (object.name != null)
+                message.name = String(object.name);
+            if (object.status != null)
+                message.status = object.status >>> 0;
+            if (object.role_ids) {
+                if (!Array.isArray(object.role_ids))
+                    throw TypeError(".dashboard.UpdateUserReq.role_ids: array expected");
+                message.role_ids = [];
+                for (let i = 0; i < object.role_ids.length; ++i)
+                    if ($util.Long)
+                        (message.role_ids[i] = $util.Long.fromValue(object.role_ids[i])).unsigned = true;
+                    else if (typeof object.role_ids[i] === "string")
+                        message.role_ids[i] = parseInt(object.role_ids[i], 10);
+                    else if (typeof object.role_ids[i] === "number")
+                        message.role_ids[i] = object.role_ids[i];
+                    else if (typeof object.role_ids[i] === "object")
+                        message.role_ids[i] = new $util.LongBits(object.role_ids[i].low >>> 0, object.role_ids[i].high >>> 0).toNumber(true);
+            }
+            if (object.password != null)
+                message.password = String(object.password);
+            if (object.user_id != null)
+                if ($util.Long)
+                    (message.user_id = $util.Long.fromValue(object.user_id)).unsigned = true;
+                else if (typeof object.user_id === "string")
+                    message.user_id = parseInt(object.user_id, 10);
+                else if (typeof object.user_id === "number")
+                    message.user_id = object.user_id;
+                else if (typeof object.user_id === "object")
+                    message.user_id = new $util.LongBits(object.user_id.low >>> 0, object.user_id.high >>> 0).toNumber(true);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from an UpdateUserReq message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.UpdateUserReq
+         * @static
+         * @param {dashboard.UpdateUserReq} message UpdateUserReq
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        UpdateUserReq.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults)
+                object.role_ids = [];
+            if (options.defaults) {
+                object.name = "";
+                object.status = 0;
+                object.password = "";
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, true);
+                    object.user_id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.user_id = options.longs === String ? "0" : 0;
+            }
+            if (message.name != null && message.hasOwnProperty("name"))
+                object.name = message.name;
+            if (message.status != null && message.hasOwnProperty("status"))
+                object.status = message.status;
+            if (message.role_ids && message.role_ids.length) {
+                object.role_ids = [];
+                for (let j = 0; j < message.role_ids.length; ++j)
+                    if (typeof message.role_ids[j] === "number")
+                        object.role_ids[j] = options.longs === String ? String(message.role_ids[j]) : message.role_ids[j];
+                    else
+                        object.role_ids[j] = options.longs === String ? $util.Long.prototype.toString.call(message.role_ids[j]) : options.longs === Number ? new $util.LongBits(message.role_ids[j].low >>> 0, message.role_ids[j].high >>> 0).toNumber(true) : message.role_ids[j];
+            }
+            if (message.password != null && message.hasOwnProperty("password"))
+                object.password = message.password;
+            if (message.user_id != null && message.hasOwnProperty("user_id"))
+                if (typeof message.user_id === "number")
+                    object.user_id = options.longs === String ? String(message.user_id) : message.user_id;
+                else
+                    object.user_id = options.longs === String ? $util.Long.prototype.toString.call(message.user_id) : options.longs === Number ? new $util.LongBits(message.user_id.low >>> 0, message.user_id.high >>> 0).toNumber(true) : message.user_id;
+            return object;
+        };
+
+        /**
+         * Converts this UpdateUserReq to JSON.
+         * @function toJSON
+         * @memberof dashboard.UpdateUserReq
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        UpdateUserReq.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for UpdateUserReq
+         * @function getTypeUrl
+         * @memberof dashboard.UpdateUserReq
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        UpdateUserReq.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.UpdateUserReq";
+        };
+
+        return UpdateUserReq;
+    })();
+
+    dashboard.UpdateUserResp = (function() {
+
+        /**
+         * Properties of an UpdateUserResp.
+         * @memberof dashboard
+         * @interface IUpdateUserResp
+         */
+
+        /**
+         * Constructs a new UpdateUserResp.
+         * @memberof dashboard
+         * @classdesc Represents an UpdateUserResp.
+         * @implements IUpdateUserResp
+         * @constructor
+         * @param {dashboard.IUpdateUserResp=} [properties] Properties to set
+         */
+        function UpdateUserResp(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Creates a new UpdateUserResp instance using the specified properties.
+         * @function create
+         * @memberof dashboard.UpdateUserResp
+         * @static
+         * @param {dashboard.IUpdateUserResp=} [properties] Properties to set
+         * @returns {dashboard.UpdateUserResp} UpdateUserResp instance
+         */
+        UpdateUserResp.create = function create(properties) {
+            return new UpdateUserResp(properties);
+        };
+
+        /**
+         * Encodes the specified UpdateUserResp message. Does not implicitly {@link dashboard.UpdateUserResp.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.UpdateUserResp
+         * @static
+         * @param {dashboard.IUpdateUserResp} message UpdateUserResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        UpdateUserResp.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified UpdateUserResp message, length delimited. Does not implicitly {@link dashboard.UpdateUserResp.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.UpdateUserResp
+         * @static
+         * @param {dashboard.IUpdateUserResp} message UpdateUserResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        UpdateUserResp.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes an UpdateUserResp message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.UpdateUserResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.UpdateUserResp} UpdateUserResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        UpdateUserResp.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.UpdateUserResp();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes an UpdateUserResp message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.UpdateUserResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.UpdateUserResp} UpdateUserResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        UpdateUserResp.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an UpdateUserResp message.
+         * @function verify
+         * @memberof dashboard.UpdateUserResp
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        UpdateUserResp.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            return null;
+        };
+
+        /**
+         * Creates an UpdateUserResp message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.UpdateUserResp
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.UpdateUserResp} UpdateUserResp
+         */
+        UpdateUserResp.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.UpdateUserResp)
+                return object;
+            return new $root.dashboard.UpdateUserResp();
+        };
+
+        /**
+         * Creates a plain object from an UpdateUserResp message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.UpdateUserResp
+         * @static
+         * @param {dashboard.UpdateUserResp} message UpdateUserResp
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        UpdateUserResp.toObject = function toObject() {
+            return {};
+        };
+
+        /**
+         * Converts this UpdateUserResp to JSON.
+         * @function toJSON
+         * @memberof dashboard.UpdateUserResp
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        UpdateUserResp.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for UpdateUserResp
+         * @function getTypeUrl
+         * @memberof dashboard.UpdateUserResp
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        UpdateUserResp.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.UpdateUserResp";
+        };
+
+        return UpdateUserResp;
+    })();
+
+    dashboard.AddUserReq = (function() {
+
+        /**
+         * Properties of an AddUserReq.
+         * @memberof dashboard
+         * @interface IAddUserReq
+         * @property {string|null} [name] AddUserReq name
+         * @property {number|null} [status] AddUserReq status
+         * @property {Array.<number|Long>|null} [role_ids] AddUserReq role_ids
+         * @property {string|null} [password] AddUserReq password
+         */
+
+        /**
+         * Constructs a new AddUserReq.
+         * @memberof dashboard
+         * @classdesc Represents an AddUserReq.
+         * @implements IAddUserReq
+         * @constructor
+         * @param {dashboard.IAddUserReq=} [properties] Properties to set
+         */
+        function AddUserReq(properties) {
+            this.role_ids = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * AddUserReq name.
+         * @member {string} name
+         * @memberof dashboard.AddUserReq
+         * @instance
+         */
+        AddUserReq.prototype.name = "";
+
+        /**
+         * AddUserReq status.
+         * @member {number} status
+         * @memberof dashboard.AddUserReq
+         * @instance
+         */
+        AddUserReq.prototype.status = 0;
+
+        /**
+         * AddUserReq role_ids.
+         * @member {Array.<number|Long>} role_ids
+         * @memberof dashboard.AddUserReq
+         * @instance
+         */
+        AddUserReq.prototype.role_ids = $util.emptyArray;
+
+        /**
+         * AddUserReq password.
+         * @member {string} password
+         * @memberof dashboard.AddUserReq
+         * @instance
+         */
+        AddUserReq.prototype.password = "";
+
+        /**
+         * Creates a new AddUserReq instance using the specified properties.
+         * @function create
+         * @memberof dashboard.AddUserReq
+         * @static
+         * @param {dashboard.IAddUserReq=} [properties] Properties to set
+         * @returns {dashboard.AddUserReq} AddUserReq instance
+         */
+        AddUserReq.create = function create(properties) {
+            return new AddUserReq(properties);
+        };
+
+        /**
+         * Encodes the specified AddUserReq message. Does not implicitly {@link dashboard.AddUserReq.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.AddUserReq
+         * @static
+         * @param {dashboard.IAddUserReq} message AddUserReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        AddUserReq.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+            if (message.status != null && Object.hasOwnProperty.call(message, "status"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.status);
+            if (message.role_ids != null && message.role_ids.length) {
+                writer.uint32(/* id 4, wireType 2 =*/34).fork();
+                for (let i = 0; i < message.role_ids.length; ++i)
+                    writer.uint64(message.role_ids[i]);
+                writer.ldelim();
+            }
+            if (message.password != null && Object.hasOwnProperty.call(message, "password"))
+                writer.uint32(/* id 5, wireType 2 =*/42).string(message.password);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified AddUserReq message, length delimited. Does not implicitly {@link dashboard.AddUserReq.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.AddUserReq
+         * @static
+         * @param {dashboard.IAddUserReq} message AddUserReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        AddUserReq.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes an AddUserReq message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.AddUserReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.AddUserReq} AddUserReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        AddUserReq.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.AddUserReq();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.name = reader.string();
+                        break;
+                    }
+                case 3: {
+                        message.status = reader.uint32();
+                        break;
+                    }
+                case 4: {
+                        if (!(message.role_ids && message.role_ids.length))
+                            message.role_ids = [];
+                        if ((tag & 7) === 2) {
+                            let end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.role_ids.push(reader.uint64());
+                        } else
+                            message.role_ids.push(reader.uint64());
+                        break;
+                    }
+                case 5: {
+                        message.password = reader.string();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes an AddUserReq message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.AddUserReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.AddUserReq} AddUserReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        AddUserReq.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an AddUserReq message.
+         * @function verify
+         * @memberof dashboard.AddUserReq
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        AddUserReq.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.name != null && message.hasOwnProperty("name"))
+                if (!$util.isString(message.name))
+                    return "name: string expected";
+            if (message.status != null && message.hasOwnProperty("status"))
+                if (!$util.isInteger(message.status))
+                    return "status: integer expected";
+            if (message.role_ids != null && message.hasOwnProperty("role_ids")) {
+                if (!Array.isArray(message.role_ids))
+                    return "role_ids: array expected";
+                for (let i = 0; i < message.role_ids.length; ++i)
+                    if (!$util.isInteger(message.role_ids[i]) && !(message.role_ids[i] && $util.isInteger(message.role_ids[i].low) && $util.isInteger(message.role_ids[i].high)))
+                        return "role_ids: integer|Long[] expected";
+            }
+            if (message.password != null && message.hasOwnProperty("password"))
+                if (!$util.isString(message.password))
+                    return "password: string expected";
+            return null;
+        };
+
+        /**
+         * Creates an AddUserReq message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.AddUserReq
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.AddUserReq} AddUserReq
+         */
+        AddUserReq.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.AddUserReq)
+                return object;
+            let message = new $root.dashboard.AddUserReq();
+            if (object.name != null)
+                message.name = String(object.name);
+            if (object.status != null)
+                message.status = object.status >>> 0;
+            if (object.role_ids) {
+                if (!Array.isArray(object.role_ids))
+                    throw TypeError(".dashboard.AddUserReq.role_ids: array expected");
+                message.role_ids = [];
+                for (let i = 0; i < object.role_ids.length; ++i)
+                    if ($util.Long)
+                        (message.role_ids[i] = $util.Long.fromValue(object.role_ids[i])).unsigned = true;
+                    else if (typeof object.role_ids[i] === "string")
+                        message.role_ids[i] = parseInt(object.role_ids[i], 10);
+                    else if (typeof object.role_ids[i] === "number")
+                        message.role_ids[i] = object.role_ids[i];
+                    else if (typeof object.role_ids[i] === "object")
+                        message.role_ids[i] = new $util.LongBits(object.role_ids[i].low >>> 0, object.role_ids[i].high >>> 0).toNumber(true);
+            }
+            if (object.password != null)
+                message.password = String(object.password);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from an AddUserReq message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.AddUserReq
+         * @static
+         * @param {dashboard.AddUserReq} message AddUserReq
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        AddUserReq.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults)
+                object.role_ids = [];
+            if (options.defaults) {
+                object.name = "";
+                object.status = 0;
+                object.password = "";
+            }
+            if (message.name != null && message.hasOwnProperty("name"))
+                object.name = message.name;
+            if (message.status != null && message.hasOwnProperty("status"))
+                object.status = message.status;
+            if (message.role_ids && message.role_ids.length) {
+                object.role_ids = [];
+                for (let j = 0; j < message.role_ids.length; ++j)
+                    if (typeof message.role_ids[j] === "number")
+                        object.role_ids[j] = options.longs === String ? String(message.role_ids[j]) : message.role_ids[j];
+                    else
+                        object.role_ids[j] = options.longs === String ? $util.Long.prototype.toString.call(message.role_ids[j]) : options.longs === Number ? new $util.LongBits(message.role_ids[j].low >>> 0, message.role_ids[j].high >>> 0).toNumber(true) : message.role_ids[j];
+            }
+            if (message.password != null && message.hasOwnProperty("password"))
+                object.password = message.password;
+            return object;
+        };
+
+        /**
+         * Converts this AddUserReq to JSON.
+         * @function toJSON
+         * @memberof dashboard.AddUserReq
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        AddUserReq.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for AddUserReq
+         * @function getTypeUrl
+         * @memberof dashboard.AddUserReq
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        AddUserReq.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.AddUserReq";
+        };
+
+        return AddUserReq;
+    })();
+
+    dashboard.AddUserResp = (function() {
+
+        /**
+         * Properties of an AddUserResp.
+         * @memberof dashboard
+         * @interface IAddUserResp
+         */
+
+        /**
+         * Constructs a new AddUserResp.
+         * @memberof dashboard
+         * @classdesc Represents an AddUserResp.
+         * @implements IAddUserResp
+         * @constructor
+         * @param {dashboard.IAddUserResp=} [properties] Properties to set
+         */
+        function AddUserResp(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Creates a new AddUserResp instance using the specified properties.
+         * @function create
+         * @memberof dashboard.AddUserResp
+         * @static
+         * @param {dashboard.IAddUserResp=} [properties] Properties to set
+         * @returns {dashboard.AddUserResp} AddUserResp instance
+         */
+        AddUserResp.create = function create(properties) {
+            return new AddUserResp(properties);
+        };
+
+        /**
+         * Encodes the specified AddUserResp message. Does not implicitly {@link dashboard.AddUserResp.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.AddUserResp
+         * @static
+         * @param {dashboard.IAddUserResp} message AddUserResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        AddUserResp.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified AddUserResp message, length delimited. Does not implicitly {@link dashboard.AddUserResp.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.AddUserResp
+         * @static
+         * @param {dashboard.IAddUserResp} message AddUserResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        AddUserResp.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes an AddUserResp message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.AddUserResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.AddUserResp} AddUserResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        AddUserResp.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.AddUserResp();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes an AddUserResp message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.AddUserResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.AddUserResp} AddUserResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        AddUserResp.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an AddUserResp message.
+         * @function verify
+         * @memberof dashboard.AddUserResp
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        AddUserResp.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            return null;
+        };
+
+        /**
+         * Creates an AddUserResp message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.AddUserResp
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.AddUserResp} AddUserResp
+         */
+        AddUserResp.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.AddUserResp)
+                return object;
+            return new $root.dashboard.AddUserResp();
+        };
+
+        /**
+         * Creates a plain object from an AddUserResp message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.AddUserResp
+         * @static
+         * @param {dashboard.AddUserResp} message AddUserResp
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        AddUserResp.toObject = function toObject() {
+            return {};
+        };
+
+        /**
+         * Converts this AddUserResp to JSON.
+         * @function toJSON
+         * @memberof dashboard.AddUserResp
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        AddUserResp.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for AddUserResp
+         * @function getTypeUrl
+         * @memberof dashboard.AddUserResp
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        AddUserResp.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.AddUserResp";
+        };
+
+        return AddUserResp;
     })();
 
     dashboard.ListUserReq = (function() {
@@ -8534,6 +10040,7 @@ export const dashboard = $root.dashboard = (() => {
          * @property {number|null} [status] User status
          * @property {number|Long|null} [user_id] User user_id
          * @property {number|Long|null} [last_login_at] User last_login_at
+         * @property {Array.<number|Long>|null} [role_ids] User role_ids
          */
 
         /**
@@ -8545,6 +10052,7 @@ export const dashboard = $root.dashboard = (() => {
          * @param {dashboard.IUser=} [properties] Properties to set
          */
         function User(properties) {
+            this.role_ids = [];
             if (properties)
                 for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
@@ -8592,6 +10100,14 @@ export const dashboard = $root.dashboard = (() => {
         User.prototype.last_login_at = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
 
         /**
+         * User role_ids.
+         * @member {Array.<number|Long>} role_ids
+         * @memberof dashboard.User
+         * @instance
+         */
+        User.prototype.role_ids = $util.emptyArray;
+
+        /**
          * Creates a new User instance using the specified properties.
          * @function create
          * @memberof dashboard.User
@@ -8625,6 +10141,12 @@ export const dashboard = $root.dashboard = (() => {
                 writer.uint32(/* id 4, wireType 0 =*/32).uint64(message.user_id);
             if (message.last_login_at != null && Object.hasOwnProperty.call(message, "last_login_at"))
                 writer.uint32(/* id 5, wireType 0 =*/40).int64(message.last_login_at);
+            if (message.role_ids != null && message.role_ids.length) {
+                writer.uint32(/* id 6, wireType 2 =*/50).fork();
+                for (let i = 0; i < message.role_ids.length; ++i)
+                    writer.uint64(message.role_ids[i]);
+                writer.ldelim();
+            }
             return writer;
         };
 
@@ -8681,6 +10203,17 @@ export const dashboard = $root.dashboard = (() => {
                         message.last_login_at = reader.int64();
                         break;
                     }
+                case 6: {
+                        if (!(message.role_ids && message.role_ids.length))
+                            message.role_ids = [];
+                        if ((tag & 7) === 2) {
+                            let end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.role_ids.push(reader.uint64());
+                        } else
+                            message.role_ids.push(reader.uint64());
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -8731,6 +10264,13 @@ export const dashboard = $root.dashboard = (() => {
             if (message.last_login_at != null && message.hasOwnProperty("last_login_at"))
                 if (!$util.isInteger(message.last_login_at) && !(message.last_login_at && $util.isInteger(message.last_login_at.low) && $util.isInteger(message.last_login_at.high)))
                     return "last_login_at: integer|Long expected";
+            if (message.role_ids != null && message.hasOwnProperty("role_ids")) {
+                if (!Array.isArray(message.role_ids))
+                    return "role_ids: array expected";
+                for (let i = 0; i < message.role_ids.length; ++i)
+                    if (!$util.isInteger(message.role_ids[i]) && !(message.role_ids[i] && $util.isInteger(message.role_ids[i].low) && $util.isInteger(message.role_ids[i].high)))
+                        return "role_ids: integer|Long[] expected";
+            }
             return null;
         };
 
@@ -8770,6 +10310,20 @@ export const dashboard = $root.dashboard = (() => {
                     message.last_login_at = object.last_login_at;
                 else if (typeof object.last_login_at === "object")
                     message.last_login_at = new $util.LongBits(object.last_login_at.low >>> 0, object.last_login_at.high >>> 0).toNumber();
+            if (object.role_ids) {
+                if (!Array.isArray(object.role_ids))
+                    throw TypeError(".dashboard.User.role_ids: array expected");
+                message.role_ids = [];
+                for (let i = 0; i < object.role_ids.length; ++i)
+                    if ($util.Long)
+                        (message.role_ids[i] = $util.Long.fromValue(object.role_ids[i])).unsigned = true;
+                    else if (typeof object.role_ids[i] === "string")
+                        message.role_ids[i] = parseInt(object.role_ids[i], 10);
+                    else if (typeof object.role_ids[i] === "number")
+                        message.role_ids[i] = object.role_ids[i];
+                    else if (typeof object.role_ids[i] === "object")
+                        message.role_ids[i] = new $util.LongBits(object.role_ids[i].low >>> 0, object.role_ids[i].high >>> 0).toNumber(true);
+            }
             return message;
         };
 
@@ -8786,6 +10340,8 @@ export const dashboard = $root.dashboard = (() => {
             if (!options)
                 options = {};
             let object = {};
+            if (options.arrays || options.defaults)
+                object.role_ids = [];
             if (options.defaults) {
                 object.username = "";
                 object.password = "";
@@ -8817,6 +10373,14 @@ export const dashboard = $root.dashboard = (() => {
                     object.last_login_at = options.longs === String ? String(message.last_login_at) : message.last_login_at;
                 else
                     object.last_login_at = options.longs === String ? $util.Long.prototype.toString.call(message.last_login_at) : options.longs === Number ? new $util.LongBits(message.last_login_at.low >>> 0, message.last_login_at.high >>> 0).toNumber() : message.last_login_at;
+            if (message.role_ids && message.role_ids.length) {
+                object.role_ids = [];
+                for (let j = 0; j < message.role_ids.length; ++j)
+                    if (typeof message.role_ids[j] === "number")
+                        object.role_ids[j] = options.longs === String ? String(message.role_ids[j]) : message.role_ids[j];
+                    else
+                        object.role_ids[j] = options.longs === String ? $util.Long.prototype.toString.call(message.role_ids[j]) : options.longs === Number ? new $util.LongBits(message.role_ids[j].low >>> 0, message.role_ids[j].high >>> 0).toNumber(true) : message.role_ids[j];
+            }
             return object;
         };
 

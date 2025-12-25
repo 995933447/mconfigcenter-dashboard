@@ -1,46 +1,49 @@
 <template>
     <div mb-1rem>
-        <el-form :inline="true" :model="fetchRoleListCond" :rules="saveRoleFormRules">
-            <el-form-item label="角色名称">
-                <el-input v-model="fetchRoleListCond.name" placeholder="角色名称" clearable />
+        <el-form :inline="true" :model="fetchUserListCond" :rules="saveUserFormRules">
+            <el-form-item label="用户名称">
+                <el-input v-model="fetchUserListCond.name" placeholder="用户名称" style="width: 12rem" clearable />
             </el-form-item>
-            <el-form-item label="角色状态" style="width: 15rem;">
-                <el-select v-model="fetchRoleListCond.status" placeholder="角色状态" clearable>
+            <el-form-item label="用户ID">
+                <el-input v-model="fetchUserListCond.id" placeholder="用户ID" style="width: 12rem;" clearable />
+            </el-form-item>
+            <el-form-item label="用户状态" style="width: 15rem;">
+                <el-select v-model="fetchUserListCond.status" placeholder="用户状态" clearable>
                     <el-option label="正常" value="1" />
                     <el-option label="禁用" value="2" />
                 </el-select>
             </el-form-item>
-            <el-form-item label="是否超管" style="width: 15rem;">
-                <el-select v-model="fetchRoleListCond.filterSuperAdminStatus" placeholder="超级管理员状态" clearable>
-                    <el-option label="仅超级管理员" value="1" />
-                    <el-option label="非超级管理员" value="2" />
+            <el-form-item label="角色" style="width: 15rem;">
+                <el-select v-model="fetchUserListCond.roleId" placeholder="角色" clearable>
+                    <el-option :label="item.name" :value="item.id" v-for="item in roleList" />
                 </el-select>
             </el-form-item>
             <el-form-item>
-                <el-button type="primary" @click="fetchRoleList">查询</el-button>
+                <el-button type="primary" @click="query">查询</el-button>
             </el-form-item>
         </el-form>
     </div>
 
     <div flex justify-left ml-2rem mb-2rem>
-        <el-button type="primary" @click="handleAddRole">新增</el-button>
+        <el-button type="primary" @click="handleAddUser">新增</el-button>
     </div>
 
     <div flex justify-center>
-        <el-table :data="roleList" style="width: 100%" v-loading="loading">
+        <el-table :data="userList" style="width: 95%" v-loading="loading">
             <el-table-column property="id" label="ID" />
             <el-table-column property="name" label="名称" />
-            <el-table-column label="状态" width="120">
-                <template #default="scope">{{ getRoleStatusName(scope.row.status) }}</template>
+            <el-table-column label="状态">
+                <template #default="scope">{{ getUserStatusName(scope.row.status) }}</template>
             </el-table-column>
-            <el-table-column label="是否超级管理员">
-                <template #default="scope">{{ getIsSuperAdminName(scope.row.isSuperAdmin) }}</template>
+            <el-table-column label="状态">
+                <template #default="scope"><el-tag size="small" v-for="role in scope.row.roleNames" :key="role">{{ role }}</el-tag></template>
             </el-table-column>
-            、 <el-table-column label="操作">
+            <el-table-column label="上次登录日期" property="lastLoginAt"></el-table-column>
+            <el-table-column label="操作">
                 <template #default="scope">
-                    <el-button link type="primary" size="small" @click="handleEditRole(scope.row)">修改</el-button>
+                    <el-button link type="primary" size="small" @click="handleEditUser(scope.row)">修改</el-button>
                     <el-popconfirm confirm-button-text="Yes" cancel-button-text="No" :icon="InfoFilled"
-                        icon-color="#626AEF" title="确定删除此角色?" @confirm="handleDeleteRole(scope.row.id)">
+                        icon-color="#626AEF" title="确定删除此角色?" @confirm="handleDeleteUser(scope.row.id)">
                         <template #reference>
                             <el-button link type="danger" size="small">删除</el-button>
                         </template>
@@ -51,49 +54,38 @@
     </div>
 
     <div flex justify-center mt-1rem>
-        <el-pagination background layout="prev, pager, next" :total="pageTotal" />
+        <el-pagination v-model:current-page="fetchUserListCond.page" v-model:page-size="fetchUserListCond.pageSize"
+            :page-sizes="[20, 40, 80, 100]" layout="total, sizes, prev, pager, next, jumper" :total="pageTotal"
+            @size-change="query" @current-change="query" />
     </div>
 
-    <el-dialog v-model="saveRoleFormDialogVisible" :title="saveRoleForm.formTitle" width="30%"
-        :before-close="handleBeforeCloseSaveRoleForm">
-        <el-form ref="saveRoleFormRef" :model="saveRoleForm" status-icon :rules="saveRoleFormRules" label-width="120px">
-            <el-form-item label="角色名称" prop="name">
-                <el-input v-model="saveRoleForm.name" autocomplete="off" />
+    <el-dialog v-model="saveUserFormDialogVisible" :title="saveUserForm.formTitle" width="30%"
+        :before-close="handleBeforeCloseSaveUserForm">
+        <el-form ref="saveUserFormRef" :model="saveUserForm" status-icon :rules="saveUserFormRules" label-width="120px">
+            <el-form-item label="用户名称" prop="name">
+                <el-input v-model="saveUserForm.name" autocomplete="off" />
             </el-form-item>
-            <el-form-item label="角色id" prop="ID" v-show:="saveRoleForm.id">
-                <el-input v-model="saveRoleForm.id" autocomplete="off" disabled />
+            <el-form-item label="用户ID" prop="ID" v-show:="saveUserForm.id">
+                <el-input v-model="saveUserForm.id" autocomplete="off" disabled />
             </el-form-item>
-            <el-form-item label="是否超级管理员">
-                <el-radio-group v-model="isSuperAdminStrOfSaveRoleForm">
-                    <el-radio value="true">是</el-radio>
-                    <el-radio value="false">否</el-radio>
-                </el-radio-group>
+            <el-form-item label="用户密码" prop="password">
+                <el-input v-model="saveUserForm.password" type="password" autocomplete="off" />
             </el-form-item>
             <el-form-item label="状态">
-                <el-radio-group v-model="statusStrOfSaveRoleForm">
+                <el-radio-group v-model="statusStrOfsaveUserForm">
                     <el-radio value="1">正常</el-radio>
                     <el-radio value="2">禁止</el-radio>
                 </el-radio-group>
             </el-form-item>
-            <el-form-item label="菜单权限">
-                <el-button type="primary" @click="handleSetRoleMenu">设置</el-button>
+            <el-form-item label="角色">
+                <el-select v-model="saveUserForm.roleIds" placeholder="角色" multiple clearable>
+                    <el-option :label="item.name" :value="item.id" v-for="item in roleList" />
+                </el-select>
             </el-form-item>
-            <el-button @click="handleBeforeCloseSaveRoleForm">取消</el-button>
-            <el-button type="primary" @click="handleResetSaveRoleForm">重置</el-button>
-            <el-button type="primary" @click="handleCommitSaveRoleForm">确认</el-button>
+            <el-button @click="handleBeforeCloseSaveUserForm">取消</el-button>
+            <el-button type="primary" @click="handleResetSaveUserForm">重置</el-button>
+            <el-button type="primary" @click="handleCommitSaveUserForm">确认</el-button>
         </el-form>
-    </el-dialog>
-
-    <el-dialog v-model="setRoleMenuDialogVisible" width="30%" :before-close="handleBeforeCloseMenuTreeCheckBoxDialog">
-        <el-tree style="max-width: 600px" :data="menuTree" show-checkbox node-key="id" :props="menuTreeProps"
-            ref="menuTreeCheckDialogRef" :default-expand-all="true" @check="handleMenuTreeCheck" v-loading="loading"
-            :default-checked-keys="saveRoleForm.permIds" />
-        <template #footer>
-            <span class="dialog-footer">
-                <el-button type="primary" @click="refreshMenuTree">刷新菜单</el-button>
-                <el-button type="primary" @click="handleConfirmMenuTreeCheck">确认</el-button>
-            </span>
-        </template>
     </el-dialog>
 
 </template>
@@ -104,99 +96,34 @@ import { ElMessage, type FormInstance, type TableColumnCtx, type TableInstance, 
 import { DashboardService } from '~/rpc/proto/dashboard_api'
 import { InfoFilled } from '@element-plus/icons-vue'
 import api from '~/rpc/proto/dashboard'
-import { getOrFetchMenuConfs, fetchMenuConfs } from '~/composables/menuConf'
-import type { Menu } from '~/types/menuConf'
 import type { Role } from '~/types/roleConf'
+import { encryptRSA } from '~/composables/encrypt'
 
 // keep-alive 匹配的是组件的 name 选项，不是 route.name 本身,所以要定义一下组件name
 defineOptions({
-  name: '/rbac/user'
+    name: '/rbac/user'
 })
 
-const setRoleMenuDialogVisible = ref(false)
+const saveUserFormDialogVisible = ref(false)
 
-const menuTreeCheckDialogRef = ref<TreeInstance>()
+const saveUserFormRef = ref<FormInstance>()
 
-const menuTreeProps = {
-    children: 'children',
-    label: 'name',
+const handleResetSaveUserForm = function () {
+    resetSaveUserForm()
 }
 
-let checkedMenuTreeIds: number[] = []
-
-const handleMenuTreeCheck = function (menu: Menu, checked: any) {
-    checkedMenuTreeIds = []
-    for (const checkedKey of checked.checkedKeys) {
-        checkedMenuTreeIds.push(Number(checkedKey))
-    }
+const handleAddUser = function () {
+    saveUserFormDialogVisible.value = true
+    resetSaveUserForm()
 }
 
-const handleConfirmMenuTreeCheck = function () {
-    saveRoleForm.permIds = checkedMenuTreeIds
-    setRoleMenuDialogVisible.value = false
-}
-
-const handleBeforeCloseMenuTreeCheckBoxDialog = function () {
-    checkedMenuTreeIds = saveRoleForm.permIds
-    menuTreeCheckDialogRef.value?.setCheckedKeys(checkedMenuTreeIds)
-    setRoleMenuDialogVisible.value = false
-}
-
-const menuTree = ref<Menu[]>([])
-
-const handleSetRoleMenu = async function () {
-    setRoleMenuDialogVisible.value = true
-
-    const menu = await getOrFetchMenuConfs(() => {
-        loading.value = true
-    }, () => {
-        loading.value = false
-    })
-
-    if (!menu) {
-        return
-    }
-
-    menuTree.value = menu.menuTree
-    loading.value = false
-}
-
-const refreshMenuTree = async function () {
-    loading.value = true
-
-    const menus = await fetchMenuConfs(() => {
-        loading.value = false
-    })
-
-    if (!menus) {
-        return
-    }
-
-    menuTree.value = menus.menuTree
-
-    loading.value = false
-}
-
-const saveRoleFormDialogVisible = ref(false)
-
-const saveRoleFormRef = ref<FormInstance>()
-
-const handleResetSaveRoleForm = function () {
-    resetSaveRoleForm()
-}
-
-const handleAddRole = function () {
-    saveRoleFormDialogVisible.value = true
-    resetSaveRoleForm()
-}
-
-const handleDeleteRole = async function (id: number) {
+const handleDeleteUser = async function (id: number) {
     loading.value = true
     try {
-        await DashboardService.DeleteRoleConf({
-            role_id: id
+        await DashboardService.DeleteUser({
+            user_id: id
         })
-        fetchRoleList()
+        query()
     } catch (error) {
         ElMessage.error('删除失败')
         return
@@ -205,20 +132,19 @@ const handleDeleteRole = async function (id: number) {
     ElMessage.success('删除成功')
 }
 
-const handleEditRole = function (role: Role) {
-    saveRoleForm.formTitle = "修改角色"
-    saveRoleForm.name = role.name
-    saveRoleForm.id = role.id
-    saveRoleForm.status = role.status
-    saveRoleForm.isSuperAdmin = role.isSuperAdmin
-    saveRoleForm.permIds = role.permIds
-    saveRoleFormDialogVisible.value = true
+const handleEditUser = function (user: User) {
+    saveUserForm.formTitle = "修改用户"
+    saveUserForm.name = user.name
+    saveUserForm.id = user.id
+    saveUserForm.status = user.status
+    saveUserForm.roleIds = user.roleIds
+    saveUserFormDialogVisible.value = true
 }
 
-const handleCommitSaveRoleForm = async function () {
+const handleCommitSaveUserForm = async function () {
     let validated: boolean | undefined = false
     try {
-        validated = await saveRoleFormRef.value?.validate()
+        validated = await saveUserFormRef.value?.validate()
     } catch (err) {
         ElMessage.error('表单验证失败')
         return
@@ -230,105 +156,84 @@ const handleCommitSaveRoleForm = async function () {
 
     loading.value = true
     try {
-        if (!saveRoleForm.id) { 
-            await DashboardService.AddRoleConf({
-                name: saveRoleForm.name,
-                perm_ids: saveRoleForm.permIds,
-                status: saveRoleForm.status,
-                is_super_admin: saveRoleForm.isSuperAdmin,
-            })            
-        } else {
-            await DashboardService.UpdateRoleConf({
-                role_id: saveRoleForm.id,
-                name: saveRoleForm.name,
-                perm_ids: saveRoleForm.permIds,
-                status: saveRoleForm.status,
-                is_super_admin: saveRoleForm.isSuperAdmin,
-            })
+        let password = saveUserForm.password
+        if (password.length > 0) {
+            const getRSAPubKeyResp = await DashboardService.GetRSAPubKey({})
+            password = encryptRSA(getRSAPubKeyResp.key as string, password)
         }
 
-        fetchRoleList()
+        if (!saveUserForm.id) {
+            await DashboardService.AddUser({
+                name: saveUserForm.name,
+                password: password,
+                status: saveUserForm.status,
+                role_ids: saveUserForm.roleIds
+            })
+        } else {
+            await DashboardService.UpdateUser({
+                user_id: saveUserForm.id,
+                name: saveUserForm.name,
+                password: password,
+                status: saveUserForm.status,
+                role_ids: saveUserForm.roleIds
+            })
+        }
     } catch (error) {
         loading.value = false
         ElMessage.error('提交失败')
         return
     }
 
-    saveRoleFormDialogVisible.value = false
+    query()
+
+    saveUserFormDialogVisible.value = false
     ElMessage.success('提交成功')
 }
 
-const saveRoleForm = reactive({
-    formTitle: "添加角色",
+const saveUserForm = reactive({
+    formTitle: "添加用户",
     name: "",
     id: null as number | null,
     status: 1,
-    isSuperAdmin: false,
-    permIds: [] as number[]
+    password: "",
+    roleIds: [] as number[]
 })
 
-const resetSaveRoleForm = function () {
-    saveRoleForm.formTitle = "添加角色"
-    saveRoleForm.name = ""
-    saveRoleForm.id = null
-    saveRoleForm.status = 1
-    saveRoleForm.isSuperAdmin = false
-    saveRoleForm.permIds = []
-    checkedMenuTreeIds = []
-    saveRoleFormRef.value?.resetFields()
-    resetMenuTreeCheckDialog()
+const resetSaveUserForm = function () {
+    saveUserForm.formTitle = "添加用户"
+    saveUserForm.name = ""
+    saveUserForm.password = ""
+    saveUserForm.id = null
+    saveUserForm.status = 1
+    saveUserForm.roleIds = []
 }
 
-const resetMenuTreeCheckDialog = function () {
-    menuTreeCheckDialogRef.value?.setCheckedKeys([])
-}
-
-const statusStrOfSaveRoleForm = computed({
+const statusStrOfsaveUserForm = computed({
     get: function () {
-        return String(saveRoleForm.status)
+        return String(saveUserForm.status)
     },
     set: function (value) {
-        return saveRoleForm.status = Number(value)
+        return saveUserForm.status = Number(value)
     }
 })
 
-const isSuperAdminStrOfSaveRoleForm = computed({
-    get: function () {
-        return String(saveRoleForm.isSuperAdmin)
-    },
-    set: function (value) {
-        saveRoleForm.isSuperAdmin = value === 'true'
-    }
-})
-
-const saveRoleFormRules = reactive({
+const saveUserFormRules = reactive({
     name: [
-        { required: true, message: '请输入角色名称', trigger: 'blur' }
+        { required: true, message: '请输入用户名称', trigger: 'blur' }
     ],
     status: [
-        { required: true, message: '请选择角色状态', trigger: 'change' }
-    ],
-    isSuperAdmin: [
-        { required: true, message: '请选择是否超级管理员', trigger: 'change' }
+        { required: true, message: '请选择用户状态', trigger: 'change' }
     ]
 })
 
-const handleBeforeCloseSaveRoleForm = function () {
-    resetSaveRoleForm()
-    saveRoleFormDialogVisible.value = false
+const handleBeforeCloseSaveUserForm = function () {
+    resetSaveUserForm()
+    saveUserFormDialogVisible.value = false
 }
 
 const loading = ref(false)
 
 const pageTotal = ref(0)
-
-const roleList = ref<Role[]>([])
-
-const fetchRoleListCond = reactive({
-    name: "",
-    status: null as number | null,
-    filterSuperAdminStatus: null as number | null
-})
 
 enum statusEnum {
     NORMAL = 1,
@@ -340,47 +245,67 @@ const statusMap = {
     [statusEnum.FORBIDDEN]: "禁止"
 }
 
-const getRoleStatusName = function (status: number): string {
+const getUserStatusName = function (status: number): string {
     if (status in statusEnum === false) {
         status = statusEnum.FORBIDDEN
     }
     return statusMap[status as statusEnum]
 }
 
-const getIsSuperAdminName = function (isSuperAdmin: boolean): string {
-    if (isSuperAdmin) {
-        return '是'
-    }
-    return '否'
+const fetchUserListCond = reactive({
+    id: null as number | null,
+    name: "",
+    status: null as number | null,
+    roleId: null as number | null,
+    page: 1,
+    pageSize: 20
+})
+
+interface User {
+    id: number
+    name: string
+    status: number
+    lastLoginAt: string
+    roleIds: number[]
+    roleNames: string[]
 }
 
-const fetchRoleList = async function () {
+const userList = ref<User[]>([])
+
+const fetchUserList = async function () {
     loading.value = true
-    roleList.value = []
+
+    userList.value = []
+
+    const listUserReq: api.dashboard.IListUserReq = {
+        user_id: fetchUserListCond.id ? fetchUserListCond.id : 0,
+        name: fetchUserListCond.name ? fetchUserListCond.name : "",
+        status: fetchUserListCond.status ? fetchUserListCond.status : 0,
+        role_id: fetchUserListCond.roleId ? fetchUserListCond.roleId : 0,
+        page: {
+            page: fetchUserListCond.page,
+            page_size: fetchUserListCond.pageSize
+        }
+    }
 
     try {
-        const listRoleConfReq: api.dashboard.IListRoleConfReq = {
-            name: fetchRoleListCond.name,
-            status: fetchRoleListCond.status,
-        }
-        switch (Number(fetchRoleListCond.filterSuperAdminStatus)) {
-            case 1:
-                listRoleConfReq.only_super_admin = true
-                break
-            case 2:
-                listRoleConfReq.without_super_admin = true
-                break
-        }
-        const listRoleConfResp = await DashboardService.ListRoleConf(listRoleConfReq)
-        pageTotal.value = listRoleConfResp.total as number
-        for (const item of listRoleConfResp.list || []) {
-            roleList.value.push({
-                id: item.role_id,
-                name: item.name,
-                status: item.status,
-                isSuperAdmin: item.is_super_admin ? item.is_super_admin : false,
-                permIds: item.perm_ids && item.perm_ids.length > 0 ? item.perm_ids : []
-            } as Role)
+        const listUserResp = await DashboardService.ListUser(listUserReq)
+        pageTotal.value = listUserResp.total as number
+        for (const item of listUserResp.list || []) {
+            const roleIds: number[] = []
+            const roleNames: string[] = []
+            for (const role of item.roles || []) {
+                roleIds.push(role.role_id)
+                roleNames.push(role.name ?? "")
+            }
+            userList.value.push({
+                id: item.user?.user_id,
+                name: item.user?.username,
+                status: item.user?.status,
+                lastLoginAt: item.user?.last_login_at ? new Date(item.user?.last_login_at * 1000).toLocaleString() : "",
+                roleIds: roleIds,
+                roleNames: roleNames
+            } as User)
         }
     } catch (error) {
         loading.value = false
@@ -390,15 +315,40 @@ const fetchRoleList = async function () {
     loading.value = false
 }
 
-onMounted(function () {
+const query = function () {
+    fetchUserList()
     fetchRoleList()
+}
+
+const roleList = ref<Role[]>([])
+const roleMap = ref(new Map<number, Role>())
+
+const fetchRoleList = async function () {
+    roleList.value = []
+    roleMap.value = new Map<number, Role>()
+
+    const listRoleConfResp = await DashboardService.ListRoleConf({
+        name: fetchUserListCond.name,
+        status: fetchUserListCond.status,
+    })
+    pageTotal.value = listRoleConfResp.total as number
+    for (const item of listRoleConfResp.list || []) {
+        const role = {
+            id: item.role_id,
+            name: item.name,
+            status: item.status,
+            isSuperAdmin: item.is_super_admin ? item.is_super_admin : false,
+            permIds: item.perm_ids && item.perm_ids.length > 0 ? item.perm_ids : []
+        }
+        roleList.value.push(role as Role)
+        roleMap.value.set(role.id, role as Role)
+    }
+}
+
+onMounted(function () {
+    query()
 })
 
-const tableRef = ref<TableInstance>()
-
-const clearFilter = () => {
-    tableRef.value!.clearFilter()
-}
 
 </script>
 

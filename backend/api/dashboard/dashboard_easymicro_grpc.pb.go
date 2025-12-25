@@ -184,3 +184,27 @@ func (s *Dashboard) ListUser(ctx context.Context, in *ListUserReq, opts ...grpc.
 
 	return s.c.ListUser(ctx, in, opts...)
 }
+
+func (s *Dashboard) AddUser(ctx context.Context, in *AddUserReq, opts ...grpc.CallOption) (*AddUserResp, error) {
+	if err := s.prepareConn(); err != nil {
+		return nil, err
+	}
+
+	return s.c.AddUser(ctx, in, opts...)
+}
+
+func (s *Dashboard) UpdateUser(ctx context.Context, in *UpdateUserReq, opts ...grpc.CallOption) (*UpdateUserResp, error) {
+	if err := s.prepareConn(); err != nil {
+		return nil, err
+	}
+
+	return s.c.UpdateUser(ctx, in, opts...)
+}
+
+func (s *Dashboard) DeleteUser(ctx context.Context, in *DeleteUserReq, opts ...grpc.CallOption) (*DeleteUserResp, error) {
+	if err := s.prepareConn(); err != nil {
+		return nil, err
+	}
+
+	return s.c.DeleteUser(ctx, in, opts...)
+}

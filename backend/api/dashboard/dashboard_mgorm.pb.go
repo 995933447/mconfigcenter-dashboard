@@ -35,6 +35,7 @@ type UserOrm struct {
 	Status      uint32             `json:"status" bson:"status"`
 	UserId      uint64             `json:"user_id" bson:"user_id"`
 	LastLoginAt int64              `json:"last_login_at" bson:"last_login_at"`
+	RoleIds     []uint64           `json:"role_ids" bson:"role_ids"`
 	CreatedAt   time.Time          `json:"created_at,omitempty" bson:"created_at,omitempty"`
 	UpdatedAt   time.Time          `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
 }

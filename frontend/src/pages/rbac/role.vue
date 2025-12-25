@@ -27,7 +27,7 @@
     </div>
 
     <div flex justify-center>
-        <el-table :data="roleList" style="width: 100%" v-loading="loading">
+        <el-table :data="roleList" style="width: 95%" v-loading="loading">
             <el-table-column property="id" label="ID" />
             <el-table-column property="name" label="名称" />
             <el-table-column label="状态" width="120">
@@ -401,12 +401,6 @@ const fetchRoleList = async function () {
 onMounted(function () {
     fetchRoleList()
 })
-
-const tableRef = ref<TableInstance>()
-
-const clearFilter = () => {
-    tableRef.value!.clearFilter()
-}
 
 </script>
 

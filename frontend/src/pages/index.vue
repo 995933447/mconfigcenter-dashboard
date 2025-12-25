@@ -49,7 +49,7 @@ import { useUserStore } from '~/stores/user'
 
 // keep-alive 匹配的是组件的 name 选项，不是 route.name 本身,所以要定义一下组件name
 defineOptions({
-  name: '/rbac/role'
+  name: '/'
 })
 
 const loading = ref(false)

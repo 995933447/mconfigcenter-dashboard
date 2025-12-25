@@ -22,8 +22,8 @@
           <el-input v-model="validateForm.password" type="password" autocomplete="off" />
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submitForm(formRef)">Submit</el-button>
-          <el-button @click="resetForm(formRef)">Reset</el-button>
+          <el-button type="primary" @click="submitForm(formRef)">登录</el-button>
+          <el-button @click="resetForm(formRef)">重置</el-button>
         </el-form-item>
       </el-form>
     </el-card>

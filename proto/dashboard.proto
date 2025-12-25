@@ -20,10 +20,10 @@ enum ErrCode {
 
 service Dashboard {
   rpc GetRSAPubKey(GetRSAPubKeyReq) returns (GetRSAPubKeyResp) {
-      option(httpext.http_rule) = {
-        method: "POST"
-        no_auth: true,
-      };
+    option(httpext.http_rule) = {
+      method: "POST"
+      no_auth: true,
+    };
   };
 
   rpc Login(LoginReq) returns (LoginResp) {
@@ -78,34 +78,83 @@ service Dashboard {
   }
 
   rpc ListRoleConf(ListRoleConfReq) returns (ListRoleConfResp) {
-      option (httpext.http_rule) = {
-        method: "GET"
-      };
+    option (httpext.http_rule) = {
+      method: "GET"
+    };
   };
 
   rpc AddRoleConf(AddRoleConfReq) returns (AddRoleConfResp) {
-      option (httpext.http_rule) = {
-        method: "POST"
-      };
+    option (httpext.http_rule) = {
+      method: "POST"
+    };
   }
 
   rpc UpdateRoleConf(UpdateRoleConfReq) returns (UpdateRoleConfResp) {
-      option (httpext.http_rule) = {
-        method: "POST"
-      };
+    option (httpext.http_rule) = {
+      method: "POST"
+    };
   }
 
   rpc DeleteRoleConf(DeleteRoleConfReq) returns (DeleteRoleConfResp) {
-      option (httpext.http_rule) = {
-        method: "POST"
-      };
+    option (httpext.http_rule) = {
+      method: "POST"
+    };
   };
 
   rpc ListUser(ListUserReq) returns (ListUserResp) {
-      option (httpext.http_rule) = {
-        method: "GET"
-      };
+    option (httpext.http_rule) = {
+      method: "GET"
+    };
   };
+
+  rpc AddUser(AddUserReq) returns (AddUserResp) {
+    option (httpext.http_rule) = {
+      method: "POST"
+    };
+  };
+
+  rpc UpdateUser(UpdateUserReq) returns (UpdateUserResp) {
+    option (httpext.http_rule) = {
+      method: "POST"
+    };
+  }
+
+  rpc DeleteUser(DeleteUserReq) returns (DeleteUserResp) {
+    option (httpext.http_rule) = {
+      method: "POST"
+    };
+  }
+}
+
+message DeleteUserReq {
+  uint64 user_id = 1;
+}
+
+message DeleteUserResp {
+
+}
+
+message UpdateUserReq {
+  string name = 1;
+  uint32 status = 3;
+  repeated uint64 role_ids = 4;
+  string password = 5;
+  uint64 user_id = 7;
+}
+
+message UpdateUserResp {
+
+}
+
+message AddUserReq {
+  string name = 1;
+  uint32 status = 3;
+  repeated uint64 role_ids = 4;
+  string password = 5;
+}
+
+message AddUserResp {
+
 }
 
 message ListUserReq {
@@ -301,6 +350,7 @@ message User {
   uint32 status = 3;
   uint64 user_id = 4;
   int64 last_login_at = 5;
+  repeated uint64 role_ids = 6;
 }
 
 message Page {

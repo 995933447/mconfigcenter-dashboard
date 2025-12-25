@@ -48,10 +48,10 @@ func (s *Dashboard) GetUserInfo(ctx context.Context, req *dashboard.GetUserInfoR
 	}
 
 	listUserRoleResp, err := rbac.RBACGRPC().ListUserRole(ctx, &rbac.ListUserRoleReq{
-		UserId: user.UserId,
-		Scope:  rbacx.Scope,
-		Status: int32(rbac.UserRoleStatus_UserRoleStatusNormal),
-		Page:   &rbac.Page{},
+		UserIds: []uint64{user.UserId},
+		Scope:   rbacx.Scope,
+		Status:  int32(rbac.UserRoleStatus_UserRoleStatusNormal),
+		Page:    &rbac.Page{},
 	})
 	if err != nil {
 		fastlog.Error(err)

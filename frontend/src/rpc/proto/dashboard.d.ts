@@ -240,6 +240,48 @@ export namespace dashboard {
          * @returns Promise
          */
         public listUser(request: dashboard.IListUserReq): Promise<dashboard.ListUserResp>;
+
+        /**
+         * Calls AddUser.
+         * @param request AddUserReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and AddUserResp
+         */
+        public addUser(request: dashboard.IAddUserReq, callback: dashboard.Dashboard.AddUserCallback): void;
+
+        /**
+         * Calls AddUser.
+         * @param request AddUserReq message or plain object
+         * @returns Promise
+         */
+        public addUser(request: dashboard.IAddUserReq): Promise<dashboard.AddUserResp>;
+
+        /**
+         * Calls UpdateUser.
+         * @param request UpdateUserReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and UpdateUserResp
+         */
+        public updateUser(request: dashboard.IUpdateUserReq, callback: dashboard.Dashboard.UpdateUserCallback): void;
+
+        /**
+         * Calls UpdateUser.
+         * @param request UpdateUserReq message or plain object
+         * @returns Promise
+         */
+        public updateUser(request: dashboard.IUpdateUserReq): Promise<dashboard.UpdateUserResp>;
+
+        /**
+         * Calls DeleteUser.
+         * @param request DeleteUserReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and DeleteUserResp
+         */
+        public deleteUser(request: dashboard.IDeleteUserReq, callback: dashboard.Dashboard.DeleteUserCallback): void;
+
+        /**
+         * Calls DeleteUser.
+         * @param request DeleteUserReq message or plain object
+         * @returns Promise
+         */
+        public deleteUser(request: dashboard.IDeleteUserReq): Promise<dashboard.DeleteUserResp>;
     }
 
     namespace Dashboard {
@@ -348,6 +390,633 @@ export namespace dashboard {
          * @param [response] ListUserResp
          */
         type ListUserCallback = (error: (Error|null), response?: dashboard.ListUserResp) => void;
+
+        /**
+         * Callback as used by {@link dashboard.Dashboard#addUser}.
+         * @param error Error, if any
+         * @param [response] AddUserResp
+         */
+        type AddUserCallback = (error: (Error|null), response?: dashboard.AddUserResp) => void;
+
+        /**
+         * Callback as used by {@link dashboard.Dashboard#updateUser}.
+         * @param error Error, if any
+         * @param [response] UpdateUserResp
+         */
+        type UpdateUserCallback = (error: (Error|null), response?: dashboard.UpdateUserResp) => void;
+
+        /**
+         * Callback as used by {@link dashboard.Dashboard#deleteUser}.
+         * @param error Error, if any
+         * @param [response] DeleteUserResp
+         */
+        type DeleteUserCallback = (error: (Error|null), response?: dashboard.DeleteUserResp) => void;
+    }
+
+    /** Properties of a DeleteUserReq. */
+    interface IDeleteUserReq {
+
+        /** DeleteUserReq user_id */
+        user_id?: (number|Long|null);
+    }
+
+    /** Represents a DeleteUserReq. */
+    class DeleteUserReq implements IDeleteUserReq {
+
+        /**
+         * Constructs a new DeleteUserReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IDeleteUserReq);
+
+        /** DeleteUserReq user_id. */
+        public user_id: (number|Long);
+
+        /**
+         * Creates a new DeleteUserReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns DeleteUserReq instance
+         */
+        public static create(properties?: dashboard.IDeleteUserReq): dashboard.DeleteUserReq;
+
+        /**
+         * Encodes the specified DeleteUserReq message. Does not implicitly {@link dashboard.DeleteUserReq.verify|verify} messages.
+         * @param message DeleteUserReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IDeleteUserReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified DeleteUserReq message, length delimited. Does not implicitly {@link dashboard.DeleteUserReq.verify|verify} messages.
+         * @param message DeleteUserReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IDeleteUserReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a DeleteUserReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns DeleteUserReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.DeleteUserReq;
+
+        /**
+         * Decodes a DeleteUserReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns DeleteUserReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.DeleteUserReq;
+
+        /**
+         * Verifies a DeleteUserReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a DeleteUserReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns DeleteUserReq
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.DeleteUserReq;
+
+        /**
+         * Creates a plain object from a DeleteUserReq message. Also converts values to other types if specified.
+         * @param message DeleteUserReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.DeleteUserReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this DeleteUserReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for DeleteUserReq
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a DeleteUserResp. */
+    interface IDeleteUserResp {
+    }
+
+    /** Represents a DeleteUserResp. */
+    class DeleteUserResp implements IDeleteUserResp {
+
+        /**
+         * Constructs a new DeleteUserResp.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IDeleteUserResp);
+
+        /**
+         * Creates a new DeleteUserResp instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns DeleteUserResp instance
+         */
+        public static create(properties?: dashboard.IDeleteUserResp): dashboard.DeleteUserResp;
+
+        /**
+         * Encodes the specified DeleteUserResp message. Does not implicitly {@link dashboard.DeleteUserResp.verify|verify} messages.
+         * @param message DeleteUserResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IDeleteUserResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified DeleteUserResp message, length delimited. Does not implicitly {@link dashboard.DeleteUserResp.verify|verify} messages.
+         * @param message DeleteUserResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IDeleteUserResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a DeleteUserResp message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns DeleteUserResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.DeleteUserResp;
+
+        /**
+         * Decodes a DeleteUserResp message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns DeleteUserResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.DeleteUserResp;
+
+        /**
+         * Verifies a DeleteUserResp message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a DeleteUserResp message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns DeleteUserResp
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.DeleteUserResp;
+
+        /**
+         * Creates a plain object from a DeleteUserResp message. Also converts values to other types if specified.
+         * @param message DeleteUserResp
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.DeleteUserResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this DeleteUserResp to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for DeleteUserResp
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of an UpdateUserReq. */
+    interface IUpdateUserReq {
+
+        /** UpdateUserReq name */
+        name?: (string|null);
+
+        /** UpdateUserReq status */
+        status?: (number|null);
+
+        /** UpdateUserReq role_ids */
+        role_ids?: ((number|Long)[]|null);
+
+        /** UpdateUserReq password */
+        password?: (string|null);
+
+        /** UpdateUserReq user_id */
+        user_id?: (number|Long|null);
+    }
+
+    /** Represents an UpdateUserReq. */
+    class UpdateUserReq implements IUpdateUserReq {
+
+        /**
+         * Constructs a new UpdateUserReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IUpdateUserReq);
+
+        /** UpdateUserReq name. */
+        public name: string;
+
+        /** UpdateUserReq status. */
+        public status: number;
+
+        /** UpdateUserReq role_ids. */
+        public role_ids: (number|Long)[];
+
+        /** UpdateUserReq password. */
+        public password: string;
+
+        /** UpdateUserReq user_id. */
+        public user_id: (number|Long);
+
+        /**
+         * Creates a new UpdateUserReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns UpdateUserReq instance
+         */
+        public static create(properties?: dashboard.IUpdateUserReq): dashboard.UpdateUserReq;
+
+        /**
+         * Encodes the specified UpdateUserReq message. Does not implicitly {@link dashboard.UpdateUserReq.verify|verify} messages.
+         * @param message UpdateUserReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IUpdateUserReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified UpdateUserReq message, length delimited. Does not implicitly {@link dashboard.UpdateUserReq.verify|verify} messages.
+         * @param message UpdateUserReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IUpdateUserReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes an UpdateUserReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns UpdateUserReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.UpdateUserReq;
+
+        /**
+         * Decodes an UpdateUserReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns UpdateUserReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.UpdateUserReq;
+
+        /**
+         * Verifies an UpdateUserReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates an UpdateUserReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns UpdateUserReq
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.UpdateUserReq;
+
+        /**
+         * Creates a plain object from an UpdateUserReq message. Also converts values to other types if specified.
+         * @param message UpdateUserReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.UpdateUserReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this UpdateUserReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for UpdateUserReq
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of an UpdateUserResp. */
+    interface IUpdateUserResp {
+    }
+
+    /** Represents an UpdateUserResp. */
+    class UpdateUserResp implements IUpdateUserResp {
+
+        /**
+         * Constructs a new UpdateUserResp.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IUpdateUserResp);
+
+        /**
+         * Creates a new UpdateUserResp instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns UpdateUserResp instance
+         */
+        public static create(properties?: dashboard.IUpdateUserResp): dashboard.UpdateUserResp;
+
+        /**
+         * Encodes the specified UpdateUserResp message. Does not implicitly {@link dashboard.UpdateUserResp.verify|verify} messages.
+         * @param message UpdateUserResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IUpdateUserResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified UpdateUserResp message, length delimited. Does not implicitly {@link dashboard.UpdateUserResp.verify|verify} messages.
+         * @param message UpdateUserResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IUpdateUserResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes an UpdateUserResp message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns UpdateUserResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.UpdateUserResp;
+
+        /**
+         * Decodes an UpdateUserResp message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns UpdateUserResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.UpdateUserResp;
+
+        /**
+         * Verifies an UpdateUserResp message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates an UpdateUserResp message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns UpdateUserResp
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.UpdateUserResp;
+
+        /**
+         * Creates a plain object from an UpdateUserResp message. Also converts values to other types if specified.
+         * @param message UpdateUserResp
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.UpdateUserResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this UpdateUserResp to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for UpdateUserResp
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of an AddUserReq. */
+    interface IAddUserReq {
+
+        /** AddUserReq name */
+        name?: (string|null);
+
+        /** AddUserReq status */
+        status?: (number|null);
+
+        /** AddUserReq role_ids */
+        role_ids?: ((number|Long)[]|null);
+
+        /** AddUserReq password */
+        password?: (string|null);
+    }
+
+    /** Represents an AddUserReq. */
+    class AddUserReq implements IAddUserReq {
+
+        /**
+         * Constructs a new AddUserReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IAddUserReq);
+
+        /** AddUserReq name. */
+        public name: string;
+
+        /** AddUserReq status. */
+        public status: number;
+
+        /** AddUserReq role_ids. */
+        public role_ids: (number|Long)[];
+
+        /** AddUserReq password. */
+        public password: string;
+
+        /**
+         * Creates a new AddUserReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns AddUserReq instance
+         */
+        public static create(properties?: dashboard.IAddUserReq): dashboard.AddUserReq;
+
+        /**
+         * Encodes the specified AddUserReq message. Does not implicitly {@link dashboard.AddUserReq.verify|verify} messages.
+         * @param message AddUserReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IAddUserReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified AddUserReq message, length delimited. Does not implicitly {@link dashboard.AddUserReq.verify|verify} messages.
+         * @param message AddUserReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IAddUserReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes an AddUserReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns AddUserReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.AddUserReq;
+
+        /**
+         * Decodes an AddUserReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns AddUserReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.AddUserReq;
+
+        /**
+         * Verifies an AddUserReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates an AddUserReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns AddUserReq
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.AddUserReq;
+
+        /**
+         * Creates a plain object from an AddUserReq message. Also converts values to other types if specified.
+         * @param message AddUserReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.AddUserReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this AddUserReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for AddUserReq
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of an AddUserResp. */
+    interface IAddUserResp {
+    }
+
+    /** Represents an AddUserResp. */
+    class AddUserResp implements IAddUserResp {
+
+        /**
+         * Constructs a new AddUserResp.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IAddUserResp);
+
+        /**
+         * Creates a new AddUserResp instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns AddUserResp instance
+         */
+        public static create(properties?: dashboard.IAddUserResp): dashboard.AddUserResp;
+
+        /**
+         * Encodes the specified AddUserResp message. Does not implicitly {@link dashboard.AddUserResp.verify|verify} messages.
+         * @param message AddUserResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IAddUserResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified AddUserResp message, length delimited. Does not implicitly {@link dashboard.AddUserResp.verify|verify} messages.
+         * @param message AddUserResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IAddUserResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes an AddUserResp message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns AddUserResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.AddUserResp;
+
+        /**
+         * Decodes an AddUserResp message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns AddUserResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.AddUserResp;
+
+        /**
+         * Verifies an AddUserResp message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates an AddUserResp message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns AddUserResp
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.AddUserResp;
+
+        /**
+         * Creates a plain object from an AddUserResp message. Also converts values to other types if specified.
+         * @param message AddUserResp
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.AddUserResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this AddUserResp to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for AddUserResp
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
     }
 
     /** Properties of a ListUserReq. */
@@ -3773,6 +4442,9 @@ export namespace dashboard {
 
         /** User last_login_at */
         last_login_at?: (number|Long|null);
+
+        /** User role_ids */
+        role_ids?: ((number|Long)[]|null);
     }
 
     /** Represents a User. */
@@ -3798,6 +4470,9 @@ export namespace dashboard {
 
         /** User last_login_at. */
         public last_login_at: (number|Long);
+
+        /** User role_ids. */
+        public role_ids: (number|Long)[];
 
         /**
          * Creates a new User instance using the specified properties.

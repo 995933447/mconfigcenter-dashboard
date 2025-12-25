@@ -40,7 +40,7 @@ func checkAndCreateFirstSuperAdminUser() {
 		}
 
 		allocIdResp, err := idgen.IdGenGRPC().AllocId(context.TODO(), &idgen.AllocIdReq{
-			TbName: mod.GetTb(),
+			TbName: util.GenIdGenTbName(mod.GetDb(), mod.GetTb()),
 		})
 		if err != nil {
 			fastlog.Fatal(err)
@@ -63,6 +63,11 @@ func checkAndCreateFirstSuperAdminUser() {
 		}
 
 		userId = allocIdResp.Id
+
+		user, err = mod.FindOneByUserId(context.TODO(), userId)
+		if err != nil {
+			fastlog.Fatal(err)
+		}
 	}
 
 	config.SafeReadServerConfig(func(c *config.ServerConfig) {
@@ -71,9 +76,9 @@ func checkAndCreateFirstSuperAdminUser() {
 		}
 
 		listUserRoleResp, err := rbac.RBACGRPC().ListUserRole(context.TODO(), &rbac.ListUserRoleReq{
-			Scope:  rbacx.Scope,
-			UserId: userId,
-			Page:   &rbac.Page{},
+			Scope:   rbacx.Scope,
+			UserIds: []uint64{userId},
+			Page:    &rbac.Page{},
 		})
 		if err != nil {
 			fastlog.Fatal(err)
@@ -145,6 +150,14 @@ func checkAndCreateFirstSuperAdminUser() {
 				Status: int32(dashboard.UserStatus_UserStatusNormal),
 				Scope:  rbacx.Scope,
 			},
+		})
+		if err != nil {
+			fastlog.Fatal(err)
+		}
+
+		roleIds := append(user.RoleIds, roleId)
+		_, err = mod.UpdateOneByUserId(context.TODO(), userId, bson.M{
+			"role_ids": roleIds,
 		})
 		if err != nil {
 			fastlog.Fatal(err)

@@ -117,6 +117,27 @@ func RegisterNatsRPCRoutes() error {
 		return err
 	}
 
+	err = nats.HandleLikeGRPC(dashboard.EasymicroGRPCPbServiceNameDashboard, "AddUser", handler.DashboardHandler.AddUser, func() *dashboard.AddUserReq {
+		return &dashboard.AddUserReq{}
+	})
+	if err != nil {
+		return err
+	}
+
+	err = nats.HandleLikeGRPC(dashboard.EasymicroGRPCPbServiceNameDashboard, "UpdateUser", handler.DashboardHandler.UpdateUser, func() *dashboard.UpdateUserReq {
+		return &dashboard.UpdateUserReq{}
+	})
+	if err != nil {
+		return err
+	}
+
+	err = nats.HandleLikeGRPC(dashboard.EasymicroGRPCPbServiceNameDashboard, "DeleteUser", handler.DashboardHandler.DeleteUser, func() *dashboard.DeleteUserReq {
+		return &dashboard.DeleteUserReq{}
+	})
+	if err != nil {
+		return err
+	}
+
 	err = nats.HandleLikeGRPC("healthreporter.HealthReporter", "Ping", healthreporter.NewReporter(ServiceNames).Ping, func() *healthreporter.PingReq {
 		return &healthreporter.PingReq{}
 	})
