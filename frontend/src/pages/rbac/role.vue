@@ -1,6 +1,6 @@
 <template>
     <div mb-1rem>
-        <el-form :inline="true" :model="fetchRoleListCond" :rules="saveRoleFormRules">
+        <el-form :inline="true" :model="fetchRoleListCond">
             <el-form-item label="角色名称">
                 <el-input v-model="fetchRoleListCond.name" placeholder="角色名称" clearable />
             </el-form-item>

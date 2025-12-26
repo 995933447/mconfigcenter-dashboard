@@ -660,7 +660,2004 @@ export const dashboard = $root.dashboard = (() => {
          * @variation 2
          */
 
+        /**
+         * Callback as used by {@link dashboard.Dashboard#listGeneralConf}.
+         * @memberof dashboard.Dashboard
+         * @typedef ListGeneralConfCallback
+         * @type {function}
+         * @param {Error|null} error Error, if any
+         * @param {dashboard.ListGeneralConfResp} [response] ListGeneralConfResp
+         */
+
+        /**
+         * Calls ListGeneralConf.
+         * @function listGeneralConf
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.IListGeneralConfReq} request ListGeneralConfReq message or plain object
+         * @param {dashboard.Dashboard.ListGeneralConfCallback} callback Node-style callback called with the error, if any, and ListGeneralConfResp
+         * @returns {undefined}
+         * @variation 1
+         */
+        Object.defineProperty(Dashboard.prototype.listGeneralConf = function listGeneralConf(request, callback) {
+            return this.rpcCall(listGeneralConf, $root.dashboard.ListGeneralConfReq, $root.dashboard.ListGeneralConfResp, request, callback);
+        }, "name", { value: "ListGeneralConf" });
+
+        /**
+         * Calls ListGeneralConf.
+         * @function listGeneralConf
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.IListGeneralConfReq} request ListGeneralConfReq message or plain object
+         * @returns {Promise<dashboard.ListGeneralConfResp>} Promise
+         * @variation 2
+         */
+
+        /**
+         * Callback as used by {@link dashboard.Dashboard#listConfSchema}.
+         * @memberof dashboard.Dashboard
+         * @typedef ListConfSchemaCallback
+         * @type {function}
+         * @param {Error|null} error Error, if any
+         * @param {dashboard.ListConfSchemaResp} [response] ListConfSchemaResp
+         */
+
+        /**
+         * Calls ListConfSchema.
+         * @function listConfSchema
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.IListConfSchemaReq} request ListConfSchemaReq message or plain object
+         * @param {dashboard.Dashboard.ListConfSchemaCallback} callback Node-style callback called with the error, if any, and ListConfSchemaResp
+         * @returns {undefined}
+         * @variation 1
+         */
+        Object.defineProperty(Dashboard.prototype.listConfSchema = function listConfSchema(request, callback) {
+            return this.rpcCall(listConfSchema, $root.dashboard.ListConfSchemaReq, $root.dashboard.ListConfSchemaResp, request, callback);
+        }, "name", { value: "ListConfSchema" });
+
+        /**
+         * Calls ListConfSchema.
+         * @function listConfSchema
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.IListConfSchemaReq} request ListConfSchemaReq message or plain object
+         * @returns {Promise<dashboard.ListConfSchemaResp>} Promise
+         * @variation 2
+         */
+
+        /**
+         * Callback as used by {@link dashboard.Dashboard#setConfigSchema}.
+         * @memberof dashboard.Dashboard
+         * @typedef SetConfigSchemaCallback
+         * @type {function}
+         * @param {Error|null} error Error, if any
+         * @param {dashboard.SetConfSchemaResp} [response] SetConfSchemaResp
+         */
+
+        /**
+         * Calls SetConfigSchema.
+         * @function setConfigSchema
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.ISetConfSchemaReq} request SetConfSchemaReq message or plain object
+         * @param {dashboard.Dashboard.SetConfigSchemaCallback} callback Node-style callback called with the error, if any, and SetConfSchemaResp
+         * @returns {undefined}
+         * @variation 1
+         */
+        Object.defineProperty(Dashboard.prototype.setConfigSchema = function setConfigSchema(request, callback) {
+            return this.rpcCall(setConfigSchema, $root.dashboard.SetConfSchemaReq, $root.dashboard.SetConfSchemaResp, request, callback);
+        }, "name", { value: "SetConfigSchema" });
+
+        /**
+         * Calls SetConfigSchema.
+         * @function setConfigSchema
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.ISetConfSchemaReq} request SetConfSchemaReq message or plain object
+         * @returns {Promise<dashboard.SetConfSchemaResp>} Promise
+         * @variation 2
+         */
+
         return Dashboard;
+    })();
+
+    dashboard.SetConfSchemaReq = (function() {
+
+        /**
+         * Properties of a SetConfSchemaReq.
+         * @memberof dashboard
+         * @interface ISetConfSchemaReq
+         * @property {dashboard.IConfigSchema|null} [config_schema] SetConfSchemaReq config_schema
+         */
+
+        /**
+         * Constructs a new SetConfSchemaReq.
+         * @memberof dashboard
+         * @classdesc Represents a SetConfSchemaReq.
+         * @implements ISetConfSchemaReq
+         * @constructor
+         * @param {dashboard.ISetConfSchemaReq=} [properties] Properties to set
+         */
+        function SetConfSchemaReq(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * SetConfSchemaReq config_schema.
+         * @member {dashboard.IConfigSchema|null|undefined} config_schema
+         * @memberof dashboard.SetConfSchemaReq
+         * @instance
+         */
+        SetConfSchemaReq.prototype.config_schema = null;
+
+        /**
+         * Creates a new SetConfSchemaReq instance using the specified properties.
+         * @function create
+         * @memberof dashboard.SetConfSchemaReq
+         * @static
+         * @param {dashboard.ISetConfSchemaReq=} [properties] Properties to set
+         * @returns {dashboard.SetConfSchemaReq} SetConfSchemaReq instance
+         */
+        SetConfSchemaReq.create = function create(properties) {
+            return new SetConfSchemaReq(properties);
+        };
+
+        /**
+         * Encodes the specified SetConfSchemaReq message. Does not implicitly {@link dashboard.SetConfSchemaReq.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.SetConfSchemaReq
+         * @static
+         * @param {dashboard.ISetConfSchemaReq} message SetConfSchemaReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        SetConfSchemaReq.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.config_schema != null && Object.hasOwnProperty.call(message, "config_schema"))
+                $root.dashboard.ConfigSchema.encode(message.config_schema, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified SetConfSchemaReq message, length delimited. Does not implicitly {@link dashboard.SetConfSchemaReq.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.SetConfSchemaReq
+         * @static
+         * @param {dashboard.ISetConfSchemaReq} message SetConfSchemaReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        SetConfSchemaReq.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a SetConfSchemaReq message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.SetConfSchemaReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.SetConfSchemaReq} SetConfSchemaReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        SetConfSchemaReq.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.SetConfSchemaReq();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.config_schema = $root.dashboard.ConfigSchema.decode(reader, reader.uint32());
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a SetConfSchemaReq message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.SetConfSchemaReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.SetConfSchemaReq} SetConfSchemaReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        SetConfSchemaReq.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a SetConfSchemaReq message.
+         * @function verify
+         * @memberof dashboard.SetConfSchemaReq
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        SetConfSchemaReq.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.config_schema != null && message.hasOwnProperty("config_schema")) {
+                let error = $root.dashboard.ConfigSchema.verify(message.config_schema);
+                if (error)
+                    return "config_schema." + error;
+            }
+            return null;
+        };
+
+        /**
+         * Creates a SetConfSchemaReq message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.SetConfSchemaReq
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.SetConfSchemaReq} SetConfSchemaReq
+         */
+        SetConfSchemaReq.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.SetConfSchemaReq)
+                return object;
+            let message = new $root.dashboard.SetConfSchemaReq();
+            if (object.config_schema != null) {
+                if (typeof object.config_schema !== "object")
+                    throw TypeError(".dashboard.SetConfSchemaReq.config_schema: object expected");
+                message.config_schema = $root.dashboard.ConfigSchema.fromObject(object.config_schema);
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a SetConfSchemaReq message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.SetConfSchemaReq
+         * @static
+         * @param {dashboard.SetConfSchemaReq} message SetConfSchemaReq
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        SetConfSchemaReq.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults)
+                object.config_schema = null;
+            if (message.config_schema != null && message.hasOwnProperty("config_schema"))
+                object.config_schema = $root.dashboard.ConfigSchema.toObject(message.config_schema, options);
+            return object;
+        };
+
+        /**
+         * Converts this SetConfSchemaReq to JSON.
+         * @function toJSON
+         * @memberof dashboard.SetConfSchemaReq
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        SetConfSchemaReq.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for SetConfSchemaReq
+         * @function getTypeUrl
+         * @memberof dashboard.SetConfSchemaReq
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        SetConfSchemaReq.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.SetConfSchemaReq";
+        };
+
+        return SetConfSchemaReq;
+    })();
+
+    dashboard.SetConfSchemaResp = (function() {
+
+        /**
+         * Properties of a SetConfSchemaResp.
+         * @memberof dashboard
+         * @interface ISetConfSchemaResp
+         */
+
+        /**
+         * Constructs a new SetConfSchemaResp.
+         * @memberof dashboard
+         * @classdesc Represents a SetConfSchemaResp.
+         * @implements ISetConfSchemaResp
+         * @constructor
+         * @param {dashboard.ISetConfSchemaResp=} [properties] Properties to set
+         */
+        function SetConfSchemaResp(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Creates a new SetConfSchemaResp instance using the specified properties.
+         * @function create
+         * @memberof dashboard.SetConfSchemaResp
+         * @static
+         * @param {dashboard.ISetConfSchemaResp=} [properties] Properties to set
+         * @returns {dashboard.SetConfSchemaResp} SetConfSchemaResp instance
+         */
+        SetConfSchemaResp.create = function create(properties) {
+            return new SetConfSchemaResp(properties);
+        };
+
+        /**
+         * Encodes the specified SetConfSchemaResp message. Does not implicitly {@link dashboard.SetConfSchemaResp.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.SetConfSchemaResp
+         * @static
+         * @param {dashboard.ISetConfSchemaResp} message SetConfSchemaResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        SetConfSchemaResp.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified SetConfSchemaResp message, length delimited. Does not implicitly {@link dashboard.SetConfSchemaResp.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.SetConfSchemaResp
+         * @static
+         * @param {dashboard.ISetConfSchemaResp} message SetConfSchemaResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        SetConfSchemaResp.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a SetConfSchemaResp message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.SetConfSchemaResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.SetConfSchemaResp} SetConfSchemaResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        SetConfSchemaResp.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.SetConfSchemaResp();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a SetConfSchemaResp message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.SetConfSchemaResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.SetConfSchemaResp} SetConfSchemaResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        SetConfSchemaResp.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a SetConfSchemaResp message.
+         * @function verify
+         * @memberof dashboard.SetConfSchemaResp
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        SetConfSchemaResp.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            return null;
+        };
+
+        /**
+         * Creates a SetConfSchemaResp message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.SetConfSchemaResp
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.SetConfSchemaResp} SetConfSchemaResp
+         */
+        SetConfSchemaResp.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.SetConfSchemaResp)
+                return object;
+            return new $root.dashboard.SetConfSchemaResp();
+        };
+
+        /**
+         * Creates a plain object from a SetConfSchemaResp message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.SetConfSchemaResp
+         * @static
+         * @param {dashboard.SetConfSchemaResp} message SetConfSchemaResp
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        SetConfSchemaResp.toObject = function toObject() {
+            return {};
+        };
+
+        /**
+         * Converts this SetConfSchemaResp to JSON.
+         * @function toJSON
+         * @memberof dashboard.SetConfSchemaResp
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        SetConfSchemaResp.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for SetConfSchemaResp
+         * @function getTypeUrl
+         * @memberof dashboard.SetConfSchemaResp
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        SetConfSchemaResp.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.SetConfSchemaResp";
+        };
+
+        return SetConfSchemaResp;
+    })();
+
+    dashboard.ListConfSchemaReq = (function() {
+
+        /**
+         * Properties of a ListConfSchemaReq.
+         * @memberof dashboard
+         * @interface IListConfSchemaReq
+         */
+
+        /**
+         * Constructs a new ListConfSchemaReq.
+         * @memberof dashboard
+         * @classdesc Represents a ListConfSchemaReq.
+         * @implements IListConfSchemaReq
+         * @constructor
+         * @param {dashboard.IListConfSchemaReq=} [properties] Properties to set
+         */
+        function ListConfSchemaReq(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Creates a new ListConfSchemaReq instance using the specified properties.
+         * @function create
+         * @memberof dashboard.ListConfSchemaReq
+         * @static
+         * @param {dashboard.IListConfSchemaReq=} [properties] Properties to set
+         * @returns {dashboard.ListConfSchemaReq} ListConfSchemaReq instance
+         */
+        ListConfSchemaReq.create = function create(properties) {
+            return new ListConfSchemaReq(properties);
+        };
+
+        /**
+         * Encodes the specified ListConfSchemaReq message. Does not implicitly {@link dashboard.ListConfSchemaReq.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.ListConfSchemaReq
+         * @static
+         * @param {dashboard.IListConfSchemaReq} message ListConfSchemaReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ListConfSchemaReq.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified ListConfSchemaReq message, length delimited. Does not implicitly {@link dashboard.ListConfSchemaReq.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.ListConfSchemaReq
+         * @static
+         * @param {dashboard.IListConfSchemaReq} message ListConfSchemaReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ListConfSchemaReq.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a ListConfSchemaReq message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.ListConfSchemaReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.ListConfSchemaReq} ListConfSchemaReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ListConfSchemaReq.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.ListConfSchemaReq();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a ListConfSchemaReq message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.ListConfSchemaReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.ListConfSchemaReq} ListConfSchemaReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ListConfSchemaReq.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a ListConfSchemaReq message.
+         * @function verify
+         * @memberof dashboard.ListConfSchemaReq
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        ListConfSchemaReq.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            return null;
+        };
+
+        /**
+         * Creates a ListConfSchemaReq message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.ListConfSchemaReq
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.ListConfSchemaReq} ListConfSchemaReq
+         */
+        ListConfSchemaReq.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.ListConfSchemaReq)
+                return object;
+            return new $root.dashboard.ListConfSchemaReq();
+        };
+
+        /**
+         * Creates a plain object from a ListConfSchemaReq message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.ListConfSchemaReq
+         * @static
+         * @param {dashboard.ListConfSchemaReq} message ListConfSchemaReq
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        ListConfSchemaReq.toObject = function toObject() {
+            return {};
+        };
+
+        /**
+         * Converts this ListConfSchemaReq to JSON.
+         * @function toJSON
+         * @memberof dashboard.ListConfSchemaReq
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        ListConfSchemaReq.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for ListConfSchemaReq
+         * @function getTypeUrl
+         * @memberof dashboard.ListConfSchemaReq
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        ListConfSchemaReq.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.ListConfSchemaReq";
+        };
+
+        return ListConfSchemaReq;
+    })();
+
+    dashboard.ConfigSchema = (function() {
+
+        /**
+         * Properties of a ConfigSchema.
+         * @memberof dashboard
+         * @interface IConfigSchema
+         * @property {string|null} [coll_name] ConfigSchema coll_name
+         * @property {Array.<string>|null} [index_keys] ConfigSchema index_keys
+         * @property {Array.<string>|null} [uniq_index_keys] ConfigSchema uniq_index_keys
+         * @property {string|null} [json_schema] ConfigSchema json_schema
+         * @property {string|null} [desc] ConfigSchema desc
+         */
+
+        /**
+         * Constructs a new ConfigSchema.
+         * @memberof dashboard
+         * @classdesc Represents a ConfigSchema.
+         * @implements IConfigSchema
+         * @constructor
+         * @param {dashboard.IConfigSchema=} [properties] Properties to set
+         */
+        function ConfigSchema(properties) {
+            this.index_keys = [];
+            this.uniq_index_keys = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * ConfigSchema coll_name.
+         * @member {string} coll_name
+         * @memberof dashboard.ConfigSchema
+         * @instance
+         */
+        ConfigSchema.prototype.coll_name = "";
+
+        /**
+         * ConfigSchema index_keys.
+         * @member {Array.<string>} index_keys
+         * @memberof dashboard.ConfigSchema
+         * @instance
+         */
+        ConfigSchema.prototype.index_keys = $util.emptyArray;
+
+        /**
+         * ConfigSchema uniq_index_keys.
+         * @member {Array.<string>} uniq_index_keys
+         * @memberof dashboard.ConfigSchema
+         * @instance
+         */
+        ConfigSchema.prototype.uniq_index_keys = $util.emptyArray;
+
+        /**
+         * ConfigSchema json_schema.
+         * @member {string} json_schema
+         * @memberof dashboard.ConfigSchema
+         * @instance
+         */
+        ConfigSchema.prototype.json_schema = "";
+
+        /**
+         * ConfigSchema desc.
+         * @member {string} desc
+         * @memberof dashboard.ConfigSchema
+         * @instance
+         */
+        ConfigSchema.prototype.desc = "";
+
+        /**
+         * Creates a new ConfigSchema instance using the specified properties.
+         * @function create
+         * @memberof dashboard.ConfigSchema
+         * @static
+         * @param {dashboard.IConfigSchema=} [properties] Properties to set
+         * @returns {dashboard.ConfigSchema} ConfigSchema instance
+         */
+        ConfigSchema.create = function create(properties) {
+            return new ConfigSchema(properties);
+        };
+
+        /**
+         * Encodes the specified ConfigSchema message. Does not implicitly {@link dashboard.ConfigSchema.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.ConfigSchema
+         * @static
+         * @param {dashboard.IConfigSchema} message ConfigSchema message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ConfigSchema.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.coll_name != null && Object.hasOwnProperty.call(message, "coll_name"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.coll_name);
+            if (message.index_keys != null && message.index_keys.length)
+                for (let i = 0; i < message.index_keys.length; ++i)
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.index_keys[i]);
+            if (message.uniq_index_keys != null && message.uniq_index_keys.length)
+                for (let i = 0; i < message.uniq_index_keys.length; ++i)
+                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.uniq_index_keys[i]);
+            if (message.json_schema != null && Object.hasOwnProperty.call(message, "json_schema"))
+                writer.uint32(/* id 4, wireType 2 =*/34).string(message.json_schema);
+            if (message.desc != null && Object.hasOwnProperty.call(message, "desc"))
+                writer.uint32(/* id 5, wireType 2 =*/42).string(message.desc);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified ConfigSchema message, length delimited. Does not implicitly {@link dashboard.ConfigSchema.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.ConfigSchema
+         * @static
+         * @param {dashboard.IConfigSchema} message ConfigSchema message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ConfigSchema.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a ConfigSchema message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.ConfigSchema
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.ConfigSchema} ConfigSchema
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ConfigSchema.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.ConfigSchema();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.coll_name = reader.string();
+                        break;
+                    }
+                case 2: {
+                        if (!(message.index_keys && message.index_keys.length))
+                            message.index_keys = [];
+                        message.index_keys.push(reader.string());
+                        break;
+                    }
+                case 3: {
+                        if (!(message.uniq_index_keys && message.uniq_index_keys.length))
+                            message.uniq_index_keys = [];
+                        message.uniq_index_keys.push(reader.string());
+                        break;
+                    }
+                case 4: {
+                        message.json_schema = reader.string();
+                        break;
+                    }
+                case 5: {
+                        message.desc = reader.string();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a ConfigSchema message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.ConfigSchema
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.ConfigSchema} ConfigSchema
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ConfigSchema.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a ConfigSchema message.
+         * @function verify
+         * @memberof dashboard.ConfigSchema
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        ConfigSchema.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.coll_name != null && message.hasOwnProperty("coll_name"))
+                if (!$util.isString(message.coll_name))
+                    return "coll_name: string expected";
+            if (message.index_keys != null && message.hasOwnProperty("index_keys")) {
+                if (!Array.isArray(message.index_keys))
+                    return "index_keys: array expected";
+                for (let i = 0; i < message.index_keys.length; ++i)
+                    if (!$util.isString(message.index_keys[i]))
+                        return "index_keys: string[] expected";
+            }
+            if (message.uniq_index_keys != null && message.hasOwnProperty("uniq_index_keys")) {
+                if (!Array.isArray(message.uniq_index_keys))
+                    return "uniq_index_keys: array expected";
+                for (let i = 0; i < message.uniq_index_keys.length; ++i)
+                    if (!$util.isString(message.uniq_index_keys[i]))
+                        return "uniq_index_keys: string[] expected";
+            }
+            if (message.json_schema != null && message.hasOwnProperty("json_schema"))
+                if (!$util.isString(message.json_schema))
+                    return "json_schema: string expected";
+            if (message.desc != null && message.hasOwnProperty("desc"))
+                if (!$util.isString(message.desc))
+                    return "desc: string expected";
+            return null;
+        };
+
+        /**
+         * Creates a ConfigSchema message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.ConfigSchema
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.ConfigSchema} ConfigSchema
+         */
+        ConfigSchema.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.ConfigSchema)
+                return object;
+            let message = new $root.dashboard.ConfigSchema();
+            if (object.coll_name != null)
+                message.coll_name = String(object.coll_name);
+            if (object.index_keys) {
+                if (!Array.isArray(object.index_keys))
+                    throw TypeError(".dashboard.ConfigSchema.index_keys: array expected");
+                message.index_keys = [];
+                for (let i = 0; i < object.index_keys.length; ++i)
+                    message.index_keys[i] = String(object.index_keys[i]);
+            }
+            if (object.uniq_index_keys) {
+                if (!Array.isArray(object.uniq_index_keys))
+                    throw TypeError(".dashboard.ConfigSchema.uniq_index_keys: array expected");
+                message.uniq_index_keys = [];
+                for (let i = 0; i < object.uniq_index_keys.length; ++i)
+                    message.uniq_index_keys[i] = String(object.uniq_index_keys[i]);
+            }
+            if (object.json_schema != null)
+                message.json_schema = String(object.json_schema);
+            if (object.desc != null)
+                message.desc = String(object.desc);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a ConfigSchema message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.ConfigSchema
+         * @static
+         * @param {dashboard.ConfigSchema} message ConfigSchema
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        ConfigSchema.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults) {
+                object.index_keys = [];
+                object.uniq_index_keys = [];
+            }
+            if (options.defaults) {
+                object.coll_name = "";
+                object.json_schema = "";
+                object.desc = "";
+            }
+            if (message.coll_name != null && message.hasOwnProperty("coll_name"))
+                object.coll_name = message.coll_name;
+            if (message.index_keys && message.index_keys.length) {
+                object.index_keys = [];
+                for (let j = 0; j < message.index_keys.length; ++j)
+                    object.index_keys[j] = message.index_keys[j];
+            }
+            if (message.uniq_index_keys && message.uniq_index_keys.length) {
+                object.uniq_index_keys = [];
+                for (let j = 0; j < message.uniq_index_keys.length; ++j)
+                    object.uniq_index_keys[j] = message.uniq_index_keys[j];
+            }
+            if (message.json_schema != null && message.hasOwnProperty("json_schema"))
+                object.json_schema = message.json_schema;
+            if (message.desc != null && message.hasOwnProperty("desc"))
+                object.desc = message.desc;
+            return object;
+        };
+
+        /**
+         * Converts this ConfigSchema to JSON.
+         * @function toJSON
+         * @memberof dashboard.ConfigSchema
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        ConfigSchema.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for ConfigSchema
+         * @function getTypeUrl
+         * @memberof dashboard.ConfigSchema
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        ConfigSchema.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.ConfigSchema";
+        };
+
+        return ConfigSchema;
+    })();
+
+    dashboard.ListConfSchemaResp = (function() {
+
+        /**
+         * Properties of a ListConfSchemaResp.
+         * @memberof dashboard
+         * @interface IListConfSchemaResp
+         * @property {Array.<dashboard.IConfigSchema>|null} [list] ListConfSchemaResp list
+         */
+
+        /**
+         * Constructs a new ListConfSchemaResp.
+         * @memberof dashboard
+         * @classdesc Represents a ListConfSchemaResp.
+         * @implements IListConfSchemaResp
+         * @constructor
+         * @param {dashboard.IListConfSchemaResp=} [properties] Properties to set
+         */
+        function ListConfSchemaResp(properties) {
+            this.list = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * ListConfSchemaResp list.
+         * @member {Array.<dashboard.IConfigSchema>} list
+         * @memberof dashboard.ListConfSchemaResp
+         * @instance
+         */
+        ListConfSchemaResp.prototype.list = $util.emptyArray;
+
+        /**
+         * Creates a new ListConfSchemaResp instance using the specified properties.
+         * @function create
+         * @memberof dashboard.ListConfSchemaResp
+         * @static
+         * @param {dashboard.IListConfSchemaResp=} [properties] Properties to set
+         * @returns {dashboard.ListConfSchemaResp} ListConfSchemaResp instance
+         */
+        ListConfSchemaResp.create = function create(properties) {
+            return new ListConfSchemaResp(properties);
+        };
+
+        /**
+         * Encodes the specified ListConfSchemaResp message. Does not implicitly {@link dashboard.ListConfSchemaResp.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.ListConfSchemaResp
+         * @static
+         * @param {dashboard.IListConfSchemaResp} message ListConfSchemaResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ListConfSchemaResp.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.list != null && message.list.length)
+                for (let i = 0; i < message.list.length; ++i)
+                    $root.dashboard.ConfigSchema.encode(message.list[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified ListConfSchemaResp message, length delimited. Does not implicitly {@link dashboard.ListConfSchemaResp.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.ListConfSchemaResp
+         * @static
+         * @param {dashboard.IListConfSchemaResp} message ListConfSchemaResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ListConfSchemaResp.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a ListConfSchemaResp message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.ListConfSchemaResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.ListConfSchemaResp} ListConfSchemaResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ListConfSchemaResp.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.ListConfSchemaResp();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        if (!(message.list && message.list.length))
+                            message.list = [];
+                        message.list.push($root.dashboard.ConfigSchema.decode(reader, reader.uint32()));
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a ListConfSchemaResp message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.ListConfSchemaResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.ListConfSchemaResp} ListConfSchemaResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ListConfSchemaResp.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a ListConfSchemaResp message.
+         * @function verify
+         * @memberof dashboard.ListConfSchemaResp
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        ListConfSchemaResp.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.list != null && message.hasOwnProperty("list")) {
+                if (!Array.isArray(message.list))
+                    return "list: array expected";
+                for (let i = 0; i < message.list.length; ++i) {
+                    let error = $root.dashboard.ConfigSchema.verify(message.list[i]);
+                    if (error)
+                        return "list." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a ListConfSchemaResp message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.ListConfSchemaResp
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.ListConfSchemaResp} ListConfSchemaResp
+         */
+        ListConfSchemaResp.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.ListConfSchemaResp)
+                return object;
+            let message = new $root.dashboard.ListConfSchemaResp();
+            if (object.list) {
+                if (!Array.isArray(object.list))
+                    throw TypeError(".dashboard.ListConfSchemaResp.list: array expected");
+                message.list = [];
+                for (let i = 0; i < object.list.length; ++i) {
+                    if (typeof object.list[i] !== "object")
+                        throw TypeError(".dashboard.ListConfSchemaResp.list: object expected");
+                    message.list[i] = $root.dashboard.ConfigSchema.fromObject(object.list[i]);
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a ListConfSchemaResp message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.ListConfSchemaResp
+         * @static
+         * @param {dashboard.ListConfSchemaResp} message ListConfSchemaResp
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        ListConfSchemaResp.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults)
+                object.list = [];
+            if (message.list && message.list.length) {
+                object.list = [];
+                for (let j = 0; j < message.list.length; ++j)
+                    object.list[j] = $root.dashboard.ConfigSchema.toObject(message.list[j], options);
+            }
+            return object;
+        };
+
+        /**
+         * Converts this ListConfSchemaResp to JSON.
+         * @function toJSON
+         * @memberof dashboard.ListConfSchemaResp
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        ListConfSchemaResp.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for ListConfSchemaResp
+         * @function getTypeUrl
+         * @memberof dashboard.ListConfSchemaResp
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        ListConfSchemaResp.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.ListConfSchemaResp";
+        };
+
+        return ListConfSchemaResp;
+    })();
+
+    dashboard.ListGeneralConfReq = (function() {
+
+        /**
+         * Properties of a ListGeneralConfReq.
+         * @memberof dashboard
+         * @interface IListGeneralConfReq
+         * @property {string|null} [coll_name] ListGeneralConfReq coll_name
+         * @property {Array.<dashboard.ListGeneralConfReq.ISort>|null} [sorts] ListGeneralConfReq sorts
+         * @property {string|null} [filter] ListGeneralConfReq filter
+         * @property {dashboard.IPage|null} [page] ListGeneralConfReq page
+         */
+
+        /**
+         * Constructs a new ListGeneralConfReq.
+         * @memberof dashboard
+         * @classdesc Represents a ListGeneralConfReq.
+         * @implements IListGeneralConfReq
+         * @constructor
+         * @param {dashboard.IListGeneralConfReq=} [properties] Properties to set
+         */
+        function ListGeneralConfReq(properties) {
+            this.sorts = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * ListGeneralConfReq coll_name.
+         * @member {string} coll_name
+         * @memberof dashboard.ListGeneralConfReq
+         * @instance
+         */
+        ListGeneralConfReq.prototype.coll_name = "";
+
+        /**
+         * ListGeneralConfReq sorts.
+         * @member {Array.<dashboard.ListGeneralConfReq.ISort>} sorts
+         * @memberof dashboard.ListGeneralConfReq
+         * @instance
+         */
+        ListGeneralConfReq.prototype.sorts = $util.emptyArray;
+
+        /**
+         * ListGeneralConfReq filter.
+         * @member {string} filter
+         * @memberof dashboard.ListGeneralConfReq
+         * @instance
+         */
+        ListGeneralConfReq.prototype.filter = "";
+
+        /**
+         * ListGeneralConfReq page.
+         * @member {dashboard.IPage|null|undefined} page
+         * @memberof dashboard.ListGeneralConfReq
+         * @instance
+         */
+        ListGeneralConfReq.prototype.page = null;
+
+        /**
+         * Creates a new ListGeneralConfReq instance using the specified properties.
+         * @function create
+         * @memberof dashboard.ListGeneralConfReq
+         * @static
+         * @param {dashboard.IListGeneralConfReq=} [properties] Properties to set
+         * @returns {dashboard.ListGeneralConfReq} ListGeneralConfReq instance
+         */
+        ListGeneralConfReq.create = function create(properties) {
+            return new ListGeneralConfReq(properties);
+        };
+
+        /**
+         * Encodes the specified ListGeneralConfReq message. Does not implicitly {@link dashboard.ListGeneralConfReq.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.ListGeneralConfReq
+         * @static
+         * @param {dashboard.IListGeneralConfReq} message ListGeneralConfReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ListGeneralConfReq.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.coll_name != null && Object.hasOwnProperty.call(message, "coll_name"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.coll_name);
+            if (message.sorts != null && message.sorts.length)
+                for (let i = 0; i < message.sorts.length; ++i)
+                    $root.dashboard.ListGeneralConfReq.Sort.encode(message.sorts[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+            if (message.filter != null && Object.hasOwnProperty.call(message, "filter"))
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.filter);
+            if (message.page != null && Object.hasOwnProperty.call(message, "page"))
+                $root.dashboard.Page.encode(message.page, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified ListGeneralConfReq message, length delimited. Does not implicitly {@link dashboard.ListGeneralConfReq.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.ListGeneralConfReq
+         * @static
+         * @param {dashboard.IListGeneralConfReq} message ListGeneralConfReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ListGeneralConfReq.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a ListGeneralConfReq message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.ListGeneralConfReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.ListGeneralConfReq} ListGeneralConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ListGeneralConfReq.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.ListGeneralConfReq();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.coll_name = reader.string();
+                        break;
+                    }
+                case 2: {
+                        if (!(message.sorts && message.sorts.length))
+                            message.sorts = [];
+                        message.sorts.push($root.dashboard.ListGeneralConfReq.Sort.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 3: {
+                        message.filter = reader.string();
+                        break;
+                    }
+                case 4: {
+                        message.page = $root.dashboard.Page.decode(reader, reader.uint32());
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a ListGeneralConfReq message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.ListGeneralConfReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.ListGeneralConfReq} ListGeneralConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ListGeneralConfReq.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a ListGeneralConfReq message.
+         * @function verify
+         * @memberof dashboard.ListGeneralConfReq
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        ListGeneralConfReq.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.coll_name != null && message.hasOwnProperty("coll_name"))
+                if (!$util.isString(message.coll_name))
+                    return "coll_name: string expected";
+            if (message.sorts != null && message.hasOwnProperty("sorts")) {
+                if (!Array.isArray(message.sorts))
+                    return "sorts: array expected";
+                for (let i = 0; i < message.sorts.length; ++i) {
+                    let error = $root.dashboard.ListGeneralConfReq.Sort.verify(message.sorts[i]);
+                    if (error)
+                        return "sorts." + error;
+                }
+            }
+            if (message.filter != null && message.hasOwnProperty("filter"))
+                if (!$util.isString(message.filter))
+                    return "filter: string expected";
+            if (message.page != null && message.hasOwnProperty("page")) {
+                let error = $root.dashboard.Page.verify(message.page);
+                if (error)
+                    return "page." + error;
+            }
+            return null;
+        };
+
+        /**
+         * Creates a ListGeneralConfReq message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.ListGeneralConfReq
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.ListGeneralConfReq} ListGeneralConfReq
+         */
+        ListGeneralConfReq.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.ListGeneralConfReq)
+                return object;
+            let message = new $root.dashboard.ListGeneralConfReq();
+            if (object.coll_name != null)
+                message.coll_name = String(object.coll_name);
+            if (object.sorts) {
+                if (!Array.isArray(object.sorts))
+                    throw TypeError(".dashboard.ListGeneralConfReq.sorts: array expected");
+                message.sorts = [];
+                for (let i = 0; i < object.sorts.length; ++i) {
+                    if (typeof object.sorts[i] !== "object")
+                        throw TypeError(".dashboard.ListGeneralConfReq.sorts: object expected");
+                    message.sorts[i] = $root.dashboard.ListGeneralConfReq.Sort.fromObject(object.sorts[i]);
+                }
+            }
+            if (object.filter != null)
+                message.filter = String(object.filter);
+            if (object.page != null) {
+                if (typeof object.page !== "object")
+                    throw TypeError(".dashboard.ListGeneralConfReq.page: object expected");
+                message.page = $root.dashboard.Page.fromObject(object.page);
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a ListGeneralConfReq message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.ListGeneralConfReq
+         * @static
+         * @param {dashboard.ListGeneralConfReq} message ListGeneralConfReq
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        ListGeneralConfReq.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults)
+                object.sorts = [];
+            if (options.defaults) {
+                object.coll_name = "";
+                object.filter = "";
+                object.page = null;
+            }
+            if (message.coll_name != null && message.hasOwnProperty("coll_name"))
+                object.coll_name = message.coll_name;
+            if (message.sorts && message.sorts.length) {
+                object.sorts = [];
+                for (let j = 0; j < message.sorts.length; ++j)
+                    object.sorts[j] = $root.dashboard.ListGeneralConfReq.Sort.toObject(message.sorts[j], options);
+            }
+            if (message.filter != null && message.hasOwnProperty("filter"))
+                object.filter = message.filter;
+            if (message.page != null && message.hasOwnProperty("page"))
+                object.page = $root.dashboard.Page.toObject(message.page, options);
+            return object;
+        };
+
+        /**
+         * Converts this ListGeneralConfReq to JSON.
+         * @function toJSON
+         * @memberof dashboard.ListGeneralConfReq
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        ListGeneralConfReq.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for ListGeneralConfReq
+         * @function getTypeUrl
+         * @memberof dashboard.ListGeneralConfReq
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        ListGeneralConfReq.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.ListGeneralConfReq";
+        };
+
+        ListGeneralConfReq.Sort = (function() {
+
+            /**
+             * Properties of a Sort.
+             * @memberof dashboard.ListGeneralConfReq
+             * @interface ISort
+             * @property {string|null} [field] Sort field
+             * @property {number|null} [sort_way] Sort sort_way
+             */
+
+            /**
+             * Constructs a new Sort.
+             * @memberof dashboard.ListGeneralConfReq
+             * @classdesc Represents a Sort.
+             * @implements ISort
+             * @constructor
+             * @param {dashboard.ListGeneralConfReq.ISort=} [properties] Properties to set
+             */
+            function Sort(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Sort field.
+             * @member {string} field
+             * @memberof dashboard.ListGeneralConfReq.Sort
+             * @instance
+             */
+            Sort.prototype.field = "";
+
+            /**
+             * Sort sort_way.
+             * @member {number} sort_way
+             * @memberof dashboard.ListGeneralConfReq.Sort
+             * @instance
+             */
+            Sort.prototype.sort_way = 0;
+
+            /**
+             * Creates a new Sort instance using the specified properties.
+             * @function create
+             * @memberof dashboard.ListGeneralConfReq.Sort
+             * @static
+             * @param {dashboard.ListGeneralConfReq.ISort=} [properties] Properties to set
+             * @returns {dashboard.ListGeneralConfReq.Sort} Sort instance
+             */
+            Sort.create = function create(properties) {
+                return new Sort(properties);
+            };
+
+            /**
+             * Encodes the specified Sort message. Does not implicitly {@link dashboard.ListGeneralConfReq.Sort.verify|verify} messages.
+             * @function encode
+             * @memberof dashboard.ListGeneralConfReq.Sort
+             * @static
+             * @param {dashboard.ListGeneralConfReq.ISort} message Sort message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Sort.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.field != null && Object.hasOwnProperty.call(message, "field"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.field);
+                if (message.sort_way != null && Object.hasOwnProperty.call(message, "sort_way"))
+                    writer.uint32(/* id 2, wireType 0 =*/16).int32(message.sort_way);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified Sort message, length delimited. Does not implicitly {@link dashboard.ListGeneralConfReq.Sort.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof dashboard.ListGeneralConfReq.Sort
+             * @static
+             * @param {dashboard.ListGeneralConfReq.ISort} message Sort message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Sort.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a Sort message from the specified reader or buffer.
+             * @function decode
+             * @memberof dashboard.ListGeneralConfReq.Sort
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {dashboard.ListGeneralConfReq.Sort} Sort
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Sort.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.ListGeneralConfReq.Sort();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.field = reader.string();
+                            break;
+                        }
+                    case 2: {
+                            message.sort_way = reader.int32();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a Sort message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof dashboard.ListGeneralConfReq.Sort
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {dashboard.ListGeneralConfReq.Sort} Sort
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Sort.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a Sort message.
+             * @function verify
+             * @memberof dashboard.ListGeneralConfReq.Sort
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            Sort.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.field != null && message.hasOwnProperty("field"))
+                    if (!$util.isString(message.field))
+                        return "field: string expected";
+                if (message.sort_way != null && message.hasOwnProperty("sort_way"))
+                    if (!$util.isInteger(message.sort_way))
+                        return "sort_way: integer expected";
+                return null;
+            };
+
+            /**
+             * Creates a Sort message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof dashboard.ListGeneralConfReq.Sort
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {dashboard.ListGeneralConfReq.Sort} Sort
+             */
+            Sort.fromObject = function fromObject(object) {
+                if (object instanceof $root.dashboard.ListGeneralConfReq.Sort)
+                    return object;
+                let message = new $root.dashboard.ListGeneralConfReq.Sort();
+                if (object.field != null)
+                    message.field = String(object.field);
+                if (object.sort_way != null)
+                    message.sort_way = object.sort_way | 0;
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a Sort message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof dashboard.ListGeneralConfReq.Sort
+             * @static
+             * @param {dashboard.ListGeneralConfReq.Sort} message Sort
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            Sort.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                let object = {};
+                if (options.defaults) {
+                    object.field = "";
+                    object.sort_way = 0;
+                }
+                if (message.field != null && message.hasOwnProperty("field"))
+                    object.field = message.field;
+                if (message.sort_way != null && message.hasOwnProperty("sort_way"))
+                    object.sort_way = message.sort_way;
+                return object;
+            };
+
+            /**
+             * Converts this Sort to JSON.
+             * @function toJSON
+             * @memberof dashboard.ListGeneralConfReq.Sort
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            Sort.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for Sort
+             * @function getTypeUrl
+             * @memberof dashboard.ListGeneralConfReq.Sort
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            Sort.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/dashboard.ListGeneralConfReq.Sort";
+            };
+
+            return Sort;
+        })();
+
+        return ListGeneralConfReq;
+    })();
+
+    dashboard.ListGeneralConfResp = (function() {
+
+        /**
+         * Properties of a ListGeneralConfResp.
+         * @memberof dashboard
+         * @interface IListGeneralConfResp
+         * @property {Array.<string>|null} [list] ListGeneralConfResp list
+         * @property {number|null} [total] ListGeneralConfResp total
+         */
+
+        /**
+         * Constructs a new ListGeneralConfResp.
+         * @memberof dashboard
+         * @classdesc Represents a ListGeneralConfResp.
+         * @implements IListGeneralConfResp
+         * @constructor
+         * @param {dashboard.IListGeneralConfResp=} [properties] Properties to set
+         */
+        function ListGeneralConfResp(properties) {
+            this.list = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * ListGeneralConfResp list.
+         * @member {Array.<string>} list
+         * @memberof dashboard.ListGeneralConfResp
+         * @instance
+         */
+        ListGeneralConfResp.prototype.list = $util.emptyArray;
+
+        /**
+         * ListGeneralConfResp total.
+         * @member {number} total
+         * @memberof dashboard.ListGeneralConfResp
+         * @instance
+         */
+        ListGeneralConfResp.prototype.total = 0;
+
+        /**
+         * Creates a new ListGeneralConfResp instance using the specified properties.
+         * @function create
+         * @memberof dashboard.ListGeneralConfResp
+         * @static
+         * @param {dashboard.IListGeneralConfResp=} [properties] Properties to set
+         * @returns {dashboard.ListGeneralConfResp} ListGeneralConfResp instance
+         */
+        ListGeneralConfResp.create = function create(properties) {
+            return new ListGeneralConfResp(properties);
+        };
+
+        /**
+         * Encodes the specified ListGeneralConfResp message. Does not implicitly {@link dashboard.ListGeneralConfResp.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.ListGeneralConfResp
+         * @static
+         * @param {dashboard.IListGeneralConfResp} message ListGeneralConfResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ListGeneralConfResp.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.list != null && message.list.length)
+                for (let i = 0; i < message.list.length; ++i)
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.list[i]);
+            if (message.total != null && Object.hasOwnProperty.call(message, "total"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.total);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified ListGeneralConfResp message, length delimited. Does not implicitly {@link dashboard.ListGeneralConfResp.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.ListGeneralConfResp
+         * @static
+         * @param {dashboard.IListGeneralConfResp} message ListGeneralConfResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ListGeneralConfResp.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a ListGeneralConfResp message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.ListGeneralConfResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.ListGeneralConfResp} ListGeneralConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ListGeneralConfResp.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.ListGeneralConfResp();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        if (!(message.list && message.list.length))
+                            message.list = [];
+                        message.list.push(reader.string());
+                        break;
+                    }
+                case 2: {
+                        message.total = reader.uint32();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a ListGeneralConfResp message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.ListGeneralConfResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.ListGeneralConfResp} ListGeneralConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ListGeneralConfResp.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a ListGeneralConfResp message.
+         * @function verify
+         * @memberof dashboard.ListGeneralConfResp
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        ListGeneralConfResp.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.list != null && message.hasOwnProperty("list")) {
+                if (!Array.isArray(message.list))
+                    return "list: array expected";
+                for (let i = 0; i < message.list.length; ++i)
+                    if (!$util.isString(message.list[i]))
+                        return "list: string[] expected";
+            }
+            if (message.total != null && message.hasOwnProperty("total"))
+                if (!$util.isInteger(message.total))
+                    return "total: integer expected";
+            return null;
+        };
+
+        /**
+         * Creates a ListGeneralConfResp message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.ListGeneralConfResp
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.ListGeneralConfResp} ListGeneralConfResp
+         */
+        ListGeneralConfResp.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.ListGeneralConfResp)
+                return object;
+            let message = new $root.dashboard.ListGeneralConfResp();
+            if (object.list) {
+                if (!Array.isArray(object.list))
+                    throw TypeError(".dashboard.ListGeneralConfResp.list: array expected");
+                message.list = [];
+                for (let i = 0; i < object.list.length; ++i)
+                    message.list[i] = String(object.list[i]);
+            }
+            if (object.total != null)
+                message.total = object.total >>> 0;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a ListGeneralConfResp message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.ListGeneralConfResp
+         * @static
+         * @param {dashboard.ListGeneralConfResp} message ListGeneralConfResp
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        ListGeneralConfResp.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults)
+                object.list = [];
+            if (options.defaults)
+                object.total = 0;
+            if (message.list && message.list.length) {
+                object.list = [];
+                for (let j = 0; j < message.list.length; ++j)
+                    object.list[j] = message.list[j];
+            }
+            if (message.total != null && message.hasOwnProperty("total"))
+                object.total = message.total;
+            return object;
+        };
+
+        /**
+         * Converts this ListGeneralConfResp to JSON.
+         * @function toJSON
+         * @memberof dashboard.ListGeneralConfResp
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        ListGeneralConfResp.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for ListGeneralConfResp
+         * @function getTypeUrl
+         * @memberof dashboard.ListGeneralConfResp
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        ListGeneralConfResp.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.ListGeneralConfResp";
+        };
+
+        return ListGeneralConfResp;
     })();
 
     dashboard.DeleteUserReq = (function() {
@@ -24981,6 +26978,7 @@ export const mgorm_ext = $root.mgorm_ext = (() => {
          * @property {boolean|null} [is_pure_struct] MgormOptions is_pure_struct
          * @property {boolean|null} [omitempty_default_bson_tag] MgormOptions omitempty_default_bson_tag
          * @property {boolean|null} [omitempty_default_json_tag] MgormOptions omitempty_default_json_tag
+         * @property {string|null} [desc] MgormOptions desc
          */
 
         /**
@@ -25138,6 +27136,14 @@ export const mgorm_ext = $root.mgorm_ext = (() => {
         MgormOptions.prototype.omitempty_default_json_tag = false;
 
         /**
+         * MgormOptions desc.
+         * @member {string} desc
+         * @memberof mgorm_ext.MgormOptions
+         * @instance
+         */
+        MgormOptions.prototype.desc = "";
+
+        /**
          * Creates a new MgormOptions instance using the specified properties.
          * @function create
          * @memberof mgorm_ext.MgormOptions
@@ -25198,6 +27204,8 @@ export const mgorm_ext = $root.mgorm_ext = (() => {
                 writer.uint32(/* id 17, wireType 0 =*/136).bool(message.omitempty_default_bson_tag);
             if (message.omitempty_default_json_tag != null && Object.hasOwnProperty.call(message, "omitempty_default_json_tag"))
                 writer.uint32(/* id 18, wireType 0 =*/144).bool(message.omitempty_default_json_tag);
+            if (message.desc != null && Object.hasOwnProperty.call(message, "desc"))
+                writer.uint32(/* id 19, wireType 2 =*/154).string(message.desc);
             return writer;
         };
 
@@ -25308,6 +27316,10 @@ export const mgorm_ext = $root.mgorm_ext = (() => {
                         message.omitempty_default_json_tag = reader.bool();
                         break;
                     }
+                case 19: {
+                        message.desc = reader.string();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -25406,6 +27418,9 @@ export const mgorm_ext = $root.mgorm_ext = (() => {
             if (message.omitempty_default_json_tag != null && message.hasOwnProperty("omitempty_default_json_tag"))
                 if (typeof message.omitempty_default_json_tag !== "boolean")
                     return "omitempty_default_json_tag: boolean expected";
+            if (message.desc != null && message.hasOwnProperty("desc"))
+                if (!$util.isString(message.desc))
+                    return "desc: string expected";
             return null;
         };
 
@@ -25477,6 +27492,8 @@ export const mgorm_ext = $root.mgorm_ext = (() => {
                 message.omitempty_default_bson_tag = Boolean(object.omitempty_default_bson_tag);
             if (object.omitempty_default_json_tag != null)
                 message.omitempty_default_json_tag = Boolean(object.omitempty_default_json_tag);
+            if (object.desc != null)
+                message.desc = String(object.desc);
             return message;
         };
 
@@ -25517,6 +27534,7 @@ export const mgorm_ext = $root.mgorm_ext = (() => {
                 object.is_pure_struct = false;
                 object.omitempty_default_bson_tag = false;
                 object.omitempty_default_json_tag = false;
+                object.desc = "";
             }
             if (message.conn != null && message.hasOwnProperty("conn"))
                 object.conn = message.conn;
@@ -25564,6 +27582,8 @@ export const mgorm_ext = $root.mgorm_ext = (() => {
                 object.omitempty_default_bson_tag = message.omitempty_default_bson_tag;
             if (message.omitempty_default_json_tag != null && message.hasOwnProperty("omitempty_default_json_tag"))
                 object.omitempty_default_json_tag = message.omitempty_default_json_tag;
+            if (message.desc != null && message.hasOwnProperty("desc"))
+                object.desc = message.desc;
             return object;
         };
 

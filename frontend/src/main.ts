@@ -12,6 +12,7 @@ import { ViteSSG } from 'vite-ssg'
 import { routes } from 'vue-router/auto-routes'
 import App from './App.vue'
 import { createPinia } from 'pinia'
+import JsonViewer from "vue3-json-viewer";
 
 import '~/styles/index.scss'
 
@@ -20,6 +21,7 @@ import 'uno.css'
 import 'element-plus/theme-chalk/src/message.scss'
 import 'element-plus/theme-chalk/src/message-box.scss'
 import 'element-plus/theme-chalk/src/overlay.scss' // the modal class for message box
+import "vue3-json-viewer/dist/vue3-json-viewer.css"
 
 import { setRouter } from './composables/route'
 import { isLogin  }  from './composables/auth'
@@ -60,6 +62,7 @@ export const createApp = ViteSSG(
     })
 
     ctx.app.use(createPinia())
+    ctx.app.use(JsonViewer)
 
     // ctx.app.use(Previewer)
   },

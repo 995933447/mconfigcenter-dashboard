@@ -208,3 +208,27 @@ func (s *Dashboard) DeleteUser(ctx context.Context, in *DeleteUserReq, opts ...g
 
 	return s.c.DeleteUser(ctx, in, opts...)
 }
+
+func (s *Dashboard) ListGeneralConf(ctx context.Context, in *ListGeneralConfReq, opts ...grpc.CallOption) (*ListGeneralConfResp, error) {
+	if err := s.prepareConn(); err != nil {
+		return nil, err
+	}
+
+	return s.c.ListGeneralConf(ctx, in, opts...)
+}
+
+func (s *Dashboard) ListConfSchema(ctx context.Context, in *ListConfSchemaReq, opts ...grpc.CallOption) (*ListConfSchemaResp, error) {
+	if err := s.prepareConn(); err != nil {
+		return nil, err
+	}
+
+	return s.c.ListConfSchema(ctx, in, opts...)
+}
+
+func (s *Dashboard) SetConfigSchema(ctx context.Context, in *SetConfSchemaReq, opts ...grpc.CallOption) (*SetConfSchemaResp, error) {
+	if err := s.prepareConn(); err != nil {
+		return nil, err
+	}
+
+	return s.c.SetConfigSchema(ctx, in, opts...)
+}

@@ -282,6 +282,48 @@ export namespace dashboard {
          * @returns Promise
          */
         public deleteUser(request: dashboard.IDeleteUserReq): Promise<dashboard.DeleteUserResp>;
+
+        /**
+         * Calls ListGeneralConf.
+         * @param request ListGeneralConfReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and ListGeneralConfResp
+         */
+        public listGeneralConf(request: dashboard.IListGeneralConfReq, callback: dashboard.Dashboard.ListGeneralConfCallback): void;
+
+        /**
+         * Calls ListGeneralConf.
+         * @param request ListGeneralConfReq message or plain object
+         * @returns Promise
+         */
+        public listGeneralConf(request: dashboard.IListGeneralConfReq): Promise<dashboard.ListGeneralConfResp>;
+
+        /**
+         * Calls ListConfSchema.
+         * @param request ListConfSchemaReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and ListConfSchemaResp
+         */
+        public listConfSchema(request: dashboard.IListConfSchemaReq, callback: dashboard.Dashboard.ListConfSchemaCallback): void;
+
+        /**
+         * Calls ListConfSchema.
+         * @param request ListConfSchemaReq message or plain object
+         * @returns Promise
+         */
+        public listConfSchema(request: dashboard.IListConfSchemaReq): Promise<dashboard.ListConfSchemaResp>;
+
+        /**
+         * Calls SetConfigSchema.
+         * @param request SetConfSchemaReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and SetConfSchemaResp
+         */
+        public setConfigSchema(request: dashboard.ISetConfSchemaReq, callback: dashboard.Dashboard.SetConfigSchemaCallback): void;
+
+        /**
+         * Calls SetConfigSchema.
+         * @param request SetConfSchemaReq message or plain object
+         * @returns Promise
+         */
+        public setConfigSchema(request: dashboard.ISetConfSchemaReq): Promise<dashboard.SetConfSchemaResp>;
     }
 
     namespace Dashboard {
@@ -411,6 +453,848 @@ export namespace dashboard {
          * @param [response] DeleteUserResp
          */
         type DeleteUserCallback = (error: (Error|null), response?: dashboard.DeleteUserResp) => void;
+
+        /**
+         * Callback as used by {@link dashboard.Dashboard#listGeneralConf}.
+         * @param error Error, if any
+         * @param [response] ListGeneralConfResp
+         */
+        type ListGeneralConfCallback = (error: (Error|null), response?: dashboard.ListGeneralConfResp) => void;
+
+        /**
+         * Callback as used by {@link dashboard.Dashboard#listConfSchema}.
+         * @param error Error, if any
+         * @param [response] ListConfSchemaResp
+         */
+        type ListConfSchemaCallback = (error: (Error|null), response?: dashboard.ListConfSchemaResp) => void;
+
+        /**
+         * Callback as used by {@link dashboard.Dashboard#setConfigSchema}.
+         * @param error Error, if any
+         * @param [response] SetConfSchemaResp
+         */
+        type SetConfigSchemaCallback = (error: (Error|null), response?: dashboard.SetConfSchemaResp) => void;
+    }
+
+    /** Properties of a SetConfSchemaReq. */
+    interface ISetConfSchemaReq {
+
+        /** SetConfSchemaReq config_schema */
+        config_schema?: (dashboard.IConfigSchema|null);
+    }
+
+    /** Represents a SetConfSchemaReq. */
+    class SetConfSchemaReq implements ISetConfSchemaReq {
+
+        /**
+         * Constructs a new SetConfSchemaReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.ISetConfSchemaReq);
+
+        /** SetConfSchemaReq config_schema. */
+        public config_schema?: (dashboard.IConfigSchema|null);
+
+        /**
+         * Creates a new SetConfSchemaReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns SetConfSchemaReq instance
+         */
+        public static create(properties?: dashboard.ISetConfSchemaReq): dashboard.SetConfSchemaReq;
+
+        /**
+         * Encodes the specified SetConfSchemaReq message. Does not implicitly {@link dashboard.SetConfSchemaReq.verify|verify} messages.
+         * @param message SetConfSchemaReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.ISetConfSchemaReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified SetConfSchemaReq message, length delimited. Does not implicitly {@link dashboard.SetConfSchemaReq.verify|verify} messages.
+         * @param message SetConfSchemaReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.ISetConfSchemaReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a SetConfSchemaReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns SetConfSchemaReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.SetConfSchemaReq;
+
+        /**
+         * Decodes a SetConfSchemaReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns SetConfSchemaReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.SetConfSchemaReq;
+
+        /**
+         * Verifies a SetConfSchemaReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a SetConfSchemaReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns SetConfSchemaReq
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.SetConfSchemaReq;
+
+        /**
+         * Creates a plain object from a SetConfSchemaReq message. Also converts values to other types if specified.
+         * @param message SetConfSchemaReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.SetConfSchemaReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this SetConfSchemaReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for SetConfSchemaReq
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a SetConfSchemaResp. */
+    interface ISetConfSchemaResp {
+    }
+
+    /** Represents a SetConfSchemaResp. */
+    class SetConfSchemaResp implements ISetConfSchemaResp {
+
+        /**
+         * Constructs a new SetConfSchemaResp.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.ISetConfSchemaResp);
+
+        /**
+         * Creates a new SetConfSchemaResp instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns SetConfSchemaResp instance
+         */
+        public static create(properties?: dashboard.ISetConfSchemaResp): dashboard.SetConfSchemaResp;
+
+        /**
+         * Encodes the specified SetConfSchemaResp message. Does not implicitly {@link dashboard.SetConfSchemaResp.verify|verify} messages.
+         * @param message SetConfSchemaResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.ISetConfSchemaResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified SetConfSchemaResp message, length delimited. Does not implicitly {@link dashboard.SetConfSchemaResp.verify|verify} messages.
+         * @param message SetConfSchemaResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.ISetConfSchemaResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a SetConfSchemaResp message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns SetConfSchemaResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.SetConfSchemaResp;
+
+        /**
+         * Decodes a SetConfSchemaResp message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns SetConfSchemaResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.SetConfSchemaResp;
+
+        /**
+         * Verifies a SetConfSchemaResp message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a SetConfSchemaResp message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns SetConfSchemaResp
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.SetConfSchemaResp;
+
+        /**
+         * Creates a plain object from a SetConfSchemaResp message. Also converts values to other types if specified.
+         * @param message SetConfSchemaResp
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.SetConfSchemaResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this SetConfSchemaResp to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for SetConfSchemaResp
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a ListConfSchemaReq. */
+    interface IListConfSchemaReq {
+    }
+
+    /** Represents a ListConfSchemaReq. */
+    class ListConfSchemaReq implements IListConfSchemaReq {
+
+        /**
+         * Constructs a new ListConfSchemaReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IListConfSchemaReq);
+
+        /**
+         * Creates a new ListConfSchemaReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns ListConfSchemaReq instance
+         */
+        public static create(properties?: dashboard.IListConfSchemaReq): dashboard.ListConfSchemaReq;
+
+        /**
+         * Encodes the specified ListConfSchemaReq message. Does not implicitly {@link dashboard.ListConfSchemaReq.verify|verify} messages.
+         * @param message ListConfSchemaReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IListConfSchemaReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified ListConfSchemaReq message, length delimited. Does not implicitly {@link dashboard.ListConfSchemaReq.verify|verify} messages.
+         * @param message ListConfSchemaReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IListConfSchemaReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a ListConfSchemaReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns ListConfSchemaReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.ListConfSchemaReq;
+
+        /**
+         * Decodes a ListConfSchemaReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns ListConfSchemaReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.ListConfSchemaReq;
+
+        /**
+         * Verifies a ListConfSchemaReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a ListConfSchemaReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns ListConfSchemaReq
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.ListConfSchemaReq;
+
+        /**
+         * Creates a plain object from a ListConfSchemaReq message. Also converts values to other types if specified.
+         * @param message ListConfSchemaReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.ListConfSchemaReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this ListConfSchemaReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for ListConfSchemaReq
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a ConfigSchema. */
+    interface IConfigSchema {
+
+        /** ConfigSchema coll_name */
+        coll_name?: (string|null);
+
+        /** ConfigSchema index_keys */
+        index_keys?: (string[]|null);
+
+        /** ConfigSchema uniq_index_keys */
+        uniq_index_keys?: (string[]|null);
+
+        /** ConfigSchema json_schema */
+        json_schema?: (string|null);
+
+        /** ConfigSchema desc */
+        desc?: (string|null);
+    }
+
+    /** Represents a ConfigSchema. */
+    class ConfigSchema implements IConfigSchema {
+
+        /**
+         * Constructs a new ConfigSchema.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IConfigSchema);
+
+        /** ConfigSchema coll_name. */
+        public coll_name: string;
+
+        /** ConfigSchema index_keys. */
+        public index_keys: string[];
+
+        /** ConfigSchema uniq_index_keys. */
+        public uniq_index_keys: string[];
+
+        /** ConfigSchema json_schema. */
+        public json_schema: string;
+
+        /** ConfigSchema desc. */
+        public desc: string;
+
+        /**
+         * Creates a new ConfigSchema instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns ConfigSchema instance
+         */
+        public static create(properties?: dashboard.IConfigSchema): dashboard.ConfigSchema;
+
+        /**
+         * Encodes the specified ConfigSchema message. Does not implicitly {@link dashboard.ConfigSchema.verify|verify} messages.
+         * @param message ConfigSchema message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IConfigSchema, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified ConfigSchema message, length delimited. Does not implicitly {@link dashboard.ConfigSchema.verify|verify} messages.
+         * @param message ConfigSchema message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IConfigSchema, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a ConfigSchema message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns ConfigSchema
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.ConfigSchema;
+
+        /**
+         * Decodes a ConfigSchema message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns ConfigSchema
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.ConfigSchema;
+
+        /**
+         * Verifies a ConfigSchema message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a ConfigSchema message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns ConfigSchema
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.ConfigSchema;
+
+        /**
+         * Creates a plain object from a ConfigSchema message. Also converts values to other types if specified.
+         * @param message ConfigSchema
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.ConfigSchema, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this ConfigSchema to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for ConfigSchema
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a ListConfSchemaResp. */
+    interface IListConfSchemaResp {
+
+        /** ListConfSchemaResp list */
+        list?: (dashboard.IConfigSchema[]|null);
+    }
+
+    /** Represents a ListConfSchemaResp. */
+    class ListConfSchemaResp implements IListConfSchemaResp {
+
+        /**
+         * Constructs a new ListConfSchemaResp.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IListConfSchemaResp);
+
+        /** ListConfSchemaResp list. */
+        public list: dashboard.IConfigSchema[];
+
+        /**
+         * Creates a new ListConfSchemaResp instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns ListConfSchemaResp instance
+         */
+        public static create(properties?: dashboard.IListConfSchemaResp): dashboard.ListConfSchemaResp;
+
+        /**
+         * Encodes the specified ListConfSchemaResp message. Does not implicitly {@link dashboard.ListConfSchemaResp.verify|verify} messages.
+         * @param message ListConfSchemaResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IListConfSchemaResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified ListConfSchemaResp message, length delimited. Does not implicitly {@link dashboard.ListConfSchemaResp.verify|verify} messages.
+         * @param message ListConfSchemaResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IListConfSchemaResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a ListConfSchemaResp message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns ListConfSchemaResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.ListConfSchemaResp;
+
+        /**
+         * Decodes a ListConfSchemaResp message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns ListConfSchemaResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.ListConfSchemaResp;
+
+        /**
+         * Verifies a ListConfSchemaResp message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a ListConfSchemaResp message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns ListConfSchemaResp
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.ListConfSchemaResp;
+
+        /**
+         * Creates a plain object from a ListConfSchemaResp message. Also converts values to other types if specified.
+         * @param message ListConfSchemaResp
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.ListConfSchemaResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this ListConfSchemaResp to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for ListConfSchemaResp
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a ListGeneralConfReq. */
+    interface IListGeneralConfReq {
+
+        /** ListGeneralConfReq coll_name */
+        coll_name?: (string|null);
+
+        /** ListGeneralConfReq sorts */
+        sorts?: (dashboard.ListGeneralConfReq.ISort[]|null);
+
+        /** ListGeneralConfReq filter */
+        filter?: (string|null);
+
+        /** ListGeneralConfReq page */
+        page?: (dashboard.IPage|null);
+    }
+
+    /** Represents a ListGeneralConfReq. */
+    class ListGeneralConfReq implements IListGeneralConfReq {
+
+        /**
+         * Constructs a new ListGeneralConfReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IListGeneralConfReq);
+
+        /** ListGeneralConfReq coll_name. */
+        public coll_name: string;
+
+        /** ListGeneralConfReq sorts. */
+        public sorts: dashboard.ListGeneralConfReq.ISort[];
+
+        /** ListGeneralConfReq filter. */
+        public filter: string;
+
+        /** ListGeneralConfReq page. */
+        public page?: (dashboard.IPage|null);
+
+        /**
+         * Creates a new ListGeneralConfReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns ListGeneralConfReq instance
+         */
+        public static create(properties?: dashboard.IListGeneralConfReq): dashboard.ListGeneralConfReq;
+
+        /**
+         * Encodes the specified ListGeneralConfReq message. Does not implicitly {@link dashboard.ListGeneralConfReq.verify|verify} messages.
+         * @param message ListGeneralConfReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IListGeneralConfReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified ListGeneralConfReq message, length delimited. Does not implicitly {@link dashboard.ListGeneralConfReq.verify|verify} messages.
+         * @param message ListGeneralConfReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IListGeneralConfReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a ListGeneralConfReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns ListGeneralConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.ListGeneralConfReq;
+
+        /**
+         * Decodes a ListGeneralConfReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns ListGeneralConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.ListGeneralConfReq;
+
+        /**
+         * Verifies a ListGeneralConfReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a ListGeneralConfReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns ListGeneralConfReq
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.ListGeneralConfReq;
+
+        /**
+         * Creates a plain object from a ListGeneralConfReq message. Also converts values to other types if specified.
+         * @param message ListGeneralConfReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.ListGeneralConfReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this ListGeneralConfReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for ListGeneralConfReq
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace ListGeneralConfReq {
+
+        /** Properties of a Sort. */
+        interface ISort {
+
+            /** Sort field */
+            field?: (string|null);
+
+            /** Sort sort_way */
+            sort_way?: (number|null);
+        }
+
+        /** Represents a Sort. */
+        class Sort implements ISort {
+
+            /**
+             * Constructs a new Sort.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: dashboard.ListGeneralConfReq.ISort);
+
+            /** Sort field. */
+            public field: string;
+
+            /** Sort sort_way. */
+            public sort_way: number;
+
+            /**
+             * Creates a new Sort instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns Sort instance
+             */
+            public static create(properties?: dashboard.ListGeneralConfReq.ISort): dashboard.ListGeneralConfReq.Sort;
+
+            /**
+             * Encodes the specified Sort message. Does not implicitly {@link dashboard.ListGeneralConfReq.Sort.verify|verify} messages.
+             * @param message Sort message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: dashboard.ListGeneralConfReq.ISort, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Sort message, length delimited. Does not implicitly {@link dashboard.ListGeneralConfReq.Sort.verify|verify} messages.
+             * @param message Sort message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: dashboard.ListGeneralConfReq.ISort, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a Sort message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Sort
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.ListGeneralConfReq.Sort;
+
+            /**
+             * Decodes a Sort message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Sort
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.ListGeneralConfReq.Sort;
+
+            /**
+             * Verifies a Sort message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a Sort message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Sort
+             */
+            public static fromObject(object: { [k: string]: any }): dashboard.ListGeneralConfReq.Sort;
+
+            /**
+             * Creates a plain object from a Sort message. Also converts values to other types if specified.
+             * @param message Sort
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: dashboard.ListGeneralConfReq.Sort, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Sort to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for Sort
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+    }
+
+    /** Properties of a ListGeneralConfResp. */
+    interface IListGeneralConfResp {
+
+        /** ListGeneralConfResp list */
+        list?: (string[]|null);
+
+        /** ListGeneralConfResp total */
+        total?: (number|null);
+    }
+
+    /** Represents a ListGeneralConfResp. */
+    class ListGeneralConfResp implements IListGeneralConfResp {
+
+        /**
+         * Constructs a new ListGeneralConfResp.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IListGeneralConfResp);
+
+        /** ListGeneralConfResp list. */
+        public list: string[];
+
+        /** ListGeneralConfResp total. */
+        public total: number;
+
+        /**
+         * Creates a new ListGeneralConfResp instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns ListGeneralConfResp instance
+         */
+        public static create(properties?: dashboard.IListGeneralConfResp): dashboard.ListGeneralConfResp;
+
+        /**
+         * Encodes the specified ListGeneralConfResp message. Does not implicitly {@link dashboard.ListGeneralConfResp.verify|verify} messages.
+         * @param message ListGeneralConfResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IListGeneralConfResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified ListGeneralConfResp message, length delimited. Does not implicitly {@link dashboard.ListGeneralConfResp.verify|verify} messages.
+         * @param message ListGeneralConfResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IListGeneralConfResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a ListGeneralConfResp message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns ListGeneralConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.ListGeneralConfResp;
+
+        /**
+         * Decodes a ListGeneralConfResp message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns ListGeneralConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.ListGeneralConfResp;
+
+        /**
+         * Verifies a ListGeneralConfResp message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a ListGeneralConfResp message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns ListGeneralConfResp
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.ListGeneralConfResp;
+
+        /**
+         * Creates a plain object from a ListGeneralConfResp message. Also converts values to other types if specified.
+         * @param message ListGeneralConfResp
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.ListGeneralConfResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this ListGeneralConfResp to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for ListGeneralConfResp
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
     }
 
     /** Properties of a DeleteUserReq. */
@@ -9609,6 +10493,9 @@ export namespace mgorm_ext {
 
         /** MgormOptions omitempty_default_json_tag */
         omitempty_default_json_tag?: (boolean|null);
+
+        /** MgormOptions desc */
+        desc?: (string|null);
     }
 
     /** Represents a MgormOptions. */
@@ -9670,6 +10557,9 @@ export namespace mgorm_ext {
 
         /** MgormOptions omitempty_default_json_tag. */
         public omitempty_default_json_tag: boolean;
+
+        /** MgormOptions desc. */
+        public desc: string;
 
         /**
          * Creates a new MgormOptions instance using the specified properties.

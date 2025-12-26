@@ -124,6 +124,65 @@ service Dashboard {
       method: "POST"
     };
   }
+
+  rpc ListGeneralConf(ListGeneralConfReq) returns (ListGeneralConfResp) {
+    option (httpext.http_rule) = {
+      method: "GET"
+    };
+  }
+
+  rpc ListConfSchema(ListConfSchemaReq) returns (ListConfSchemaResp) {
+    option (httpext.http_rule) = {
+      method: "GET"
+    };
+  }
+
+  rpc SetConfigSchema(SetConfSchemaReq) returns (SetConfSchemaResp) {
+    option (httpext.http_rule) = {
+      method: "POST"
+    };
+  }
+}
+
+message SetConfSchemaReq {
+  ConfigSchema config_schema = 1;
+}
+
+message SetConfSchemaResp {
+
+}
+
+message ListConfSchemaReq {
+
+}
+
+message ConfigSchema {
+  string coll_name = 1; // 集合名称
+  repeated string index_keys = 2; // 普通索引键
+  repeated string uniq_index_keys = 3; // 唯一索引键
+  string json_schema = 4; // json schema
+  string desc = 5;
+}
+
+message ListConfSchemaResp {
+  repeated ConfigSchema list = 1;
+}
+
+message ListGeneralConfReq {
+  message Sort {
+    string field = 1; // 排序字段
+    int32 sort_way = 2; // 排序方式，1升序或者-1降序
+  }
+
+  string coll_name = 1; // 集合名称
+  repeated Sort sorts = 2; // 排序
+  string filter = 3; // 过滤
+  Page page = 4; // 分页
+}
+
+message ListGeneralConfResp {
+  repeated string list = 1; // 列表
+  uint32 total = 2; // 总条数
 }
 
 message DeleteUserReq {

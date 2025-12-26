@@ -9,6 +9,7 @@ import (
 	"github.com/995933447/idgen/idgen"
 	"github.com/995933447/mconfigcenter-dashboard/backend/api/dashboard"
 	"github.com/995933447/mconfigcenter-dashboard/backend/service/dashboardserver/config"
+	"github.com/995933447/mconfigcenter/configcenter"
 	"github.com/995933447/rbac/rbac"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
@@ -50,6 +51,10 @@ func PrepareDiscoverGRPC() error {
 	}
 
 	if err := rbac.PrepareGRPC(context.TODO(), dashboard.EasymicroDiscoveryName); err != nil {
+		return err
+	}
+
+	if err := configcenter.PrepareGRPC(context.TODO(), dashboard.EasymicroDiscoveryName); err != nil {
 		return err
 	}
 

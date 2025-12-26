@@ -1,6 +1,6 @@
 <template>
     <div mb-1rem>
-        <el-form :inline="true" :model="fetchUserListCond" :rules="saveUserFormRules">
+        <el-form :inline="true" :model="fetchUserListCond">
             <el-form-item label="用户名称">
                 <el-input v-model="fetchUserListCond.name" placeholder="用户名称" style="width: 12rem" clearable />
             </el-form-item>

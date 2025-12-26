@@ -10,7 +10,6 @@ import { defineEmits, ref, watchEffect } from 'vue'
 import type { BaseSideMenuItem } from '~/types/emit'
 import { useRoute } from 'vue-router'
 import { MenuInstance, SubMenuInstance } from 'element-plus';
-import SubMenu from 'element-plus/es/components/menu/src/utils/submenu.mjs';
 
 const emit = defineEmits<{
   (e: 'base-side-menu-item-click', data: BaseSideMenuItem): void
@@ -36,8 +35,8 @@ interface Menu {
 }
 
 const configMangementMenus:Menu[] = [
-  { title: '通用配置', index: '/general-config' },
-  { title: 'key-value配置', index: '/kv-config' },
+  { title: '通用配置', index: '/config/general' },
+  { title: 'key-value配置', index: '/config/kv' },
 ]
 
 const rbacMenus:Menu[] = [

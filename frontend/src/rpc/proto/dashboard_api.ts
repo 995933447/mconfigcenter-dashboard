@@ -89,4 +89,19 @@ export class DashboardService {
     return await request.post('/dashboard/Dashboard/DeleteUser', req)
   };
 
+  /** no comment **/
+  static async ListGeneralConf(req: api.dashboard.IListGeneralConfReq): Promise<api.dashboard.IListGeneralConfResp> {
+    return await request.get('/dashboard/Dashboard/ListGeneralConf', { params: req })
+  };
+
+  /** no comment **/
+  static async ListConfSchema(req: api.dashboard.IListConfSchemaReq): Promise<api.dashboard.IListConfSchemaResp> {
+    return await request.get('/dashboard/Dashboard/ListConfSchema', { params: req })
+  };
+
+  /** no comment **/
+  static async SetConfigSchema(req: api.dashboard.ISetConfSchemaReq): Promise<api.dashboard.ISetConfSchemaResp> {
+    return await request.post('/dashboard/Dashboard/SetConfigSchema', req)
+  };
+
 };
