@@ -3,63 +3,65 @@
         <el-form :inline="true">
             <div flex justify-start pl-6rem>
                 <el-form-item label="集合名称" style="width: 20rem;">
-                    <el-select placeholder="集合名称" clearable v-model="fetchConfCond.coll_name">
-                        <el-option :label="item.coll_name + (item.desc? ' (' +item.desc+ ')':'')" :value="item.coll_name" v-for="item in configSchemaList" />
+                    <el-select placeholder="集合名称" clearable v-model="fetchConfCond.collName">
+                        <el-option :label="item.coll_name + (item.desc ? ' (' + item.desc + ')' : '')"
+                            :value="item.coll_name as string" v-for="item in configSchemaList" />
                     </el-select>
                 </el-form-item>
                 <el-form-item>
                     <el-button type="primary"
-                        @click="handleViewSchemaConfigSchema(fetchConfCond.coll_name)">查看schema</el-button>
+                        @click="handleViewSchemaConfigSchema(fetchConfCond.collName)">查看schema</el-button>
                     <el-button type="primary" @click="handleOpenUploadConfigSchemaDialog">上传schema</el-button>
                 </el-form-item>
             </div>
 
             <div flex justify-start pl-6rem v-for="(item, index) in searchConfCollCondList" :key="item.id">
-                <el-form-item label="搜索字段" style="width: 20rem;">
-                    <el-select placeholder="搜索字段" clearable v-model="searchConfCollCondList[index].key">
-                        <template v-for="option in parseTheLeastOneConfCollCondKeySelectOptions" :key="option.key">
-                            <el-option v-if="['string', 'number', 'boolean'].includes(option.value.type) && !['created_at', 'updated_at'].includes(option.key)" :label="option.key" :value="option.key" />
-                        </template>
-                    </el-select>
-                </el-form-item>
-                <el-form-item>
-                    <el-select placeholder="搜索字段操作" clearable style="width: 8rem;">
-                        <el-option label="eq" value="eq" />
-                    </el-select>
-                </el-form-item>
-                <el-form-item>
-                    <el-input placeholder="搜索值"></el-input>
-                </el-form-item>
+                <FilterConfCondFormItem :keyOptions="parseTheLeastOneConfCollCondKeySelectOptions"
+                    v-model:searchConfCollCond="searchConfCollCondList[index]" />
                 <el-form-item>
                     <el-button type="primary" @click="removeConfCollCond(item.id)">删除</el-button>
                 </el-form-item>
             </div>
 
             <div flex justify-start pl-6rem>
-                <el-form-item label="搜索字段" style="width: 20rem;">
-                    <el-select placeholder="搜索字段" clearable v-model="theLeastOneConfCollCond.key" @change="hanldeSelectTheLeastOneConfCollCondKey">
-                        <template v-for="option in parseTheLeastOneConfCollCondKeySelectOptions" :key="option.key">
-                            <el-option v-if="['string', 'number', 'boolean'].includes(option.value.type) && !['created_at', 'updated_at'].includes(option.key)" :label="option.key" :value="option.key" />
-                        </template>
-                    </el-select>
-                </el-form-item>
-                <el-form-item v-if="theLeastOneConfCollCond.valueType == 'number'">
-                    <el-select placeholder="搜索字段操作" clearable style="width: 8rem;" v-model="theLeastOneConfCollCond.op">
-                        <el-option label="等于" value="$eq" />
-                        <el-option label="不小于" value="$gte" />
-                        <el-option label="不大于" value="$lte" />
-                        <el-option label="不等于" value="$ne" />
-                    </el-select>
-                </el-form-item>
-                <el-form-item>
-                    <el-input placeholder="搜索值" v-model="theLeastOneConfCollCond.value" />
-                </el-form-item>
+                <FilterConfCondFormItem :keyOptions="parseTheLeastOneConfCollCondKeySelectOptions"
+                    v-model:searchConfCollCond="theLeastOneConfCollCond" />
                 <el-form-item>
                     <el-button type="primary" @click="addConfCollCond">添加搜索条件</el-button>
-                    <el-button type="primary">搜索</el-button>
+                    <el-button type="primary" @click="query">搜索</el-button>
                 </el-form-item>
             </div>
         </el-form>
+    </div>
+
+    <div flex justify-left ml-2rem mb-2rem>
+        <el-button @click="" type="primary">新增</el-button>
+        <el-popconfirm confirm-button-text="Yes" cancel-button-text="No" :icon="InfoFilled" icon-color="#626AEF"
+            title="确定删除?" @confirm="">
+            <template #reference>
+                <el-button type="danger">删除</el-button>
+            </template>
+        </el-popconfirm>
+    </div>
+
+    <div flex justify-center v-loading="loading">
+        <el-table :data="currTableRows">
+            <el-table-column type="selection" width="55" />
+            <el-table-column :label="key" v-for="key in currTableColumns" show-overflow-tooltip>
+                <template #default="scope" :prop="key">{{ scope.row[key] }}</template>
+            </el-table-column>
+            <el-table-column fixed="right" label="操作" min-width="120">
+                <template #default="scope">
+                    <el-button link type="primary" size="small">修改</el-button>
+                    <el-popconfirm confirm-button-text="Yes" cancel-button-text="No" :icon="InfoFilled"
+                        icon-color="#626AEF" title="确定删除?" @confirm="">
+                        <template #reference>
+                            <el-button link type="danger" size="small">删除</el-button>
+                        </template>
+                    </el-popconfirm>
+                </template>
+            </el-table-column>
+        </el-table>
     </div>
 
     <el-dialog width="30%" v-model="uploadConfigSchemaDialogVisable"
@@ -102,6 +104,13 @@
         </el-form>
     </el-dialog>
 
+    <div flex justify-center mt-1rem>
+        <el-pagination v-model:current-page="fetchConfCond.page" v-model:page-size="fetchConfCond.pageSize"
+            :page-sizes="[20, 40, 80, 100]" layout="total, sizes, prev, pager, next, jumper" :total="pageTotal"
+            @size-change="query" @current-change="query" />
+    </div>
+
+
     <el-dialog width="30%" v-model="previewConfigSchemaVisable" :before-close="handleClosePreviewConfigSchemaDialog">
         <json-viewer :value="configSchemaPreview" copyable boxed sort style="text-align: left;" />
     </el-dialog>
@@ -109,10 +118,13 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, reactive, ref, watchEffect, watch } from 'vue';
+import { computed, onMounted, reactive, ref, watch } from 'vue';
 import { DashboardService } from '~/rpc/proto/dashboard_api';
 import api from '~/rpc/proto/dashboard';
 import { ElFormItem, ElInput, ElMessage, type UploadFile } from 'element-plus'
+import { InfoFilled } from '@element-plus/icons-vue'
+import FilterConfCondFormItem from '~/components/FilterConfCondFormItem.vue';
+import { ConfCollCond, KeySelectOption } from '~/components/FilterConfCondFormItem.vue';
 
 defineOptions({
     name: "/config/general"
@@ -120,16 +132,10 @@ defineOptions({
 
 let confCollCondNextId: number = 1
 
-interface ConfCollCond {
-    id: number
-    key: string
-    op: string
-    value: string
-    valueType: string
-}
-
 interface FetchConfCond {
-    coll_name: string
+    collName: string
+    page: number
+    pageSize: number
 }
 
 const fetchConfCond: FetchConfCond = reactive({} as FetchConfCond)
@@ -347,9 +353,9 @@ const handlePreviewReadyUploadConfigSchema = function (file: UploadFile) {
 }
 
 const parseTheLeastOneConfCollCondKeySelectOptions = computed(() => {
-    const schema = configSchemaList.value.find(item => item.coll_name == fetchConfCond.coll_name)
+    const schema = configSchemaList.value.find(item => item.coll_name == fetchConfCond.collName)
     const jsonSchema = JSON.parse(schema?.json_schema ?? '{}')
-    const keySelectOptions = []
+    const keySelectOptions = [] as KeySelectOption[]
     for (const key in jsonSchema.properties) {
         keySelectOptions.push({
             key: key,
@@ -380,33 +386,141 @@ const handleViewSchemaConfigSchema = function (collName: string) {
     }
 }
 
-const hanldeSelectTheLeastOneConfCollCondKey = function (key: string) {
-    theLeastOneConfCollCond.value.valueType = parseTheLeastOneConfCollCondKeySelectOptions.value.find(item => item.key == key)?.value.type ?? ''
-}
-
 const handleClosePreviewConfigSchemaDialog = function () {
     previewConfigSchemaVisable.value = false
 }
 
-watchEffect(() => {
-    if (fetchConfCond.coll_name) {
-        theLeastOneConfCollCond.value.key = ''
-        theLeastOneConfCollCond.value.op = ''
-        theLeastOneConfCollCond.value.value = ''
-        theLeastOneConfCollCond.value.valueType = ''
-        for (const item of searchConfCollCondList.value) {
-            item.key = ''
-            item.op = ''
-            item.value = ''
-            item.valueType = ''
-        }
+watch(() => fetchConfCond.collName, () => {
+    theLeastOneConfCollCond.value.key = ''
+    theLeastOneConfCollCond.value.op = ''
+    theLeastOneConfCollCond.value.value = ''
+    theLeastOneConfCollCond.value.valueType = ''
+    for (const item of searchConfCollCondList.value) {
+        item.key = ''
+        item.op = ''
+        item.value = ''
+        item.valueType = ''
     }
 })
 
 const manualInputConfigSchema = ref('')
 
 onMounted(() => {
-    fetchConfigSchema()
+    query()
 })
+
+const pageTotal = ref(0)
+
+const compileConfCollCondToFilterValue = (confCollCond: ConfCollCond): any => {
+    let filter
+
+    switch (confCollCond.valueType) {
+        case 'number':
+            switch (confCollCond.op) {
+                case 'gte':
+                    filter = {
+                        '$gte': confCollCond.value
+                    }
+                    break
+                case 'lte':
+                    filter = {
+                        '$lte': confCollCond.value
+                    }
+                    break
+                case 'ne':
+                    filter = {
+                        '$ne': confCollCond.value
+                    }
+                    break
+                default:
+                    filter = confCollCond.value
+            }
+            break
+        case 'string':
+            filter = { "$regex": confCollCond.value, "$options": "im" }
+            break
+        default:
+            filter = confCollCond.value
+    }
+
+    if (!filter) {
+        filter = ''
+    }
+
+    return filter
+}
+
+const query = function () {
+    fetchGeneralConfList()
+    fetchConfigSchema()
+}
+
+const loading = ref(false)
+
+const currTableColumns = ref<string[]>([])
+const currTableRows = ref<any[]>([])
+
+const fetchGeneralConfList = async function () {
+    if (!fetchConfCond.collName) {
+        return
+    }
+
+    const filter: { [key: string]: any } = {}
+    if (theLeastOneConfCollCond.value.key) {
+        const key = theLeastOneConfCollCond.value.key as string
+        filter[key] = compileConfCollCondToFilterValue(theLeastOneConfCollCond.value)
+    }
+
+    for (const item of searchConfCollCondList.value) {
+        if (item.key) {
+            filter[item.key as string] = compileConfCollCondToFilterValue(item)
+        }
+    }
+
+    loading.value = true
+
+    currTableRows.value = []
+    currTableColumns.value = []
+
+    try {
+        const generalConfListResp = await DashboardService.ListGeneralConf({
+            coll_name: fetchConfCond.collName,
+            filter: JSON.stringify(filter),
+            page: {
+                page: fetchConfCond.page,
+                page_size: fetchConfCond.pageSize,
+            },
+        })
+
+        if (generalConfListResp) {
+            pageTotal.value = generalConfListResp.total ? generalConfListResp.total : 0
+            if (generalConfListResp.list) {
+                for (const item of generalConfListResp.list) {
+                    const row = JSON.parse(item)
+                    currTableRows.value.push(row)
+                }
+            }
+        }
+    } catch (error) {
+        ElMessage.error("获取配置列表失败")
+        loading.value = false
+        return
+    }
+
+    for (const item of configSchemaList.value) {
+        if (item.coll_name != fetchConfCond.collName) {
+            continue
+        }
+        const jsonSchema = JSON.parse(item.json_schema ?? '{}')
+        for (const key in jsonSchema.properties) {
+            if (!currTableColumns.value.includes(key)) {
+                currTableColumns.value.push(key)
+            }
+        }
+    }
+
+    loading.value = false
+}
+
 
 </script>
