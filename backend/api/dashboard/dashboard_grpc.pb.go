@@ -43,6 +43,7 @@ const (
 	Dashboard_AddGeneralConf_FullMethodName     = "/dashboard.Dashboard/AddGeneralConf"
 	Dashboard_UpdateGeneralConf_FullMethodName  = "/dashboard.Dashboard/UpdateGeneralConf"
 	Dashboard_DeleteGeneralConf_FullMethodName  = "/dashboard.Dashboard/DeleteGeneralConf"
+	Dashboard_ListUserPerm_FullMethodName       = "/dashboard.Dashboard/ListUserPerm"
 )
 
 // DashboardClient is the client API for Dashboard service.
@@ -73,6 +74,7 @@ type DashboardClient interface {
 	AddGeneralConf(ctx context.Context, in *AddGeneralConfReq, opts ...grpc.CallOption) (*AddGeneralConfResp, error)
 	UpdateGeneralConf(ctx context.Context, in *UpdateGeneralConfReq, opts ...grpc.CallOption) (*UpdateGeneralConfResp, error)
 	DeleteGeneralConf(ctx context.Context, in *DeleteGeneralConfReq, opts ...grpc.CallOption) (*DeleteGeneralConfResp, error)
+	ListUserPerm(ctx context.Context, in *ListUserPermReq, opts ...grpc.CallOption) (*ListUserPermResp, error)
 }
 
 type dashboardClient struct {
@@ -323,6 +325,16 @@ func (c *dashboardClient) DeleteGeneralConf(ctx context.Context, in *DeleteGener
 	return out, nil
 }
 
+func (c *dashboardClient) ListUserPerm(ctx context.Context, in *ListUserPermReq, opts ...grpc.CallOption) (*ListUserPermResp, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListUserPermResp)
+	err := c.cc.Invoke(ctx, Dashboard_ListUserPerm_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // DashboardServer is the server API for Dashboard service.
 // All implementations must embed UnimplementedDashboardServer
 // for forward compatibility.
@@ -351,6 +363,7 @@ type DashboardServer interface {
 	AddGeneralConf(context.Context, *AddGeneralConfReq) (*AddGeneralConfResp, error)
 	UpdateGeneralConf(context.Context, *UpdateGeneralConfReq) (*UpdateGeneralConfResp, error)
 	DeleteGeneralConf(context.Context, *DeleteGeneralConfReq) (*DeleteGeneralConfResp, error)
+	ListUserPerm(context.Context, *ListUserPermReq) (*ListUserPermResp, error)
 	mustEmbedUnimplementedDashboardServer()
 }
 
@@ -432,6 +445,9 @@ func (UnimplementedDashboardServer) UpdateGeneralConf(context.Context, *UpdateGe
 }
 func (UnimplementedDashboardServer) DeleteGeneralConf(context.Context, *DeleteGeneralConfReq) (*DeleteGeneralConfResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteGeneralConf not implemented")
+}
+func (UnimplementedDashboardServer) ListUserPerm(context.Context, *ListUserPermReq) (*ListUserPermResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListUserPerm not implemented")
 }
 func (UnimplementedDashboardServer) mustEmbedUnimplementedDashboardServer() {}
 func (UnimplementedDashboardServer) testEmbeddedByValue()                   {}
@@ -886,6 +902,24 @@ func _Dashboard_DeleteGeneralConf_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Dashboard_ListUserPerm_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListUserPermReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DashboardServer).ListUserPerm(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Dashboard_ListUserPerm_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DashboardServer).ListUserPerm(ctx, req.(*ListUserPermReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Dashboard_ServiceDesc is the grpc.ServiceDesc for Dashboard service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -988,6 +1022,10 @@ var Dashboard_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteGeneralConf",
 			Handler:    _Dashboard_DeleteGeneralConf_Handler,
+		},
+		{
+			MethodName: "ListUserPerm",
+			Handler:    _Dashboard_ListUserPerm_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

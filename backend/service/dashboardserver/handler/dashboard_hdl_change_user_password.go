@@ -19,9 +19,9 @@ func (s *Dashboard) ChangeUserPassword(ctx context.Context, req *dashboard.Chang
 		return nil, grpc.NewRPCErrWithMsg(commonerr.ErrCode_ErrCodeInvalidParam, "empty new password")
 	}
 
-	userId, ok := reqsess.GetUserIdFromGRPCCtxSilently(ctx)
-	if !ok {
-		return nil, grpc.NewRPCErr(dashboard.ErrCode_ErrCodeUserNotFound)
+	userId, err := reqsess.GetUserIdFromGRPCCtxOrErrUserNotFound(ctx)
+	if err != nil {
+		return nil, err
 	}
 
 	password, err := util.DecryptUserPassword(req.NewPassword)

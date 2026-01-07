@@ -180,6 +180,13 @@ func RegisterNatsRPCRoutes() error {
 		return err
 	}
 
+	err = nats.HandleLikeGRPC(dashboard.EasymicroGRPCPbServiceNameDashboard, "ListUserPerm", handler.DashboardHandler.ListUserPerm, func() *dashboard.ListUserPermReq {
+		return &dashboard.ListUserPermReq{}
+	})
+	if err != nil {
+		return err
+	}
+
 	err = nats.HandleLikeGRPC("healthreporter.HealthReporter", "Ping", healthreporter.NewReporter(ServiceNames).Ping, func() *healthreporter.PingReq {
 		return &healthreporter.PingReq{}
 	})

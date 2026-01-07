@@ -160,6 +160,20 @@ service Dashboard {
       method: "POST"
     };
   }
+
+  rpc ListUserPerm(ListUserPermReq) returns (ListUserPermResp) {
+    option (httpext.http_rule) = {
+      method: "POST"
+    };
+  }
+}
+
+message ListUserPermReq {
+
+}
+
+message ListUserPermResp {
+  repeated uint64 perm_ids = 1;
 }
 
 message SetConfSchemaReq {

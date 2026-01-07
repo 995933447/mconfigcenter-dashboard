@@ -18,9 +18,9 @@ import (
 func (s *Dashboard) GetUserInfo(ctx context.Context, req *dashboard.GetUserInfoReq) (*dashboard.GetUserInfoResp, error) {
 	var resp dashboard.GetUserInfoResp
 
-	userId, ok := reqsess.GetUserIdFromGRPCCtxSilently(ctx)
-	if !ok {
-		return nil, grpc.NewRPCErrWithMsg(dashboard.ErrCode_ErrCodeUserNotFound, "wrong user id")
+	userId, err := reqsess.GetUserIdFromGRPCCtxOrErrUserNotFound(ctx)
+	if err != nil {
+		return nil, err
 	}
 
 	user, err := dashboard.NewUserModel().FindOneByUserId(ctx, userId)

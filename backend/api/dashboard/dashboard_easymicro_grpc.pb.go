@@ -256,3 +256,11 @@ func (s *Dashboard) DeleteGeneralConf(ctx context.Context, in *DeleteGeneralConf
 
 	return s.c.DeleteGeneralConf(ctx, in, opts...)
 }
+
+func (s *Dashboard) ListUserPerm(ctx context.Context, in *ListUserPermReq, opts ...grpc.CallOption) (*ListUserPermResp, error) {
+	if err := s.prepareConn(); err != nil {
+		return nil, err
+	}
+
+	return s.c.ListUserPerm(ctx, in, opts...)
+}
