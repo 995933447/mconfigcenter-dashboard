@@ -104,4 +104,19 @@ export class DashboardService {
     return await request.post('/dashboard/Dashboard/SetConfigSchema', req)
   };
 
+  /** no comment **/
+  static async AddGeneralConf(req: api.dashboard.IAddGeneralConfReq): Promise<api.dashboard.IAddGeneralConfResp> {
+    return await request.post('/dashboard/Dashboard/AddGeneralConf', req)
+  };
+
+  /** no comment **/
+  static async UpdateGeneralConf(req: api.dashboard.IUpdateGeneralConfReq): Promise<api.dashboard.IUpdateGeneralConfResp> {
+    return await request.post('/dashboard/Dashboard/UpdateGeneralConf', req)
+  };
+
+  /** no comment **/
+  static async DeleteGeneralConf(req: api.dashboard.IDeleteGeneralConfReq): Promise<api.dashboard.IDeleteGeneralConfResp> {
+    return await request.post('/dashboard/Dashboard/DeleteGeneralConf', req)
+  };
+
 };

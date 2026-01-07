@@ -142,6 +142,24 @@ service Dashboard {
       method: "POST"
     };
   }
+
+  rpc AddGeneralConf(AddGeneralConfReq) returns (AddGeneralConfResp) {
+    option (httpext.http_rule) = {
+      method: "POST"
+    };
+  }
+
+  rpc UpdateGeneralConf(UpdateGeneralConfReq) returns (UpdateGeneralConfResp) {
+    option (httpext.http_rule) = {
+      method: "POST"
+    };
+  }
+
+  rpc DeleteGeneralConf(DeleteGeneralConfReq) returns (DeleteGeneralConfResp) {
+    option (httpext.http_rule) = {
+      method: "POST"
+    };
+  }
 }
 
 message SetConfSchemaReq {
@@ -166,6 +184,38 @@ message ConfigSchema {
 
 message ListConfSchemaResp {
   repeated ConfigSchema list = 1;
+}
+
+message DeleteGeneralConfReq {
+  repeated string ids = 1;
+  string coll_name = 2;
+}
+
+message DeleteGeneralConfResp {
+
+}
+
+message UpdateGeneralConfReq {
+  string coll_name = 1; // 配置集合的名称
+  string value = 2; // 具体配置
+  bool should_notify_listeners = 3; // 是否立刻通知配置监听者
+  string listener_group = 4; // 需要通知的监听者组别,由配置发布方根据业务自定义,非必需
+  string id = 5; // 配置id
+}
+
+message UpdateGeneralConfResp {
+
+}
+
+message AddGeneralConfReq {
+  string coll_name = 1; // 配置集合的名称
+  string value = 2; // 具体配置
+  bool should_notify_listeners = 3; // 是否立刻通知配置监听者
+  string listener_group = 4; // 需要通知的监听者组别,由配置发布方根据业务自定义,非必需
+}
+
+message AddGeneralConfResp {
+
 }
 
 message ListGeneralConfReq {

@@ -3,9 +3,9 @@ import { ViteSSG } from 'vite-ssg'
 
 // import "~/styles/element/index.scss";
 
-// import ElementPlus from "element-plus";
+import ElementPlus from "element-plus";
 // import all element css, uncommented next line
-// import "element-plus/dist/index.css";
+import "element-plus/dist/index.css";
 
 // or use cdn, uncomment cdn link in `index.html`
 
@@ -63,7 +63,10 @@ export const createApp = ViteSSG(
 
     ctx.app.use(createPinia())
     ctx.app.use(JsonViewer)
+    ctx.app.use(ElementPlus)
 
     // ctx.app.use(Previewer)
   },
 )
+
+

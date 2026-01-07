@@ -252,18 +252,18 @@ const handleCommitSaveMenuForm = async () => {
     loading.value = true
     if (saveMenuForm.id) {
         try {
-        await DashboardService.UpdateMenuConf({
-            perm_id: saveMenuForm.id,
-            name: saveMenuForm.name,
-            path: saveMenuForm.path,
-            pid: saveMenuForm.pid ? saveMenuForm.pid : 0,
-            services: saveMenuForm.services.map((s) => s.service),
-            path_type: saveMenuForm.pathType,
-        })
-        ElMessage.success('修改菜单成功')
-        fetchMenuList()
-        dialogVisible.value = false
-        resetSaveMenuForm()
+            await DashboardService.UpdateMenuConf({
+                perm_id: saveMenuForm.id,
+                name: saveMenuForm.name,
+                path: saveMenuForm.path,
+                pid: saveMenuForm.pid ? saveMenuForm.pid : 0,
+                services: saveMenuForm.services.map((s) => s.service),
+                path_type: saveMenuForm.pathType,
+            })
+            ElMessage.success('修改菜单成功')
+            fetchMenuList()
+            dialogVisible.value = false
+            resetSaveMenuForm()
         } catch (error) {
             ElMessage.error('修改菜单失败')
             loading.value = false

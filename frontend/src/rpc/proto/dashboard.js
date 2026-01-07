@@ -759,6 +759,105 @@ export const dashboard = $root.dashboard = (() => {
          * @variation 2
          */
 
+        /**
+         * Callback as used by {@link dashboard.Dashboard#addGeneralConf}.
+         * @memberof dashboard.Dashboard
+         * @typedef AddGeneralConfCallback
+         * @type {function}
+         * @param {Error|null} error Error, if any
+         * @param {dashboard.AddGeneralConfResp} [response] AddGeneralConfResp
+         */
+
+        /**
+         * Calls AddGeneralConf.
+         * @function addGeneralConf
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.IAddGeneralConfReq} request AddGeneralConfReq message or plain object
+         * @param {dashboard.Dashboard.AddGeneralConfCallback} callback Node-style callback called with the error, if any, and AddGeneralConfResp
+         * @returns {undefined}
+         * @variation 1
+         */
+        Object.defineProperty(Dashboard.prototype.addGeneralConf = function addGeneralConf(request, callback) {
+            return this.rpcCall(addGeneralConf, $root.dashboard.AddGeneralConfReq, $root.dashboard.AddGeneralConfResp, request, callback);
+        }, "name", { value: "AddGeneralConf" });
+
+        /**
+         * Calls AddGeneralConf.
+         * @function addGeneralConf
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.IAddGeneralConfReq} request AddGeneralConfReq message or plain object
+         * @returns {Promise<dashboard.AddGeneralConfResp>} Promise
+         * @variation 2
+         */
+
+        /**
+         * Callback as used by {@link dashboard.Dashboard#updateGeneralConf}.
+         * @memberof dashboard.Dashboard
+         * @typedef UpdateGeneralConfCallback
+         * @type {function}
+         * @param {Error|null} error Error, if any
+         * @param {dashboard.UpdateGeneralConfResp} [response] UpdateGeneralConfResp
+         */
+
+        /**
+         * Calls UpdateGeneralConf.
+         * @function updateGeneralConf
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.IUpdateGeneralConfReq} request UpdateGeneralConfReq message or plain object
+         * @param {dashboard.Dashboard.UpdateGeneralConfCallback} callback Node-style callback called with the error, if any, and UpdateGeneralConfResp
+         * @returns {undefined}
+         * @variation 1
+         */
+        Object.defineProperty(Dashboard.prototype.updateGeneralConf = function updateGeneralConf(request, callback) {
+            return this.rpcCall(updateGeneralConf, $root.dashboard.UpdateGeneralConfReq, $root.dashboard.UpdateGeneralConfResp, request, callback);
+        }, "name", { value: "UpdateGeneralConf" });
+
+        /**
+         * Calls UpdateGeneralConf.
+         * @function updateGeneralConf
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.IUpdateGeneralConfReq} request UpdateGeneralConfReq message or plain object
+         * @returns {Promise<dashboard.UpdateGeneralConfResp>} Promise
+         * @variation 2
+         */
+
+        /**
+         * Callback as used by {@link dashboard.Dashboard#deleteGeneralConf}.
+         * @memberof dashboard.Dashboard
+         * @typedef DeleteGeneralConfCallback
+         * @type {function}
+         * @param {Error|null} error Error, if any
+         * @param {dashboard.DeleteGeneralConfResp} [response] DeleteGeneralConfResp
+         */
+
+        /**
+         * Calls DeleteGeneralConf.
+         * @function deleteGeneralConf
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.IDeleteGeneralConfReq} request DeleteGeneralConfReq message or plain object
+         * @param {dashboard.Dashboard.DeleteGeneralConfCallback} callback Node-style callback called with the error, if any, and DeleteGeneralConfResp
+         * @returns {undefined}
+         * @variation 1
+         */
+        Object.defineProperty(Dashboard.prototype.deleteGeneralConf = function deleteGeneralConf(request, callback) {
+            return this.rpcCall(deleteGeneralConf, $root.dashboard.DeleteGeneralConfReq, $root.dashboard.DeleteGeneralConfResp, request, callback);
+        }, "name", { value: "DeleteGeneralConf" });
+
+        /**
+         * Calls DeleteGeneralConf.
+         * @function deleteGeneralConf
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.IDeleteGeneralConfReq} request DeleteGeneralConfReq message or plain object
+         * @returns {Promise<dashboard.DeleteGeneralConfResp>} Promise
+         * @variation 2
+         */
+
         return Dashboard;
     })();
 
@@ -1882,6 +1981,1355 @@ export const dashboard = $root.dashboard = (() => {
         };
 
         return ListConfSchemaResp;
+    })();
+
+    dashboard.DeleteGeneralConfReq = (function() {
+
+        /**
+         * Properties of a DeleteGeneralConfReq.
+         * @memberof dashboard
+         * @interface IDeleteGeneralConfReq
+         * @property {Array.<string>|null} [ids] DeleteGeneralConfReq ids
+         * @property {string|null} [coll_name] DeleteGeneralConfReq coll_name
+         */
+
+        /**
+         * Constructs a new DeleteGeneralConfReq.
+         * @memberof dashboard
+         * @classdesc Represents a DeleteGeneralConfReq.
+         * @implements IDeleteGeneralConfReq
+         * @constructor
+         * @param {dashboard.IDeleteGeneralConfReq=} [properties] Properties to set
+         */
+        function DeleteGeneralConfReq(properties) {
+            this.ids = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * DeleteGeneralConfReq ids.
+         * @member {Array.<string>} ids
+         * @memberof dashboard.DeleteGeneralConfReq
+         * @instance
+         */
+        DeleteGeneralConfReq.prototype.ids = $util.emptyArray;
+
+        /**
+         * DeleteGeneralConfReq coll_name.
+         * @member {string} coll_name
+         * @memberof dashboard.DeleteGeneralConfReq
+         * @instance
+         */
+        DeleteGeneralConfReq.prototype.coll_name = "";
+
+        /**
+         * Creates a new DeleteGeneralConfReq instance using the specified properties.
+         * @function create
+         * @memberof dashboard.DeleteGeneralConfReq
+         * @static
+         * @param {dashboard.IDeleteGeneralConfReq=} [properties] Properties to set
+         * @returns {dashboard.DeleteGeneralConfReq} DeleteGeneralConfReq instance
+         */
+        DeleteGeneralConfReq.create = function create(properties) {
+            return new DeleteGeneralConfReq(properties);
+        };
+
+        /**
+         * Encodes the specified DeleteGeneralConfReq message. Does not implicitly {@link dashboard.DeleteGeneralConfReq.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.DeleteGeneralConfReq
+         * @static
+         * @param {dashboard.IDeleteGeneralConfReq} message DeleteGeneralConfReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeleteGeneralConfReq.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.ids != null && message.ids.length)
+                for (let i = 0; i < message.ids.length; ++i)
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.ids[i]);
+            if (message.coll_name != null && Object.hasOwnProperty.call(message, "coll_name"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.coll_name);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified DeleteGeneralConfReq message, length delimited. Does not implicitly {@link dashboard.DeleteGeneralConfReq.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.DeleteGeneralConfReq
+         * @static
+         * @param {dashboard.IDeleteGeneralConfReq} message DeleteGeneralConfReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeleteGeneralConfReq.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a DeleteGeneralConfReq message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.DeleteGeneralConfReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.DeleteGeneralConfReq} DeleteGeneralConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeleteGeneralConfReq.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.DeleteGeneralConfReq();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        if (!(message.ids && message.ids.length))
+                            message.ids = [];
+                        message.ids.push(reader.string());
+                        break;
+                    }
+                case 2: {
+                        message.coll_name = reader.string();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a DeleteGeneralConfReq message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.DeleteGeneralConfReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.DeleteGeneralConfReq} DeleteGeneralConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeleteGeneralConfReq.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a DeleteGeneralConfReq message.
+         * @function verify
+         * @memberof dashboard.DeleteGeneralConfReq
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        DeleteGeneralConfReq.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.ids != null && message.hasOwnProperty("ids")) {
+                if (!Array.isArray(message.ids))
+                    return "ids: array expected";
+                for (let i = 0; i < message.ids.length; ++i)
+                    if (!$util.isString(message.ids[i]))
+                        return "ids: string[] expected";
+            }
+            if (message.coll_name != null && message.hasOwnProperty("coll_name"))
+                if (!$util.isString(message.coll_name))
+                    return "coll_name: string expected";
+            return null;
+        };
+
+        /**
+         * Creates a DeleteGeneralConfReq message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.DeleteGeneralConfReq
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.DeleteGeneralConfReq} DeleteGeneralConfReq
+         */
+        DeleteGeneralConfReq.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.DeleteGeneralConfReq)
+                return object;
+            let message = new $root.dashboard.DeleteGeneralConfReq();
+            if (object.ids) {
+                if (!Array.isArray(object.ids))
+                    throw TypeError(".dashboard.DeleteGeneralConfReq.ids: array expected");
+                message.ids = [];
+                for (let i = 0; i < object.ids.length; ++i)
+                    message.ids[i] = String(object.ids[i]);
+            }
+            if (object.coll_name != null)
+                message.coll_name = String(object.coll_name);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a DeleteGeneralConfReq message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.DeleteGeneralConfReq
+         * @static
+         * @param {dashboard.DeleteGeneralConfReq} message DeleteGeneralConfReq
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        DeleteGeneralConfReq.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults)
+                object.ids = [];
+            if (options.defaults)
+                object.coll_name = "";
+            if (message.ids && message.ids.length) {
+                object.ids = [];
+                for (let j = 0; j < message.ids.length; ++j)
+                    object.ids[j] = message.ids[j];
+            }
+            if (message.coll_name != null && message.hasOwnProperty("coll_name"))
+                object.coll_name = message.coll_name;
+            return object;
+        };
+
+        /**
+         * Converts this DeleteGeneralConfReq to JSON.
+         * @function toJSON
+         * @memberof dashboard.DeleteGeneralConfReq
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        DeleteGeneralConfReq.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for DeleteGeneralConfReq
+         * @function getTypeUrl
+         * @memberof dashboard.DeleteGeneralConfReq
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        DeleteGeneralConfReq.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.DeleteGeneralConfReq";
+        };
+
+        return DeleteGeneralConfReq;
+    })();
+
+    dashboard.DeleteGeneralConfResp = (function() {
+
+        /**
+         * Properties of a DeleteGeneralConfResp.
+         * @memberof dashboard
+         * @interface IDeleteGeneralConfResp
+         */
+
+        /**
+         * Constructs a new DeleteGeneralConfResp.
+         * @memberof dashboard
+         * @classdesc Represents a DeleteGeneralConfResp.
+         * @implements IDeleteGeneralConfResp
+         * @constructor
+         * @param {dashboard.IDeleteGeneralConfResp=} [properties] Properties to set
+         */
+        function DeleteGeneralConfResp(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Creates a new DeleteGeneralConfResp instance using the specified properties.
+         * @function create
+         * @memberof dashboard.DeleteGeneralConfResp
+         * @static
+         * @param {dashboard.IDeleteGeneralConfResp=} [properties] Properties to set
+         * @returns {dashboard.DeleteGeneralConfResp} DeleteGeneralConfResp instance
+         */
+        DeleteGeneralConfResp.create = function create(properties) {
+            return new DeleteGeneralConfResp(properties);
+        };
+
+        /**
+         * Encodes the specified DeleteGeneralConfResp message. Does not implicitly {@link dashboard.DeleteGeneralConfResp.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.DeleteGeneralConfResp
+         * @static
+         * @param {dashboard.IDeleteGeneralConfResp} message DeleteGeneralConfResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeleteGeneralConfResp.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified DeleteGeneralConfResp message, length delimited. Does not implicitly {@link dashboard.DeleteGeneralConfResp.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.DeleteGeneralConfResp
+         * @static
+         * @param {dashboard.IDeleteGeneralConfResp} message DeleteGeneralConfResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeleteGeneralConfResp.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a DeleteGeneralConfResp message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.DeleteGeneralConfResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.DeleteGeneralConfResp} DeleteGeneralConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeleteGeneralConfResp.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.DeleteGeneralConfResp();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a DeleteGeneralConfResp message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.DeleteGeneralConfResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.DeleteGeneralConfResp} DeleteGeneralConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeleteGeneralConfResp.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a DeleteGeneralConfResp message.
+         * @function verify
+         * @memberof dashboard.DeleteGeneralConfResp
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        DeleteGeneralConfResp.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            return null;
+        };
+
+        /**
+         * Creates a DeleteGeneralConfResp message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.DeleteGeneralConfResp
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.DeleteGeneralConfResp} DeleteGeneralConfResp
+         */
+        DeleteGeneralConfResp.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.DeleteGeneralConfResp)
+                return object;
+            return new $root.dashboard.DeleteGeneralConfResp();
+        };
+
+        /**
+         * Creates a plain object from a DeleteGeneralConfResp message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.DeleteGeneralConfResp
+         * @static
+         * @param {dashboard.DeleteGeneralConfResp} message DeleteGeneralConfResp
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        DeleteGeneralConfResp.toObject = function toObject() {
+            return {};
+        };
+
+        /**
+         * Converts this DeleteGeneralConfResp to JSON.
+         * @function toJSON
+         * @memberof dashboard.DeleteGeneralConfResp
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        DeleteGeneralConfResp.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for DeleteGeneralConfResp
+         * @function getTypeUrl
+         * @memberof dashboard.DeleteGeneralConfResp
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        DeleteGeneralConfResp.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.DeleteGeneralConfResp";
+        };
+
+        return DeleteGeneralConfResp;
+    })();
+
+    dashboard.UpdateGeneralConfReq = (function() {
+
+        /**
+         * Properties of an UpdateGeneralConfReq.
+         * @memberof dashboard
+         * @interface IUpdateGeneralConfReq
+         * @property {string|null} [coll_name] UpdateGeneralConfReq coll_name
+         * @property {string|null} [value] UpdateGeneralConfReq value
+         * @property {boolean|null} [should_notify_listeners] UpdateGeneralConfReq should_notify_listeners
+         * @property {string|null} [listener_group] UpdateGeneralConfReq listener_group
+         * @property {string|null} [id] UpdateGeneralConfReq id
+         */
+
+        /**
+         * Constructs a new UpdateGeneralConfReq.
+         * @memberof dashboard
+         * @classdesc Represents an UpdateGeneralConfReq.
+         * @implements IUpdateGeneralConfReq
+         * @constructor
+         * @param {dashboard.IUpdateGeneralConfReq=} [properties] Properties to set
+         */
+        function UpdateGeneralConfReq(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * UpdateGeneralConfReq coll_name.
+         * @member {string} coll_name
+         * @memberof dashboard.UpdateGeneralConfReq
+         * @instance
+         */
+        UpdateGeneralConfReq.prototype.coll_name = "";
+
+        /**
+         * UpdateGeneralConfReq value.
+         * @member {string} value
+         * @memberof dashboard.UpdateGeneralConfReq
+         * @instance
+         */
+        UpdateGeneralConfReq.prototype.value = "";
+
+        /**
+         * UpdateGeneralConfReq should_notify_listeners.
+         * @member {boolean} should_notify_listeners
+         * @memberof dashboard.UpdateGeneralConfReq
+         * @instance
+         */
+        UpdateGeneralConfReq.prototype.should_notify_listeners = false;
+
+        /**
+         * UpdateGeneralConfReq listener_group.
+         * @member {string} listener_group
+         * @memberof dashboard.UpdateGeneralConfReq
+         * @instance
+         */
+        UpdateGeneralConfReq.prototype.listener_group = "";
+
+        /**
+         * UpdateGeneralConfReq id.
+         * @member {string} id
+         * @memberof dashboard.UpdateGeneralConfReq
+         * @instance
+         */
+        UpdateGeneralConfReq.prototype.id = "";
+
+        /**
+         * Creates a new UpdateGeneralConfReq instance using the specified properties.
+         * @function create
+         * @memberof dashboard.UpdateGeneralConfReq
+         * @static
+         * @param {dashboard.IUpdateGeneralConfReq=} [properties] Properties to set
+         * @returns {dashboard.UpdateGeneralConfReq} UpdateGeneralConfReq instance
+         */
+        UpdateGeneralConfReq.create = function create(properties) {
+            return new UpdateGeneralConfReq(properties);
+        };
+
+        /**
+         * Encodes the specified UpdateGeneralConfReq message. Does not implicitly {@link dashboard.UpdateGeneralConfReq.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.UpdateGeneralConfReq
+         * @static
+         * @param {dashboard.IUpdateGeneralConfReq} message UpdateGeneralConfReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        UpdateGeneralConfReq.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.coll_name != null && Object.hasOwnProperty.call(message, "coll_name"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.coll_name);
+            if (message.value != null && Object.hasOwnProperty.call(message, "value"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.value);
+            if (message.should_notify_listeners != null && Object.hasOwnProperty.call(message, "should_notify_listeners"))
+                writer.uint32(/* id 3, wireType 0 =*/24).bool(message.should_notify_listeners);
+            if (message.listener_group != null && Object.hasOwnProperty.call(message, "listener_group"))
+                writer.uint32(/* id 4, wireType 2 =*/34).string(message.listener_group);
+            if (message.id != null && Object.hasOwnProperty.call(message, "id"))
+                writer.uint32(/* id 5, wireType 2 =*/42).string(message.id);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified UpdateGeneralConfReq message, length delimited. Does not implicitly {@link dashboard.UpdateGeneralConfReq.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.UpdateGeneralConfReq
+         * @static
+         * @param {dashboard.IUpdateGeneralConfReq} message UpdateGeneralConfReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        UpdateGeneralConfReq.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes an UpdateGeneralConfReq message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.UpdateGeneralConfReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.UpdateGeneralConfReq} UpdateGeneralConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        UpdateGeneralConfReq.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.UpdateGeneralConfReq();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.coll_name = reader.string();
+                        break;
+                    }
+                case 2: {
+                        message.value = reader.string();
+                        break;
+                    }
+                case 3: {
+                        message.should_notify_listeners = reader.bool();
+                        break;
+                    }
+                case 4: {
+                        message.listener_group = reader.string();
+                        break;
+                    }
+                case 5: {
+                        message.id = reader.string();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes an UpdateGeneralConfReq message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.UpdateGeneralConfReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.UpdateGeneralConfReq} UpdateGeneralConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        UpdateGeneralConfReq.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an UpdateGeneralConfReq message.
+         * @function verify
+         * @memberof dashboard.UpdateGeneralConfReq
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        UpdateGeneralConfReq.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.coll_name != null && message.hasOwnProperty("coll_name"))
+                if (!$util.isString(message.coll_name))
+                    return "coll_name: string expected";
+            if (message.value != null && message.hasOwnProperty("value"))
+                if (!$util.isString(message.value))
+                    return "value: string expected";
+            if (message.should_notify_listeners != null && message.hasOwnProperty("should_notify_listeners"))
+                if (typeof message.should_notify_listeners !== "boolean")
+                    return "should_notify_listeners: boolean expected";
+            if (message.listener_group != null && message.hasOwnProperty("listener_group"))
+                if (!$util.isString(message.listener_group))
+                    return "listener_group: string expected";
+            if (message.id != null && message.hasOwnProperty("id"))
+                if (!$util.isString(message.id))
+                    return "id: string expected";
+            return null;
+        };
+
+        /**
+         * Creates an UpdateGeneralConfReq message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.UpdateGeneralConfReq
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.UpdateGeneralConfReq} UpdateGeneralConfReq
+         */
+        UpdateGeneralConfReq.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.UpdateGeneralConfReq)
+                return object;
+            let message = new $root.dashboard.UpdateGeneralConfReq();
+            if (object.coll_name != null)
+                message.coll_name = String(object.coll_name);
+            if (object.value != null)
+                message.value = String(object.value);
+            if (object.should_notify_listeners != null)
+                message.should_notify_listeners = Boolean(object.should_notify_listeners);
+            if (object.listener_group != null)
+                message.listener_group = String(object.listener_group);
+            if (object.id != null)
+                message.id = String(object.id);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from an UpdateGeneralConfReq message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.UpdateGeneralConfReq
+         * @static
+         * @param {dashboard.UpdateGeneralConfReq} message UpdateGeneralConfReq
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        UpdateGeneralConfReq.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.coll_name = "";
+                object.value = "";
+                object.should_notify_listeners = false;
+                object.listener_group = "";
+                object.id = "";
+            }
+            if (message.coll_name != null && message.hasOwnProperty("coll_name"))
+                object.coll_name = message.coll_name;
+            if (message.value != null && message.hasOwnProperty("value"))
+                object.value = message.value;
+            if (message.should_notify_listeners != null && message.hasOwnProperty("should_notify_listeners"))
+                object.should_notify_listeners = message.should_notify_listeners;
+            if (message.listener_group != null && message.hasOwnProperty("listener_group"))
+                object.listener_group = message.listener_group;
+            if (message.id != null && message.hasOwnProperty("id"))
+                object.id = message.id;
+            return object;
+        };
+
+        /**
+         * Converts this UpdateGeneralConfReq to JSON.
+         * @function toJSON
+         * @memberof dashboard.UpdateGeneralConfReq
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        UpdateGeneralConfReq.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for UpdateGeneralConfReq
+         * @function getTypeUrl
+         * @memberof dashboard.UpdateGeneralConfReq
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        UpdateGeneralConfReq.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.UpdateGeneralConfReq";
+        };
+
+        return UpdateGeneralConfReq;
+    })();
+
+    dashboard.UpdateGeneralConfResp = (function() {
+
+        /**
+         * Properties of an UpdateGeneralConfResp.
+         * @memberof dashboard
+         * @interface IUpdateGeneralConfResp
+         */
+
+        /**
+         * Constructs a new UpdateGeneralConfResp.
+         * @memberof dashboard
+         * @classdesc Represents an UpdateGeneralConfResp.
+         * @implements IUpdateGeneralConfResp
+         * @constructor
+         * @param {dashboard.IUpdateGeneralConfResp=} [properties] Properties to set
+         */
+        function UpdateGeneralConfResp(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Creates a new UpdateGeneralConfResp instance using the specified properties.
+         * @function create
+         * @memberof dashboard.UpdateGeneralConfResp
+         * @static
+         * @param {dashboard.IUpdateGeneralConfResp=} [properties] Properties to set
+         * @returns {dashboard.UpdateGeneralConfResp} UpdateGeneralConfResp instance
+         */
+        UpdateGeneralConfResp.create = function create(properties) {
+            return new UpdateGeneralConfResp(properties);
+        };
+
+        /**
+         * Encodes the specified UpdateGeneralConfResp message. Does not implicitly {@link dashboard.UpdateGeneralConfResp.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.UpdateGeneralConfResp
+         * @static
+         * @param {dashboard.IUpdateGeneralConfResp} message UpdateGeneralConfResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        UpdateGeneralConfResp.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified UpdateGeneralConfResp message, length delimited. Does not implicitly {@link dashboard.UpdateGeneralConfResp.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.UpdateGeneralConfResp
+         * @static
+         * @param {dashboard.IUpdateGeneralConfResp} message UpdateGeneralConfResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        UpdateGeneralConfResp.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes an UpdateGeneralConfResp message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.UpdateGeneralConfResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.UpdateGeneralConfResp} UpdateGeneralConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        UpdateGeneralConfResp.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.UpdateGeneralConfResp();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes an UpdateGeneralConfResp message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.UpdateGeneralConfResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.UpdateGeneralConfResp} UpdateGeneralConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        UpdateGeneralConfResp.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an UpdateGeneralConfResp message.
+         * @function verify
+         * @memberof dashboard.UpdateGeneralConfResp
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        UpdateGeneralConfResp.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            return null;
+        };
+
+        /**
+         * Creates an UpdateGeneralConfResp message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.UpdateGeneralConfResp
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.UpdateGeneralConfResp} UpdateGeneralConfResp
+         */
+        UpdateGeneralConfResp.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.UpdateGeneralConfResp)
+                return object;
+            return new $root.dashboard.UpdateGeneralConfResp();
+        };
+
+        /**
+         * Creates a plain object from an UpdateGeneralConfResp message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.UpdateGeneralConfResp
+         * @static
+         * @param {dashboard.UpdateGeneralConfResp} message UpdateGeneralConfResp
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        UpdateGeneralConfResp.toObject = function toObject() {
+            return {};
+        };
+
+        /**
+         * Converts this UpdateGeneralConfResp to JSON.
+         * @function toJSON
+         * @memberof dashboard.UpdateGeneralConfResp
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        UpdateGeneralConfResp.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for UpdateGeneralConfResp
+         * @function getTypeUrl
+         * @memberof dashboard.UpdateGeneralConfResp
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        UpdateGeneralConfResp.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.UpdateGeneralConfResp";
+        };
+
+        return UpdateGeneralConfResp;
+    })();
+
+    dashboard.AddGeneralConfReq = (function() {
+
+        /**
+         * Properties of an AddGeneralConfReq.
+         * @memberof dashboard
+         * @interface IAddGeneralConfReq
+         * @property {string|null} [coll_name] AddGeneralConfReq coll_name
+         * @property {string|null} [value] AddGeneralConfReq value
+         * @property {boolean|null} [should_notify_listeners] AddGeneralConfReq should_notify_listeners
+         * @property {string|null} [listener_group] AddGeneralConfReq listener_group
+         */
+
+        /**
+         * Constructs a new AddGeneralConfReq.
+         * @memberof dashboard
+         * @classdesc Represents an AddGeneralConfReq.
+         * @implements IAddGeneralConfReq
+         * @constructor
+         * @param {dashboard.IAddGeneralConfReq=} [properties] Properties to set
+         */
+        function AddGeneralConfReq(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * AddGeneralConfReq coll_name.
+         * @member {string} coll_name
+         * @memberof dashboard.AddGeneralConfReq
+         * @instance
+         */
+        AddGeneralConfReq.prototype.coll_name = "";
+
+        /**
+         * AddGeneralConfReq value.
+         * @member {string} value
+         * @memberof dashboard.AddGeneralConfReq
+         * @instance
+         */
+        AddGeneralConfReq.prototype.value = "";
+
+        /**
+         * AddGeneralConfReq should_notify_listeners.
+         * @member {boolean} should_notify_listeners
+         * @memberof dashboard.AddGeneralConfReq
+         * @instance
+         */
+        AddGeneralConfReq.prototype.should_notify_listeners = false;
+
+        /**
+         * AddGeneralConfReq listener_group.
+         * @member {string} listener_group
+         * @memberof dashboard.AddGeneralConfReq
+         * @instance
+         */
+        AddGeneralConfReq.prototype.listener_group = "";
+
+        /**
+         * Creates a new AddGeneralConfReq instance using the specified properties.
+         * @function create
+         * @memberof dashboard.AddGeneralConfReq
+         * @static
+         * @param {dashboard.IAddGeneralConfReq=} [properties] Properties to set
+         * @returns {dashboard.AddGeneralConfReq} AddGeneralConfReq instance
+         */
+        AddGeneralConfReq.create = function create(properties) {
+            return new AddGeneralConfReq(properties);
+        };
+
+        /**
+         * Encodes the specified AddGeneralConfReq message. Does not implicitly {@link dashboard.AddGeneralConfReq.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.AddGeneralConfReq
+         * @static
+         * @param {dashboard.IAddGeneralConfReq} message AddGeneralConfReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        AddGeneralConfReq.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.coll_name != null && Object.hasOwnProperty.call(message, "coll_name"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.coll_name);
+            if (message.value != null && Object.hasOwnProperty.call(message, "value"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.value);
+            if (message.should_notify_listeners != null && Object.hasOwnProperty.call(message, "should_notify_listeners"))
+                writer.uint32(/* id 3, wireType 0 =*/24).bool(message.should_notify_listeners);
+            if (message.listener_group != null && Object.hasOwnProperty.call(message, "listener_group"))
+                writer.uint32(/* id 4, wireType 2 =*/34).string(message.listener_group);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified AddGeneralConfReq message, length delimited. Does not implicitly {@link dashboard.AddGeneralConfReq.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.AddGeneralConfReq
+         * @static
+         * @param {dashboard.IAddGeneralConfReq} message AddGeneralConfReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        AddGeneralConfReq.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes an AddGeneralConfReq message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.AddGeneralConfReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.AddGeneralConfReq} AddGeneralConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        AddGeneralConfReq.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.AddGeneralConfReq();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.coll_name = reader.string();
+                        break;
+                    }
+                case 2: {
+                        message.value = reader.string();
+                        break;
+                    }
+                case 3: {
+                        message.should_notify_listeners = reader.bool();
+                        break;
+                    }
+                case 4: {
+                        message.listener_group = reader.string();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes an AddGeneralConfReq message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.AddGeneralConfReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.AddGeneralConfReq} AddGeneralConfReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        AddGeneralConfReq.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an AddGeneralConfReq message.
+         * @function verify
+         * @memberof dashboard.AddGeneralConfReq
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        AddGeneralConfReq.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.coll_name != null && message.hasOwnProperty("coll_name"))
+                if (!$util.isString(message.coll_name))
+                    return "coll_name: string expected";
+            if (message.value != null && message.hasOwnProperty("value"))
+                if (!$util.isString(message.value))
+                    return "value: string expected";
+            if (message.should_notify_listeners != null && message.hasOwnProperty("should_notify_listeners"))
+                if (typeof message.should_notify_listeners !== "boolean")
+                    return "should_notify_listeners: boolean expected";
+            if (message.listener_group != null && message.hasOwnProperty("listener_group"))
+                if (!$util.isString(message.listener_group))
+                    return "listener_group: string expected";
+            return null;
+        };
+
+        /**
+         * Creates an AddGeneralConfReq message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.AddGeneralConfReq
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.AddGeneralConfReq} AddGeneralConfReq
+         */
+        AddGeneralConfReq.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.AddGeneralConfReq)
+                return object;
+            let message = new $root.dashboard.AddGeneralConfReq();
+            if (object.coll_name != null)
+                message.coll_name = String(object.coll_name);
+            if (object.value != null)
+                message.value = String(object.value);
+            if (object.should_notify_listeners != null)
+                message.should_notify_listeners = Boolean(object.should_notify_listeners);
+            if (object.listener_group != null)
+                message.listener_group = String(object.listener_group);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from an AddGeneralConfReq message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.AddGeneralConfReq
+         * @static
+         * @param {dashboard.AddGeneralConfReq} message AddGeneralConfReq
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        AddGeneralConfReq.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.coll_name = "";
+                object.value = "";
+                object.should_notify_listeners = false;
+                object.listener_group = "";
+            }
+            if (message.coll_name != null && message.hasOwnProperty("coll_name"))
+                object.coll_name = message.coll_name;
+            if (message.value != null && message.hasOwnProperty("value"))
+                object.value = message.value;
+            if (message.should_notify_listeners != null && message.hasOwnProperty("should_notify_listeners"))
+                object.should_notify_listeners = message.should_notify_listeners;
+            if (message.listener_group != null && message.hasOwnProperty("listener_group"))
+                object.listener_group = message.listener_group;
+            return object;
+        };
+
+        /**
+         * Converts this AddGeneralConfReq to JSON.
+         * @function toJSON
+         * @memberof dashboard.AddGeneralConfReq
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        AddGeneralConfReq.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for AddGeneralConfReq
+         * @function getTypeUrl
+         * @memberof dashboard.AddGeneralConfReq
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        AddGeneralConfReq.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.AddGeneralConfReq";
+        };
+
+        return AddGeneralConfReq;
+    })();
+
+    dashboard.AddGeneralConfResp = (function() {
+
+        /**
+         * Properties of an AddGeneralConfResp.
+         * @memberof dashboard
+         * @interface IAddGeneralConfResp
+         */
+
+        /**
+         * Constructs a new AddGeneralConfResp.
+         * @memberof dashboard
+         * @classdesc Represents an AddGeneralConfResp.
+         * @implements IAddGeneralConfResp
+         * @constructor
+         * @param {dashboard.IAddGeneralConfResp=} [properties] Properties to set
+         */
+        function AddGeneralConfResp(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Creates a new AddGeneralConfResp instance using the specified properties.
+         * @function create
+         * @memberof dashboard.AddGeneralConfResp
+         * @static
+         * @param {dashboard.IAddGeneralConfResp=} [properties] Properties to set
+         * @returns {dashboard.AddGeneralConfResp} AddGeneralConfResp instance
+         */
+        AddGeneralConfResp.create = function create(properties) {
+            return new AddGeneralConfResp(properties);
+        };
+
+        /**
+         * Encodes the specified AddGeneralConfResp message. Does not implicitly {@link dashboard.AddGeneralConfResp.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.AddGeneralConfResp
+         * @static
+         * @param {dashboard.IAddGeneralConfResp} message AddGeneralConfResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        AddGeneralConfResp.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified AddGeneralConfResp message, length delimited. Does not implicitly {@link dashboard.AddGeneralConfResp.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.AddGeneralConfResp
+         * @static
+         * @param {dashboard.IAddGeneralConfResp} message AddGeneralConfResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        AddGeneralConfResp.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes an AddGeneralConfResp message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.AddGeneralConfResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.AddGeneralConfResp} AddGeneralConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        AddGeneralConfResp.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.AddGeneralConfResp();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes an AddGeneralConfResp message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.AddGeneralConfResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.AddGeneralConfResp} AddGeneralConfResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        AddGeneralConfResp.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an AddGeneralConfResp message.
+         * @function verify
+         * @memberof dashboard.AddGeneralConfResp
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        AddGeneralConfResp.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            return null;
+        };
+
+        /**
+         * Creates an AddGeneralConfResp message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.AddGeneralConfResp
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.AddGeneralConfResp} AddGeneralConfResp
+         */
+        AddGeneralConfResp.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.AddGeneralConfResp)
+                return object;
+            return new $root.dashboard.AddGeneralConfResp();
+        };
+
+        /**
+         * Creates a plain object from an AddGeneralConfResp message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.AddGeneralConfResp
+         * @static
+         * @param {dashboard.AddGeneralConfResp} message AddGeneralConfResp
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        AddGeneralConfResp.toObject = function toObject() {
+            return {};
+        };
+
+        /**
+         * Converts this AddGeneralConfResp to JSON.
+         * @function toJSON
+         * @memberof dashboard.AddGeneralConfResp
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        AddGeneralConfResp.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for AddGeneralConfResp
+         * @function getTypeUrl
+         * @memberof dashboard.AddGeneralConfResp
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        AddGeneralConfResp.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.AddGeneralConfResp";
+        };
+
+        return AddGeneralConfResp;
     })();
 
     dashboard.ListGeneralConfReq = (function() {

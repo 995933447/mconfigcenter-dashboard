@@ -232,3 +232,27 @@ func (s *Dashboard) SetConfigSchema(ctx context.Context, in *SetConfSchemaReq, o
 
 	return s.c.SetConfigSchema(ctx, in, opts...)
 }
+
+func (s *Dashboard) AddGeneralConf(ctx context.Context, in *AddGeneralConfReq, opts ...grpc.CallOption) (*AddGeneralConfResp, error) {
+	if err := s.prepareConn(); err != nil {
+		return nil, err
+	}
+
+	return s.c.AddGeneralConf(ctx, in, opts...)
+}
+
+func (s *Dashboard) UpdateGeneralConf(ctx context.Context, in *UpdateGeneralConfReq, opts ...grpc.CallOption) (*UpdateGeneralConfResp, error) {
+	if err := s.prepareConn(); err != nil {
+		return nil, err
+	}
+
+	return s.c.UpdateGeneralConf(ctx, in, opts...)
+}
+
+func (s *Dashboard) DeleteGeneralConf(ctx context.Context, in *DeleteGeneralConfReq, opts ...grpc.CallOption) (*DeleteGeneralConfResp, error) {
+	if err := s.prepareConn(); err != nil {
+		return nil, err
+	}
+
+	return s.c.DeleteGeneralConf(ctx, in, opts...)
+}

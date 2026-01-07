@@ -11,6 +11,9 @@ importers:
       '@element-plus/icons-vue':
         specifier: ^2.3.1
         version: 2.3.2(vue@3.5.26(typescript@5.9.3))
+      '@lljj/vue3-form-element':
+        specifier: ^1.19.0
+        version: 1.19.0
       '@vueuse/core':
         specifier: ^13.6.0
         version: 13.9.0(vue@3.5.26(typescript@5.9.3))
@@ -550,6 +553,15 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
+
+  '@lljj/vjsf-utils@1.19.0':
+    resolution: {integrity: sha512-dnW7bmwJdPLFjV3W54TA/9DTcB5WT5ElntNJZfaYbRldZywztmBpBO+JEZ8uTyKSchke1eBXDyP8kC/9wbvjwg==}
+
+  '@lljj/vue3-form-core@1.19.0':
+    resolution: {integrity: sha512-RqnepJ6mHs6lhcAFX/ZF0pa/q1fJaK1Kibhazs3eneGQ2ovMJP5bTUAuKfEaNO+8PKRUQQdrUfZBkuSPs/+nJQ==}
+
+  '@lljj/vue3-form-element@1.19.0':
+    resolution: {integrity: sha512-nGQtLGRYpEdyoDl0Ro7mpO70qX7QPyuX4zwFDx1jn0ufvzSy++OxZ8d5fZblw0SfEjDs1zuVEVYHL1oymTcZeA==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -3246,6 +3258,19 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
+
+  '@lljj/vjsf-utils@1.19.0':
+    dependencies:
+      ajv: 6.12.6
+
+  '@lljj/vue3-form-core@1.19.0':
+    dependencies:
+      '@lljj/vjsf-utils': 1.19.0
+
+  '@lljj/vue3-form-element@1.19.0':
+    dependencies:
+      '@lljj/vjsf-utils': 1.19.0
+      '@lljj/vue3-form-core': 1.19.0
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:

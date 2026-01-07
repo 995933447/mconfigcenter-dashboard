@@ -40,6 +40,9 @@ const (
 	Dashboard_ListGeneralConf_FullMethodName    = "/dashboard.Dashboard/ListGeneralConf"
 	Dashboard_ListConfSchema_FullMethodName     = "/dashboard.Dashboard/ListConfSchema"
 	Dashboard_SetConfigSchema_FullMethodName    = "/dashboard.Dashboard/SetConfigSchema"
+	Dashboard_AddGeneralConf_FullMethodName     = "/dashboard.Dashboard/AddGeneralConf"
+	Dashboard_UpdateGeneralConf_FullMethodName  = "/dashboard.Dashboard/UpdateGeneralConf"
+	Dashboard_DeleteGeneralConf_FullMethodName  = "/dashboard.Dashboard/DeleteGeneralConf"
 )
 
 // DashboardClient is the client API for Dashboard service.
@@ -67,6 +70,9 @@ type DashboardClient interface {
 	ListGeneralConf(ctx context.Context, in *ListGeneralConfReq, opts ...grpc.CallOption) (*ListGeneralConfResp, error)
 	ListConfSchema(ctx context.Context, in *ListConfSchemaReq, opts ...grpc.CallOption) (*ListConfSchemaResp, error)
 	SetConfigSchema(ctx context.Context, in *SetConfSchemaReq, opts ...grpc.CallOption) (*SetConfSchemaResp, error)
+	AddGeneralConf(ctx context.Context, in *AddGeneralConfReq, opts ...grpc.CallOption) (*AddGeneralConfResp, error)
+	UpdateGeneralConf(ctx context.Context, in *UpdateGeneralConfReq, opts ...grpc.CallOption) (*UpdateGeneralConfResp, error)
+	DeleteGeneralConf(ctx context.Context, in *DeleteGeneralConfReq, opts ...grpc.CallOption) (*DeleteGeneralConfResp, error)
 }
 
 type dashboardClient struct {
@@ -287,6 +293,36 @@ func (c *dashboardClient) SetConfigSchema(ctx context.Context, in *SetConfSchema
 	return out, nil
 }
 
+func (c *dashboardClient) AddGeneralConf(ctx context.Context, in *AddGeneralConfReq, opts ...grpc.CallOption) (*AddGeneralConfResp, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AddGeneralConfResp)
+	err := c.cc.Invoke(ctx, Dashboard_AddGeneralConf_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dashboardClient) UpdateGeneralConf(ctx context.Context, in *UpdateGeneralConfReq, opts ...grpc.CallOption) (*UpdateGeneralConfResp, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateGeneralConfResp)
+	err := c.cc.Invoke(ctx, Dashboard_UpdateGeneralConf_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dashboardClient) DeleteGeneralConf(ctx context.Context, in *DeleteGeneralConfReq, opts ...grpc.CallOption) (*DeleteGeneralConfResp, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteGeneralConfResp)
+	err := c.cc.Invoke(ctx, Dashboard_DeleteGeneralConf_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // DashboardServer is the server API for Dashboard service.
 // All implementations must embed UnimplementedDashboardServer
 // for forward compatibility.
@@ -312,6 +348,9 @@ type DashboardServer interface {
 	ListGeneralConf(context.Context, *ListGeneralConfReq) (*ListGeneralConfResp, error)
 	ListConfSchema(context.Context, *ListConfSchemaReq) (*ListConfSchemaResp, error)
 	SetConfigSchema(context.Context, *SetConfSchemaReq) (*SetConfSchemaResp, error)
+	AddGeneralConf(context.Context, *AddGeneralConfReq) (*AddGeneralConfResp, error)
+	UpdateGeneralConf(context.Context, *UpdateGeneralConfReq) (*UpdateGeneralConfResp, error)
+	DeleteGeneralConf(context.Context, *DeleteGeneralConfReq) (*DeleteGeneralConfResp, error)
 	mustEmbedUnimplementedDashboardServer()
 }
 
@@ -384,6 +423,15 @@ func (UnimplementedDashboardServer) ListConfSchema(context.Context, *ListConfSch
 }
 func (UnimplementedDashboardServer) SetConfigSchema(context.Context, *SetConfSchemaReq) (*SetConfSchemaResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetConfigSchema not implemented")
+}
+func (UnimplementedDashboardServer) AddGeneralConf(context.Context, *AddGeneralConfReq) (*AddGeneralConfResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddGeneralConf not implemented")
+}
+func (UnimplementedDashboardServer) UpdateGeneralConf(context.Context, *UpdateGeneralConfReq) (*UpdateGeneralConfResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateGeneralConf not implemented")
+}
+func (UnimplementedDashboardServer) DeleteGeneralConf(context.Context, *DeleteGeneralConfReq) (*DeleteGeneralConfResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteGeneralConf not implemented")
 }
 func (UnimplementedDashboardServer) mustEmbedUnimplementedDashboardServer() {}
 func (UnimplementedDashboardServer) testEmbeddedByValue()                   {}
@@ -784,6 +832,60 @@ func _Dashboard_SetConfigSchema_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Dashboard_AddGeneralConf_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddGeneralConfReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DashboardServer).AddGeneralConf(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Dashboard_AddGeneralConf_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DashboardServer).AddGeneralConf(ctx, req.(*AddGeneralConfReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Dashboard_UpdateGeneralConf_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateGeneralConfReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DashboardServer).UpdateGeneralConf(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Dashboard_UpdateGeneralConf_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DashboardServer).UpdateGeneralConf(ctx, req.(*UpdateGeneralConfReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Dashboard_DeleteGeneralConf_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteGeneralConfReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DashboardServer).DeleteGeneralConf(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Dashboard_DeleteGeneralConf_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DashboardServer).DeleteGeneralConf(ctx, req.(*DeleteGeneralConfReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Dashboard_ServiceDesc is the grpc.ServiceDesc for Dashboard service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -874,6 +976,18 @@ var Dashboard_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SetConfigSchema",
 			Handler:    _Dashboard_SetConfigSchema_Handler,
+		},
+		{
+			MethodName: "AddGeneralConf",
+			Handler:    _Dashboard_AddGeneralConf_Handler,
+		},
+		{
+			MethodName: "UpdateGeneralConf",
+			Handler:    _Dashboard_UpdateGeneralConf_Handler,
+		},
+		{
+			MethodName: "DeleteGeneralConf",
+			Handler:    _Dashboard_DeleteGeneralConf_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

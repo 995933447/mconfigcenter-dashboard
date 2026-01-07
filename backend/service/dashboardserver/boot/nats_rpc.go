@@ -159,6 +159,27 @@ func RegisterNatsRPCRoutes() error {
 		return err
 	}
 
+	err = nats.HandleLikeGRPC(dashboard.EasymicroGRPCPbServiceNameDashboard, "AddGeneralConf", handler.DashboardHandler.AddGeneralConf, func() *dashboard.AddGeneralConfReq {
+		return &dashboard.AddGeneralConfReq{}
+	})
+	if err != nil {
+		return err
+	}
+
+	err = nats.HandleLikeGRPC(dashboard.EasymicroGRPCPbServiceNameDashboard, "UpdateGeneralConf", handler.DashboardHandler.UpdateGeneralConf, func() *dashboard.UpdateGeneralConfReq {
+		return &dashboard.UpdateGeneralConfReq{}
+	})
+	if err != nil {
+		return err
+	}
+
+	err = nats.HandleLikeGRPC(dashboard.EasymicroGRPCPbServiceNameDashboard, "DeleteGeneralConf", handler.DashboardHandler.DeleteGeneralConf, func() *dashboard.DeleteGeneralConfReq {
+		return &dashboard.DeleteGeneralConfReq{}
+	})
+	if err != nil {
+		return err
+	}
+
 	err = nats.HandleLikeGRPC("healthreporter.HealthReporter", "Ping", healthreporter.NewReporter(ServiceNames).Ping, func() *healthreporter.PingReq {
 		return &healthreporter.PingReq{}
 	})

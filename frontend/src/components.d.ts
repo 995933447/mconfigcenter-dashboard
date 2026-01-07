@@ -51,6 +51,8 @@ declare module 'vue' {
     FilterConfigCond: typeof import('./components/FilterConfigCond.vue')['default']
     FilterGeneralConfigCond: typeof import('./components/FilterGeneralConfigCond.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
+    JsonSchemaForm: typeof import('./components/JsonSchemaForm.vue')['default']
+    JsonSchemaFormDialog: typeof import('./components/JsonSchemaFormDialog.vue')['default']
     Logos: typeof import('./components/Logos.vue')['default']
     MessageBoxDemo: typeof import('./components/MessageBoxDemo.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

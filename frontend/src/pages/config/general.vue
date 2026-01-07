@@ -35,7 +35,7 @@
     </div>
 
     <div flex justify-left ml-2rem mb-2rem>
-        <el-button @click="" type="primary">新增</el-button>
+        <el-button type="primary" @click="handleOpenSaveConfigDialog(fetchConfCond.collName, "")">新增</el-button>
         <el-popconfirm confirm-button-text="Yes" cancel-button-text="No" :icon="InfoFilled" icon-color="#626AEF"
             title="确定删除?" @confirm="">
             <template #reference>
@@ -47,12 +47,13 @@
     <div flex justify-center v-loading="loading">
         <el-table :data="currTableRows">
             <el-table-column type="selection" width="55" />
-            <el-table-column :label="key" v-for="key in currTableColumns" show-overflow-tooltip>
-                <template #default="scope" :prop="key">{{ scope.row[key] }}</template>
+            <el-table-column :label="column.title ?? column.key" v-for="column in currTableColumns"
+                show-overflow-tooltip>
+                <template #default="scope" :prop="column.key">{{ scope.row[column.key] }}</template>
             </el-table-column>
             <el-table-column fixed="right" label="操作" min-width="120">
                 <template #default="scope">
-                    <el-button link type="primary" size="small">修改</el-button>
+                    <el-button link type="primary" size="small" @click="handleOpenSaveConfigDialog(scope.row.coll_name, scope.row.id)">修改</el-button>
                     <el-popconfirm confirm-button-text="Yes" cancel-button-text="No" :icon="InfoFilled"
                         icon-color="#626AEF" title="确定删除?" @confirm="">
                         <template #reference>
@@ -110,10 +111,13 @@
             @size-change="query" @current-change="query" />
     </div>
 
-
     <el-dialog width="30%" v-model="previewConfigSchemaVisable" :before-close="handleClosePreviewConfigSchemaDialog">
         <json-viewer :value="configSchemaPreview" copyable boxed sort style="text-align: left;" />
     </el-dialog>
+
+    <JsonSchemaFormDialog v-model:save-config-form="saveConfigForm" :title="saveConfigDialogTitle"
+        v-model:saveConfigDialogVisable="saveConfigDialogVisable"
+        v-model:saveConfigFormJsonSchema="saveConfigFormJsonSchema" @handleSaveConfig="handleSaveConfig" />
 
 </template>
 
@@ -125,6 +129,7 @@ import { ElFormItem, ElInput, ElMessage, type UploadFile } from 'element-plus'
 import { InfoFilled } from '@element-plus/icons-vue'
 import FilterConfCondFormItem from '~/components/FilterConfCondFormItem.vue';
 import { ConfCollCond, KeySelectOption } from '~/components/FilterConfCondFormItem.vue';
+import JsonSchemaFormDialog from '~/components/JsonSchemaFormDialog.vue';
 
 defineOptions({
     name: "/config/general"
@@ -334,7 +339,15 @@ const handleUploadConfigSchema = async function () {
     fetchConfigSchema()
 }
 
-const configSchemaPreview = ref({})
+interface ConfigSchemaPreview {
+    table: string
+    index_keys: string[]
+    uniq_index_keys: string[]
+    json_schema: any
+    desc: string
+}
+
+const configSchemaPreview = ref<ConfigSchemaPreview>({} as ConfigSchemaPreview)
 const previewConfigSchemaVisable = ref(false)
 
 const handlePreviewReadyUploadConfigSchema = function (file: UploadFile) {
@@ -345,7 +358,7 @@ const handlePreviewReadyUploadConfigSchema = function (file: UploadFile) {
                 configSchemaPreview.value = JSON.parse(item.fileContent || '{}')
             } catch (e) {
                 ElMessage.error("文件内容不是有效的 JSON 格式")
-                configSchemaPreview.value = {}
+                configSchemaPreview.value = {} as ConfigSchemaPreview
             }
             break
         }
@@ -372,14 +385,14 @@ const handleViewSchemaConfigSchema = function (collName: string) {
             try {
                 configSchemaPreview.value = {
                     table: item.coll_name,
-                    index_keys: item.index_keys,
-                    uniq_index_keys: item.uniq_index_keys,
+                    index_keys: item.index_keys ?? [],
+                    uniq_index_keys: item.uniq_index_keys ?? [],
                     json_schema: JSON.parse(item.json_schema ?? '{}'),
-                    desc: item.desc
+                    desc: item.desc ?? ''
                 }
             } catch (e) {
                 ElMessage.error("文件内容不是有效的 JSON 格式")
-                configSchemaPreview.value = {}
+                configSchemaPreview.value = {} as ConfigSchemaPreview
             }
             break
         }
@@ -457,7 +470,12 @@ const query = function () {
 
 const loading = ref(false)
 
-const currTableColumns = ref<string[]>([])
+interface CurrTableColumn {
+    key: string
+    title: string
+    collName: string
+}
+const currTableColumns = ref<CurrTableColumn[]>([])
 const currTableRows = ref<any[]>([])
 
 const fetchGeneralConfList = async function () {
@@ -513,14 +531,83 @@ const fetchGeneralConfList = async function () {
         }
         const jsonSchema = JSON.parse(item.json_schema ?? '{}')
         for (const key in jsonSchema.properties) {
-            if (!currTableColumns.value.includes(key)) {
-                currTableColumns.value.push(key)
-            }
+            currTableColumns.value.push({
+                key: key,
+                title: jsonSchema.properties[key].title,
+                collName: item.coll_name
+            } as CurrTableColumn)
         }
     }
 
     loading.value = false
 }
 
+const saveConfigDialogTitle = ref('')
+
+const saveConfigDialogVisable = ref(false)
+
+const saveConfigFormJsonSchema = ref<any>({})
+
+const saveConfigForm = ref<any>({})
+
+const handleSaveConfig = async function () {
+    if (!saveConfigForm.value.collName) {
+        ElMessage.error("请选择配置集合")
+        return
+    }
+
+    if (!saveConfigForm.value.data) {
+        ElMessage.error("请填写配置内容")
+        return
+    }
+
+    loading.value = true
+
+    try {
+        if (!saveConfigForm.value.id) {
+            await DashboardService.AddGeneralConf({
+                coll_name: saveConfigForm.value.collName,
+                value: JSON.stringify(saveConfigForm.value.data),
+            })
+        } else {
+            await DashboardService.UpdateGeneralConf({
+                id: saveConfigForm.value.id,
+                coll_name: saveConfigForm.value.collName,
+                value: JSON.stringify(saveConfigForm.value.data),
+            })
+        }
+
+        ElMessage.success("保存成功")
+
+        query()
+    } finally {
+        loading.value = false
+    }
+}
+
+const handleOpenSaveConfigDialog = function (collName: string, id: string) {
+    if (!collName) {
+        ElMessage.error("请选择配置集合")
+        return
+    }
+
+    const schema = configSchemaList.value.find(item => item.coll_name == collName)
+    if (!schema) {
+        ElMessage.error("配置集合不存在")
+        return
+    }
+
+    saveConfigForm.value.collName = collName
+
+    saveConfigDialogTitle.value = schema.desc ? schema.desc + "(" + schema.coll_name + ")" : schema.coll_name as string
+
+    saveConfigFormJsonSchema.value = JSON.parse(schema.json_schema ?? '{}')
+
+    delete saveConfigFormJsonSchema.value.properties._id
+    delete saveConfigFormJsonSchema.value.properties.created_at
+    delete saveConfigFormJsonSchema.value.properties.updated_at
+
+    saveConfigDialogVisable.value = true
+}
 
 </script>

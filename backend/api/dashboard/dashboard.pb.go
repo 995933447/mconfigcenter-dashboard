@@ -361,6 +361,310 @@ func (x *ListConfSchemaResp) GetList() []*ConfigSchema {
 	return nil
 }
 
+type DeleteGeneralConfReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Ids           []string               `protobuf:"bytes,1,rep,name=ids,proto3" json:"ids,omitempty"`
+	CollName      string                 `protobuf:"bytes,2,opt,name=coll_name,json=collName,proto3" json:"coll_name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteGeneralConfReq) Reset() {
+	*x = DeleteGeneralConfReq{}
+	mi := &file_dashboard_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteGeneralConfReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteGeneralConfReq) ProtoMessage() {}
+
+func (x *DeleteGeneralConfReq) ProtoReflect() protoreflect.Message {
+	mi := &file_dashboard_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteGeneralConfReq.ProtoReflect.Descriptor instead.
+func (*DeleteGeneralConfReq) Descriptor() ([]byte, []int) {
+	return file_dashboard_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *DeleteGeneralConfReq) GetIds() []string {
+	if x != nil {
+		return x.Ids
+	}
+	return nil
+}
+
+func (x *DeleteGeneralConfReq) GetCollName() string {
+	if x != nil {
+		return x.CollName
+	}
+	return ""
+}
+
+type DeleteGeneralConfResp struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteGeneralConfResp) Reset() {
+	*x = DeleteGeneralConfResp{}
+	mi := &file_dashboard_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteGeneralConfResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteGeneralConfResp) ProtoMessage() {}
+
+func (x *DeleteGeneralConfResp) ProtoReflect() protoreflect.Message {
+	mi := &file_dashboard_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteGeneralConfResp.ProtoReflect.Descriptor instead.
+func (*DeleteGeneralConfResp) Descriptor() ([]byte, []int) {
+	return file_dashboard_proto_rawDescGZIP(), []int{6}
+}
+
+type UpdateGeneralConfReq struct {
+	state                 protoimpl.MessageState `protogen:"open.v1"`
+	CollName              string                 `protobuf:"bytes,1,opt,name=coll_name,json=collName,proto3" json:"coll_name,omitempty"`                                           // 配置集合的名称
+	Value                 string                 `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`                                                                 // 具体配置
+	ShouldNotifyListeners bool                   `protobuf:"varint,3,opt,name=should_notify_listeners,json=shouldNotifyListeners,proto3" json:"should_notify_listeners,omitempty"` // 是否立刻通知配置监听者
+	ListenerGroup         string                 `protobuf:"bytes,4,opt,name=listener_group,json=listenerGroup,proto3" json:"listener_group,omitempty"`                            // 需要通知的监听者组别,由配置发布方根据业务自定义,非必需
+	Id                    string                 `protobuf:"bytes,5,opt,name=id,proto3" json:"id,omitempty"`                                                                       // 配置id
+	unknownFields         protoimpl.UnknownFields
+	sizeCache             protoimpl.SizeCache
+}
+
+func (x *UpdateGeneralConfReq) Reset() {
+	*x = UpdateGeneralConfReq{}
+	mi := &file_dashboard_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateGeneralConfReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateGeneralConfReq) ProtoMessage() {}
+
+func (x *UpdateGeneralConfReq) ProtoReflect() protoreflect.Message {
+	mi := &file_dashboard_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateGeneralConfReq.ProtoReflect.Descriptor instead.
+func (*UpdateGeneralConfReq) Descriptor() ([]byte, []int) {
+	return file_dashboard_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *UpdateGeneralConfReq) GetCollName() string {
+	if x != nil {
+		return x.CollName
+	}
+	return ""
+}
+
+func (x *UpdateGeneralConfReq) GetValue() string {
+	if x != nil {
+		return x.Value
+	}
+	return ""
+}
+
+func (x *UpdateGeneralConfReq) GetShouldNotifyListeners() bool {
+	if x != nil {
+		return x.ShouldNotifyListeners
+	}
+	return false
+}
+
+func (x *UpdateGeneralConfReq) GetListenerGroup() string {
+	if x != nil {
+		return x.ListenerGroup
+	}
+	return ""
+}
+
+func (x *UpdateGeneralConfReq) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type UpdateGeneralConfResp struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateGeneralConfResp) Reset() {
+	*x = UpdateGeneralConfResp{}
+	mi := &file_dashboard_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateGeneralConfResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateGeneralConfResp) ProtoMessage() {}
+
+func (x *UpdateGeneralConfResp) ProtoReflect() protoreflect.Message {
+	mi := &file_dashboard_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateGeneralConfResp.ProtoReflect.Descriptor instead.
+func (*UpdateGeneralConfResp) Descriptor() ([]byte, []int) {
+	return file_dashboard_proto_rawDescGZIP(), []int{8}
+}
+
+type AddGeneralConfReq struct {
+	state                 protoimpl.MessageState `protogen:"open.v1"`
+	CollName              string                 `protobuf:"bytes,1,opt,name=coll_name,json=collName,proto3" json:"coll_name,omitempty"`                                           // 配置集合的名称
+	Value                 string                 `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`                                                                 // 具体配置
+	ShouldNotifyListeners bool                   `protobuf:"varint,3,opt,name=should_notify_listeners,json=shouldNotifyListeners,proto3" json:"should_notify_listeners,omitempty"` // 是否立刻通知配置监听者
+	ListenerGroup         string                 `protobuf:"bytes,4,opt,name=listener_group,json=listenerGroup,proto3" json:"listener_group,omitempty"`                            // 需要通知的监听者组别,由配置发布方根据业务自定义,非必需
+	unknownFields         protoimpl.UnknownFields
+	sizeCache             protoimpl.SizeCache
+}
+
+func (x *AddGeneralConfReq) Reset() {
+	*x = AddGeneralConfReq{}
+	mi := &file_dashboard_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddGeneralConfReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddGeneralConfReq) ProtoMessage() {}
+
+func (x *AddGeneralConfReq) ProtoReflect() protoreflect.Message {
+	mi := &file_dashboard_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddGeneralConfReq.ProtoReflect.Descriptor instead.
+func (*AddGeneralConfReq) Descriptor() ([]byte, []int) {
+	return file_dashboard_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *AddGeneralConfReq) GetCollName() string {
+	if x != nil {
+		return x.CollName
+	}
+	return ""
+}
+
+func (x *AddGeneralConfReq) GetValue() string {
+	if x != nil {
+		return x.Value
+	}
+	return ""
+}
+
+func (x *AddGeneralConfReq) GetShouldNotifyListeners() bool {
+	if x != nil {
+		return x.ShouldNotifyListeners
+	}
+	return false
+}
+
+func (x *AddGeneralConfReq) GetListenerGroup() string {
+	if x != nil {
+		return x.ListenerGroup
+	}
+	return ""
+}
+
+type AddGeneralConfResp struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddGeneralConfResp) Reset() {
+	*x = AddGeneralConfResp{}
+	mi := &file_dashboard_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddGeneralConfResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddGeneralConfResp) ProtoMessage() {}
+
+func (x *AddGeneralConfResp) ProtoReflect() protoreflect.Message {
+	mi := &file_dashboard_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddGeneralConfResp.ProtoReflect.Descriptor instead.
+func (*AddGeneralConfResp) Descriptor() ([]byte, []int) {
+	return file_dashboard_proto_rawDescGZIP(), []int{10}
+}
+
 type ListGeneralConfReq struct {
 	state         protoimpl.MessageState     `protogen:"open.v1"`
 	CollName      string                     `protobuf:"bytes,1,opt,name=coll_name,json=collName,proto3" json:"coll_name,omitempty"` // 集合名称
@@ -373,7 +677,7 @@ type ListGeneralConfReq struct {
 
 func (x *ListGeneralConfReq) Reset() {
 	*x = ListGeneralConfReq{}
-	mi := &file_dashboard_proto_msgTypes[5]
+	mi := &file_dashboard_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -385,7 +689,7 @@ func (x *ListGeneralConfReq) String() string {
 func (*ListGeneralConfReq) ProtoMessage() {}
 
 func (x *ListGeneralConfReq) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[5]
+	mi := &file_dashboard_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -398,7 +702,7 @@ func (x *ListGeneralConfReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListGeneralConfReq.ProtoReflect.Descriptor instead.
 func (*ListGeneralConfReq) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{5}
+	return file_dashboard_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *ListGeneralConfReq) GetCollName() string {
@@ -439,7 +743,7 @@ type ListGeneralConfResp struct {
 
 func (x *ListGeneralConfResp) Reset() {
 	*x = ListGeneralConfResp{}
-	mi := &file_dashboard_proto_msgTypes[6]
+	mi := &file_dashboard_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -451,7 +755,7 @@ func (x *ListGeneralConfResp) String() string {
 func (*ListGeneralConfResp) ProtoMessage() {}
 
 func (x *ListGeneralConfResp) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[6]
+	mi := &file_dashboard_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -464,7 +768,7 @@ func (x *ListGeneralConfResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListGeneralConfResp.ProtoReflect.Descriptor instead.
 func (*ListGeneralConfResp) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{6}
+	return file_dashboard_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *ListGeneralConfResp) GetList() []string {
@@ -490,7 +794,7 @@ type DeleteUserReq struct {
 
 func (x *DeleteUserReq) Reset() {
 	*x = DeleteUserReq{}
-	mi := &file_dashboard_proto_msgTypes[7]
+	mi := &file_dashboard_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -502,7 +806,7 @@ func (x *DeleteUserReq) String() string {
 func (*DeleteUserReq) ProtoMessage() {}
 
 func (x *DeleteUserReq) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[7]
+	mi := &file_dashboard_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -515,7 +819,7 @@ func (x *DeleteUserReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteUserReq.ProtoReflect.Descriptor instead.
 func (*DeleteUserReq) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{7}
+	return file_dashboard_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *DeleteUserReq) GetUserId() uint64 {
@@ -533,7 +837,7 @@ type DeleteUserResp struct {
 
 func (x *DeleteUserResp) Reset() {
 	*x = DeleteUserResp{}
-	mi := &file_dashboard_proto_msgTypes[8]
+	mi := &file_dashboard_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -545,7 +849,7 @@ func (x *DeleteUserResp) String() string {
 func (*DeleteUserResp) ProtoMessage() {}
 
 func (x *DeleteUserResp) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[8]
+	mi := &file_dashboard_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -558,7 +862,7 @@ func (x *DeleteUserResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteUserResp.ProtoReflect.Descriptor instead.
 func (*DeleteUserResp) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{8}
+	return file_dashboard_proto_rawDescGZIP(), []int{14}
 }
 
 type UpdateUserReq struct {
@@ -574,7 +878,7 @@ type UpdateUserReq struct {
 
 func (x *UpdateUserReq) Reset() {
 	*x = UpdateUserReq{}
-	mi := &file_dashboard_proto_msgTypes[9]
+	mi := &file_dashboard_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -586,7 +890,7 @@ func (x *UpdateUserReq) String() string {
 func (*UpdateUserReq) ProtoMessage() {}
 
 func (x *UpdateUserReq) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[9]
+	mi := &file_dashboard_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -599,7 +903,7 @@ func (x *UpdateUserReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateUserReq.ProtoReflect.Descriptor instead.
 func (*UpdateUserReq) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{9}
+	return file_dashboard_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *UpdateUserReq) GetName() string {
@@ -645,7 +949,7 @@ type UpdateUserResp struct {
 
 func (x *UpdateUserResp) Reset() {
 	*x = UpdateUserResp{}
-	mi := &file_dashboard_proto_msgTypes[10]
+	mi := &file_dashboard_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -657,7 +961,7 @@ func (x *UpdateUserResp) String() string {
 func (*UpdateUserResp) ProtoMessage() {}
 
 func (x *UpdateUserResp) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[10]
+	mi := &file_dashboard_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -670,7 +974,7 @@ func (x *UpdateUserResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateUserResp.ProtoReflect.Descriptor instead.
 func (*UpdateUserResp) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{10}
+	return file_dashboard_proto_rawDescGZIP(), []int{16}
 }
 
 type AddUserReq struct {
@@ -685,7 +989,7 @@ type AddUserReq struct {
 
 func (x *AddUserReq) Reset() {
 	*x = AddUserReq{}
-	mi := &file_dashboard_proto_msgTypes[11]
+	mi := &file_dashboard_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -697,7 +1001,7 @@ func (x *AddUserReq) String() string {
 func (*AddUserReq) ProtoMessage() {}
 
 func (x *AddUserReq) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[11]
+	mi := &file_dashboard_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -710,7 +1014,7 @@ func (x *AddUserReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddUserReq.ProtoReflect.Descriptor instead.
 func (*AddUserReq) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{11}
+	return file_dashboard_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *AddUserReq) GetName() string {
@@ -749,7 +1053,7 @@ type AddUserResp struct {
 
 func (x *AddUserResp) Reset() {
 	*x = AddUserResp{}
-	mi := &file_dashboard_proto_msgTypes[12]
+	mi := &file_dashboard_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -761,7 +1065,7 @@ func (x *AddUserResp) String() string {
 func (*AddUserResp) ProtoMessage() {}
 
 func (x *AddUserResp) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[12]
+	mi := &file_dashboard_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -774,7 +1078,7 @@ func (x *AddUserResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddUserResp.ProtoReflect.Descriptor instead.
 func (*AddUserResp) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{12}
+	return file_dashboard_proto_rawDescGZIP(), []int{18}
 }
 
 type ListUserReq struct {
@@ -790,7 +1094,7 @@ type ListUserReq struct {
 
 func (x *ListUserReq) Reset() {
 	*x = ListUserReq{}
-	mi := &file_dashboard_proto_msgTypes[13]
+	mi := &file_dashboard_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -802,7 +1106,7 @@ func (x *ListUserReq) String() string {
 func (*ListUserReq) ProtoMessage() {}
 
 func (x *ListUserReq) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[13]
+	mi := &file_dashboard_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -815,7 +1119,7 @@ func (x *ListUserReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUserReq.ProtoReflect.Descriptor instead.
 func (*ListUserReq) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{13}
+	return file_dashboard_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *ListUserReq) GetName() string {
@@ -863,7 +1167,7 @@ type ListUserResp struct {
 
 func (x *ListUserResp) Reset() {
 	*x = ListUserResp{}
-	mi := &file_dashboard_proto_msgTypes[14]
+	mi := &file_dashboard_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -875,7 +1179,7 @@ func (x *ListUserResp) String() string {
 func (*ListUserResp) ProtoMessage() {}
 
 func (x *ListUserResp) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[14]
+	mi := &file_dashboard_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -888,7 +1192,7 @@ func (x *ListUserResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUserResp.ProtoReflect.Descriptor instead.
 func (*ListUserResp) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{14}
+	return file_dashboard_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *ListUserResp) GetList() []*ListUserResp_Item {
@@ -914,7 +1218,7 @@ type DeleteRoleConfReq struct {
 
 func (x *DeleteRoleConfReq) Reset() {
 	*x = DeleteRoleConfReq{}
-	mi := &file_dashboard_proto_msgTypes[15]
+	mi := &file_dashboard_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -926,7 +1230,7 @@ func (x *DeleteRoleConfReq) String() string {
 func (*DeleteRoleConfReq) ProtoMessage() {}
 
 func (x *DeleteRoleConfReq) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[15]
+	mi := &file_dashboard_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -939,7 +1243,7 @@ func (x *DeleteRoleConfReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteRoleConfReq.ProtoReflect.Descriptor instead.
 func (*DeleteRoleConfReq) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{15}
+	return file_dashboard_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *DeleteRoleConfReq) GetRoleId() uint64 {
@@ -957,7 +1261,7 @@ type DeleteRoleConfResp struct {
 
 func (x *DeleteRoleConfResp) Reset() {
 	*x = DeleteRoleConfResp{}
-	mi := &file_dashboard_proto_msgTypes[16]
+	mi := &file_dashboard_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -969,7 +1273,7 @@ func (x *DeleteRoleConfResp) String() string {
 func (*DeleteRoleConfResp) ProtoMessage() {}
 
 func (x *DeleteRoleConfResp) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[16]
+	mi := &file_dashboard_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -982,7 +1286,7 @@ func (x *DeleteRoleConfResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteRoleConfResp.ProtoReflect.Descriptor instead.
 func (*DeleteRoleConfResp) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{16}
+	return file_dashboard_proto_rawDescGZIP(), []int{22}
 }
 
 type AddRoleConfReq struct {
@@ -997,7 +1301,7 @@ type AddRoleConfReq struct {
 
 func (x *AddRoleConfReq) Reset() {
 	*x = AddRoleConfReq{}
-	mi := &file_dashboard_proto_msgTypes[17]
+	mi := &file_dashboard_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1009,7 +1313,7 @@ func (x *AddRoleConfReq) String() string {
 func (*AddRoleConfReq) ProtoMessage() {}
 
 func (x *AddRoleConfReq) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[17]
+	mi := &file_dashboard_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1022,7 +1326,7 @@ func (x *AddRoleConfReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddRoleConfReq.ProtoReflect.Descriptor instead.
 func (*AddRoleConfReq) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{17}
+	return file_dashboard_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *AddRoleConfReq) GetName() string {
@@ -1061,7 +1365,7 @@ type AddRoleConfResp struct {
 
 func (x *AddRoleConfResp) Reset() {
 	*x = AddRoleConfResp{}
-	mi := &file_dashboard_proto_msgTypes[18]
+	mi := &file_dashboard_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1073,7 +1377,7 @@ func (x *AddRoleConfResp) String() string {
 func (*AddRoleConfResp) ProtoMessage() {}
 
 func (x *AddRoleConfResp) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[18]
+	mi := &file_dashboard_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1086,7 +1390,7 @@ func (x *AddRoleConfResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddRoleConfResp.ProtoReflect.Descriptor instead.
 func (*AddRoleConfResp) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{18}
+	return file_dashboard_proto_rawDescGZIP(), []int{24}
 }
 
 type UpdateRoleConfReq struct {
@@ -1102,7 +1406,7 @@ type UpdateRoleConfReq struct {
 
 func (x *UpdateRoleConfReq) Reset() {
 	*x = UpdateRoleConfReq{}
-	mi := &file_dashboard_proto_msgTypes[19]
+	mi := &file_dashboard_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1114,7 +1418,7 @@ func (x *UpdateRoleConfReq) String() string {
 func (*UpdateRoleConfReq) ProtoMessage() {}
 
 func (x *UpdateRoleConfReq) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[19]
+	mi := &file_dashboard_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1127,7 +1431,7 @@ func (x *UpdateRoleConfReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateRoleConfReq.ProtoReflect.Descriptor instead.
 func (*UpdateRoleConfReq) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{19}
+	return file_dashboard_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *UpdateRoleConfReq) GetRoleId() uint64 {
@@ -1173,7 +1477,7 @@ type UpdateRoleConfResp struct {
 
 func (x *UpdateRoleConfResp) Reset() {
 	*x = UpdateRoleConfResp{}
-	mi := &file_dashboard_proto_msgTypes[20]
+	mi := &file_dashboard_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1185,7 +1489,7 @@ func (x *UpdateRoleConfResp) String() string {
 func (*UpdateRoleConfResp) ProtoMessage() {}
 
 func (x *UpdateRoleConfResp) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[20]
+	mi := &file_dashboard_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1198,7 +1502,7 @@ func (x *UpdateRoleConfResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateRoleConfResp.ProtoReflect.Descriptor instead.
 func (*UpdateRoleConfResp) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{20}
+	return file_dashboard_proto_rawDescGZIP(), []int{26}
 }
 
 type ListRoleConfReq struct {
@@ -1214,7 +1518,7 @@ type ListRoleConfReq struct {
 
 func (x *ListRoleConfReq) Reset() {
 	*x = ListRoleConfReq{}
-	mi := &file_dashboard_proto_msgTypes[21]
+	mi := &file_dashboard_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1226,7 +1530,7 @@ func (x *ListRoleConfReq) String() string {
 func (*ListRoleConfReq) ProtoMessage() {}
 
 func (x *ListRoleConfReq) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[21]
+	mi := &file_dashboard_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1239,7 +1543,7 @@ func (x *ListRoleConfReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRoleConfReq.ProtoReflect.Descriptor instead.
 func (*ListRoleConfReq) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{21}
+	return file_dashboard_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *ListRoleConfReq) GetName() string {
@@ -1287,7 +1591,7 @@ type ListRoleConfResp struct {
 
 func (x *ListRoleConfResp) Reset() {
 	*x = ListRoleConfResp{}
-	mi := &file_dashboard_proto_msgTypes[22]
+	mi := &file_dashboard_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1299,7 +1603,7 @@ func (x *ListRoleConfResp) String() string {
 func (*ListRoleConfResp) ProtoMessage() {}
 
 func (x *ListRoleConfResp) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[22]
+	mi := &file_dashboard_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1312,7 +1616,7 @@ func (x *ListRoleConfResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRoleConfResp.ProtoReflect.Descriptor instead.
 func (*ListRoleConfResp) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{22}
+	return file_dashboard_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *ListRoleConfResp) GetList() []*Role {
@@ -1343,7 +1647,7 @@ type Role struct {
 
 func (x *Role) Reset() {
 	*x = Role{}
-	mi := &file_dashboard_proto_msgTypes[23]
+	mi := &file_dashboard_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1355,7 +1659,7 @@ func (x *Role) String() string {
 func (*Role) ProtoMessage() {}
 
 func (x *Role) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[23]
+	mi := &file_dashboard_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1368,7 +1672,7 @@ func (x *Role) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Role.ProtoReflect.Descriptor instead.
 func (*Role) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{23}
+	return file_dashboard_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *Role) GetRoleId() uint64 {
@@ -1422,7 +1726,7 @@ type DeleteMenuConfReq struct {
 
 func (x *DeleteMenuConfReq) Reset() {
 	*x = DeleteMenuConfReq{}
-	mi := &file_dashboard_proto_msgTypes[24]
+	mi := &file_dashboard_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1434,7 +1738,7 @@ func (x *DeleteMenuConfReq) String() string {
 func (*DeleteMenuConfReq) ProtoMessage() {}
 
 func (x *DeleteMenuConfReq) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[24]
+	mi := &file_dashboard_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1447,7 +1751,7 @@ func (x *DeleteMenuConfReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteMenuConfReq.ProtoReflect.Descriptor instead.
 func (*DeleteMenuConfReq) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{24}
+	return file_dashboard_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *DeleteMenuConfReq) GetPermId() uint64 {
@@ -1465,7 +1769,7 @@ type DeleteMenuConfResp struct {
 
 func (x *DeleteMenuConfResp) Reset() {
 	*x = DeleteMenuConfResp{}
-	mi := &file_dashboard_proto_msgTypes[25]
+	mi := &file_dashboard_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1477,7 +1781,7 @@ func (x *DeleteMenuConfResp) String() string {
 func (*DeleteMenuConfResp) ProtoMessage() {}
 
 func (x *DeleteMenuConfResp) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[25]
+	mi := &file_dashboard_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1490,7 +1794,7 @@ func (x *DeleteMenuConfResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteMenuConfResp.ProtoReflect.Descriptor instead.
 func (*DeleteMenuConfResp) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{25}
+	return file_dashboard_proto_rawDescGZIP(), []int{31}
 }
 
 type UpdateMenuConfReq struct {
@@ -1507,7 +1811,7 @@ type UpdateMenuConfReq struct {
 
 func (x *UpdateMenuConfReq) Reset() {
 	*x = UpdateMenuConfReq{}
-	mi := &file_dashboard_proto_msgTypes[26]
+	mi := &file_dashboard_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1519,7 +1823,7 @@ func (x *UpdateMenuConfReq) String() string {
 func (*UpdateMenuConfReq) ProtoMessage() {}
 
 func (x *UpdateMenuConfReq) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[26]
+	mi := &file_dashboard_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1532,7 +1836,7 @@ func (x *UpdateMenuConfReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateMenuConfReq.ProtoReflect.Descriptor instead.
 func (*UpdateMenuConfReq) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{26}
+	return file_dashboard_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *UpdateMenuConfReq) GetName() string {
@@ -1585,7 +1889,7 @@ type UpdateMenuConfResp struct {
 
 func (x *UpdateMenuConfResp) Reset() {
 	*x = UpdateMenuConfResp{}
-	mi := &file_dashboard_proto_msgTypes[27]
+	mi := &file_dashboard_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1597,7 +1901,7 @@ func (x *UpdateMenuConfResp) String() string {
 func (*UpdateMenuConfResp) ProtoMessage() {}
 
 func (x *UpdateMenuConfResp) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[27]
+	mi := &file_dashboard_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1610,7 +1914,7 @@ func (x *UpdateMenuConfResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateMenuConfResp.ProtoReflect.Descriptor instead.
 func (*UpdateMenuConfResp) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{27}
+	return file_dashboard_proto_rawDescGZIP(), []int{33}
 }
 
 type AddMenuConfReq struct {
@@ -1626,7 +1930,7 @@ type AddMenuConfReq struct {
 
 func (x *AddMenuConfReq) Reset() {
 	*x = AddMenuConfReq{}
-	mi := &file_dashboard_proto_msgTypes[28]
+	mi := &file_dashboard_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1638,7 +1942,7 @@ func (x *AddMenuConfReq) String() string {
 func (*AddMenuConfReq) ProtoMessage() {}
 
 func (x *AddMenuConfReq) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[28]
+	mi := &file_dashboard_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1651,7 +1955,7 @@ func (x *AddMenuConfReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddMenuConfReq.ProtoReflect.Descriptor instead.
 func (*AddMenuConfReq) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{28}
+	return file_dashboard_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *AddMenuConfReq) GetName() string {
@@ -1697,7 +2001,7 @@ type AddMenuConfResp struct {
 
 func (x *AddMenuConfResp) Reset() {
 	*x = AddMenuConfResp{}
-	mi := &file_dashboard_proto_msgTypes[29]
+	mi := &file_dashboard_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1709,7 +2013,7 @@ func (x *AddMenuConfResp) String() string {
 func (*AddMenuConfResp) ProtoMessage() {}
 
 func (x *AddMenuConfResp) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[29]
+	mi := &file_dashboard_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1722,7 +2026,7 @@ func (x *AddMenuConfResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddMenuConfResp.ProtoReflect.Descriptor instead.
 func (*AddMenuConfResp) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{29}
+	return file_dashboard_proto_rawDescGZIP(), []int{35}
 }
 
 type ListMenuConfReq struct {
@@ -1733,7 +2037,7 @@ type ListMenuConfReq struct {
 
 func (x *ListMenuConfReq) Reset() {
 	*x = ListMenuConfReq{}
-	mi := &file_dashboard_proto_msgTypes[30]
+	mi := &file_dashboard_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1745,7 +2049,7 @@ func (x *ListMenuConfReq) String() string {
 func (*ListMenuConfReq) ProtoMessage() {}
 
 func (x *ListMenuConfReq) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[30]
+	mi := &file_dashboard_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1758,7 +2062,7 @@ func (x *ListMenuConfReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListMenuConfReq.ProtoReflect.Descriptor instead.
 func (*ListMenuConfReq) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{30}
+	return file_dashboard_proto_rawDescGZIP(), []int{36}
 }
 
 type ListMenuConfResp struct {
@@ -1771,7 +2075,7 @@ type ListMenuConfResp struct {
 
 func (x *ListMenuConfResp) Reset() {
 	*x = ListMenuConfResp{}
-	mi := &file_dashboard_proto_msgTypes[31]
+	mi := &file_dashboard_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1783,7 +2087,7 @@ func (x *ListMenuConfResp) String() string {
 func (*ListMenuConfResp) ProtoMessage() {}
 
 func (x *ListMenuConfResp) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[31]
+	mi := &file_dashboard_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1796,7 +2100,7 @@ func (x *ListMenuConfResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListMenuConfResp.ProtoReflect.Descriptor instead.
 func (*ListMenuConfResp) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{31}
+	return file_dashboard_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *ListMenuConfResp) GetList() []*ListMenuConfResp_MenuConf {
@@ -1822,7 +2126,7 @@ type ChangeUserPasswordReq struct {
 
 func (x *ChangeUserPasswordReq) Reset() {
 	*x = ChangeUserPasswordReq{}
-	mi := &file_dashboard_proto_msgTypes[32]
+	mi := &file_dashboard_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1834,7 +2138,7 @@ func (x *ChangeUserPasswordReq) String() string {
 func (*ChangeUserPasswordReq) ProtoMessage() {}
 
 func (x *ChangeUserPasswordReq) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[32]
+	mi := &file_dashboard_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1847,7 +2151,7 @@ func (x *ChangeUserPasswordReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeUserPasswordReq.ProtoReflect.Descriptor instead.
 func (*ChangeUserPasswordReq) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{32}
+	return file_dashboard_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *ChangeUserPasswordReq) GetNewPassword() string {
@@ -1865,7 +2169,7 @@ type ChangeUserPasswordResp struct {
 
 func (x *ChangeUserPasswordResp) Reset() {
 	*x = ChangeUserPasswordResp{}
-	mi := &file_dashboard_proto_msgTypes[33]
+	mi := &file_dashboard_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1877,7 +2181,7 @@ func (x *ChangeUserPasswordResp) String() string {
 func (*ChangeUserPasswordResp) ProtoMessage() {}
 
 func (x *ChangeUserPasswordResp) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[33]
+	mi := &file_dashboard_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1890,7 +2194,7 @@ func (x *ChangeUserPasswordResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeUserPasswordResp.ProtoReflect.Descriptor instead.
 func (*ChangeUserPasswordResp) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{33}
+	return file_dashboard_proto_rawDescGZIP(), []int{39}
 }
 
 type AuthUserReq struct {
@@ -1902,7 +2206,7 @@ type AuthUserReq struct {
 
 func (x *AuthUserReq) Reset() {
 	*x = AuthUserReq{}
-	mi := &file_dashboard_proto_msgTypes[34]
+	mi := &file_dashboard_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1914,7 +2218,7 @@ func (x *AuthUserReq) String() string {
 func (*AuthUserReq) ProtoMessage() {}
 
 func (x *AuthUserReq) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[34]
+	mi := &file_dashboard_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1927,7 +2231,7 @@ func (x *AuthUserReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AuthUserReq.ProtoReflect.Descriptor instead.
 func (*AuthUserReq) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{34}
+	return file_dashboard_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *AuthUserReq) GetToken() string {
@@ -1946,7 +2250,7 @@ type AuthUserResp struct {
 
 func (x *AuthUserResp) Reset() {
 	*x = AuthUserResp{}
-	mi := &file_dashboard_proto_msgTypes[35]
+	mi := &file_dashboard_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1958,7 +2262,7 @@ func (x *AuthUserResp) String() string {
 func (*AuthUserResp) ProtoMessage() {}
 
 func (x *AuthUserResp) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[35]
+	mi := &file_dashboard_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1971,7 +2275,7 @@ func (x *AuthUserResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AuthUserResp.ProtoReflect.Descriptor instead.
 func (*AuthUserResp) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{35}
+	return file_dashboard_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *AuthUserResp) GetUserId() uint64 {
@@ -1989,7 +2293,7 @@ type DisabledRBACReq struct {
 
 func (x *DisabledRBACReq) Reset() {
 	*x = DisabledRBACReq{}
-	mi := &file_dashboard_proto_msgTypes[36]
+	mi := &file_dashboard_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2001,7 +2305,7 @@ func (x *DisabledRBACReq) String() string {
 func (*DisabledRBACReq) ProtoMessage() {}
 
 func (x *DisabledRBACReq) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[36]
+	mi := &file_dashboard_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2014,7 +2318,7 @@ func (x *DisabledRBACReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DisabledRBACReq.ProtoReflect.Descriptor instead.
 func (*DisabledRBACReq) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{36}
+	return file_dashboard_proto_rawDescGZIP(), []int{42}
 }
 
 type DisabledRBACResp struct {
@@ -2026,7 +2330,7 @@ type DisabledRBACResp struct {
 
 func (x *DisabledRBACResp) Reset() {
 	*x = DisabledRBACResp{}
-	mi := &file_dashboard_proto_msgTypes[37]
+	mi := &file_dashboard_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2038,7 +2342,7 @@ func (x *DisabledRBACResp) String() string {
 func (*DisabledRBACResp) ProtoMessage() {}
 
 func (x *DisabledRBACResp) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[37]
+	mi := &file_dashboard_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2051,7 +2355,7 @@ func (x *DisabledRBACResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DisabledRBACResp.ProtoReflect.Descriptor instead.
 func (*DisabledRBACResp) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{37}
+	return file_dashboard_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *DisabledRBACResp) GetDisabled() bool {
@@ -2069,7 +2373,7 @@ type GetUserInfoReq struct {
 
 func (x *GetUserInfoReq) Reset() {
 	*x = GetUserInfoReq{}
-	mi := &file_dashboard_proto_msgTypes[38]
+	mi := &file_dashboard_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2081,7 +2385,7 @@ func (x *GetUserInfoReq) String() string {
 func (*GetUserInfoReq) ProtoMessage() {}
 
 func (x *GetUserInfoReq) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[38]
+	mi := &file_dashboard_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2094,7 +2398,7 @@ func (x *GetUserInfoReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserInfoReq.ProtoReflect.Descriptor instead.
 func (*GetUserInfoReq) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{38}
+	return file_dashboard_proto_rawDescGZIP(), []int{44}
 }
 
 type GetUserInfoResp struct {
@@ -2109,7 +2413,7 @@ type GetUserInfoResp struct {
 
 func (x *GetUserInfoResp) Reset() {
 	*x = GetUserInfoResp{}
-	mi := &file_dashboard_proto_msgTypes[39]
+	mi := &file_dashboard_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2121,7 +2425,7 @@ func (x *GetUserInfoResp) String() string {
 func (*GetUserInfoResp) ProtoMessage() {}
 
 func (x *GetUserInfoResp) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[39]
+	mi := &file_dashboard_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2134,7 +2438,7 @@ func (x *GetUserInfoResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserInfoResp.ProtoReflect.Descriptor instead.
 func (*GetUserInfoResp) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{39}
+	return file_dashboard_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *GetUserInfoResp) GetUserId() uint64 {
@@ -2173,7 +2477,7 @@ type GetRSAPubKeyReq struct {
 
 func (x *GetRSAPubKeyReq) Reset() {
 	*x = GetRSAPubKeyReq{}
-	mi := &file_dashboard_proto_msgTypes[40]
+	mi := &file_dashboard_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2185,7 +2489,7 @@ func (x *GetRSAPubKeyReq) String() string {
 func (*GetRSAPubKeyReq) ProtoMessage() {}
 
 func (x *GetRSAPubKeyReq) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[40]
+	mi := &file_dashboard_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2198,7 +2502,7 @@ func (x *GetRSAPubKeyReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRSAPubKeyReq.ProtoReflect.Descriptor instead.
 func (*GetRSAPubKeyReq) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{40}
+	return file_dashboard_proto_rawDescGZIP(), []int{46}
 }
 
 type GetRSAPubKeyResp struct {
@@ -2210,7 +2514,7 @@ type GetRSAPubKeyResp struct {
 
 func (x *GetRSAPubKeyResp) Reset() {
 	*x = GetRSAPubKeyResp{}
-	mi := &file_dashboard_proto_msgTypes[41]
+	mi := &file_dashboard_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2222,7 +2526,7 @@ func (x *GetRSAPubKeyResp) String() string {
 func (*GetRSAPubKeyResp) ProtoMessage() {}
 
 func (x *GetRSAPubKeyResp) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[41]
+	mi := &file_dashboard_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2235,7 +2539,7 @@ func (x *GetRSAPubKeyResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRSAPubKeyResp.ProtoReflect.Descriptor instead.
 func (*GetRSAPubKeyResp) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{41}
+	return file_dashboard_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *GetRSAPubKeyResp) GetKey() string {
@@ -2255,7 +2559,7 @@ type LoginReq struct {
 
 func (x *LoginReq) Reset() {
 	*x = LoginReq{}
-	mi := &file_dashboard_proto_msgTypes[42]
+	mi := &file_dashboard_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2267,7 +2571,7 @@ func (x *LoginReq) String() string {
 func (*LoginReq) ProtoMessage() {}
 
 func (x *LoginReq) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[42]
+	mi := &file_dashboard_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2280,7 +2584,7 @@ func (x *LoginReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginReq.ProtoReflect.Descriptor instead.
 func (*LoginReq) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{42}
+	return file_dashboard_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *LoginReq) GetUsername() string {
@@ -2307,7 +2611,7 @@ type LoginResp struct {
 
 func (x *LoginResp) Reset() {
 	*x = LoginResp{}
-	mi := &file_dashboard_proto_msgTypes[43]
+	mi := &file_dashboard_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2319,7 +2623,7 @@ func (x *LoginResp) String() string {
 func (*LoginResp) ProtoMessage() {}
 
 func (x *LoginResp) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[43]
+	mi := &file_dashboard_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2332,7 +2636,7 @@ func (x *LoginResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginResp.ProtoReflect.Descriptor instead.
 func (*LoginResp) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{43}
+	return file_dashboard_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *LoginResp) GetToken() string {
@@ -2363,7 +2667,7 @@ type User struct {
 
 func (x *User) Reset() {
 	*x = User{}
-	mi := &file_dashboard_proto_msgTypes[44]
+	mi := &file_dashboard_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2375,7 +2679,7 @@ func (x *User) String() string {
 func (*User) ProtoMessage() {}
 
 func (x *User) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[44]
+	mi := &file_dashboard_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2388,7 +2692,7 @@ func (x *User) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use User.ProtoReflect.Descriptor instead.
 func (*User) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{44}
+	return file_dashboard_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *User) GetUsername() string {
@@ -2443,7 +2747,7 @@ type Page struct {
 
 func (x *Page) Reset() {
 	*x = Page{}
-	mi := &file_dashboard_proto_msgTypes[45]
+	mi := &file_dashboard_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2455,7 +2759,7 @@ func (x *Page) String() string {
 func (*Page) ProtoMessage() {}
 
 func (x *Page) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[45]
+	mi := &file_dashboard_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2468,7 +2772,7 @@ func (x *Page) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Page.ProtoReflect.Descriptor instead.
 func (*Page) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{45}
+	return file_dashboard_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *Page) GetPageSize() uint32 {
@@ -2495,7 +2799,7 @@ type ListGeneralConfReq_Sort struct {
 
 func (x *ListGeneralConfReq_Sort) Reset() {
 	*x = ListGeneralConfReq_Sort{}
-	mi := &file_dashboard_proto_msgTypes[46]
+	mi := &file_dashboard_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2507,7 +2811,7 @@ func (x *ListGeneralConfReq_Sort) String() string {
 func (*ListGeneralConfReq_Sort) ProtoMessage() {}
 
 func (x *ListGeneralConfReq_Sort) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[46]
+	mi := &file_dashboard_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2520,7 +2824,7 @@ func (x *ListGeneralConfReq_Sort) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListGeneralConfReq_Sort.ProtoReflect.Descriptor instead.
 func (*ListGeneralConfReq_Sort) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{5, 0}
+	return file_dashboard_proto_rawDescGZIP(), []int{11, 0}
 }
 
 func (x *ListGeneralConfReq_Sort) GetField() string {
@@ -2547,7 +2851,7 @@ type ListUserResp_Item struct {
 
 func (x *ListUserResp_Item) Reset() {
 	*x = ListUserResp_Item{}
-	mi := &file_dashboard_proto_msgTypes[47]
+	mi := &file_dashboard_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2559,7 +2863,7 @@ func (x *ListUserResp_Item) String() string {
 func (*ListUserResp_Item) ProtoMessage() {}
 
 func (x *ListUserResp_Item) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[47]
+	mi := &file_dashboard_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2572,7 +2876,7 @@ func (x *ListUserResp_Item) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUserResp_Item.ProtoReflect.Descriptor instead.
 func (*ListUserResp_Item) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{14, 0}
+	return file_dashboard_proto_rawDescGZIP(), []int{20, 0}
 }
 
 func (x *ListUserResp_Item) GetUser() *User {
@@ -2603,7 +2907,7 @@ type ListMenuConfResp_MenuConf struct {
 
 func (x *ListMenuConfResp_MenuConf) Reset() {
 	*x = ListMenuConfResp_MenuConf{}
-	mi := &file_dashboard_proto_msgTypes[48]
+	mi := &file_dashboard_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2615,7 +2919,7 @@ func (x *ListMenuConfResp_MenuConf) String() string {
 func (*ListMenuConfResp_MenuConf) ProtoMessage() {}
 
 func (x *ListMenuConfResp_MenuConf) ProtoReflect() protoreflect.Message {
-	mi := &file_dashboard_proto_msgTypes[48]
+	mi := &file_dashboard_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2628,7 +2932,7 @@ func (x *ListMenuConfResp_MenuConf) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListMenuConfResp_MenuConf.ProtoReflect.Descriptor instead.
 func (*ListMenuConfResp_MenuConf) Descriptor() ([]byte, []int) {
-	return file_dashboard_proto_rawDescGZIP(), []int{31, 0}
+	return file_dashboard_proto_rawDescGZIP(), []int{37, 0}
 }
 
 func (x *ListMenuConfResp_MenuConf) GetPermId() uint64 {
@@ -2691,7 +2995,24 @@ const file_dashboard_proto_rawDesc = "" +
 	"jsonSchema\x12\x12\n" +
 	"\x04desc\x18\x05 \x01(\tR\x04desc\"A\n" +
 	"\x12ListConfSchemaResp\x12+\n" +
-	"\x04list\x18\x01 \x03(\v2\x17.dashboard.ConfigSchemaR\x04list\"\xe1\x01\n" +
+	"\x04list\x18\x01 \x03(\v2\x17.dashboard.ConfigSchemaR\x04list\"E\n" +
+	"\x14DeleteGeneralConfReq\x12\x10\n" +
+	"\x03ids\x18\x01 \x03(\tR\x03ids\x12\x1b\n" +
+	"\tcoll_name\x18\x02 \x01(\tR\bcollName\"\x17\n" +
+	"\x15DeleteGeneralConfResp\"\xb8\x01\n" +
+	"\x14UpdateGeneralConfReq\x12\x1b\n" +
+	"\tcoll_name\x18\x01 \x01(\tR\bcollName\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value\x126\n" +
+	"\x17should_notify_listeners\x18\x03 \x01(\bR\x15shouldNotifyListeners\x12%\n" +
+	"\x0elistener_group\x18\x04 \x01(\tR\rlistenerGroup\x12\x0e\n" +
+	"\x02id\x18\x05 \x01(\tR\x02id\"\x17\n" +
+	"\x15UpdateGeneralConfResp\"\xa5\x01\n" +
+	"\x11AddGeneralConfReq\x12\x1b\n" +
+	"\tcoll_name\x18\x01 \x01(\tR\bcollName\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value\x126\n" +
+	"\x17should_notify_listeners\x18\x03 \x01(\bR\x15shouldNotifyListeners\x12%\n" +
+	"\x0elistener_group\x18\x04 \x01(\tR\rlistenerGroup\"\x14\n" +
+	"\x12AddGeneralConfResp\"\xe1\x01\n" +
 	"\x12ListGeneralConfReq\x12\x1b\n" +
 	"\tcoll_name\x18\x01 \x01(\tR\bcollName\x128\n" +
 	"\x05sorts\x18\x02 \x03(\v2\".dashboard.ListGeneralConfReq.SortR\x05sorts\x12\x16\n" +
@@ -2843,7 +3164,7 @@ const file_dashboard_proto_rawDesc = "" +
 	"UserStatus\x12\x11\n" +
 	"\rUserStatusNil\x10\x00\x12\x14\n" +
 	"\x10UserStatusNormal\x10\x01\x12\x14\n" +
-	"\x10UserStatusFrozen\x10\x022\xe2\r\n" +
+	"\x10UserStatusFrozen\x10\x022\x85\x10\n" +
 	"\tDashboard\x12U\n" +
 	"\fGetRSAPubKey\x12\x1a.dashboard.GetRSAPubKeyReq\x1a\x1b.dashboard.GetRSAPubKeyResp\"\f\xca\xf3\x18\b\n" +
 	"\x04POST\x18\x01\x12@\n" +
@@ -2898,6 +3219,15 @@ const file_dashboard_proto_rawDesc = "" +
 	"\x03GET\x12X\n" +
 	"\x0fSetConfigSchema\x12\x1b.dashboard.SetConfSchemaReq\x1a\x1c.dashboard.SetConfSchemaResp\"\n" +
 	"\xca\xf3\x18\x06\n" +
+	"\x04POST\x12Y\n" +
+	"\x0eAddGeneralConf\x12\x1c.dashboard.AddGeneralConfReq\x1a\x1d.dashboard.AddGeneralConfResp\"\n" +
+	"\xca\xf3\x18\x06\n" +
+	"\x04POST\x12b\n" +
+	"\x11UpdateGeneralConf\x12\x1f.dashboard.UpdateGeneralConfReq\x1a .dashboard.UpdateGeneralConfResp\"\n" +
+	"\xca\xf3\x18\x06\n" +
+	"\x04POST\x12b\n" +
+	"\x11DeleteGeneralConf\x12\x1f.dashboard.DeleteGeneralConfReq\x1a .dashboard.DeleteGeneralConfResp\"\n" +
+	"\xca\xf3\x18\x06\n" +
 	"\x04POSTB\x96\x01\x8a\x9d N\n" +
 	"Lgithub.com/995933447/mconfigcenter-dashboard/backend/service/dashboardserverZBgithub.com/995933447/mconfigcenter-dashboard/backend/api/dashboardb\x06proto3"
 
@@ -2914,7 +3244,7 @@ func file_dashboard_proto_rawDescGZIP() []byte {
 }
 
 var file_dashboard_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_dashboard_proto_msgTypes = make([]protoimpl.MessageInfo, 49)
+var file_dashboard_proto_msgTypes = make([]protoimpl.MessageInfo, 55)
 var file_dashboard_proto_goTypes = []any{
 	(ErrCode)(0),                      // 0: dashboard.ErrCode
 	(UserStatus)(0),                   // 1: dashboard.UserStatus
@@ -2923,107 +3253,119 @@ var file_dashboard_proto_goTypes = []any{
 	(*ListConfSchemaReq)(nil),         // 4: dashboard.ListConfSchemaReq
 	(*ConfigSchema)(nil),              // 5: dashboard.ConfigSchema
 	(*ListConfSchemaResp)(nil),        // 6: dashboard.ListConfSchemaResp
-	(*ListGeneralConfReq)(nil),        // 7: dashboard.ListGeneralConfReq
-	(*ListGeneralConfResp)(nil),       // 8: dashboard.ListGeneralConfResp
-	(*DeleteUserReq)(nil),             // 9: dashboard.DeleteUserReq
-	(*DeleteUserResp)(nil),            // 10: dashboard.DeleteUserResp
-	(*UpdateUserReq)(nil),             // 11: dashboard.UpdateUserReq
-	(*UpdateUserResp)(nil),            // 12: dashboard.UpdateUserResp
-	(*AddUserReq)(nil),                // 13: dashboard.AddUserReq
-	(*AddUserResp)(nil),               // 14: dashboard.AddUserResp
-	(*ListUserReq)(nil),               // 15: dashboard.ListUserReq
-	(*ListUserResp)(nil),              // 16: dashboard.ListUserResp
-	(*DeleteRoleConfReq)(nil),         // 17: dashboard.DeleteRoleConfReq
-	(*DeleteRoleConfResp)(nil),        // 18: dashboard.DeleteRoleConfResp
-	(*AddRoleConfReq)(nil),            // 19: dashboard.AddRoleConfReq
-	(*AddRoleConfResp)(nil),           // 20: dashboard.AddRoleConfResp
-	(*UpdateRoleConfReq)(nil),         // 21: dashboard.UpdateRoleConfReq
-	(*UpdateRoleConfResp)(nil),        // 22: dashboard.UpdateRoleConfResp
-	(*ListRoleConfReq)(nil),           // 23: dashboard.ListRoleConfReq
-	(*ListRoleConfResp)(nil),          // 24: dashboard.ListRoleConfResp
-	(*Role)(nil),                      // 25: dashboard.Role
-	(*DeleteMenuConfReq)(nil),         // 26: dashboard.DeleteMenuConfReq
-	(*DeleteMenuConfResp)(nil),        // 27: dashboard.DeleteMenuConfResp
-	(*UpdateMenuConfReq)(nil),         // 28: dashboard.UpdateMenuConfReq
-	(*UpdateMenuConfResp)(nil),        // 29: dashboard.UpdateMenuConfResp
-	(*AddMenuConfReq)(nil),            // 30: dashboard.AddMenuConfReq
-	(*AddMenuConfResp)(nil),           // 31: dashboard.AddMenuConfResp
-	(*ListMenuConfReq)(nil),           // 32: dashboard.ListMenuConfReq
-	(*ListMenuConfResp)(nil),          // 33: dashboard.ListMenuConfResp
-	(*ChangeUserPasswordReq)(nil),     // 34: dashboard.ChangeUserPasswordReq
-	(*ChangeUserPasswordResp)(nil),    // 35: dashboard.ChangeUserPasswordResp
-	(*AuthUserReq)(nil),               // 36: dashboard.AuthUserReq
-	(*AuthUserResp)(nil),              // 37: dashboard.AuthUserResp
-	(*DisabledRBACReq)(nil),           // 38: dashboard.DisabledRBACReq
-	(*DisabledRBACResp)(nil),          // 39: dashboard.DisabledRBACResp
-	(*GetUserInfoReq)(nil),            // 40: dashboard.GetUserInfoReq
-	(*GetUserInfoResp)(nil),           // 41: dashboard.GetUserInfoResp
-	(*GetRSAPubKeyReq)(nil),           // 42: dashboard.GetRSAPubKeyReq
-	(*GetRSAPubKeyResp)(nil),          // 43: dashboard.GetRSAPubKeyResp
-	(*LoginReq)(nil),                  // 44: dashboard.LoginReq
-	(*LoginResp)(nil),                 // 45: dashboard.LoginResp
-	(*User)(nil),                      // 46: dashboard.User
-	(*Page)(nil),                      // 47: dashboard.Page
-	(*ListGeneralConfReq_Sort)(nil),   // 48: dashboard.ListGeneralConfReq.Sort
-	(*ListUserResp_Item)(nil),         // 49: dashboard.ListUserResp.Item
-	(*ListMenuConfResp_MenuConf)(nil), // 50: dashboard.ListMenuConfResp.MenuConf
+	(*DeleteGeneralConfReq)(nil),      // 7: dashboard.DeleteGeneralConfReq
+	(*DeleteGeneralConfResp)(nil),     // 8: dashboard.DeleteGeneralConfResp
+	(*UpdateGeneralConfReq)(nil),      // 9: dashboard.UpdateGeneralConfReq
+	(*UpdateGeneralConfResp)(nil),     // 10: dashboard.UpdateGeneralConfResp
+	(*AddGeneralConfReq)(nil),         // 11: dashboard.AddGeneralConfReq
+	(*AddGeneralConfResp)(nil),        // 12: dashboard.AddGeneralConfResp
+	(*ListGeneralConfReq)(nil),        // 13: dashboard.ListGeneralConfReq
+	(*ListGeneralConfResp)(nil),       // 14: dashboard.ListGeneralConfResp
+	(*DeleteUserReq)(nil),             // 15: dashboard.DeleteUserReq
+	(*DeleteUserResp)(nil),            // 16: dashboard.DeleteUserResp
+	(*UpdateUserReq)(nil),             // 17: dashboard.UpdateUserReq
+	(*UpdateUserResp)(nil),            // 18: dashboard.UpdateUserResp
+	(*AddUserReq)(nil),                // 19: dashboard.AddUserReq
+	(*AddUserResp)(nil),               // 20: dashboard.AddUserResp
+	(*ListUserReq)(nil),               // 21: dashboard.ListUserReq
+	(*ListUserResp)(nil),              // 22: dashboard.ListUserResp
+	(*DeleteRoleConfReq)(nil),         // 23: dashboard.DeleteRoleConfReq
+	(*DeleteRoleConfResp)(nil),        // 24: dashboard.DeleteRoleConfResp
+	(*AddRoleConfReq)(nil),            // 25: dashboard.AddRoleConfReq
+	(*AddRoleConfResp)(nil),           // 26: dashboard.AddRoleConfResp
+	(*UpdateRoleConfReq)(nil),         // 27: dashboard.UpdateRoleConfReq
+	(*UpdateRoleConfResp)(nil),        // 28: dashboard.UpdateRoleConfResp
+	(*ListRoleConfReq)(nil),           // 29: dashboard.ListRoleConfReq
+	(*ListRoleConfResp)(nil),          // 30: dashboard.ListRoleConfResp
+	(*Role)(nil),                      // 31: dashboard.Role
+	(*DeleteMenuConfReq)(nil),         // 32: dashboard.DeleteMenuConfReq
+	(*DeleteMenuConfResp)(nil),        // 33: dashboard.DeleteMenuConfResp
+	(*UpdateMenuConfReq)(nil),         // 34: dashboard.UpdateMenuConfReq
+	(*UpdateMenuConfResp)(nil),        // 35: dashboard.UpdateMenuConfResp
+	(*AddMenuConfReq)(nil),            // 36: dashboard.AddMenuConfReq
+	(*AddMenuConfResp)(nil),           // 37: dashboard.AddMenuConfResp
+	(*ListMenuConfReq)(nil),           // 38: dashboard.ListMenuConfReq
+	(*ListMenuConfResp)(nil),          // 39: dashboard.ListMenuConfResp
+	(*ChangeUserPasswordReq)(nil),     // 40: dashboard.ChangeUserPasswordReq
+	(*ChangeUserPasswordResp)(nil),    // 41: dashboard.ChangeUserPasswordResp
+	(*AuthUserReq)(nil),               // 42: dashboard.AuthUserReq
+	(*AuthUserResp)(nil),              // 43: dashboard.AuthUserResp
+	(*DisabledRBACReq)(nil),           // 44: dashboard.DisabledRBACReq
+	(*DisabledRBACResp)(nil),          // 45: dashboard.DisabledRBACResp
+	(*GetUserInfoReq)(nil),            // 46: dashboard.GetUserInfoReq
+	(*GetUserInfoResp)(nil),           // 47: dashboard.GetUserInfoResp
+	(*GetRSAPubKeyReq)(nil),           // 48: dashboard.GetRSAPubKeyReq
+	(*GetRSAPubKeyResp)(nil),          // 49: dashboard.GetRSAPubKeyResp
+	(*LoginReq)(nil),                  // 50: dashboard.LoginReq
+	(*LoginResp)(nil),                 // 51: dashboard.LoginResp
+	(*User)(nil),                      // 52: dashboard.User
+	(*Page)(nil),                      // 53: dashboard.Page
+	(*ListGeneralConfReq_Sort)(nil),   // 54: dashboard.ListGeneralConfReq.Sort
+	(*ListUserResp_Item)(nil),         // 55: dashboard.ListUserResp.Item
+	(*ListMenuConfResp_MenuConf)(nil), // 56: dashboard.ListMenuConfResp.MenuConf
 }
 var file_dashboard_proto_depIdxs = []int32{
 	5,  // 0: dashboard.SetConfSchemaReq.config_schema:type_name -> dashboard.ConfigSchema
 	5,  // 1: dashboard.ListConfSchemaResp.list:type_name -> dashboard.ConfigSchema
-	48, // 2: dashboard.ListGeneralConfReq.sorts:type_name -> dashboard.ListGeneralConfReq.Sort
-	47, // 3: dashboard.ListGeneralConfReq.page:type_name -> dashboard.Page
-	47, // 4: dashboard.ListUserReq.page:type_name -> dashboard.Page
-	49, // 5: dashboard.ListUserResp.list:type_name -> dashboard.ListUserResp.Item
-	47, // 6: dashboard.ListRoleConfReq.page:type_name -> dashboard.Page
-	25, // 7: dashboard.ListRoleConfResp.list:type_name -> dashboard.Role
-	50, // 8: dashboard.ListMenuConfResp.list:type_name -> dashboard.ListMenuConfResp.MenuConf
-	46, // 9: dashboard.ListUserResp.Item.user:type_name -> dashboard.User
-	25, // 10: dashboard.ListUserResp.Item.roles:type_name -> dashboard.Role
-	42, // 11: dashboard.Dashboard.GetRSAPubKey:input_type -> dashboard.GetRSAPubKeyReq
-	44, // 12: dashboard.Dashboard.Login:input_type -> dashboard.LoginReq
-	40, // 13: dashboard.Dashboard.GetUserInfo:input_type -> dashboard.GetUserInfoReq
-	38, // 14: dashboard.Dashboard.DisabledRBAC:input_type -> dashboard.DisabledRBACReq
-	36, // 15: dashboard.Dashboard.AuthUser:input_type -> dashboard.AuthUserReq
-	34, // 16: dashboard.Dashboard.ChangeUserPassword:input_type -> dashboard.ChangeUserPasswordReq
-	32, // 17: dashboard.Dashboard.ListMenuConf:input_type -> dashboard.ListMenuConfReq
-	30, // 18: dashboard.Dashboard.AddMenuConf:input_type -> dashboard.AddMenuConfReq
-	28, // 19: dashboard.Dashboard.UpdateMenuConf:input_type -> dashboard.UpdateMenuConfReq
-	26, // 20: dashboard.Dashboard.DeleteMenuConf:input_type -> dashboard.DeleteMenuConfReq
-	23, // 21: dashboard.Dashboard.ListRoleConf:input_type -> dashboard.ListRoleConfReq
-	19, // 22: dashboard.Dashboard.AddRoleConf:input_type -> dashboard.AddRoleConfReq
-	21, // 23: dashboard.Dashboard.UpdateRoleConf:input_type -> dashboard.UpdateRoleConfReq
-	17, // 24: dashboard.Dashboard.DeleteRoleConf:input_type -> dashboard.DeleteRoleConfReq
-	15, // 25: dashboard.Dashboard.ListUser:input_type -> dashboard.ListUserReq
-	13, // 26: dashboard.Dashboard.AddUser:input_type -> dashboard.AddUserReq
-	11, // 27: dashboard.Dashboard.UpdateUser:input_type -> dashboard.UpdateUserReq
-	9,  // 28: dashboard.Dashboard.DeleteUser:input_type -> dashboard.DeleteUserReq
-	7,  // 29: dashboard.Dashboard.ListGeneralConf:input_type -> dashboard.ListGeneralConfReq
+	54, // 2: dashboard.ListGeneralConfReq.sorts:type_name -> dashboard.ListGeneralConfReq.Sort
+	53, // 3: dashboard.ListGeneralConfReq.page:type_name -> dashboard.Page
+	53, // 4: dashboard.ListUserReq.page:type_name -> dashboard.Page
+	55, // 5: dashboard.ListUserResp.list:type_name -> dashboard.ListUserResp.Item
+	53, // 6: dashboard.ListRoleConfReq.page:type_name -> dashboard.Page
+	31, // 7: dashboard.ListRoleConfResp.list:type_name -> dashboard.Role
+	56, // 8: dashboard.ListMenuConfResp.list:type_name -> dashboard.ListMenuConfResp.MenuConf
+	52, // 9: dashboard.ListUserResp.Item.user:type_name -> dashboard.User
+	31, // 10: dashboard.ListUserResp.Item.roles:type_name -> dashboard.Role
+	48, // 11: dashboard.Dashboard.GetRSAPubKey:input_type -> dashboard.GetRSAPubKeyReq
+	50, // 12: dashboard.Dashboard.Login:input_type -> dashboard.LoginReq
+	46, // 13: dashboard.Dashboard.GetUserInfo:input_type -> dashboard.GetUserInfoReq
+	44, // 14: dashboard.Dashboard.DisabledRBAC:input_type -> dashboard.DisabledRBACReq
+	42, // 15: dashboard.Dashboard.AuthUser:input_type -> dashboard.AuthUserReq
+	40, // 16: dashboard.Dashboard.ChangeUserPassword:input_type -> dashboard.ChangeUserPasswordReq
+	38, // 17: dashboard.Dashboard.ListMenuConf:input_type -> dashboard.ListMenuConfReq
+	36, // 18: dashboard.Dashboard.AddMenuConf:input_type -> dashboard.AddMenuConfReq
+	34, // 19: dashboard.Dashboard.UpdateMenuConf:input_type -> dashboard.UpdateMenuConfReq
+	32, // 20: dashboard.Dashboard.DeleteMenuConf:input_type -> dashboard.DeleteMenuConfReq
+	29, // 21: dashboard.Dashboard.ListRoleConf:input_type -> dashboard.ListRoleConfReq
+	25, // 22: dashboard.Dashboard.AddRoleConf:input_type -> dashboard.AddRoleConfReq
+	27, // 23: dashboard.Dashboard.UpdateRoleConf:input_type -> dashboard.UpdateRoleConfReq
+	23, // 24: dashboard.Dashboard.DeleteRoleConf:input_type -> dashboard.DeleteRoleConfReq
+	21, // 25: dashboard.Dashboard.ListUser:input_type -> dashboard.ListUserReq
+	19, // 26: dashboard.Dashboard.AddUser:input_type -> dashboard.AddUserReq
+	17, // 27: dashboard.Dashboard.UpdateUser:input_type -> dashboard.UpdateUserReq
+	15, // 28: dashboard.Dashboard.DeleteUser:input_type -> dashboard.DeleteUserReq
+	13, // 29: dashboard.Dashboard.ListGeneralConf:input_type -> dashboard.ListGeneralConfReq
 	4,  // 30: dashboard.Dashboard.ListConfSchema:input_type -> dashboard.ListConfSchemaReq
 	2,  // 31: dashboard.Dashboard.SetConfigSchema:input_type -> dashboard.SetConfSchemaReq
-	43, // 32: dashboard.Dashboard.GetRSAPubKey:output_type -> dashboard.GetRSAPubKeyResp
-	45, // 33: dashboard.Dashboard.Login:output_type -> dashboard.LoginResp
-	41, // 34: dashboard.Dashboard.GetUserInfo:output_type -> dashboard.GetUserInfoResp
-	39, // 35: dashboard.Dashboard.DisabledRBAC:output_type -> dashboard.DisabledRBACResp
-	37, // 36: dashboard.Dashboard.AuthUser:output_type -> dashboard.AuthUserResp
-	35, // 37: dashboard.Dashboard.ChangeUserPassword:output_type -> dashboard.ChangeUserPasswordResp
-	33, // 38: dashboard.Dashboard.ListMenuConf:output_type -> dashboard.ListMenuConfResp
-	31, // 39: dashboard.Dashboard.AddMenuConf:output_type -> dashboard.AddMenuConfResp
-	29, // 40: dashboard.Dashboard.UpdateMenuConf:output_type -> dashboard.UpdateMenuConfResp
-	27, // 41: dashboard.Dashboard.DeleteMenuConf:output_type -> dashboard.DeleteMenuConfResp
-	24, // 42: dashboard.Dashboard.ListRoleConf:output_type -> dashboard.ListRoleConfResp
-	20, // 43: dashboard.Dashboard.AddRoleConf:output_type -> dashboard.AddRoleConfResp
-	22, // 44: dashboard.Dashboard.UpdateRoleConf:output_type -> dashboard.UpdateRoleConfResp
-	18, // 45: dashboard.Dashboard.DeleteRoleConf:output_type -> dashboard.DeleteRoleConfResp
-	16, // 46: dashboard.Dashboard.ListUser:output_type -> dashboard.ListUserResp
-	14, // 47: dashboard.Dashboard.AddUser:output_type -> dashboard.AddUserResp
-	12, // 48: dashboard.Dashboard.UpdateUser:output_type -> dashboard.UpdateUserResp
-	10, // 49: dashboard.Dashboard.DeleteUser:output_type -> dashboard.DeleteUserResp
-	8,  // 50: dashboard.Dashboard.ListGeneralConf:output_type -> dashboard.ListGeneralConfResp
-	6,  // 51: dashboard.Dashboard.ListConfSchema:output_type -> dashboard.ListConfSchemaResp
-	3,  // 52: dashboard.Dashboard.SetConfigSchema:output_type -> dashboard.SetConfSchemaResp
-	32, // [32:53] is the sub-list for method output_type
-	11, // [11:32] is the sub-list for method input_type
+	11, // 32: dashboard.Dashboard.AddGeneralConf:input_type -> dashboard.AddGeneralConfReq
+	9,  // 33: dashboard.Dashboard.UpdateGeneralConf:input_type -> dashboard.UpdateGeneralConfReq
+	7,  // 34: dashboard.Dashboard.DeleteGeneralConf:input_type -> dashboard.DeleteGeneralConfReq
+	49, // 35: dashboard.Dashboard.GetRSAPubKey:output_type -> dashboard.GetRSAPubKeyResp
+	51, // 36: dashboard.Dashboard.Login:output_type -> dashboard.LoginResp
+	47, // 37: dashboard.Dashboard.GetUserInfo:output_type -> dashboard.GetUserInfoResp
+	45, // 38: dashboard.Dashboard.DisabledRBAC:output_type -> dashboard.DisabledRBACResp
+	43, // 39: dashboard.Dashboard.AuthUser:output_type -> dashboard.AuthUserResp
+	41, // 40: dashboard.Dashboard.ChangeUserPassword:output_type -> dashboard.ChangeUserPasswordResp
+	39, // 41: dashboard.Dashboard.ListMenuConf:output_type -> dashboard.ListMenuConfResp
+	37, // 42: dashboard.Dashboard.AddMenuConf:output_type -> dashboard.AddMenuConfResp
+	35, // 43: dashboard.Dashboard.UpdateMenuConf:output_type -> dashboard.UpdateMenuConfResp
+	33, // 44: dashboard.Dashboard.DeleteMenuConf:output_type -> dashboard.DeleteMenuConfResp
+	30, // 45: dashboard.Dashboard.ListRoleConf:output_type -> dashboard.ListRoleConfResp
+	26, // 46: dashboard.Dashboard.AddRoleConf:output_type -> dashboard.AddRoleConfResp
+	28, // 47: dashboard.Dashboard.UpdateRoleConf:output_type -> dashboard.UpdateRoleConfResp
+	24, // 48: dashboard.Dashboard.DeleteRoleConf:output_type -> dashboard.DeleteRoleConfResp
+	22, // 49: dashboard.Dashboard.ListUser:output_type -> dashboard.ListUserResp
+	20, // 50: dashboard.Dashboard.AddUser:output_type -> dashboard.AddUserResp
+	18, // 51: dashboard.Dashboard.UpdateUser:output_type -> dashboard.UpdateUserResp
+	16, // 52: dashboard.Dashboard.DeleteUser:output_type -> dashboard.DeleteUserResp
+	14, // 53: dashboard.Dashboard.ListGeneralConf:output_type -> dashboard.ListGeneralConfResp
+	6,  // 54: dashboard.Dashboard.ListConfSchema:output_type -> dashboard.ListConfSchemaResp
+	3,  // 55: dashboard.Dashboard.SetConfigSchema:output_type -> dashboard.SetConfSchemaResp
+	12, // 56: dashboard.Dashboard.AddGeneralConf:output_type -> dashboard.AddGeneralConfResp
+	10, // 57: dashboard.Dashboard.UpdateGeneralConf:output_type -> dashboard.UpdateGeneralConfResp
+	8,  // 58: dashboard.Dashboard.DeleteGeneralConf:output_type -> dashboard.DeleteGeneralConfResp
+	35, // [35:59] is the sub-list for method output_type
+	11, // [11:35] is the sub-list for method input_type
 	11, // [11:11] is the sub-list for extension type_name
 	11, // [11:11] is the sub-list for extension extendee
 	0,  // [0:11] is the sub-list for field type_name
@@ -3040,7 +3382,7 @@ func file_dashboard_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_dashboard_proto_rawDesc), len(file_dashboard_proto_rawDesc)),
 			NumEnums:      2,
-			NumMessages:   49,
+			NumMessages:   55,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

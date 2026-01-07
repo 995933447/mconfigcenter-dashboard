@@ -2,7 +2,6 @@
 import { useRoute } from 'vue-router'
 import type { BaseSideMenuItem } from '~/types/emit'
 import { ref, provide } from "vue"
-import { ca } from 'element-plus/es/locales.mjs'
 
 const route = useRoute()
 
