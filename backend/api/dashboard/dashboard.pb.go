@@ -3382,7 +3382,7 @@ const file_dashboard_proto_rawDesc = "" +
 	"\rListenerGroup\x12K\n" +
 	"\x04name\x18\x01 \x01(\tB7\x8a\x8e%3\"1bson:\"name\" json:\"name\" jsonschema:\"title=名称\"R\x04name\x12K\n" +
 	"\x04desc\x18\x02 \x01(\tB7\x8a\x8e%3\"1bson:\"desc\" json:\"desc\" jsonschema:\"title=描述\"R\x04desc:S\x8a\x8e%O\n" +
-	"\adefault\x12\x17mconfigcenter_dashboard\x1a\x0elistener_group \x01:\x04name\x9a\x01\x12配置订阅分组*\xc0\x01\n" +
+	"\adefault\x12\x17mconfigcenter_dashboard\x1a\x0elistener_group \x01:\x04name\x9a\x01\x12订阅服务组别*\xc0\x01\n" +
 	"\aErrCode\x12\x0e\n" +
 	"\n" +
 	"ErrCodeNil\x10\x00\x12<\n" +

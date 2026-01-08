@@ -503,7 +503,7 @@ message ListenerGroup {
     tb: "listener_group",
     cached: true,
     uniq_index_keys:["name"],
-    desc: "配置订阅分组"
+    desc: "订阅服务组别"
   };
   string name = 1 [(mgorm_ext.mgorm_field_opts)={tags:'bson:"name" json:"name" jsonschema:"title=名称"'}];
   string desc = 2 [(mgorm_ext.mgorm_field_opts)={tags:'bson:"desc" json:"desc" jsonschema:"title=描述"'}];

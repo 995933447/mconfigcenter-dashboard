@@ -28,7 +28,7 @@ func main() {
 			"name",
 		},
 		JsonSchema: jsonSchema,
-		Desc:       "配置订阅分组",
+		Desc:       "订阅服务组别",
 	}
 	s, err := jsoniter.MarshalToString(configSchemaOutput)
 	if err != nil {
