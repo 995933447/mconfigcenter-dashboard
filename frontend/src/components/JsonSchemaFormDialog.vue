@@ -50,6 +50,8 @@ watch(() => props.saveConfigDialogVisable, (newVal) => {
 
 watch(() => props.saveConfigForm, (newVal) => {
     localSaveConfigForm.value = newVal
+}, {
+    deep: true
 })
 
 const onFormDataChanged = function () {

@@ -28,16 +28,16 @@
                     v-model:searchConfCollCond="theLeastOneConfCollCond" />
                 <el-form-item>
                     <el-button type="primary" @click="addConfCollCond">添加搜索条件</el-button>
-                    <el-button type="primary" @click="query">搜索</el-button>
+                    <el-button type="primary" @click="query" :disabled="!fetchConfCond.collName">搜索</el-button>
                 </el-form-item>
             </div>
         </el-form>
     </div>
 
     <div flex justify-left ml-2rem mb-2rem>
-        <el-button type="primary" @click="handleOpenSaveConfigDialog(fetchConfCond.collName, "")">新增</el-button>
+        <el-button type="primary" @click='handleOpenSaveConfigDialog(fetchConfCond.collName, "")'>新增</el-button>
         <el-popconfirm confirm-button-text="Yes" cancel-button-text="No" :icon="InfoFilled" icon-color="#626AEF"
-            title="确定删除?" @confirm="">
+            title="确定删除?" @confirm="handleDeleteConfigs">
             <template #reference>
                 <el-button type="danger">删除</el-button>
             </template>
@@ -45,7 +45,7 @@
     </div>
 
     <div flex justify-center v-loading="loading">
-        <el-table :data="currTableRows">
+        <el-table :data="currTableRows" @selection-change="hanldeSelectedRowChange">
             <el-table-column type="selection" width="55" />
             <el-table-column :label="column.title ?? column.key" v-for="column in currTableColumns"
                 show-overflow-tooltip>
@@ -53,9 +53,9 @@
             </el-table-column>
             <el-table-column fixed="right" label="操作" min-width="120">
                 <template #default="scope">
-                    <el-button link type="primary" size="small" @click="handleOpenSaveConfigDialog(scope.row.coll_name, scope.row.id)">修改</el-button>
+                    <el-button link type="primary" size="small" @click="handleOpenSaveConfigDialog(currTableCollName, scope.row._id)">修改</el-button>
                     <el-popconfirm confirm-button-text="Yes" cancel-button-text="No" :icon="InfoFilled"
-                        icon-color="#626AEF" title="确定删除?" @confirm="">
+                        icon-color="#626AEF" title="确定删除?" @confirm="handleDeleteConfig(scope.row)">
                         <template #reference>
                             <el-button link type="danger" size="small">删除</el-button>
                         </template>
@@ -474,9 +474,11 @@ interface CurrTableColumn {
     key: string
     title: string
     collName: string
+    id: string
 }
 const currTableColumns = ref<CurrTableColumn[]>([])
 const currTableRows = ref<any[]>([])
+const currTableCollName = ref('')
 
 const fetchGeneralConfList = async function () {
     if (!fetchConfCond.collName) {
@@ -510,6 +512,8 @@ const fetchGeneralConfList = async function () {
             },
         })
 
+        currTableCollName.value = fetchConfCond.collName
+
         if (generalConfListResp) {
             pageTotal.value = generalConfListResp.total ? generalConfListResp.total : 0
             if (generalConfListResp.list) {
@@ -534,7 +538,7 @@ const fetchGeneralConfList = async function () {
             currTableColumns.value.push({
                 key: key,
                 title: jsonSchema.properties[key].title,
-                collName: item.coll_name
+                collName: item.coll_name,
             } as CurrTableColumn)
         }
     }
@@ -556,7 +560,17 @@ const handleSaveConfig = async function () {
         return
     }
 
-    if (!saveConfigForm.value.data) {
+    const data = Object.assign({}, saveConfigForm.value)
+    delete data.collName
+    delete data.id
+
+    if (!data) {
+        ElMessage.error("请填写配置内容")
+        return
+    }
+
+    const dataStr = JSON.stringify(data)
+    if (dataStr == "{}") {
         ElMessage.error("请填写配置内容")
         return
     }
@@ -564,24 +578,27 @@ const handleSaveConfig = async function () {
     loading.value = true
 
     try {
-        if (!saveConfigForm.value.id) {
+        if (!saveConfigForm.value._id) {
             await DashboardService.AddGeneralConf({
                 coll_name: saveConfigForm.value.collName,
-                value: JSON.stringify(saveConfigForm.value.data),
+                value: dataStr,
             })
         } else {
             await DashboardService.UpdateGeneralConf({
-                id: saveConfigForm.value.id,
+                id: saveConfigForm.value._id,
                 coll_name: saveConfigForm.value.collName,
-                value: JSON.stringify(saveConfigForm.value.data),
+                value: dataStr,
             })
         }
 
         ElMessage.success("保存成功")
 
+        saveConfigForm.value = {}
+
         query()
     } finally {
         loading.value = false
+        saveConfigDialogVisable.value = false
     }
 }
 
@@ -607,7 +624,84 @@ const handleOpenSaveConfigDialog = function (collName: string, id: string) {
     delete saveConfigFormJsonSchema.value.properties.created_at
     delete saveConfigFormJsonSchema.value.properties.updated_at
 
+    if (id) {
+        for (const item of currTableRows.value) {
+            if (id != item._id) {
+                continue
+            }
+
+            Object.assign(saveConfigForm.value, item)
+            break
+        }
+    }
+
     saveConfigDialogVisable.value = true
+}
+
+const selectedRow = ref<any>({})
+
+const hanldeSelectedRowChange = function (selection: any[]) {
+    selectedRow.value = selection
+}
+
+const handleDeleteConfig = async function (row: any) {
+    if (!currTableCollName.value) {
+        ElMessage.error("请选择配置集合")
+        return
+    }
+    
+    if (!row._id) {
+        ElMessage.error("请选择配置")
+        return
+    }
+
+    loading.value = true
+    try {
+        await DashboardService.DeleteGeneralConf({
+            coll_name: currTableCollName.value,
+            ids: [row._id]
+        })
+        query()
+    } catch (error) {
+        ElMessage.error("删除失败")
+    } finally {
+        loading.value = false
+    }
+}
+
+const handleDeleteConfigs = async function () {
+    if (currTableCollName.value == '') {
+        ElMessage.error("请选择配置集合")
+        return
+    }
+
+    if (selectedRow.value.length == 0) {
+        ElMessage.error("请选择配置")
+        return
+    }
+    
+    const ids:string[] = []
+    for (const item of selectedRow.value) {
+        if (!item._id) {
+            continue
+        }
+        ids.push(item._id)
+    }
+
+    loading.value = true
+
+    try {
+        await DashboardService.DeleteGeneralConf({
+            coll_name: fetchConfCond.collName,
+            ids: ids
+        })
+        ElMessage.success("删除成功")
+        query()
+    } catch (error) {
+        ElMessage.error("删除失败")
+    } finally {
+        loading.value = false
+    }
 }
 
 </script>

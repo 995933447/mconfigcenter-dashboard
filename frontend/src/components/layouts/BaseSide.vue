@@ -36,7 +36,6 @@ interface Menu {
 
 const configMangementMenus:Menu[] = [
   { title: '通用配置', index: '/config/general' },
-  { title: 'key-value配置', index: '/config/kv' },
 ]
 
 const rbacMenus:Menu[] = [
