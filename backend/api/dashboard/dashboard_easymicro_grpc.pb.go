@@ -264,3 +264,11 @@ func (s *Dashboard) ListUserPerm(ctx context.Context, in *ListUserPermReq, opts 
 
 	return s.c.ListUserPerm(ctx, in, opts...)
 }
+
+func (s *Dashboard) SyncGeneralConfigsToApp(ctx context.Context, in *SyncGeneralConfigsToAppReq, opts ...grpc.CallOption) (*SyncGeneralConfigsToAppResp, error) {
+	if err := s.prepareConn(); err != nil {
+		return nil, err
+	}
+
+	return s.c.SyncGeneralConfigsToApp(ctx, in, opts...)
+}

@@ -11,11 +11,13 @@ protoc --go_out=./backend/api/$1\
   --easymicro-server_out=./backend/api/$1\
   --mgorm_out=./backend/api/$1\
   --jsonschema_out=./backend/api/$1\
+  --mconfigschemaoutput_out=./backend/api/$1\
   --go_opt=paths=source_relative\
   --go-grpc_opt=paths=source_relative\
   --easymicro-client_opt=paths=source_relative\
   --easymicro-server_opt=paths=source_relative\
   --mgorm_opt=paths=source_relative\
+  --mconfigschemaoutput_opt=paths=source_relative\
   --jsonschema_opt=paths=source_relative\
   --proto_path=./proto\
   --proto_path=../easymicro/proto\
@@ -25,7 +27,7 @@ protoc --go_out=./backend/api/$1\
 shopt -s nullglob
 
 # 匹配到的文件数组
-files=($1/jsonschemaoutput/*/*.go)
+files=(./backend/api/$1/mconfigschemaoutput/*/*.go)
 
 # 如果没有文件，直接退出
 if [ ${#files[@]} -eq 0 ]; then
@@ -33,10 +35,10 @@ if [ ${#files[@]} -eq 0 ]; then
 fi
 
 # 只有有文件才创建目录
-mkdir -p "jsonschema/$1"
+mkdir -p "mconfigschema/$1"
 
 # 遍历文件
 for f in "${files[@]}"; do
   echo "running $f"
-  go run "$f" > "jsonschema/$1/$(basename "$f").json"
+  go run "$f" > "mconfigschema/$1/$(basename "$f").json"
 done

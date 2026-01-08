@@ -19,31 +19,32 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Dashboard_GetRSAPubKey_FullMethodName       = "/dashboard.Dashboard/GetRSAPubKey"
-	Dashboard_Login_FullMethodName              = "/dashboard.Dashboard/Login"
-	Dashboard_GetUserInfo_FullMethodName        = "/dashboard.Dashboard/GetUserInfo"
-	Dashboard_DisabledRBAC_FullMethodName       = "/dashboard.Dashboard/DisabledRBAC"
-	Dashboard_AuthUser_FullMethodName           = "/dashboard.Dashboard/AuthUser"
-	Dashboard_ChangeUserPassword_FullMethodName = "/dashboard.Dashboard/ChangeUserPassword"
-	Dashboard_ListMenuConf_FullMethodName       = "/dashboard.Dashboard/ListMenuConf"
-	Dashboard_AddMenuConf_FullMethodName        = "/dashboard.Dashboard/AddMenuConf"
-	Dashboard_UpdateMenuConf_FullMethodName     = "/dashboard.Dashboard/UpdateMenuConf"
-	Dashboard_DeleteMenuConf_FullMethodName     = "/dashboard.Dashboard/DeleteMenuConf"
-	Dashboard_ListRoleConf_FullMethodName       = "/dashboard.Dashboard/ListRoleConf"
-	Dashboard_AddRoleConf_FullMethodName        = "/dashboard.Dashboard/AddRoleConf"
-	Dashboard_UpdateRoleConf_FullMethodName     = "/dashboard.Dashboard/UpdateRoleConf"
-	Dashboard_DeleteRoleConf_FullMethodName     = "/dashboard.Dashboard/DeleteRoleConf"
-	Dashboard_ListUser_FullMethodName           = "/dashboard.Dashboard/ListUser"
-	Dashboard_AddUser_FullMethodName            = "/dashboard.Dashboard/AddUser"
-	Dashboard_UpdateUser_FullMethodName         = "/dashboard.Dashboard/UpdateUser"
-	Dashboard_DeleteUser_FullMethodName         = "/dashboard.Dashboard/DeleteUser"
-	Dashboard_ListGeneralConf_FullMethodName    = "/dashboard.Dashboard/ListGeneralConf"
-	Dashboard_ListConfSchema_FullMethodName     = "/dashboard.Dashboard/ListConfSchema"
-	Dashboard_SetConfigSchema_FullMethodName    = "/dashboard.Dashboard/SetConfigSchema"
-	Dashboard_AddGeneralConf_FullMethodName     = "/dashboard.Dashboard/AddGeneralConf"
-	Dashboard_UpdateGeneralConf_FullMethodName  = "/dashboard.Dashboard/UpdateGeneralConf"
-	Dashboard_DeleteGeneralConf_FullMethodName  = "/dashboard.Dashboard/DeleteGeneralConf"
-	Dashboard_ListUserPerm_FullMethodName       = "/dashboard.Dashboard/ListUserPerm"
+	Dashboard_GetRSAPubKey_FullMethodName            = "/dashboard.Dashboard/GetRSAPubKey"
+	Dashboard_Login_FullMethodName                   = "/dashboard.Dashboard/Login"
+	Dashboard_GetUserInfo_FullMethodName             = "/dashboard.Dashboard/GetUserInfo"
+	Dashboard_DisabledRBAC_FullMethodName            = "/dashboard.Dashboard/DisabledRBAC"
+	Dashboard_AuthUser_FullMethodName                = "/dashboard.Dashboard/AuthUser"
+	Dashboard_ChangeUserPassword_FullMethodName      = "/dashboard.Dashboard/ChangeUserPassword"
+	Dashboard_ListMenuConf_FullMethodName            = "/dashboard.Dashboard/ListMenuConf"
+	Dashboard_AddMenuConf_FullMethodName             = "/dashboard.Dashboard/AddMenuConf"
+	Dashboard_UpdateMenuConf_FullMethodName          = "/dashboard.Dashboard/UpdateMenuConf"
+	Dashboard_DeleteMenuConf_FullMethodName          = "/dashboard.Dashboard/DeleteMenuConf"
+	Dashboard_ListRoleConf_FullMethodName            = "/dashboard.Dashboard/ListRoleConf"
+	Dashboard_AddRoleConf_FullMethodName             = "/dashboard.Dashboard/AddRoleConf"
+	Dashboard_UpdateRoleConf_FullMethodName          = "/dashboard.Dashboard/UpdateRoleConf"
+	Dashboard_DeleteRoleConf_FullMethodName          = "/dashboard.Dashboard/DeleteRoleConf"
+	Dashboard_ListUser_FullMethodName                = "/dashboard.Dashboard/ListUser"
+	Dashboard_AddUser_FullMethodName                 = "/dashboard.Dashboard/AddUser"
+	Dashboard_UpdateUser_FullMethodName              = "/dashboard.Dashboard/UpdateUser"
+	Dashboard_DeleteUser_FullMethodName              = "/dashboard.Dashboard/DeleteUser"
+	Dashboard_ListGeneralConf_FullMethodName         = "/dashboard.Dashboard/ListGeneralConf"
+	Dashboard_ListConfSchema_FullMethodName          = "/dashboard.Dashboard/ListConfSchema"
+	Dashboard_SetConfigSchema_FullMethodName         = "/dashboard.Dashboard/SetConfigSchema"
+	Dashboard_AddGeneralConf_FullMethodName          = "/dashboard.Dashboard/AddGeneralConf"
+	Dashboard_UpdateGeneralConf_FullMethodName       = "/dashboard.Dashboard/UpdateGeneralConf"
+	Dashboard_DeleteGeneralConf_FullMethodName       = "/dashboard.Dashboard/DeleteGeneralConf"
+	Dashboard_ListUserPerm_FullMethodName            = "/dashboard.Dashboard/ListUserPerm"
+	Dashboard_SyncGeneralConfigsToApp_FullMethodName = "/dashboard.Dashboard/SyncGeneralConfigsToApp"
 )
 
 // DashboardClient is the client API for Dashboard service.
@@ -75,6 +76,7 @@ type DashboardClient interface {
 	UpdateGeneralConf(ctx context.Context, in *UpdateGeneralConfReq, opts ...grpc.CallOption) (*UpdateGeneralConfResp, error)
 	DeleteGeneralConf(ctx context.Context, in *DeleteGeneralConfReq, opts ...grpc.CallOption) (*DeleteGeneralConfResp, error)
 	ListUserPerm(ctx context.Context, in *ListUserPermReq, opts ...grpc.CallOption) (*ListUserPermResp, error)
+	SyncGeneralConfigsToApp(ctx context.Context, in *SyncGeneralConfigsToAppReq, opts ...grpc.CallOption) (*SyncGeneralConfigsToAppResp, error)
 }
 
 type dashboardClient struct {
@@ -335,6 +337,16 @@ func (c *dashboardClient) ListUserPerm(ctx context.Context, in *ListUserPermReq,
 	return out, nil
 }
 
+func (c *dashboardClient) SyncGeneralConfigsToApp(ctx context.Context, in *SyncGeneralConfigsToAppReq, opts ...grpc.CallOption) (*SyncGeneralConfigsToAppResp, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SyncGeneralConfigsToAppResp)
+	err := c.cc.Invoke(ctx, Dashboard_SyncGeneralConfigsToApp_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // DashboardServer is the server API for Dashboard service.
 // All implementations must embed UnimplementedDashboardServer
 // for forward compatibility.
@@ -364,6 +376,7 @@ type DashboardServer interface {
 	UpdateGeneralConf(context.Context, *UpdateGeneralConfReq) (*UpdateGeneralConfResp, error)
 	DeleteGeneralConf(context.Context, *DeleteGeneralConfReq) (*DeleteGeneralConfResp, error)
 	ListUserPerm(context.Context, *ListUserPermReq) (*ListUserPermResp, error)
+	SyncGeneralConfigsToApp(context.Context, *SyncGeneralConfigsToAppReq) (*SyncGeneralConfigsToAppResp, error)
 	mustEmbedUnimplementedDashboardServer()
 }
 
@@ -448,6 +461,9 @@ func (UnimplementedDashboardServer) DeleteGeneralConf(context.Context, *DeleteGe
 }
 func (UnimplementedDashboardServer) ListUserPerm(context.Context, *ListUserPermReq) (*ListUserPermResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListUserPerm not implemented")
+}
+func (UnimplementedDashboardServer) SyncGeneralConfigsToApp(context.Context, *SyncGeneralConfigsToAppReq) (*SyncGeneralConfigsToAppResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SyncGeneralConfigsToApp not implemented")
 }
 func (UnimplementedDashboardServer) mustEmbedUnimplementedDashboardServer() {}
 func (UnimplementedDashboardServer) testEmbeddedByValue()                   {}
@@ -920,6 +936,24 @@ func _Dashboard_ListUserPerm_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Dashboard_SyncGeneralConfigsToApp_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SyncGeneralConfigsToAppReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DashboardServer).SyncGeneralConfigsToApp(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Dashboard_SyncGeneralConfigsToApp_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DashboardServer).SyncGeneralConfigsToApp(ctx, req.(*SyncGeneralConfigsToAppReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Dashboard_ServiceDesc is the grpc.ServiceDesc for Dashboard service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -1026,6 +1060,10 @@ var Dashboard_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListUserPerm",
 			Handler:    _Dashboard_ListUserPerm_Handler,
+		},
+		{
+			MethodName: "SyncGeneralConfigsToApp",
+			Handler:    _Dashboard_SyncGeneralConfigsToApp_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

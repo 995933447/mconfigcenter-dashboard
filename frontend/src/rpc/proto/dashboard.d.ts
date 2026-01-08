@@ -366,6 +366,34 @@ export namespace dashboard {
          * @returns Promise
          */
         public deleteGeneralConf(request: dashboard.IDeleteGeneralConfReq): Promise<dashboard.DeleteGeneralConfResp>;
+
+        /**
+         * Calls ListUserPerm.
+         * @param request ListUserPermReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and ListUserPermResp
+         */
+        public listUserPerm(request: dashboard.IListUserPermReq, callback: dashboard.Dashboard.ListUserPermCallback): void;
+
+        /**
+         * Calls ListUserPerm.
+         * @param request ListUserPermReq message or plain object
+         * @returns Promise
+         */
+        public listUserPerm(request: dashboard.IListUserPermReq): Promise<dashboard.ListUserPermResp>;
+
+        /**
+         * Calls SyncGeneralConfigsToApp.
+         * @param request SyncGeneralConfigsToAppReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and SyncGeneralConfigsToAppResp
+         */
+        public syncGeneralConfigsToApp(request: dashboard.ISyncGeneralConfigsToAppReq, callback: dashboard.Dashboard.SyncGeneralConfigsToAppCallback): void;
+
+        /**
+         * Calls SyncGeneralConfigsToApp.
+         * @param request SyncGeneralConfigsToAppReq message or plain object
+         * @returns Promise
+         */
+        public syncGeneralConfigsToApp(request: dashboard.ISyncGeneralConfigsToAppReq): Promise<dashboard.SyncGeneralConfigsToAppResp>;
     }
 
     namespace Dashboard {
@@ -537,6 +565,402 @@ export namespace dashboard {
          * @param [response] DeleteGeneralConfResp
          */
         type DeleteGeneralConfCallback = (error: (Error|null), response?: dashboard.DeleteGeneralConfResp) => void;
+
+        /**
+         * Callback as used by {@link dashboard.Dashboard#listUserPerm}.
+         * @param error Error, if any
+         * @param [response] ListUserPermResp
+         */
+        type ListUserPermCallback = (error: (Error|null), response?: dashboard.ListUserPermResp) => void;
+
+        /**
+         * Callback as used by {@link dashboard.Dashboard#syncGeneralConfigsToApp}.
+         * @param error Error, if any
+         * @param [response] SyncGeneralConfigsToAppResp
+         */
+        type SyncGeneralConfigsToAppCallback = (error: (Error|null), response?: dashboard.SyncGeneralConfigsToAppResp) => void;
+    }
+
+    /** Properties of a SyncGeneralConfigsToAppReq. */
+    interface ISyncGeneralConfigsToAppReq {
+
+        /** SyncGeneralConfigsToAppReq listener_groups */
+        listener_groups?: (string[]|null);
+
+        /** SyncGeneralConfigsToAppReq coll_names */
+        coll_names?: (string[]|null);
+    }
+
+    /** Represents a SyncGeneralConfigsToAppReq. */
+    class SyncGeneralConfigsToAppReq implements ISyncGeneralConfigsToAppReq {
+
+        /**
+         * Constructs a new SyncGeneralConfigsToAppReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.ISyncGeneralConfigsToAppReq);
+
+        /** SyncGeneralConfigsToAppReq listener_groups. */
+        public listener_groups: string[];
+
+        /** SyncGeneralConfigsToAppReq coll_names. */
+        public coll_names: string[];
+
+        /**
+         * Creates a new SyncGeneralConfigsToAppReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns SyncGeneralConfigsToAppReq instance
+         */
+        public static create(properties?: dashboard.ISyncGeneralConfigsToAppReq): dashboard.SyncGeneralConfigsToAppReq;
+
+        /**
+         * Encodes the specified SyncGeneralConfigsToAppReq message. Does not implicitly {@link dashboard.SyncGeneralConfigsToAppReq.verify|verify} messages.
+         * @param message SyncGeneralConfigsToAppReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.ISyncGeneralConfigsToAppReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified SyncGeneralConfigsToAppReq message, length delimited. Does not implicitly {@link dashboard.SyncGeneralConfigsToAppReq.verify|verify} messages.
+         * @param message SyncGeneralConfigsToAppReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.ISyncGeneralConfigsToAppReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a SyncGeneralConfigsToAppReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns SyncGeneralConfigsToAppReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.SyncGeneralConfigsToAppReq;
+
+        /**
+         * Decodes a SyncGeneralConfigsToAppReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns SyncGeneralConfigsToAppReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.SyncGeneralConfigsToAppReq;
+
+        /**
+         * Verifies a SyncGeneralConfigsToAppReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a SyncGeneralConfigsToAppReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns SyncGeneralConfigsToAppReq
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.SyncGeneralConfigsToAppReq;
+
+        /**
+         * Creates a plain object from a SyncGeneralConfigsToAppReq message. Also converts values to other types if specified.
+         * @param message SyncGeneralConfigsToAppReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.SyncGeneralConfigsToAppReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this SyncGeneralConfigsToAppReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for SyncGeneralConfigsToAppReq
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a SyncGeneralConfigsToAppResp. */
+    interface ISyncGeneralConfigsToAppResp {
+    }
+
+    /** Represents a SyncGeneralConfigsToAppResp. */
+    class SyncGeneralConfigsToAppResp implements ISyncGeneralConfigsToAppResp {
+
+        /**
+         * Constructs a new SyncGeneralConfigsToAppResp.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.ISyncGeneralConfigsToAppResp);
+
+        /**
+         * Creates a new SyncGeneralConfigsToAppResp instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns SyncGeneralConfigsToAppResp instance
+         */
+        public static create(properties?: dashboard.ISyncGeneralConfigsToAppResp): dashboard.SyncGeneralConfigsToAppResp;
+
+        /**
+         * Encodes the specified SyncGeneralConfigsToAppResp message. Does not implicitly {@link dashboard.SyncGeneralConfigsToAppResp.verify|verify} messages.
+         * @param message SyncGeneralConfigsToAppResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.ISyncGeneralConfigsToAppResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified SyncGeneralConfigsToAppResp message, length delimited. Does not implicitly {@link dashboard.SyncGeneralConfigsToAppResp.verify|verify} messages.
+         * @param message SyncGeneralConfigsToAppResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.ISyncGeneralConfigsToAppResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a SyncGeneralConfigsToAppResp message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns SyncGeneralConfigsToAppResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.SyncGeneralConfigsToAppResp;
+
+        /**
+         * Decodes a SyncGeneralConfigsToAppResp message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns SyncGeneralConfigsToAppResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.SyncGeneralConfigsToAppResp;
+
+        /**
+         * Verifies a SyncGeneralConfigsToAppResp message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a SyncGeneralConfigsToAppResp message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns SyncGeneralConfigsToAppResp
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.SyncGeneralConfigsToAppResp;
+
+        /**
+         * Creates a plain object from a SyncGeneralConfigsToAppResp message. Also converts values to other types if specified.
+         * @param message SyncGeneralConfigsToAppResp
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.SyncGeneralConfigsToAppResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this SyncGeneralConfigsToAppResp to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for SyncGeneralConfigsToAppResp
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a ListUserPermReq. */
+    interface IListUserPermReq {
+    }
+
+    /** Represents a ListUserPermReq. */
+    class ListUserPermReq implements IListUserPermReq {
+
+        /**
+         * Constructs a new ListUserPermReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IListUserPermReq);
+
+        /**
+         * Creates a new ListUserPermReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns ListUserPermReq instance
+         */
+        public static create(properties?: dashboard.IListUserPermReq): dashboard.ListUserPermReq;
+
+        /**
+         * Encodes the specified ListUserPermReq message. Does not implicitly {@link dashboard.ListUserPermReq.verify|verify} messages.
+         * @param message ListUserPermReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IListUserPermReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified ListUserPermReq message, length delimited. Does not implicitly {@link dashboard.ListUserPermReq.verify|verify} messages.
+         * @param message ListUserPermReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IListUserPermReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a ListUserPermReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns ListUserPermReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.ListUserPermReq;
+
+        /**
+         * Decodes a ListUserPermReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns ListUserPermReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.ListUserPermReq;
+
+        /**
+         * Verifies a ListUserPermReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a ListUserPermReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns ListUserPermReq
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.ListUserPermReq;
+
+        /**
+         * Creates a plain object from a ListUserPermReq message. Also converts values to other types if specified.
+         * @param message ListUserPermReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.ListUserPermReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this ListUserPermReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for ListUserPermReq
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a ListUserPermResp. */
+    interface IListUserPermResp {
+
+        /** ListUserPermResp perm_ids */
+        perm_ids?: ((number|Long)[]|null);
+    }
+
+    /** Represents a ListUserPermResp. */
+    class ListUserPermResp implements IListUserPermResp {
+
+        /**
+         * Constructs a new ListUserPermResp.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IListUserPermResp);
+
+        /** ListUserPermResp perm_ids. */
+        public perm_ids: (number|Long)[];
+
+        /**
+         * Creates a new ListUserPermResp instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns ListUserPermResp instance
+         */
+        public static create(properties?: dashboard.IListUserPermResp): dashboard.ListUserPermResp;
+
+        /**
+         * Encodes the specified ListUserPermResp message. Does not implicitly {@link dashboard.ListUserPermResp.verify|verify} messages.
+         * @param message ListUserPermResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IListUserPermResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified ListUserPermResp message, length delimited. Does not implicitly {@link dashboard.ListUserPermResp.verify|verify} messages.
+         * @param message ListUserPermResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IListUserPermResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a ListUserPermResp message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns ListUserPermResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.ListUserPermResp;
+
+        /**
+         * Decodes a ListUserPermResp message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns ListUserPermResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.ListUserPermResp;
+
+        /**
+         * Verifies a ListUserPermResp message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a ListUserPermResp message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns ListUserPermResp
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.ListUserPermResp;
+
+        /**
+         * Creates a plain object from a ListUserPermResp message. Also converts values to other types if specified.
+         * @param message ListUserPermResp
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.ListUserPermResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this ListUserPermResp to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for ListUserPermResp
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
     }
 
     /** Properties of a SetConfSchemaReq. */
@@ -6208,6 +6632,109 @@ export namespace dashboard {
 
         /**
          * Gets the default type url for Page
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a ListenerGroup. */
+    interface IListenerGroup {
+
+        /** ListenerGroup name */
+        name?: (string|null);
+
+        /** ListenerGroup desc */
+        desc?: (string|null);
+    }
+
+    /** Represents a ListenerGroup. */
+    class ListenerGroup implements IListenerGroup {
+
+        /**
+         * Constructs a new ListenerGroup.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dashboard.IListenerGroup);
+
+        /** ListenerGroup name. */
+        public name: string;
+
+        /** ListenerGroup desc. */
+        public desc: string;
+
+        /**
+         * Creates a new ListenerGroup instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns ListenerGroup instance
+         */
+        public static create(properties?: dashboard.IListenerGroup): dashboard.ListenerGroup;
+
+        /**
+         * Encodes the specified ListenerGroup message. Does not implicitly {@link dashboard.ListenerGroup.verify|verify} messages.
+         * @param message ListenerGroup message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dashboard.IListenerGroup, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified ListenerGroup message, length delimited. Does not implicitly {@link dashboard.ListenerGroup.verify|verify} messages.
+         * @param message ListenerGroup message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dashboard.IListenerGroup, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a ListenerGroup message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns ListenerGroup
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dashboard.ListenerGroup;
+
+        /**
+         * Decodes a ListenerGroup message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns ListenerGroup
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dashboard.ListenerGroup;
+
+        /**
+         * Verifies a ListenerGroup message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a ListenerGroup message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns ListenerGroup
+         */
+        public static fromObject(object: { [k: string]: any }): dashboard.ListenerGroup;
+
+        /**
+         * Creates a plain object from a ListenerGroup message. Also converts values to other types if specified.
+         * @param message ListenerGroup
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dashboard.ListenerGroup, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this ListenerGroup to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for ListenerGroup
          * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns The default type url
          */

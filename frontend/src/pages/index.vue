@@ -15,7 +15,7 @@
       <el-descriptions-item label="角色">
         <el-tag size="small" v-for="role in userInfo.roles">{{ role }}</el-tag>
       </el-descriptions-item>
-      <el-descriptions-item label="上次登陆时间">{{ userInfo.lastLoginAt }}</el-descriptions-item>
+      <el-descriptions-item label="登陆时间">{{ userInfo.lastLoginAt }}</el-descriptions-item>
     </el-descriptions>
     <el-button type="primary" class="reset-password-btn" @click="dialogVisible = true">修改密码</el-button>
 

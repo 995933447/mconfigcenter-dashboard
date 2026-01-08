@@ -119,4 +119,14 @@ export class DashboardService {
     return await request.post('/dashboard/Dashboard/DeleteGeneralConf', req)
   };
 
+  /** no comment **/
+  static async ListUserPerm(req: api.dashboard.IListUserPermReq): Promise<api.dashboard.IListUserPermResp> {
+    return await request.post('/dashboard/Dashboard/ListUserPerm', req)
+  };
+
+  /** no comment **/
+  static async SyncGeneralConfigsToApp(req: api.dashboard.ISyncGeneralConfigsToAppReq): Promise<api.dashboard.ISyncGeneralConfigsToAppResp> {
+    return await request.post('/dashboard/Dashboard/SyncGeneralConfigsToApp', req)
+  };
+
 };

@@ -29,6 +29,7 @@
                 <el-form-item>
                     <el-button type="primary" @click="addConfCollCond">添加搜索条件</el-button>
                     <el-button type="primary" @click="query" :disabled="!fetchConfCond.collName">搜索</el-button>
+                    <el-button type="primary" @click="handleOpenSyncConfigsToAppDialog">发布</el-button>
                 </el-form-item>
             </div>
         </el-form>
@@ -53,7 +54,8 @@
             </el-table-column>
             <el-table-column fixed="right" label="操作" min-width="120">
                 <template #default="scope">
-                    <el-button link type="primary" size="small" @click="handleOpenSaveConfigDialog(currTableCollName, scope.row._id)">修改</el-button>
+                    <el-button link type="primary" size="small"
+                        @click="handleOpenSaveConfigDialog(currTableCollName, scope.row._id)">修改</el-button>
                     <el-popconfirm confirm-button-text="Yes" cancel-button-text="No" :icon="InfoFilled"
                         icon-color="#626AEF" title="确定删除?" @confirm="handleDeleteConfig(scope.row)">
                         <template #reference>
@@ -118,6 +120,27 @@
     <JsonSchemaFormDialog v-model:save-config-form="saveConfigForm" :title="saveConfigDialogTitle"
         v-model:saveConfigDialogVisable="saveConfigDialogVisable"
         v-model:saveConfigFormJsonSchema="saveConfigFormJsonSchema" @handleSaveConfig="handleSaveConfig" />
+
+    <el-dialog width="30%" v-model="syncConfigsToAppDialogVisable" :before-close="handleCloseSyncConfigsToAppDialog">
+        <el-form status-icon style="margin-left: 2rem;">
+            <el-form-item label="集合名称" style="width: 20rem;">
+                <el-select placeholder="集合名称" clearable multiple v-model="syncConfigsToAppCollNames">
+                    <el-option :label="item.coll_name + (item.desc ? ' (' + item.desc + ')' : '')"
+                        :value="item.coll_name as string" v-for="item in configSchemaList" />
+                </el-select>
+            </el-form-item>
+            <el-form-item label="订阅组别" style="width: 20rem;">
+                <el-select placeholder="订阅组别" clearable multiple v-model="syncConfigsToAppListenerGroups">
+                    <el-option :label="item.desc?item.name+'('+item.desc+')':item.name"
+                        :value="item.name" v-for="item in listenerGroups" />
+                </el-select>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="handleSyncConfigsToAppDialog">确认</el-button>
+                <el-button @click="handleCloseSyncConfigsToAppDialog">取消</el-button>
+            </el-form-item>
+        </el-form>
+    </el-dialog>
 
 </template>
 
@@ -466,6 +489,7 @@ const compileConfCollCondToFilterValue = (confCollCond: ConfCollCond): any => {
 const query = function () {
     fetchGeneralConfList()
     fetchConfigSchema()
+    fetchListenerGroups()
 }
 
 const loading = ref(false)
@@ -476,9 +500,27 @@ interface CurrTableColumn {
     collName: string
     id: string
 }
+
 const currTableColumns = ref<CurrTableColumn[]>([])
 const currTableRows = ref<any[]>([])
+const listenerGroups = ref<any[]>([])
 const currTableCollName = ref('')
+
+const fetchListenerGroups = async function () {
+    listenerGroups.value = []
+
+    const generalConfListResp = await DashboardService.ListGeneralConf({
+        coll_name: "listener_group",
+        page: {},
+    })
+
+    if (generalConfListResp) {
+        for (const item of generalConfListResp.list||[]) {
+            const row = JSON.parse(item)
+            listenerGroups.value.push(row)
+        }
+    }
+}
 
 const fetchGeneralConfList = async function () {
     if (!fetchConfCond.collName) {
@@ -649,7 +691,7 @@ const handleDeleteConfig = async function (row: any) {
         ElMessage.error("请选择配置集合")
         return
     }
-    
+
     if (!row._id) {
         ElMessage.error("请选择配置")
         return
@@ -679,8 +721,8 @@ const handleDeleteConfigs = async function () {
         ElMessage.error("请选择配置")
         return
     }
-    
-    const ids:string[] = []
+
+    const ids: string[] = []
     for (const item of selectedRow.value) {
         if (!item._id) {
             continue
@@ -699,6 +741,44 @@ const handleDeleteConfigs = async function () {
         query()
     } catch (error) {
         ElMessage.error("删除失败")
+    } finally {
+        loading.value = false
+    }
+}
+
+const syncConfigsToAppDialogVisable = ref(false)
+const syncConfigsToAppCollNames = ref<string[]>([])
+const syncConfigsToAppListenerGroups = ref<string[]>([])
+
+const handleOpenSyncConfigsToAppDialog = function () {
+    syncConfigsToAppDialogVisable.value = true
+}
+
+const handleCloseSyncConfigsToAppDialog = function () {
+    syncConfigsToAppDialogVisable.value = false
+}
+
+const handleSyncConfigsToAppDialog = async function () {
+    if (syncConfigsToAppCollNames.value.length == 0) {
+        ElMessage.error("请选择配置集合")
+        return
+    }
+    
+    if (syncConfigsToAppListenerGroups.value.length == 0) {
+        ElMessage.error("请选择监听组")
+        return
+    }
+
+    loading.value = true
+    try {
+       await DashboardService.SyncGeneralConfigsToApp({
+            listener_groups: syncConfigsToAppListenerGroups.value,
+            coll_names: syncConfigsToAppCollNames.value,
+       })
+       ElMessage.success("发布成功")
+    } catch(error) {
+        ElMessage.error("发布失败")
+        return
     } finally {
         loading.value = false
     }

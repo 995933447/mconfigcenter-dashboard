@@ -166,6 +166,21 @@ service Dashboard {
       method: "POST"
     };
   }
+
+  rpc SyncGeneralConfigsToApp(SyncGeneralConfigsToAppReq) returns (SyncGeneralConfigsToAppResp) {
+    option (httpext.http_rule) = {
+      method: "POST"
+    };
+  }
+}
+
+message SyncGeneralConfigsToAppReq {
+  repeated string listener_groups = 1; // 需要通知的监听者组别,由配置发布方根据业务自定义,非必需
+  repeated string coll_names = 2; // 集合名称
+}
+
+message SyncGeneralConfigsToAppResp {
+
 }
 
 message ListUserPermReq {
@@ -466,7 +481,7 @@ message User {
     db: "mconfigcenter_dashboard",
     tb: "user",
     cached: true,
-    uniq_index_keys:["username", "user_id"]
+    uniq_index_keys:["username", "user_id"],
   };
   string username = 1;
   string password = 2;
@@ -479,4 +494,17 @@ message User {
 message Page {
   uint32 page_size = 1;
   uint32 page = 2;
+}
+
+message ListenerGroup {
+  option (mgorm_ext.mgorm_opts) = {
+    conn: "default",
+    db: "mconfigcenter_dashboard",
+    tb: "listener_group",
+    cached: true,
+    uniq_index_keys:["name"],
+    desc: "配置订阅分组"
+  };
+  string name = 1 [(mgorm_ext.mgorm_field_opts)={tags:'bson:"name" json:"name" jsonschema:"title=名称"'}];
+  string desc = 2 [(mgorm_ext.mgorm_field_opts)={tags:'bson:"desc" json:"desc" jsonschema:"title=描述"'}];
 }

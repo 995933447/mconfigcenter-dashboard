@@ -38,7 +38,7 @@
             <el-table-column label="状态">
                 <template #default="scope"><el-tag size="small" v-for="role in scope.row.roleNames" :key="role">{{ role }}</el-tag></template>
             </el-table-column>
-            <el-table-column label="上次登录日期" property="lastLoginAt"></el-table-column>
+            <el-table-column label="登录时间" property="lastLoginAt"></el-table-column>
             <el-table-column label="操作">
                 <template #default="scope">
                     <el-button link type="primary" size="small" @click="handleEditUser(scope.row)">修改</el-button>

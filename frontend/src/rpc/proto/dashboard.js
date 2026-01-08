@@ -858,7 +858,927 @@ export const dashboard = $root.dashboard = (() => {
          * @variation 2
          */
 
+        /**
+         * Callback as used by {@link dashboard.Dashboard#listUserPerm}.
+         * @memberof dashboard.Dashboard
+         * @typedef ListUserPermCallback
+         * @type {function}
+         * @param {Error|null} error Error, if any
+         * @param {dashboard.ListUserPermResp} [response] ListUserPermResp
+         */
+
+        /**
+         * Calls ListUserPerm.
+         * @function listUserPerm
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.IListUserPermReq} request ListUserPermReq message or plain object
+         * @param {dashboard.Dashboard.ListUserPermCallback} callback Node-style callback called with the error, if any, and ListUserPermResp
+         * @returns {undefined}
+         * @variation 1
+         */
+        Object.defineProperty(Dashboard.prototype.listUserPerm = function listUserPerm(request, callback) {
+            return this.rpcCall(listUserPerm, $root.dashboard.ListUserPermReq, $root.dashboard.ListUserPermResp, request, callback);
+        }, "name", { value: "ListUserPerm" });
+
+        /**
+         * Calls ListUserPerm.
+         * @function listUserPerm
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.IListUserPermReq} request ListUserPermReq message or plain object
+         * @returns {Promise<dashboard.ListUserPermResp>} Promise
+         * @variation 2
+         */
+
+        /**
+         * Callback as used by {@link dashboard.Dashboard#syncGeneralConfigsToApp}.
+         * @memberof dashboard.Dashboard
+         * @typedef SyncGeneralConfigsToAppCallback
+         * @type {function}
+         * @param {Error|null} error Error, if any
+         * @param {dashboard.SyncGeneralConfigsToAppResp} [response] SyncGeneralConfigsToAppResp
+         */
+
+        /**
+         * Calls SyncGeneralConfigsToApp.
+         * @function syncGeneralConfigsToApp
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.ISyncGeneralConfigsToAppReq} request SyncGeneralConfigsToAppReq message or plain object
+         * @param {dashboard.Dashboard.SyncGeneralConfigsToAppCallback} callback Node-style callback called with the error, if any, and SyncGeneralConfigsToAppResp
+         * @returns {undefined}
+         * @variation 1
+         */
+        Object.defineProperty(Dashboard.prototype.syncGeneralConfigsToApp = function syncGeneralConfigsToApp(request, callback) {
+            return this.rpcCall(syncGeneralConfigsToApp, $root.dashboard.SyncGeneralConfigsToAppReq, $root.dashboard.SyncGeneralConfigsToAppResp, request, callback);
+        }, "name", { value: "SyncGeneralConfigsToApp" });
+
+        /**
+         * Calls SyncGeneralConfigsToApp.
+         * @function syncGeneralConfigsToApp
+         * @memberof dashboard.Dashboard
+         * @instance
+         * @param {dashboard.ISyncGeneralConfigsToAppReq} request SyncGeneralConfigsToAppReq message or plain object
+         * @returns {Promise<dashboard.SyncGeneralConfigsToAppResp>} Promise
+         * @variation 2
+         */
+
         return Dashboard;
+    })();
+
+    dashboard.SyncGeneralConfigsToAppReq = (function() {
+
+        /**
+         * Properties of a SyncGeneralConfigsToAppReq.
+         * @memberof dashboard
+         * @interface ISyncGeneralConfigsToAppReq
+         * @property {Array.<string>|null} [listener_groups] SyncGeneralConfigsToAppReq listener_groups
+         * @property {Array.<string>|null} [coll_names] SyncGeneralConfigsToAppReq coll_names
+         */
+
+        /**
+         * Constructs a new SyncGeneralConfigsToAppReq.
+         * @memberof dashboard
+         * @classdesc Represents a SyncGeneralConfigsToAppReq.
+         * @implements ISyncGeneralConfigsToAppReq
+         * @constructor
+         * @param {dashboard.ISyncGeneralConfigsToAppReq=} [properties] Properties to set
+         */
+        function SyncGeneralConfigsToAppReq(properties) {
+            this.listener_groups = [];
+            this.coll_names = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * SyncGeneralConfigsToAppReq listener_groups.
+         * @member {Array.<string>} listener_groups
+         * @memberof dashboard.SyncGeneralConfigsToAppReq
+         * @instance
+         */
+        SyncGeneralConfigsToAppReq.prototype.listener_groups = $util.emptyArray;
+
+        /**
+         * SyncGeneralConfigsToAppReq coll_names.
+         * @member {Array.<string>} coll_names
+         * @memberof dashboard.SyncGeneralConfigsToAppReq
+         * @instance
+         */
+        SyncGeneralConfigsToAppReq.prototype.coll_names = $util.emptyArray;
+
+        /**
+         * Creates a new SyncGeneralConfigsToAppReq instance using the specified properties.
+         * @function create
+         * @memberof dashboard.SyncGeneralConfigsToAppReq
+         * @static
+         * @param {dashboard.ISyncGeneralConfigsToAppReq=} [properties] Properties to set
+         * @returns {dashboard.SyncGeneralConfigsToAppReq} SyncGeneralConfigsToAppReq instance
+         */
+        SyncGeneralConfigsToAppReq.create = function create(properties) {
+            return new SyncGeneralConfigsToAppReq(properties);
+        };
+
+        /**
+         * Encodes the specified SyncGeneralConfigsToAppReq message. Does not implicitly {@link dashboard.SyncGeneralConfigsToAppReq.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.SyncGeneralConfigsToAppReq
+         * @static
+         * @param {dashboard.ISyncGeneralConfigsToAppReq} message SyncGeneralConfigsToAppReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        SyncGeneralConfigsToAppReq.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.listener_groups != null && message.listener_groups.length)
+                for (let i = 0; i < message.listener_groups.length; ++i)
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.listener_groups[i]);
+            if (message.coll_names != null && message.coll_names.length)
+                for (let i = 0; i < message.coll_names.length; ++i)
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.coll_names[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified SyncGeneralConfigsToAppReq message, length delimited. Does not implicitly {@link dashboard.SyncGeneralConfigsToAppReq.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.SyncGeneralConfigsToAppReq
+         * @static
+         * @param {dashboard.ISyncGeneralConfigsToAppReq} message SyncGeneralConfigsToAppReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        SyncGeneralConfigsToAppReq.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a SyncGeneralConfigsToAppReq message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.SyncGeneralConfigsToAppReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.SyncGeneralConfigsToAppReq} SyncGeneralConfigsToAppReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        SyncGeneralConfigsToAppReq.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.SyncGeneralConfigsToAppReq();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        if (!(message.listener_groups && message.listener_groups.length))
+                            message.listener_groups = [];
+                        message.listener_groups.push(reader.string());
+                        break;
+                    }
+                case 2: {
+                        if (!(message.coll_names && message.coll_names.length))
+                            message.coll_names = [];
+                        message.coll_names.push(reader.string());
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a SyncGeneralConfigsToAppReq message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.SyncGeneralConfigsToAppReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.SyncGeneralConfigsToAppReq} SyncGeneralConfigsToAppReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        SyncGeneralConfigsToAppReq.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a SyncGeneralConfigsToAppReq message.
+         * @function verify
+         * @memberof dashboard.SyncGeneralConfigsToAppReq
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        SyncGeneralConfigsToAppReq.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.listener_groups != null && message.hasOwnProperty("listener_groups")) {
+                if (!Array.isArray(message.listener_groups))
+                    return "listener_groups: array expected";
+                for (let i = 0; i < message.listener_groups.length; ++i)
+                    if (!$util.isString(message.listener_groups[i]))
+                        return "listener_groups: string[] expected";
+            }
+            if (message.coll_names != null && message.hasOwnProperty("coll_names")) {
+                if (!Array.isArray(message.coll_names))
+                    return "coll_names: array expected";
+                for (let i = 0; i < message.coll_names.length; ++i)
+                    if (!$util.isString(message.coll_names[i]))
+                        return "coll_names: string[] expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a SyncGeneralConfigsToAppReq message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.SyncGeneralConfigsToAppReq
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.SyncGeneralConfigsToAppReq} SyncGeneralConfigsToAppReq
+         */
+        SyncGeneralConfigsToAppReq.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.SyncGeneralConfigsToAppReq)
+                return object;
+            let message = new $root.dashboard.SyncGeneralConfigsToAppReq();
+            if (object.listener_groups) {
+                if (!Array.isArray(object.listener_groups))
+                    throw TypeError(".dashboard.SyncGeneralConfigsToAppReq.listener_groups: array expected");
+                message.listener_groups = [];
+                for (let i = 0; i < object.listener_groups.length; ++i)
+                    message.listener_groups[i] = String(object.listener_groups[i]);
+            }
+            if (object.coll_names) {
+                if (!Array.isArray(object.coll_names))
+                    throw TypeError(".dashboard.SyncGeneralConfigsToAppReq.coll_names: array expected");
+                message.coll_names = [];
+                for (let i = 0; i < object.coll_names.length; ++i)
+                    message.coll_names[i] = String(object.coll_names[i]);
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a SyncGeneralConfigsToAppReq message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.SyncGeneralConfigsToAppReq
+         * @static
+         * @param {dashboard.SyncGeneralConfigsToAppReq} message SyncGeneralConfigsToAppReq
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        SyncGeneralConfigsToAppReq.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults) {
+                object.listener_groups = [];
+                object.coll_names = [];
+            }
+            if (message.listener_groups && message.listener_groups.length) {
+                object.listener_groups = [];
+                for (let j = 0; j < message.listener_groups.length; ++j)
+                    object.listener_groups[j] = message.listener_groups[j];
+            }
+            if (message.coll_names && message.coll_names.length) {
+                object.coll_names = [];
+                for (let j = 0; j < message.coll_names.length; ++j)
+                    object.coll_names[j] = message.coll_names[j];
+            }
+            return object;
+        };
+
+        /**
+         * Converts this SyncGeneralConfigsToAppReq to JSON.
+         * @function toJSON
+         * @memberof dashboard.SyncGeneralConfigsToAppReq
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        SyncGeneralConfigsToAppReq.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for SyncGeneralConfigsToAppReq
+         * @function getTypeUrl
+         * @memberof dashboard.SyncGeneralConfigsToAppReq
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        SyncGeneralConfigsToAppReq.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.SyncGeneralConfigsToAppReq";
+        };
+
+        return SyncGeneralConfigsToAppReq;
+    })();
+
+    dashboard.SyncGeneralConfigsToAppResp = (function() {
+
+        /**
+         * Properties of a SyncGeneralConfigsToAppResp.
+         * @memberof dashboard
+         * @interface ISyncGeneralConfigsToAppResp
+         */
+
+        /**
+         * Constructs a new SyncGeneralConfigsToAppResp.
+         * @memberof dashboard
+         * @classdesc Represents a SyncGeneralConfigsToAppResp.
+         * @implements ISyncGeneralConfigsToAppResp
+         * @constructor
+         * @param {dashboard.ISyncGeneralConfigsToAppResp=} [properties] Properties to set
+         */
+        function SyncGeneralConfigsToAppResp(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Creates a new SyncGeneralConfigsToAppResp instance using the specified properties.
+         * @function create
+         * @memberof dashboard.SyncGeneralConfigsToAppResp
+         * @static
+         * @param {dashboard.ISyncGeneralConfigsToAppResp=} [properties] Properties to set
+         * @returns {dashboard.SyncGeneralConfigsToAppResp} SyncGeneralConfigsToAppResp instance
+         */
+        SyncGeneralConfigsToAppResp.create = function create(properties) {
+            return new SyncGeneralConfigsToAppResp(properties);
+        };
+
+        /**
+         * Encodes the specified SyncGeneralConfigsToAppResp message. Does not implicitly {@link dashboard.SyncGeneralConfigsToAppResp.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.SyncGeneralConfigsToAppResp
+         * @static
+         * @param {dashboard.ISyncGeneralConfigsToAppResp} message SyncGeneralConfigsToAppResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        SyncGeneralConfigsToAppResp.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified SyncGeneralConfigsToAppResp message, length delimited. Does not implicitly {@link dashboard.SyncGeneralConfigsToAppResp.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.SyncGeneralConfigsToAppResp
+         * @static
+         * @param {dashboard.ISyncGeneralConfigsToAppResp} message SyncGeneralConfigsToAppResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        SyncGeneralConfigsToAppResp.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a SyncGeneralConfigsToAppResp message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.SyncGeneralConfigsToAppResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.SyncGeneralConfigsToAppResp} SyncGeneralConfigsToAppResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        SyncGeneralConfigsToAppResp.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.SyncGeneralConfigsToAppResp();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a SyncGeneralConfigsToAppResp message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.SyncGeneralConfigsToAppResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.SyncGeneralConfigsToAppResp} SyncGeneralConfigsToAppResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        SyncGeneralConfigsToAppResp.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a SyncGeneralConfigsToAppResp message.
+         * @function verify
+         * @memberof dashboard.SyncGeneralConfigsToAppResp
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        SyncGeneralConfigsToAppResp.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            return null;
+        };
+
+        /**
+         * Creates a SyncGeneralConfigsToAppResp message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.SyncGeneralConfigsToAppResp
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.SyncGeneralConfigsToAppResp} SyncGeneralConfigsToAppResp
+         */
+        SyncGeneralConfigsToAppResp.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.SyncGeneralConfigsToAppResp)
+                return object;
+            return new $root.dashboard.SyncGeneralConfigsToAppResp();
+        };
+
+        /**
+         * Creates a plain object from a SyncGeneralConfigsToAppResp message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.SyncGeneralConfigsToAppResp
+         * @static
+         * @param {dashboard.SyncGeneralConfigsToAppResp} message SyncGeneralConfigsToAppResp
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        SyncGeneralConfigsToAppResp.toObject = function toObject() {
+            return {};
+        };
+
+        /**
+         * Converts this SyncGeneralConfigsToAppResp to JSON.
+         * @function toJSON
+         * @memberof dashboard.SyncGeneralConfigsToAppResp
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        SyncGeneralConfigsToAppResp.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for SyncGeneralConfigsToAppResp
+         * @function getTypeUrl
+         * @memberof dashboard.SyncGeneralConfigsToAppResp
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        SyncGeneralConfigsToAppResp.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.SyncGeneralConfigsToAppResp";
+        };
+
+        return SyncGeneralConfigsToAppResp;
+    })();
+
+    dashboard.ListUserPermReq = (function() {
+
+        /**
+         * Properties of a ListUserPermReq.
+         * @memberof dashboard
+         * @interface IListUserPermReq
+         */
+
+        /**
+         * Constructs a new ListUserPermReq.
+         * @memberof dashboard
+         * @classdesc Represents a ListUserPermReq.
+         * @implements IListUserPermReq
+         * @constructor
+         * @param {dashboard.IListUserPermReq=} [properties] Properties to set
+         */
+        function ListUserPermReq(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Creates a new ListUserPermReq instance using the specified properties.
+         * @function create
+         * @memberof dashboard.ListUserPermReq
+         * @static
+         * @param {dashboard.IListUserPermReq=} [properties] Properties to set
+         * @returns {dashboard.ListUserPermReq} ListUserPermReq instance
+         */
+        ListUserPermReq.create = function create(properties) {
+            return new ListUserPermReq(properties);
+        };
+
+        /**
+         * Encodes the specified ListUserPermReq message. Does not implicitly {@link dashboard.ListUserPermReq.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.ListUserPermReq
+         * @static
+         * @param {dashboard.IListUserPermReq} message ListUserPermReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ListUserPermReq.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified ListUserPermReq message, length delimited. Does not implicitly {@link dashboard.ListUserPermReq.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.ListUserPermReq
+         * @static
+         * @param {dashboard.IListUserPermReq} message ListUserPermReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ListUserPermReq.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a ListUserPermReq message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.ListUserPermReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.ListUserPermReq} ListUserPermReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ListUserPermReq.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.ListUserPermReq();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a ListUserPermReq message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.ListUserPermReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.ListUserPermReq} ListUserPermReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ListUserPermReq.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a ListUserPermReq message.
+         * @function verify
+         * @memberof dashboard.ListUserPermReq
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        ListUserPermReq.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            return null;
+        };
+
+        /**
+         * Creates a ListUserPermReq message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.ListUserPermReq
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.ListUserPermReq} ListUserPermReq
+         */
+        ListUserPermReq.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.ListUserPermReq)
+                return object;
+            return new $root.dashboard.ListUserPermReq();
+        };
+
+        /**
+         * Creates a plain object from a ListUserPermReq message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.ListUserPermReq
+         * @static
+         * @param {dashboard.ListUserPermReq} message ListUserPermReq
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        ListUserPermReq.toObject = function toObject() {
+            return {};
+        };
+
+        /**
+         * Converts this ListUserPermReq to JSON.
+         * @function toJSON
+         * @memberof dashboard.ListUserPermReq
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        ListUserPermReq.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for ListUserPermReq
+         * @function getTypeUrl
+         * @memberof dashboard.ListUserPermReq
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        ListUserPermReq.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.ListUserPermReq";
+        };
+
+        return ListUserPermReq;
+    })();
+
+    dashboard.ListUserPermResp = (function() {
+
+        /**
+         * Properties of a ListUserPermResp.
+         * @memberof dashboard
+         * @interface IListUserPermResp
+         * @property {Array.<number|Long>|null} [perm_ids] ListUserPermResp perm_ids
+         */
+
+        /**
+         * Constructs a new ListUserPermResp.
+         * @memberof dashboard
+         * @classdesc Represents a ListUserPermResp.
+         * @implements IListUserPermResp
+         * @constructor
+         * @param {dashboard.IListUserPermResp=} [properties] Properties to set
+         */
+        function ListUserPermResp(properties) {
+            this.perm_ids = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * ListUserPermResp perm_ids.
+         * @member {Array.<number|Long>} perm_ids
+         * @memberof dashboard.ListUserPermResp
+         * @instance
+         */
+        ListUserPermResp.prototype.perm_ids = $util.emptyArray;
+
+        /**
+         * Creates a new ListUserPermResp instance using the specified properties.
+         * @function create
+         * @memberof dashboard.ListUserPermResp
+         * @static
+         * @param {dashboard.IListUserPermResp=} [properties] Properties to set
+         * @returns {dashboard.ListUserPermResp} ListUserPermResp instance
+         */
+        ListUserPermResp.create = function create(properties) {
+            return new ListUserPermResp(properties);
+        };
+
+        /**
+         * Encodes the specified ListUserPermResp message. Does not implicitly {@link dashboard.ListUserPermResp.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.ListUserPermResp
+         * @static
+         * @param {dashboard.IListUserPermResp} message ListUserPermResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ListUserPermResp.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.perm_ids != null && message.perm_ids.length) {
+                writer.uint32(/* id 1, wireType 2 =*/10).fork();
+                for (let i = 0; i < message.perm_ids.length; ++i)
+                    writer.uint64(message.perm_ids[i]);
+                writer.ldelim();
+            }
+            return writer;
+        };
+
+        /**
+         * Encodes the specified ListUserPermResp message, length delimited. Does not implicitly {@link dashboard.ListUserPermResp.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.ListUserPermResp
+         * @static
+         * @param {dashboard.IListUserPermResp} message ListUserPermResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ListUserPermResp.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a ListUserPermResp message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.ListUserPermResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.ListUserPermResp} ListUserPermResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ListUserPermResp.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.ListUserPermResp();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        if (!(message.perm_ids && message.perm_ids.length))
+                            message.perm_ids = [];
+                        if ((tag & 7) === 2) {
+                            let end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.perm_ids.push(reader.uint64());
+                        } else
+                            message.perm_ids.push(reader.uint64());
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a ListUserPermResp message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.ListUserPermResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.ListUserPermResp} ListUserPermResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ListUserPermResp.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a ListUserPermResp message.
+         * @function verify
+         * @memberof dashboard.ListUserPermResp
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        ListUserPermResp.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.perm_ids != null && message.hasOwnProperty("perm_ids")) {
+                if (!Array.isArray(message.perm_ids))
+                    return "perm_ids: array expected";
+                for (let i = 0; i < message.perm_ids.length; ++i)
+                    if (!$util.isInteger(message.perm_ids[i]) && !(message.perm_ids[i] && $util.isInteger(message.perm_ids[i].low) && $util.isInteger(message.perm_ids[i].high)))
+                        return "perm_ids: integer|Long[] expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a ListUserPermResp message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.ListUserPermResp
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.ListUserPermResp} ListUserPermResp
+         */
+        ListUserPermResp.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.ListUserPermResp)
+                return object;
+            let message = new $root.dashboard.ListUserPermResp();
+            if (object.perm_ids) {
+                if (!Array.isArray(object.perm_ids))
+                    throw TypeError(".dashboard.ListUserPermResp.perm_ids: array expected");
+                message.perm_ids = [];
+                for (let i = 0; i < object.perm_ids.length; ++i)
+                    if ($util.Long)
+                        (message.perm_ids[i] = $util.Long.fromValue(object.perm_ids[i])).unsigned = true;
+                    else if (typeof object.perm_ids[i] === "string")
+                        message.perm_ids[i] = parseInt(object.perm_ids[i], 10);
+                    else if (typeof object.perm_ids[i] === "number")
+                        message.perm_ids[i] = object.perm_ids[i];
+                    else if (typeof object.perm_ids[i] === "object")
+                        message.perm_ids[i] = new $util.LongBits(object.perm_ids[i].low >>> 0, object.perm_ids[i].high >>> 0).toNumber(true);
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a ListUserPermResp message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.ListUserPermResp
+         * @static
+         * @param {dashboard.ListUserPermResp} message ListUserPermResp
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        ListUserPermResp.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults)
+                object.perm_ids = [];
+            if (message.perm_ids && message.perm_ids.length) {
+                object.perm_ids = [];
+                for (let j = 0; j < message.perm_ids.length; ++j)
+                    if (typeof message.perm_ids[j] === "number")
+                        object.perm_ids[j] = options.longs === String ? String(message.perm_ids[j]) : message.perm_ids[j];
+                    else
+                        object.perm_ids[j] = options.longs === String ? $util.Long.prototype.toString.call(message.perm_ids[j]) : options.longs === Number ? new $util.LongBits(message.perm_ids[j].low >>> 0, message.perm_ids[j].high >>> 0).toNumber(true) : message.perm_ids[j];
+            }
+            return object;
+        };
+
+        /**
+         * Converts this ListUserPermResp to JSON.
+         * @function toJSON
+         * @memberof dashboard.ListUserPermResp
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        ListUserPermResp.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for ListUserPermResp
+         * @function getTypeUrl
+         * @memberof dashboard.ListUserPermResp
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        ListUserPermResp.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.ListUserPermResp";
+        };
+
+        return ListUserPermResp;
     })();
 
     dashboard.SetConfSchemaReq = (function() {
@@ -14085,6 +15005,235 @@ export const dashboard = $root.dashboard = (() => {
         };
 
         return Page;
+    })();
+
+    dashboard.ListenerGroup = (function() {
+
+        /**
+         * Properties of a ListenerGroup.
+         * @memberof dashboard
+         * @interface IListenerGroup
+         * @property {string|null} [name] ListenerGroup name
+         * @property {string|null} [desc] ListenerGroup desc
+         */
+
+        /**
+         * Constructs a new ListenerGroup.
+         * @memberof dashboard
+         * @classdesc Represents a ListenerGroup.
+         * @implements IListenerGroup
+         * @constructor
+         * @param {dashboard.IListenerGroup=} [properties] Properties to set
+         */
+        function ListenerGroup(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * ListenerGroup name.
+         * @member {string} name
+         * @memberof dashboard.ListenerGroup
+         * @instance
+         */
+        ListenerGroup.prototype.name = "";
+
+        /**
+         * ListenerGroup desc.
+         * @member {string} desc
+         * @memberof dashboard.ListenerGroup
+         * @instance
+         */
+        ListenerGroup.prototype.desc = "";
+
+        /**
+         * Creates a new ListenerGroup instance using the specified properties.
+         * @function create
+         * @memberof dashboard.ListenerGroup
+         * @static
+         * @param {dashboard.IListenerGroup=} [properties] Properties to set
+         * @returns {dashboard.ListenerGroup} ListenerGroup instance
+         */
+        ListenerGroup.create = function create(properties) {
+            return new ListenerGroup(properties);
+        };
+
+        /**
+         * Encodes the specified ListenerGroup message. Does not implicitly {@link dashboard.ListenerGroup.verify|verify} messages.
+         * @function encode
+         * @memberof dashboard.ListenerGroup
+         * @static
+         * @param {dashboard.IListenerGroup} message ListenerGroup message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ListenerGroup.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+            if (message.desc != null && Object.hasOwnProperty.call(message, "desc"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.desc);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified ListenerGroup message, length delimited. Does not implicitly {@link dashboard.ListenerGroup.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dashboard.ListenerGroup
+         * @static
+         * @param {dashboard.IListenerGroup} message ListenerGroup message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ListenerGroup.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a ListenerGroup message from the specified reader or buffer.
+         * @function decode
+         * @memberof dashboard.ListenerGroup
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dashboard.ListenerGroup} ListenerGroup
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ListenerGroup.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.dashboard.ListenerGroup();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.name = reader.string();
+                        break;
+                    }
+                case 2: {
+                        message.desc = reader.string();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a ListenerGroup message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dashboard.ListenerGroup
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dashboard.ListenerGroup} ListenerGroup
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ListenerGroup.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a ListenerGroup message.
+         * @function verify
+         * @memberof dashboard.ListenerGroup
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        ListenerGroup.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.name != null && message.hasOwnProperty("name"))
+                if (!$util.isString(message.name))
+                    return "name: string expected";
+            if (message.desc != null && message.hasOwnProperty("desc"))
+                if (!$util.isString(message.desc))
+                    return "desc: string expected";
+            return null;
+        };
+
+        /**
+         * Creates a ListenerGroup message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dashboard.ListenerGroup
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dashboard.ListenerGroup} ListenerGroup
+         */
+        ListenerGroup.fromObject = function fromObject(object) {
+            if (object instanceof $root.dashboard.ListenerGroup)
+                return object;
+            let message = new $root.dashboard.ListenerGroup();
+            if (object.name != null)
+                message.name = String(object.name);
+            if (object.desc != null)
+                message.desc = String(object.desc);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a ListenerGroup message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dashboard.ListenerGroup
+         * @static
+         * @param {dashboard.ListenerGroup} message ListenerGroup
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        ListenerGroup.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.name = "";
+                object.desc = "";
+            }
+            if (message.name != null && message.hasOwnProperty("name"))
+                object.name = message.name;
+            if (message.desc != null && message.hasOwnProperty("desc"))
+                object.desc = message.desc;
+            return object;
+        };
+
+        /**
+         * Converts this ListenerGroup to JSON.
+         * @function toJSON
+         * @memberof dashboard.ListenerGroup
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        ListenerGroup.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for ListenerGroup
+         * @function getTypeUrl
+         * @memberof dashboard.ListenerGroup
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        ListenerGroup.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/dashboard.ListenerGroup";
+        };
+
+        return ListenerGroup;
     })();
 
     return dashboard;
