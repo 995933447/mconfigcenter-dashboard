@@ -1,7 +1,7 @@
 <template>
     <div flex justify-left ml-2rem mb-2rem>
-        <el-button @click="dialogVisible = true" type="primary">新增</el-button>
-        <el-button @click="fetchMenuList" type="primary">刷新</el-button>
+        <el-button @click="dialogVisible = true" type="primary" v-if='isCurrentPageButtonAccessable("addMenu")'>新增</el-button>
+        <el-button @click="fetchMenuList" type="primary" v-if='isCurrentPageButtonAccessable("refreshMenu")'>刷新</el-button>
     </div>
 
     <div flex justify-center v-loading="loading">
@@ -12,8 +12,8 @@
             <el-table-column prop="pathTypeName" label="菜单类型" />
             <el-table-column fixed="right" label="操作" min-width="120">
                 <template #default="scope">
-                    <el-button link type="primary" size="small" @click="handleEditMenu(scope.row)">修改</el-button>
-                    <el-popconfirm confirm-button-text="Yes" cancel-button-text="No" :icon="InfoFilled"
+                    <el-button link type="primary" size="small" @click="handleEditMenu(scope.row)" v-if='isCurrentPageButtonAccessable("editMenu")'>修改</el-button>
+                    <el-popconfirm confirm-button-text="Yes" cancel-button-text="No" :icon="InfoFilled" v-if='isCurrentPageButtonAccessable("deleteMenu")'
                         icon-color="#626AEF" title="确定删除此菜单(如果有自菜单会被一起移除)?" @confirm="handleDeleteMenu(scope.row.id)">
                         <template #reference>
                             <el-button link type="danger" size="small">删除</el-button>
@@ -82,10 +82,11 @@ import { ElMessage, FormInstance } from 'element-plus'
 import { InfoFilled } from '@element-plus/icons-vue'
 import { getPathTypeByName, fetchMenuConfs, getOrFetchMenuConfs, genNextRouteServiceId } from '~/composables/menuConf'
 import type { Menu, RouteService, MenuSimpleInfo } from '~/types/menuConf'
+import { isCurrentPageButtonAccessable } from '~/composables/auth'
 
 // keep-alive 匹配的是组件的 name 选项，不是 route.name 本身,所以要定义一下组件name
 defineOptions({
-    name: '/rbac/menu'
+    name: '/rbac/menu',
 })
 
 const loading = ref(false)

@@ -871,6 +871,9 @@ export namespace dashboard {
 
         /** ListUserPermResp perm_ids */
         perm_ids?: ((number|Long)[]|null);
+
+        /** ListUserPermResp is_super_admin */
+        is_super_admin?: (boolean|null);
     }
 
     /** Represents a ListUserPermResp. */
@@ -884,6 +887,9 @@ export namespace dashboard {
 
         /** ListUserPermResp perm_ids. */
         public perm_ids: (number|Long)[];
+
+        /** ListUserPermResp is_super_admin. */
+        public is_super_admin: boolean;
 
         /**
          * Creates a new ListUserPermResp instance using the specified properties.

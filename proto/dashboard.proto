@@ -189,6 +189,7 @@ message ListUserPermReq {
 
 message ListUserPermResp {
   repeated uint64 perm_ids = 1;
+  bool is_super_admin = 2;
 }
 
 message SetConfSchemaReq {

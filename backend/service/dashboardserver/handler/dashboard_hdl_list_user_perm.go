@@ -29,8 +29,8 @@ func (s *Dashboard) ListUserPerm(ctx context.Context, req *dashboard.ListUserPer
 	}
 
 	var roleIds []uint64
-	for _, role := range listUserRoleResp.List {
-		roleIds = append(roleIds, role.UserRole.RoleId)
+	for _, userRole := range listUserRoleResp.List {
+		roleIds = append(roleIds, userRole.UserRole.RoleId)
 	}
 
 	listRoleResp, err := rbac.RBACGRPC().ListRole(ctx, &rbac.ListRoleReq{
@@ -48,6 +48,10 @@ func (s *Dashboard) ListUserPerm(ctx context.Context, req *dashboard.ListUserPer
 		permIdSet = make(map[uint64]struct{})
 	)
 	for _, role := range listRoleResp.List {
+		if role.IsSuperAdmin {
+			resp.IsSuperAdmin = true
+			return &resp, nil
+		}
 		for _, permId := range role.PermIds {
 			if _, ok := permIdSet[permId]; ok {
 				continue

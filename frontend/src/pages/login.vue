@@ -77,13 +77,29 @@ const submitForm = async (formEl: FormInstance | undefined) => {
         const loginResp = await DashboardService.Login({
           username: validateForm.username,
           password: password,
-        }).finally(() => {
-          loading.value = false
         })
 
-        let expire_at = Number(loginResp.expire_at)
+        let expireAt = Number(loginResp.expire_at)
 
-        const userState = new UserAuthState(loginResp.token? loginResp.token : '', expire_at)
+        const userState = new UserAuthState(loginResp.token? loginResp.token : '', expireAt)
+        saveAuthState(userState)
+
+        const getUserPermsResp = await DashboardService.ListUserPerm({})
+        const listMenuConfResp = await DashboardService.ListMenuConf({})
+        if (listMenuConfResp.list) {
+          userState.accessableMenuPaths = []
+          for (const menu of listMenuConfResp.list) {
+            if (getUserPermsResp.is_super_admin) {
+              userState.accessableMenuPaths.push(menu.path as string)
+              continue
+            }
+
+            if (menu.perm_id && getUserPermsResp.perm_ids?.includes(menu.perm_id)) {
+              userState.accessableMenuPaths.push(menu.path as string)
+            }
+          }
+        }
+
         saveAuthState(userState)
         
         const router = getRouter()
@@ -91,9 +107,8 @@ const submitForm = async (formEl: FormInstance | undefined) => {
           const redirect = (router.currentRoute.value.query.redirect as string) || '/'
           location.href = redirect
         }
-      } catch (error) {
+      } finally {
         loading.value = false
-        return
       }
     } else {
       console.log('error submit!')

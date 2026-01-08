@@ -1549,6 +1549,7 @@ export const dashboard = $root.dashboard = (() => {
          * @memberof dashboard
          * @interface IListUserPermResp
          * @property {Array.<number|Long>|null} [perm_ids] ListUserPermResp perm_ids
+         * @property {boolean|null} [is_super_admin] ListUserPermResp is_super_admin
          */
 
         /**
@@ -1574,6 +1575,14 @@ export const dashboard = $root.dashboard = (() => {
          * @instance
          */
         ListUserPermResp.prototype.perm_ids = $util.emptyArray;
+
+        /**
+         * ListUserPermResp is_super_admin.
+         * @member {boolean} is_super_admin
+         * @memberof dashboard.ListUserPermResp
+         * @instance
+         */
+        ListUserPermResp.prototype.is_super_admin = false;
 
         /**
          * Creates a new ListUserPermResp instance using the specified properties.
@@ -1605,6 +1614,8 @@ export const dashboard = $root.dashboard = (() => {
                     writer.uint64(message.perm_ids[i]);
                 writer.ldelim();
             }
+            if (message.is_super_admin != null && Object.hasOwnProperty.call(message, "is_super_admin"))
+                writer.uint32(/* id 2, wireType 0 =*/16).bool(message.is_super_admin);
             return writer;
         };
 
@@ -1652,6 +1663,10 @@ export const dashboard = $root.dashboard = (() => {
                             message.perm_ids.push(reader.uint64());
                         break;
                     }
+                case 2: {
+                        message.is_super_admin = reader.bool();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -1694,6 +1709,9 @@ export const dashboard = $root.dashboard = (() => {
                     if (!$util.isInteger(message.perm_ids[i]) && !(message.perm_ids[i] && $util.isInteger(message.perm_ids[i].low) && $util.isInteger(message.perm_ids[i].high)))
                         return "perm_ids: integer|Long[] expected";
             }
+            if (message.is_super_admin != null && message.hasOwnProperty("is_super_admin"))
+                if (typeof message.is_super_admin !== "boolean")
+                    return "is_super_admin: boolean expected";
             return null;
         };
 
@@ -1723,6 +1741,8 @@ export const dashboard = $root.dashboard = (() => {
                     else if (typeof object.perm_ids[i] === "object")
                         message.perm_ids[i] = new $util.LongBits(object.perm_ids[i].low >>> 0, object.perm_ids[i].high >>> 0).toNumber(true);
             }
+            if (object.is_super_admin != null)
+                message.is_super_admin = Boolean(object.is_super_admin);
             return message;
         };
 
@@ -1741,6 +1761,8 @@ export const dashboard = $root.dashboard = (() => {
             let object = {};
             if (options.arrays || options.defaults)
                 object.perm_ids = [];
+            if (options.defaults)
+                object.is_super_admin = false;
             if (message.perm_ids && message.perm_ids.length) {
                 object.perm_ids = [];
                 for (let j = 0; j < message.perm_ids.length; ++j)
@@ -1749,6 +1771,8 @@ export const dashboard = $root.dashboard = (() => {
                     else
                         object.perm_ids[j] = options.longs === String ? $util.Long.prototype.toString.call(message.perm_ids[j]) : options.longs === Number ? new $util.LongBits(message.perm_ids[j].low >>> 0, message.perm_ids[j].high >>> 0).toNumber(true) : message.perm_ids[j];
             }
+            if (message.is_super_admin != null && message.hasOwnProperty("is_super_admin"))
+                object.is_super_admin = message.is_super_admin;
             return object;
         };
 

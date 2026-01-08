@@ -9,7 +9,8 @@ import {
 import { defineEmits, ref, watchEffect } from 'vue'
 import type { BaseSideMenuItem } from '~/types/emit'
 import { useRoute } from 'vue-router'
-import { MenuInstance, SubMenuInstance } from 'element-plus';
+import { MenuInstance } from 'element-plus';
+import { isMenuPathAccessable } from '~/composables/auth';
 
 const emit = defineEmits<{
   (e: 'base-side-menu-item-click', data: BaseSideMenuItem): void
@@ -34,11 +35,11 @@ interface Menu {
   index: string
 }
 
-const configMangementMenus:Menu[] = [
+const configMangementMenus: Menu[] = [
   { title: '通用配置', index: '/config/general' },
 ]
 
-const rbacMenus:Menu[] = [
+const rbacMenus: Menu[] = [
   { title: '角色管理', index: '/rbac/role' },
   { title: '菜单管理', index: '/rbac/menu' },
   { title: '用户管理', index: '/rbac/user' },
@@ -69,14 +70,8 @@ watchEffect(() => {
 </script>
 
 <template>
-  <el-menu
-    router
-    default-active="1"
-    class="el-menu-vertical-demo"
-    @open="handleOpen"
-    @close="handleClose"
-    ref="menuRef"
-  >
+  <el-menu router default-active="1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
+    ref="menuRef">
     <el-sub-menu index="/config">
       <template #title>
         <el-icon>
@@ -85,9 +80,12 @@ watchEffect(() => {
         <span>配置管理</span>
       </template>
       <el-menu-item-group>
-        <el-menu-item v-for="item in configMangementMenus" :index="item.index" @click="clickMenuItem(item.index, item.title)">
-          {{ item.title }}
-        </el-menu-item>
+        <template v-for="item in configMangementMenus">
+          <el-menu-item :index="item.index" v-if="isMenuPathAccessable(item.index)"
+            @click="clickMenuItem(item.index, item.title)">
+            {{ item.title }}
+          </el-menu-item>
+        </template>
       </el-menu-item-group>
     </el-sub-menu>
 
@@ -99,9 +97,11 @@ watchEffect(() => {
         <span>权限管理</span>
       </template>
       <el-menu-item-group>
-        <el-menu-item v-for="item in rbacMenus" :index="item.index" @click="clickMenuItem(item.index, item.title)">
-          {{ item.title }}
-        </el-menu-item>
+        <template v-for="item in rbacMenus">
+          <el-menu-item v-if="isMenuPathAccessable(item.index)" :index="item.index" @click="clickMenuItem(item.index, item.title)">
+            {{ item.title }}
+          </el-menu-item>
+        </template>
       </el-menu-item-group>
     </el-sub-menu>
   </el-menu>

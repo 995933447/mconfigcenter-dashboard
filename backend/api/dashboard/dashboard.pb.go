@@ -252,6 +252,7 @@ func (*ListUserPermReq) Descriptor() ([]byte, []int) {
 type ListUserPermResp struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	PermIds       []uint64               `protobuf:"varint,1,rep,packed,name=perm_ids,json=permIds,proto3" json:"perm_ids,omitempty"`
+	IsSuperAdmin  bool                   `protobuf:"varint,2,opt,name=is_super_admin,json=isSuperAdmin,proto3" json:"is_super_admin,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -291,6 +292,13 @@ func (x *ListUserPermResp) GetPermIds() []uint64 {
 		return x.PermIds
 	}
 	return nil
+}
+
+func (x *ListUserPermResp) GetIsSuperAdmin() bool {
+	if x != nil {
+		return x.IsSuperAdmin
+	}
+	return false
 }
 
 type SetConfSchemaReq struct {
@@ -3207,9 +3215,10 @@ const file_dashboard_proto_rawDesc = "" +
 	"\n" +
 	"coll_names\x18\x02 \x03(\tR\tcollNames\"\x1d\n" +
 	"\x1bSyncGeneralConfigsToAppResp\"\x11\n" +
-	"\x0fListUserPermReq\"-\n" +
+	"\x0fListUserPermReq\"S\n" +
 	"\x10ListUserPermResp\x12\x19\n" +
-	"\bperm_ids\x18\x01 \x03(\x04R\apermIds\"P\n" +
+	"\bperm_ids\x18\x01 \x03(\x04R\apermIds\x12$\n" +
+	"\x0eis_super_admin\x18\x02 \x01(\bR\fisSuperAdmin\"P\n" +
 	"\x10SetConfSchemaReq\x12<\n" +
 	"\rconfig_schema\x18\x01 \x01(\v2\x17.dashboard.ConfigSchemaR\fconfigSchema\"\x13\n" +
 	"\x11SetConfSchemaResp\"\x13\n" +

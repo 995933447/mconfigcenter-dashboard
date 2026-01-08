@@ -1,10 +1,13 @@
+import { useRoute } from 'vue-router'
+
 export enum localStorageKeyName {
     UserAuthState = 'user_auth_state',
 }
 
 export class UserAuthState {
-    token: string| undefined;
-    expireAt: number | undefined; // unix timestamp in seconds
+    token: string;
+    expireAt: number; // unix timestamp in seconds
+    accessableMenuPaths: string[]|undefined;
     
     constructor(token: string, expireAt: number) {
         this.token = token;
@@ -14,6 +17,13 @@ export class UserAuthState {
     isExpired(): boolean {
         const timestampSec = Math.floor(Date.now() / 1000)
         if (this.expireAt && this.expireAt > timestampSec) { 
+            return false
+        }
+        return true
+    }
+
+    isMenuPathAccessable(menuPath: string): boolean {
+        if (this.accessableMenuPaths?.includes(menuPath)) {
             return false
         }
         return true
@@ -66,4 +76,17 @@ export function getValidAuthState(): UserAuthState | null {
         return null
     }
     return authState
+}
+
+export function isMenuPathAccessable(menuPath: string): boolean {
+    const authState = getValidAuthState()
+    if (!authState) {
+        return false
+    }
+    return authState.isMenuPathAccessable(menuPath) 
+}
+
+export function isCurrentPageButtonAccessable(buttonAnchor: string): boolean {
+    const path = useRoute().path+"#"+buttonAnchor
+    return isMenuPathAccessable(path)
 }
