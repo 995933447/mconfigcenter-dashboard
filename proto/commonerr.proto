@@ -10,4 +10,5 @@ enum ErrCode {
   ErrCodeNoAuth = 20001 [(easymicro_ext.err_message) = {message: "请重新登录"}];
   ErrCodeInvalidParam = 20002 [(easymicro_ext.err_message) = {message: "参数错误"}];
   ErrCodeInternal = 20003 [(easymicro_ext.err_message) = {message: "系统错误"}];
+  ErrCodeForbidden = 20004 [(easymicro_ext.err_message) = {message: "接口访问权限不足"}];
 }

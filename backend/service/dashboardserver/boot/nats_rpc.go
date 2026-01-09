@@ -33,13 +33,6 @@ func RegisterNatsRPCRoutes() error {
 		return err
 	}
 
-	err = nats.HandleLikeGRPC(dashboard.EasymicroGRPCPbServiceNameDashboard, "DisabledRBAC", handler.DashboardHandler.DisabledRBAC, func() *dashboard.DisabledRBACReq {
-		return &dashboard.DisabledRBACReq{}
-	})
-	if err != nil {
-		return err
-	}
-
 	err = nats.HandleLikeGRPC(dashboard.EasymicroGRPCPbServiceNameDashboard, "AuthUser", handler.DashboardHandler.AuthUser, func() *dashboard.AuthUserReq {
 		return &dashboard.AuthUserReq{}
 	})

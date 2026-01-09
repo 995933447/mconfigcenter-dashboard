@@ -36,12 +36,7 @@ service Dashboard {
   rpc GetUserInfo(GetUserInfoReq) returns (GetUserInfoResp) {
     option(httpext.http_rule) = {
       method: "GET"
-    };
-  }
-
-  rpc DisabledRBAC(DisabledRBACReq) returns (DisabledRBACResp) {
-    option(httpext.http_rule) = {
-      method: "GET"
+      skip_perm_check: true
     };
   }
 
@@ -50,12 +45,14 @@ service Dashboard {
   rpc ChangeUserPassword(ChangeUserPasswordReq) returns (ChangeUserPasswordResp) {
     option(httpext.http_rule) = {
       method: "POST"
+      skip_perm_check: true
     };
   };
 
   rpc ListMenuConf(ListMenuConfReq) returns (ListMenuConfResp) {
     option(httpext.http_rule) = {
       method: "GET"
+      skip_perm_check: true
     };
   }
 
@@ -164,6 +161,7 @@ service Dashboard {
   rpc ListUserPerm(ListUserPermReq) returns (ListUserPermResp) {
     option (httpext.http_rule) = {
       method: "POST"
+      skip_perm_check: true
     };
   }
 

@@ -24,9 +24,10 @@ const (
 
 type HttpRule struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Method        string                 `protobuf:"bytes,1,opt,name=method,proto3" json:"method,omitempty"`                // GET, POST, etc.
-	Path          string                 `protobuf:"bytes,2,opt,name=path,proto3" json:"path,omitempty"`                    // URL path
-	NoAuth        bool                   `protobuf:"varint,3,opt,name=no_auth,json=noAuth,proto3" json:"no_auth,omitempty"` // 是否跳过认证
+	Method        string                 `protobuf:"bytes,1,opt,name=method,proto3" json:"method,omitempty"`                                       // GET, POST, etc.
+	Path          string                 `protobuf:"bytes,2,opt,name=path,proto3" json:"path,omitempty"`                                           // URL path
+	NoAuth        bool                   `protobuf:"varint,3,opt,name=no_auth,json=noAuth,proto3" json:"no_auth,omitempty"`                        // 是否跳过认证
+	SkipPermCheck bool                   `protobuf:"varint,4,opt,name=skip_perm_check,json=skipPermCheck,proto3" json:"skip_perm_check,omitempty"` // 是否跳过访问权限检查
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -82,6 +83,13 @@ func (x *HttpRule) GetNoAuth() bool {
 	return false
 }
 
+func (x *HttpRule) GetSkipPermCheck() bool {
+	if x != nil {
+		return x.SkipPermCheck
+	}
+	return false
+}
+
 var file_httpext_proto_extTypes = []protoimpl.ExtensionInfo{
 	{
 		ExtendedType:  (*descriptorpb.MethodOptions)(nil),
@@ -103,11 +111,12 @@ var File_httpext_proto protoreflect.FileDescriptor
 
 const file_httpext_proto_rawDesc = "" +
 	"\n" +
-	"\rhttpext.proto\x12\ahttpext\x1a google/protobuf/descriptor.proto\"O\n" +
+	"\rhttpext.proto\x12\ahttpext\x1a google/protobuf/descriptor.proto\"w\n" +
 	"\bHttpRule\x12\x16\n" +
 	"\x06method\x18\x01 \x01(\tR\x06method\x12\x12\n" +
 	"\x04path\x18\x02 \x01(\tR\x04path\x12\x17\n" +
-	"\ano_auth\x18\x03 \x01(\bR\x06noAuth:P\n" +
+	"\ano_auth\x18\x03 \x01(\bR\x06noAuth\x12&\n" +
+	"\x0fskip_perm_check\x18\x04 \x01(\bR\rskipPermCheck:P\n" +
 	"\thttp_rule\x12\x1e.google.protobuf.MethodOptions\x18\xb9\x8e\x03 \x01(\v2\x11.httpext.HttpRuleR\bhttpRuleBBZ@github.com/995933447/mconfigcenter-dashboard/backend/api/httpextb\x06proto3"
 
 var (

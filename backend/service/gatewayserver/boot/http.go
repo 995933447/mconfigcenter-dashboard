@@ -18,8 +18,10 @@ import (
 	"github.com/995933447/mconfigcenter-dashboard/backend/api/commonerr"
 	"github.com/995933447/mconfigcenter-dashboard/backend/api/dashboard"
 	"github.com/995933447/mconfigcenter-dashboard/backend/api/httpext"
+	"github.com/995933447/mconfigcenter-dashboard/backend/common/rbacx"
 	"github.com/995933447/mconfigcenter-dashboard/backend/common/reqsess"
 	"github.com/995933447/mconfigcenter-dashboard/backend/service/gatewayserver/config"
+	"github.com/995933447/rbac/rbac"
 	"github.com/995933447/runtimeutil"
 	"github.com/jhump/protoreflect/desc"
 	jsoniter "github.com/json-iterator/go"
@@ -111,11 +113,11 @@ func ServerHttp() {
 			}
 
 			token := ctx.Request.Header.Peek("Token")
-			if token == nil {
-				if !httpOpt.NoAuth {
+			if !httpOpt.NoAuth {
+				if token == nil {
 					return nil, nil, nil, easymicrogrpc.NewRPCErr(commonerr.ErrCode_ErrCodeNoAuth)
 				}
-			} else {
+
 				authResp, err := dashboard.DashboardGRPC().AuthUser(ctx, &dashboard.AuthUserReq{
 					Token: string(token),
 				})
@@ -126,6 +128,22 @@ func ServerHttp() {
 					}
 
 					return nil, nil, nil, err
+				}
+
+				if !httpOpt.SkipPermCheck {
+					checkPermResp, err := rbac.RBACGRPC().CheckPerm(ctx, &rbac.CheckPermReq{
+						UserId:          authResp.UserId,
+						Scope:           rbacx.Scope,
+						ResourceService: string(ctx.Path()),
+					})
+					if err != nil {
+						fastlog.Errorf("rbac.RBACGRPC().CheckPerm err: %v", err)
+						return nil, nil, nil, err
+					}
+
+					if checkPermResp.Rejected {
+						return nil, nil, nil, easymicrogrpc.NewRPCErr(commonerr.ErrCode_ErrCodeForbidden)
+					}
 				}
 
 				headers[reqsess.CtxKeyUserId] = []string{
@@ -163,6 +181,8 @@ func ServerHttp() {
 
 			if traces := res.RespMetadata[easymicrogrpc.CtxKeyTrace]; len(traces) > 0 {
 				gatewayResp.Trace = traces[0]
+			} else {
+				gatewayResp.Trace = runtimeutil.GetTrace()
 			}
 
 			if res.Err != nil {

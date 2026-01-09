@@ -3405,22 +3405,19 @@ const file_dashboard_proto_rawDesc = "" +
 	"UserStatus\x12\x11\n" +
 	"\rUserStatusNil\x10\x00\x12\x14\n" +
 	"\x10UserStatusNormal\x10\x01\x12\x14\n" +
-	"\x10UserStatusFrozen\x10\x022\xd0\x11\n" +
+	"\x10UserStatusFrozen\x10\x022\x84\x11\n" +
 	"\tDashboard\x12U\n" +
 	"\fGetRSAPubKey\x12\x1a.dashboard.GetRSAPubKeyReq\x1a\x1b.dashboard.GetRSAPubKeyResp\"\f\xca\xf3\x18\b\n" +
 	"\x04POST\x18\x01\x12@\n" +
 	"\x05Login\x12\x13.dashboard.LoginReq\x1a\x14.dashboard.LoginResp\"\f\xca\xf3\x18\b\n" +
-	"\x04POST\x18\x01\x12O\n" +
-	"\vGetUserInfo\x12\x19.dashboard.GetUserInfoReq\x1a\x1a.dashboard.GetUserInfoResp\"\t\xca\xf3\x18\x05\n" +
-	"\x03GET\x12R\n" +
-	"\fDisabledRBAC\x12\x1a.dashboard.DisabledRBACReq\x1a\x1b.dashboard.DisabledRBACResp\"\t\xca\xf3\x18\x05\n" +
-	"\x03GET\x12;\n" +
-	"\bAuthUser\x12\x16.dashboard.AuthUserReq\x1a\x17.dashboard.AuthUserResp\x12e\n" +
-	"\x12ChangeUserPassword\x12 .dashboard.ChangeUserPasswordReq\x1a!.dashboard.ChangeUserPasswordResp\"\n" +
-	"\xca\xf3\x18\x06\n" +
-	"\x04POST\x12R\n" +
-	"\fListMenuConf\x12\x1a.dashboard.ListMenuConfReq\x1a\x1b.dashboard.ListMenuConfResp\"\t\xca\xf3\x18\x05\n" +
-	"\x03GET\x12P\n" +
+	"\x04POST\x18\x01\x12Q\n" +
+	"\vGetUserInfo\x12\x19.dashboard.GetUserInfoReq\x1a\x1a.dashboard.GetUserInfoResp\"\v\xca\xf3\x18\a\n" +
+	"\x03GET \x01\x12;\n" +
+	"\bAuthUser\x12\x16.dashboard.AuthUserReq\x1a\x17.dashboard.AuthUserResp\x12g\n" +
+	"\x12ChangeUserPassword\x12 .dashboard.ChangeUserPasswordReq\x1a!.dashboard.ChangeUserPasswordResp\"\f\xca\xf3\x18\b\n" +
+	"\x04POST \x01\x12T\n" +
+	"\fListMenuConf\x12\x1a.dashboard.ListMenuConfReq\x1a\x1b.dashboard.ListMenuConfResp\"\v\xca\xf3\x18\a\n" +
+	"\x03GET \x01\x12P\n" +
 	"\vAddMenuConf\x12\x19.dashboard.AddMenuConfReq\x1a\x1a.dashboard.AddMenuConfResp\"\n" +
 	"\xca\xf3\x18\x06\n" +
 	"\x04POST\x12Y\n" +
@@ -3469,10 +3466,9 @@ const file_dashboard_proto_rawDesc = "" +
 	"\x04POST\x12b\n" +
 	"\x11DeleteGeneralConf\x12\x1f.dashboard.DeleteGeneralConfReq\x1a .dashboard.DeleteGeneralConfResp\"\n" +
 	"\xca\xf3\x18\x06\n" +
-	"\x04POST\x12S\n" +
-	"\fListUserPerm\x12\x1a.dashboard.ListUserPermReq\x1a\x1b.dashboard.ListUserPermResp\"\n" +
-	"\xca\xf3\x18\x06\n" +
-	"\x04POST\x12t\n" +
+	"\x04POST\x12U\n" +
+	"\fListUserPerm\x12\x1a.dashboard.ListUserPermReq\x1a\x1b.dashboard.ListUserPermResp\"\f\xca\xf3\x18\b\n" +
+	"\x04POST \x01\x12t\n" +
 	"\x17SyncGeneralConfigsToApp\x12%.dashboard.SyncGeneralConfigsToAppReq\x1a&.dashboard.SyncGeneralConfigsToAppResp\"\n" +
 	"\xca\xf3\x18\x06\n" +
 	"\x04POSTB\x96\x01\x8a\x9d N\n" +
@@ -3571,57 +3567,55 @@ var file_dashboard_proto_depIdxs = []int32{
 	52, // 11: dashboard.Dashboard.GetRSAPubKey:input_type -> dashboard.GetRSAPubKeyReq
 	54, // 12: dashboard.Dashboard.Login:input_type -> dashboard.LoginReq
 	50, // 13: dashboard.Dashboard.GetUserInfo:input_type -> dashboard.GetUserInfoReq
-	48, // 14: dashboard.Dashboard.DisabledRBAC:input_type -> dashboard.DisabledRBACReq
-	46, // 15: dashboard.Dashboard.AuthUser:input_type -> dashboard.AuthUserReq
-	44, // 16: dashboard.Dashboard.ChangeUserPassword:input_type -> dashboard.ChangeUserPasswordReq
-	42, // 17: dashboard.Dashboard.ListMenuConf:input_type -> dashboard.ListMenuConfReq
-	40, // 18: dashboard.Dashboard.AddMenuConf:input_type -> dashboard.AddMenuConfReq
-	38, // 19: dashboard.Dashboard.UpdateMenuConf:input_type -> dashboard.UpdateMenuConfReq
-	36, // 20: dashboard.Dashboard.DeleteMenuConf:input_type -> dashboard.DeleteMenuConfReq
-	33, // 21: dashboard.Dashboard.ListRoleConf:input_type -> dashboard.ListRoleConfReq
-	29, // 22: dashboard.Dashboard.AddRoleConf:input_type -> dashboard.AddRoleConfReq
-	31, // 23: dashboard.Dashboard.UpdateRoleConf:input_type -> dashboard.UpdateRoleConfReq
-	27, // 24: dashboard.Dashboard.DeleteRoleConf:input_type -> dashboard.DeleteRoleConfReq
-	25, // 25: dashboard.Dashboard.ListUser:input_type -> dashboard.ListUserReq
-	23, // 26: dashboard.Dashboard.AddUser:input_type -> dashboard.AddUserReq
-	21, // 27: dashboard.Dashboard.UpdateUser:input_type -> dashboard.UpdateUserReq
-	19, // 28: dashboard.Dashboard.DeleteUser:input_type -> dashboard.DeleteUserReq
-	17, // 29: dashboard.Dashboard.ListGeneralConf:input_type -> dashboard.ListGeneralConfReq
-	8,  // 30: dashboard.Dashboard.ListConfSchema:input_type -> dashboard.ListConfSchemaReq
-	6,  // 31: dashboard.Dashboard.SetConfigSchema:input_type -> dashboard.SetConfSchemaReq
-	15, // 32: dashboard.Dashboard.AddGeneralConf:input_type -> dashboard.AddGeneralConfReq
-	13, // 33: dashboard.Dashboard.UpdateGeneralConf:input_type -> dashboard.UpdateGeneralConfReq
-	11, // 34: dashboard.Dashboard.DeleteGeneralConf:input_type -> dashboard.DeleteGeneralConfReq
-	4,  // 35: dashboard.Dashboard.ListUserPerm:input_type -> dashboard.ListUserPermReq
-	2,  // 36: dashboard.Dashboard.SyncGeneralConfigsToApp:input_type -> dashboard.SyncGeneralConfigsToAppReq
-	53, // 37: dashboard.Dashboard.GetRSAPubKey:output_type -> dashboard.GetRSAPubKeyResp
-	55, // 38: dashboard.Dashboard.Login:output_type -> dashboard.LoginResp
-	51, // 39: dashboard.Dashboard.GetUserInfo:output_type -> dashboard.GetUserInfoResp
-	49, // 40: dashboard.Dashboard.DisabledRBAC:output_type -> dashboard.DisabledRBACResp
-	47, // 41: dashboard.Dashboard.AuthUser:output_type -> dashboard.AuthUserResp
-	45, // 42: dashboard.Dashboard.ChangeUserPassword:output_type -> dashboard.ChangeUserPasswordResp
-	43, // 43: dashboard.Dashboard.ListMenuConf:output_type -> dashboard.ListMenuConfResp
-	41, // 44: dashboard.Dashboard.AddMenuConf:output_type -> dashboard.AddMenuConfResp
-	39, // 45: dashboard.Dashboard.UpdateMenuConf:output_type -> dashboard.UpdateMenuConfResp
-	37, // 46: dashboard.Dashboard.DeleteMenuConf:output_type -> dashboard.DeleteMenuConfResp
-	34, // 47: dashboard.Dashboard.ListRoleConf:output_type -> dashboard.ListRoleConfResp
-	30, // 48: dashboard.Dashboard.AddRoleConf:output_type -> dashboard.AddRoleConfResp
-	32, // 49: dashboard.Dashboard.UpdateRoleConf:output_type -> dashboard.UpdateRoleConfResp
-	28, // 50: dashboard.Dashboard.DeleteRoleConf:output_type -> dashboard.DeleteRoleConfResp
-	26, // 51: dashboard.Dashboard.ListUser:output_type -> dashboard.ListUserResp
-	24, // 52: dashboard.Dashboard.AddUser:output_type -> dashboard.AddUserResp
-	22, // 53: dashboard.Dashboard.UpdateUser:output_type -> dashboard.UpdateUserResp
-	20, // 54: dashboard.Dashboard.DeleteUser:output_type -> dashboard.DeleteUserResp
-	18, // 55: dashboard.Dashboard.ListGeneralConf:output_type -> dashboard.ListGeneralConfResp
-	10, // 56: dashboard.Dashboard.ListConfSchema:output_type -> dashboard.ListConfSchemaResp
-	7,  // 57: dashboard.Dashboard.SetConfigSchema:output_type -> dashboard.SetConfSchemaResp
-	16, // 58: dashboard.Dashboard.AddGeneralConf:output_type -> dashboard.AddGeneralConfResp
-	14, // 59: dashboard.Dashboard.UpdateGeneralConf:output_type -> dashboard.UpdateGeneralConfResp
-	12, // 60: dashboard.Dashboard.DeleteGeneralConf:output_type -> dashboard.DeleteGeneralConfResp
-	5,  // 61: dashboard.Dashboard.ListUserPerm:output_type -> dashboard.ListUserPermResp
-	3,  // 62: dashboard.Dashboard.SyncGeneralConfigsToApp:output_type -> dashboard.SyncGeneralConfigsToAppResp
-	37, // [37:63] is the sub-list for method output_type
-	11, // [11:37] is the sub-list for method input_type
+	46, // 14: dashboard.Dashboard.AuthUser:input_type -> dashboard.AuthUserReq
+	44, // 15: dashboard.Dashboard.ChangeUserPassword:input_type -> dashboard.ChangeUserPasswordReq
+	42, // 16: dashboard.Dashboard.ListMenuConf:input_type -> dashboard.ListMenuConfReq
+	40, // 17: dashboard.Dashboard.AddMenuConf:input_type -> dashboard.AddMenuConfReq
+	38, // 18: dashboard.Dashboard.UpdateMenuConf:input_type -> dashboard.UpdateMenuConfReq
+	36, // 19: dashboard.Dashboard.DeleteMenuConf:input_type -> dashboard.DeleteMenuConfReq
+	33, // 20: dashboard.Dashboard.ListRoleConf:input_type -> dashboard.ListRoleConfReq
+	29, // 21: dashboard.Dashboard.AddRoleConf:input_type -> dashboard.AddRoleConfReq
+	31, // 22: dashboard.Dashboard.UpdateRoleConf:input_type -> dashboard.UpdateRoleConfReq
+	27, // 23: dashboard.Dashboard.DeleteRoleConf:input_type -> dashboard.DeleteRoleConfReq
+	25, // 24: dashboard.Dashboard.ListUser:input_type -> dashboard.ListUserReq
+	23, // 25: dashboard.Dashboard.AddUser:input_type -> dashboard.AddUserReq
+	21, // 26: dashboard.Dashboard.UpdateUser:input_type -> dashboard.UpdateUserReq
+	19, // 27: dashboard.Dashboard.DeleteUser:input_type -> dashboard.DeleteUserReq
+	17, // 28: dashboard.Dashboard.ListGeneralConf:input_type -> dashboard.ListGeneralConfReq
+	8,  // 29: dashboard.Dashboard.ListConfSchema:input_type -> dashboard.ListConfSchemaReq
+	6,  // 30: dashboard.Dashboard.SetConfigSchema:input_type -> dashboard.SetConfSchemaReq
+	15, // 31: dashboard.Dashboard.AddGeneralConf:input_type -> dashboard.AddGeneralConfReq
+	13, // 32: dashboard.Dashboard.UpdateGeneralConf:input_type -> dashboard.UpdateGeneralConfReq
+	11, // 33: dashboard.Dashboard.DeleteGeneralConf:input_type -> dashboard.DeleteGeneralConfReq
+	4,  // 34: dashboard.Dashboard.ListUserPerm:input_type -> dashboard.ListUserPermReq
+	2,  // 35: dashboard.Dashboard.SyncGeneralConfigsToApp:input_type -> dashboard.SyncGeneralConfigsToAppReq
+	53, // 36: dashboard.Dashboard.GetRSAPubKey:output_type -> dashboard.GetRSAPubKeyResp
+	55, // 37: dashboard.Dashboard.Login:output_type -> dashboard.LoginResp
+	51, // 38: dashboard.Dashboard.GetUserInfo:output_type -> dashboard.GetUserInfoResp
+	47, // 39: dashboard.Dashboard.AuthUser:output_type -> dashboard.AuthUserResp
+	45, // 40: dashboard.Dashboard.ChangeUserPassword:output_type -> dashboard.ChangeUserPasswordResp
+	43, // 41: dashboard.Dashboard.ListMenuConf:output_type -> dashboard.ListMenuConfResp
+	41, // 42: dashboard.Dashboard.AddMenuConf:output_type -> dashboard.AddMenuConfResp
+	39, // 43: dashboard.Dashboard.UpdateMenuConf:output_type -> dashboard.UpdateMenuConfResp
+	37, // 44: dashboard.Dashboard.DeleteMenuConf:output_type -> dashboard.DeleteMenuConfResp
+	34, // 45: dashboard.Dashboard.ListRoleConf:output_type -> dashboard.ListRoleConfResp
+	30, // 46: dashboard.Dashboard.AddRoleConf:output_type -> dashboard.AddRoleConfResp
+	32, // 47: dashboard.Dashboard.UpdateRoleConf:output_type -> dashboard.UpdateRoleConfResp
+	28, // 48: dashboard.Dashboard.DeleteRoleConf:output_type -> dashboard.DeleteRoleConfResp
+	26, // 49: dashboard.Dashboard.ListUser:output_type -> dashboard.ListUserResp
+	24, // 50: dashboard.Dashboard.AddUser:output_type -> dashboard.AddUserResp
+	22, // 51: dashboard.Dashboard.UpdateUser:output_type -> dashboard.UpdateUserResp
+	20, // 52: dashboard.Dashboard.DeleteUser:output_type -> dashboard.DeleteUserResp
+	18, // 53: dashboard.Dashboard.ListGeneralConf:output_type -> dashboard.ListGeneralConfResp
+	10, // 54: dashboard.Dashboard.ListConfSchema:output_type -> dashboard.ListConfSchemaResp
+	7,  // 55: dashboard.Dashboard.SetConfigSchema:output_type -> dashboard.SetConfSchemaResp
+	16, // 56: dashboard.Dashboard.AddGeneralConf:output_type -> dashboard.AddGeneralConfResp
+	14, // 57: dashboard.Dashboard.UpdateGeneralConf:output_type -> dashboard.UpdateGeneralConfResp
+	12, // 58: dashboard.Dashboard.DeleteGeneralConf:output_type -> dashboard.DeleteGeneralConfResp
+	5,  // 59: dashboard.Dashboard.ListUserPerm:output_type -> dashboard.ListUserPermResp
+	3,  // 60: dashboard.Dashboard.SyncGeneralConfigsToApp:output_type -> dashboard.SyncGeneralConfigsToAppResp
+	36, // [36:61] is the sub-list for method output_type
+	11, // [11:36] is the sub-list for method input_type
 	11, // [11:11] is the sub-list for extension type_name
 	11, // [11:11] is the sub-list for extension extendee
 	0,  // [0:11] is the sub-list for field type_name

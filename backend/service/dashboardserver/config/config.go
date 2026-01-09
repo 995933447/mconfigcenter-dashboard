@@ -11,7 +11,6 @@ const ServerConfigFileName = "dashboardserver"
 type ServerConfig struct {
 	SamplePProfTimeLongSec int    `mapstructure:"sample_pprof_time_long_sec"`
 	Env                    string `mapstructure:"env"`
-	DisabledRBAC           bool   `mapstructure:"disabled_rbac"`
 }
 
 func (c *ServerConfig) IsDev() bool {

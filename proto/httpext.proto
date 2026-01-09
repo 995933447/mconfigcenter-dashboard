@@ -13,4 +13,5 @@ message HttpRule {
   string method = 1; // GET, POST, etc.
   string path = 2;   // URL path
   bool no_auth = 3; // 是否跳过认证
+  bool skip_perm_check = 4; // 是否跳过访问权限检查
 }

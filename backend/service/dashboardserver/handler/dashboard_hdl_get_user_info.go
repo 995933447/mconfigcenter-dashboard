@@ -10,7 +10,6 @@ import (
 	"github.com/995933447/mconfigcenter-dashboard/backend/api/dashboard"
 	"github.com/995933447/mconfigcenter-dashboard/backend/common/rbacx"
 	"github.com/995933447/mconfigcenter-dashboard/backend/common/reqsess"
-	"github.com/995933447/mconfigcenter-dashboard/backend/service/dashboardserver/config"
 	"github.com/995933447/rbac/rbac"
 	"go.mongodb.org/mongo-driver/mongo"
 )
@@ -37,15 +36,6 @@ func (s *Dashboard) GetUserInfo(ctx context.Context, req *dashboard.GetUserInfoR
 	resp.UserId = user.UserId
 	resp.Username = user.Username
 	resp.LastLoginAt = user.LastLoginAt
-
-	var disabledRBAC bool
-	config.SafeReadServerConfig(func(c *config.ServerConfig) {
-		disabledRBAC = c.DisabledRBAC
-	})
-
-	if disabledRBAC {
-		return &resp, nil
-	}
 
 	listUserRoleResp, err := rbac.RBACGRPC().ListUserRole(ctx, &rbac.ListUserRoleReq{
 		UserIds: []uint64{user.UserId},

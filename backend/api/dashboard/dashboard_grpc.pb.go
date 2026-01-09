@@ -22,7 +22,6 @@ const (
 	Dashboard_GetRSAPubKey_FullMethodName            = "/dashboard.Dashboard/GetRSAPubKey"
 	Dashboard_Login_FullMethodName                   = "/dashboard.Dashboard/Login"
 	Dashboard_GetUserInfo_FullMethodName             = "/dashboard.Dashboard/GetUserInfo"
-	Dashboard_DisabledRBAC_FullMethodName            = "/dashboard.Dashboard/DisabledRBAC"
 	Dashboard_AuthUser_FullMethodName                = "/dashboard.Dashboard/AuthUser"
 	Dashboard_ChangeUserPassword_FullMethodName      = "/dashboard.Dashboard/ChangeUserPassword"
 	Dashboard_ListMenuConf_FullMethodName            = "/dashboard.Dashboard/ListMenuConf"
@@ -54,7 +53,6 @@ type DashboardClient interface {
 	GetRSAPubKey(ctx context.Context, in *GetRSAPubKeyReq, opts ...grpc.CallOption) (*GetRSAPubKeyResp, error)
 	Login(ctx context.Context, in *LoginReq, opts ...grpc.CallOption) (*LoginResp, error)
 	GetUserInfo(ctx context.Context, in *GetUserInfoReq, opts ...grpc.CallOption) (*GetUserInfoResp, error)
-	DisabledRBAC(ctx context.Context, in *DisabledRBACReq, opts ...grpc.CallOption) (*DisabledRBACResp, error)
 	AuthUser(ctx context.Context, in *AuthUserReq, opts ...grpc.CallOption) (*AuthUserResp, error)
 	ChangeUserPassword(ctx context.Context, in *ChangeUserPasswordReq, opts ...grpc.CallOption) (*ChangeUserPasswordResp, error)
 	ListMenuConf(ctx context.Context, in *ListMenuConfReq, opts ...grpc.CallOption) (*ListMenuConfResp, error)
@@ -111,16 +109,6 @@ func (c *dashboardClient) GetUserInfo(ctx context.Context, in *GetUserInfoReq, o
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetUserInfoResp)
 	err := c.cc.Invoke(ctx, Dashboard_GetUserInfo_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *dashboardClient) DisabledRBAC(ctx context.Context, in *DisabledRBACReq, opts ...grpc.CallOption) (*DisabledRBACResp, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DisabledRBACResp)
-	err := c.cc.Invoke(ctx, Dashboard_DisabledRBAC_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -354,7 +342,6 @@ type DashboardServer interface {
 	GetRSAPubKey(context.Context, *GetRSAPubKeyReq) (*GetRSAPubKeyResp, error)
 	Login(context.Context, *LoginReq) (*LoginResp, error)
 	GetUserInfo(context.Context, *GetUserInfoReq) (*GetUserInfoResp, error)
-	DisabledRBAC(context.Context, *DisabledRBACReq) (*DisabledRBACResp, error)
 	AuthUser(context.Context, *AuthUserReq) (*AuthUserResp, error)
 	ChangeUserPassword(context.Context, *ChangeUserPasswordReq) (*ChangeUserPasswordResp, error)
 	ListMenuConf(context.Context, *ListMenuConfReq) (*ListMenuConfResp, error)
@@ -395,9 +382,6 @@ func (UnimplementedDashboardServer) Login(context.Context, *LoginReq) (*LoginRes
 }
 func (UnimplementedDashboardServer) GetUserInfo(context.Context, *GetUserInfoReq) (*GetUserInfoResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUserInfo not implemented")
-}
-func (UnimplementedDashboardServer) DisabledRBAC(context.Context, *DisabledRBACReq) (*DisabledRBACResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DisabledRBAC not implemented")
 }
 func (UnimplementedDashboardServer) AuthUser(context.Context, *AuthUserReq) (*AuthUserResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AuthUser not implemented")
@@ -536,24 +520,6 @@ func _Dashboard_GetUserInfo_Handler(srv interface{}, ctx context.Context, dec fu
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(DashboardServer).GetUserInfo(ctx, req.(*GetUserInfoReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Dashboard_DisabledRBAC_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DisabledRBACReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(DashboardServer).DisabledRBAC(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Dashboard_DisabledRBAC_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DashboardServer).DisabledRBAC(ctx, req.(*DisabledRBACReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -972,10 +938,6 @@ var Dashboard_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetUserInfo",
 			Handler:    _Dashboard_GetUserInfo_Handler,
-		},
-		{
-			MethodName: "DisabledRBAC",
-			Handler:    _Dashboard_DisabledRBAC_Handler,
 		},
 		{
 			MethodName: "AuthUser",

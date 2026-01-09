@@ -89,14 +89,6 @@ func (s *Dashboard) GetUserInfo(ctx context.Context, in *GetUserInfoReq, opts ..
 	return s.c.GetUserInfo(ctx, in, opts...)
 }
 
-func (s *Dashboard) DisabledRBAC(ctx context.Context, in *DisabledRBACReq, opts ...grpc.CallOption) (*DisabledRBACResp, error) {
-	if err := s.prepareConn(); err != nil {
-		return nil, err
-	}
-
-	return s.c.DisabledRBAC(ctx, in, opts...)
-}
-
 func (s *Dashboard) AuthUser(ctx context.Context, in *AuthUserReq, opts ...grpc.CallOption) (*AuthUserResp, error) {
 	if err := s.prepareConn(); err != nil {
 		return nil, err

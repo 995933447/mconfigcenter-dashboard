@@ -12,7 +12,6 @@ import (
 	"github.com/995933447/mconfigcenter-dashboard/backend/api/dashboard"
 	"github.com/995933447/mconfigcenter-dashboard/backend/common/rbacx"
 	"github.com/995933447/mconfigcenter-dashboard/backend/service/dashboardserver/cache"
-	"github.com/995933447/mconfigcenter-dashboard/backend/service/dashboardserver/config"
 	"github.com/995933447/mconfigcenter-dashboard/backend/service/dashboardserver/util"
 	"github.com/995933447/rbac/rbac"
 	"github.com/995933447/routeredis"
@@ -70,99 +69,93 @@ func checkAndCreateFirstSuperAdminUser() {
 		}
 	}
 
-	config.SafeReadServerConfig(func(c *config.ServerConfig) {
-		if c.DisabledRBAC {
-			return
+	listUserRoleResp, err := rbac.RBACGRPC().ListUserRole(context.TODO(), &rbac.ListUserRoleReq{
+		Scope:   rbacx.Scope,
+		UserIds: []uint64{userId},
+		Page:    &rbac.Page{},
+	})
+	if err != nil {
+		fastlog.Fatal(err)
+	}
+
+	if len(listUserRoleResp.List) > 0 {
+		var roleIds []uint64
+		for _, userRole := range listUserRoleResp.List {
+			roleIds = append(roleIds, userRole.UserRole.RoleId)
 		}
 
-		listUserRoleResp, err := rbac.RBACGRPC().ListUserRole(context.TODO(), &rbac.ListUserRoleReq{
+		listRoleResp, err := rbac.RBACGRPC().ListRole(context.TODO(), &rbac.ListRoleReq{
 			Scope:   rbacx.Scope,
-			UserIds: []uint64{userId},
+			RoleIds: roleIds,
 			Page:    &rbac.Page{},
 		})
 		if err != nil {
 			fastlog.Fatal(err)
 		}
 
-		if len(listUserRoleResp.List) > 0 {
-			var roleIds []uint64
-			for _, userRole := range listUserRoleResp.List {
-				roleIds = append(roleIds, userRole.UserRole.RoleId)
-			}
-
-			listRoleResp, err := rbac.RBACGRPC().ListRole(context.TODO(), &rbac.ListRoleReq{
-				Scope:   rbacx.Scope,
-				RoleIds: roleIds,
-				Page:    &rbac.Page{},
-			})
-			if err != nil {
-				fastlog.Fatal(err)
-			}
-
-			if len(listRoleResp.List) > 0 {
-				var existsSuperAdminRole bool
-				for _, role := range listRoleResp.List {
-					if role.IsSuperAdmin {
-						existsSuperAdminRole = true
-						break
-					}
-				}
-
-				if existsSuperAdminRole {
-					return
+		if len(listRoleResp.List) > 0 {
+			var existsSuperAdminRole bool
+			for _, role := range listRoleResp.List {
+				if role.IsSuperAdmin {
+					existsSuperAdminRole = true
+					break
 				}
 			}
-		}
 
-		listRoleResp, err := rbac.RBACGRPC().ListRole(context.TODO(), &rbac.ListRoleReq{
-			Scope: rbacx.Scope,
-			Name:  util.FirstSuperAdminRoleName,
-			Page:  &rbac.Page{},
-		})
-		if err != nil {
-			fastlog.Fatal(err)
-		}
-
-		var roleId uint64
-		if len(listRoleResp.List) == 0 {
-			setRoleResp, err := rbac.RBACGRPC().SetRole(context.TODO(), &rbac.SetRoleReq{
-				Role: &rbac.Role{
-					Name:         util.FirstSuperAdminRoleName,
-					Scope:        rbacx.Scope,
-					Status:       int32(rbac.RoleStatus_RoleStatusNormal),
-					IsSuperAdmin: true,
-					Remark:       "init admin role for mconfigcenter-dashboard",
-				},
-			})
-			if err != nil {
-				fastlog.Fatal(err)
+			if existsSuperAdminRole {
+				return
 			}
-
-			roleId = setRoleResp.RoleId
-		} else {
-			roleId = listRoleResp.List[0].RoleId
 		}
+	}
 
-		_, err = rbac.RBACGRPC().SetUserRole(context.TODO(), &rbac.SetUserRoleReq{
-			UserRole: &rbac.UserRole{
-				RoleId: roleId,
-				UserId: userId,
-				Status: int32(dashboard.UserStatus_UserStatusNormal),
-				Scope:  rbacx.Scope,
+	listRoleResp, err := rbac.RBACGRPC().ListRole(context.TODO(), &rbac.ListRoleReq{
+		Scope: rbacx.Scope,
+		Name:  util.FirstSuperAdminRoleName,
+		Page:  &rbac.Page{},
+	})
+	if err != nil {
+		fastlog.Fatal(err)
+	}
+
+	var roleId uint64
+	if len(listRoleResp.List) == 0 {
+		setRoleResp, err := rbac.RBACGRPC().SetRole(context.TODO(), &rbac.SetRoleReq{
+			Role: &rbac.Role{
+				Name:         util.FirstSuperAdminRoleName,
+				Scope:        rbacx.Scope,
+				Status:       int32(rbac.RoleStatus_RoleStatusNormal),
+				IsSuperAdmin: true,
+				Remark:       "init admin role for mconfigcenter-dashboard",
 			},
 		})
 		if err != nil {
 			fastlog.Fatal(err)
 		}
 
-		roleIds := append(user.RoleIds, roleId)
-		_, err = mod.UpdateOneByUserId(context.TODO(), userId, bson.M{
-			"role_ids": roleIds,
-		})
-		if err != nil {
-			fastlog.Fatal(err)
-		}
+		roleId = setRoleResp.RoleId
+	} else {
+		roleId = listRoleResp.List[0].RoleId
+	}
+
+	_, err = rbac.RBACGRPC().SetUserRole(context.TODO(), &rbac.SetUserRoleReq{
+		UserRole: &rbac.UserRole{
+			RoleId: roleId,
+			UserId: userId,
+			Status: int32(dashboard.UserStatus_UserStatusNormal),
+			Scope:  rbacx.Scope,
+		},
 	})
+	if err != nil {
+		fastlog.Fatal(err)
+	}
+
+	roleIds := append(user.RoleIds, roleId)
+	_, err = mod.UpdateOneByUserId(context.TODO(), userId, bson.M{
+		"role_ids": roleIds,
+	})
+	if err != nil {
+		fastlog.Fatal(err)
+	}
 }
 
 func loopAndRefreshRSAKeys() {

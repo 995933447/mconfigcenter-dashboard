@@ -29,6 +29,7 @@ const (
 	ErrCode_ErrCodeNoAuth       ErrCode = 20001
 	ErrCode_ErrCodeInvalidParam ErrCode = 20002
 	ErrCode_ErrCodeInternal     ErrCode = 20003
+	ErrCode_ErrCodeForbidden    ErrCode = 20004
 )
 
 // Enum value maps for ErrCode.
@@ -38,12 +39,14 @@ var (
 		20001: "ErrCodeNoAuth",
 		20002: "ErrCodeInvalidParam",
 		20003: "ErrCodeInternal",
+		20004: "ErrCodeForbidden",
 	}
 	ErrCode_value = map[string]int32{
 		"ErrCodeNil":          0,
 		"ErrCodeNoAuth":       20001,
 		"ErrCodeInvalidParam": 20002,
 		"ErrCodeInternal":     20003,
+		"ErrCodeForbidden":    20004,
 	}
 )
 
@@ -78,7 +81,7 @@ var File_commonerr_proto protoreflect.FileDescriptor
 
 const file_commonerr_proto_rawDesc = "" +
 	"\n" +
-	"\x0fcommonerr.proto\x12\tcommonerr\x1a\x13easymicro_ext.proto*\x9f\x01\n" +
+	"\x0fcommonerr.proto\x12\tcommonerr\x1a\x13easymicro_ext.proto*\xd7\x01\n" +
 	"\aErrCode\x12\x0e\n" +
 	"\n" +
 	"ErrCodeNil\x10\x00\x12*\n" +
@@ -87,7 +90,9 @@ const file_commonerr_proto_rawDesc = "" +
 	"\x13ErrCodeInvalidParam\x10\xa2\x9c\x01\x1a\x12\x8a\x9d \x0e\n" +
 	"\f参数错误\x12)\n" +
 	"\x0fErrCodeInternal\x10\xa3\x9c\x01\x1a\x12\x8a\x9d \x0e\n" +
-	"\f系统错误BDZBgithub.com/995933447/mconfigcenter-dashboard/backend/api/commonerrb\x06proto3"
+	"\f系统错误\x126\n" +
+	"\x10ErrCodeForbidden\x10\xa4\x9c\x01\x1a\x1e\x8a\x9d \x1a\n" +
+	"\x18接口访问权限不足BDZBgithub.com/995933447/mconfigcenter-dashboard/backend/api/commonerrb\x06proto3"
 
 var (
 	file_commonerr_proto_rawDescOnce sync.Once
