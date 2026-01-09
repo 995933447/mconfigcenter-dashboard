@@ -1,7 +1,11 @@
 github.com/995933447/easymicro v0.0.0-20260107134559-87f6345bc3c1 h1:yWvbPncKm6gf11p9WnRtZA0Og0xW6nd/NMl7oUNYqSk=
 github.com/995933447/easymicro v0.0.0-20260107134559-87f6345bc3c1/go.mod h1:udTTlaTvF0BW1Kj74dgdC1TB0FoSjtmxEELVbk1cea8=
+github.com/995933447/easymicro v0.0.0-20260109080202-6be49e8f2410 h1:lfgOwCNl8uNQIxEWSWgeYA47acAKJqFpyPyWRe5g5yk=
+github.com/995933447/easymicro v0.0.0-20260109080202-6be49e8f2410/go.mod h1:udTTlaTvF0BW1Kj74dgdC1TB0FoSjtmxEELVbk1cea8=
 github.com/995933447/elemutil v0.0.0-20251223195530-dad95e63a6d2 h1:IAijfefbIs06LrB2XqPO85uoB5Cv85Kw0p4MeqH0X4o=
 github.com/995933447/elemutil v0.0.0-20251223195530-dad95e63a6d2/go.mod h1:EF87ykGl7PIcSCF1lmqMHwohMtc8p0uzgP8F2Swg9XA=
+github.com/995933447/goconsole v0.0.0-20230209083111-0fccb97a62d1 h1:5ioS07sepDUliBiX/1CHSXAabFS1Yp2PfPidMIGcwCc=
+github.com/995933447/goconsole v0.0.0-20230209083111-0fccb97a62d1/go.mod h1:eOQfCSv/zLNz8iC0X4dDn3ULaDB1T/ZfmjkS2YRchyA=
 github.com/995933447/idgen v0.0.0-20251208110722-43ed35e54c62 h1:MrI/n5OIhaS0EsEdz97DnLdxC+aoL4heMMiaMBS8VrY=
 github.com/995933447/idgen v0.0.0-20251208110722-43ed35e54c62/go.mod h1:b/xRszLqx/N4yKuKcEwrkgscXXBfmHzIwu0y0AujnQI=
 github.com/995933447/mconfigcenter v0.0.0-20251227114849-53a20a6c1450 h1:ilul6p/wKGXDgzMtn6cYdrkVnyKkc6VHjE+i4854LCE=
@@ -17,6 +21,10 @@ github.com/995933447/reflectutil v0.0.0-20230630100141-2cf8599f7a82/go.mod h1:Tk
 github.com/995933447/reflectutil v0.0.0-20230804071639-c3f1c779b6c3/go.mod h1:Tkho/yq1vuQTuZSuacoXxDkMvU1qtjjbAsB6VEamfa0=
 github.com/995933447/routeredis v0.0.0-20251209050640-6fa810301650 h1:zBNLGbFZ7m0tBKa+UfzRI4SDm4qMChTNQ3iOQGBO8xY=
 github.com/995933447/routeredis v0.0.0-20251209050640-6fa810301650/go.mod h1:0ke5n5XR9NXw8aTQAoPJ1zO3m4LFxOM1LUZxjuH6m5M=
+github.com/995933447/std v0.0.0-20200324145255-7804093e226c h1:pmiwudobj6HlW9Rp1y6GVawY1GLicvUNJwjTunRbWCM=
+github.com/995933447/std v0.0.0-20200324145255-7804093e226c/go.mod h1:8V2tMD70Ab+F+bOfNUiiBwjusofaEFD4Kxx64OZGbUc=
+github.com/995933447/std-go v0.0.0-20220806175833-ab3496c0b696 h1:GzBuvejakMWMZ6QWpbpcFmJb9WYrZ++yOrm/IEap+hw=
+github.com/995933447/std-go v0.0.0-20220806175833-ab3496c0b696/go.mod h1:Y48pg+Gwti1Ck6BZSCm/+UHmtzC4A1pARw6UdFMpNaI=
 github.com/995933447/stringhelper-go v0.0.0-20221220072216-628db3bc29d8 h1:q37SO0GTj/dk35jov187h3CACffZle6KjVzgGOrLkBM=
 github.com/995933447/stringhelper-go v0.0.0-20221220072216-628db3bc29d8/go.mod h1:cwkwj1/zndmaLbRYgQqy6qwY/ITAiEMdR+1BGssgXik=
 github.com/995933447/stringhelper-go v0.0.0-20251106145056-e7fcf480d316/go.mod h1:cwkwj1/zndmaLbRYgQqy6qwY/ITAiEMdR+1BGssgXik=
