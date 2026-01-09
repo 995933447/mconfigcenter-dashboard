@@ -672,12 +672,11 @@ const handleOpenSaveConfigDialog = function (collName: string, id: string) {
             }
 
             Object.assign(saveConfigForm.value, item)
-            saveConfigForm.value.collName = collName
-            saveConfigForm.value.index_keys = schema.index_keys ?? []
             break
         }
     }
 
+    saveConfigForm.value.collName = collName
     saveConfigDialogVisable.value = true
 }
 
