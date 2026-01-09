@@ -1,0 +1,531 @@
+[{
+  "_id": {
+    "$oid": "694693c697d7f3deeb9715c2"
+  },
+  "perm_id": 1,
+  "name": "菜单管理",
+  "resource_route": "/rbac/menu",
+  "resource_services": [
+    {
+      "extra": "",
+      "service": "/dashboard/Dashboard/ListMenuConf"
+    }
+  ],
+  "scope": "mconfigcenter_dashboard",
+  "pid": 5,
+  "created_at": {
+    "$date": "2025-12-20T12:17:10.787Z"
+  },
+  "updated_at": {
+    "$date": "2025-12-22T07:18:58.792Z"
+  },
+  "resource_type": 1
+},
+{
+  "_id": {
+    "$oid": "6946967d97d7f3deeb9715c3"
+  },
+  "perm_id": 2,
+  "name": "新增菜单",
+  "resource_route": "/rbac/menu#addMenu",
+  "resource_services": [
+    {
+      "service": "/dashboard/Dashborad/AddMenuConf",
+      "extra": ""
+    }
+  ],
+  "scope": "mconfigcenter_dashboard",
+  "pid": 1,
+  "created_at": {
+    "$date": "2025-12-20T12:28:45.807Z"
+  },
+  "updated_at": {
+    "$date": "2025-12-22T06:51:34.522Z"
+  },
+  "resource_type": 2
+},
+{
+  "_id": {
+    "$oid": "6946978f97d7f3deeb9715c4"
+  },
+  "perm_id": 3,
+  "name": "删除菜单",
+  "resource_route": "/rbac/menu#deleteMenu",
+  "resource_services": [
+    {
+      "service": "/dashbaord/Dashboard/DeleteMenuConf",
+      "extra": ""
+    }
+  ],
+  "scope": "mconfigcenter_dashboard",
+  "pid": 1,
+  "created_at": {
+    "$date": "2025-12-20T12:33:19.653Z"
+  },
+  "updated_at": {
+    "$date": "2025-12-23T15:40:02.568Z"
+  },
+  "resource_type": 2,
+  "extra": ""
+},
+{
+  "_id": {
+    "$oid": "6948ed461fa4642dd07bd4e1"
+  },
+  "perm_id": 5,
+  "name": "权限管理",
+  "resource_route": "/rbac",
+  "resource_services": null,
+  "scope": "mconfigcenter_dashboard",
+  "pid": 0,
+  "resource_type": 3,
+  "created_at": {
+    "$date": "2025-12-22T07:03:34.117Z"
+  },
+  "updated_at": {
+    "$date": "2025-12-22T11:40:30.244Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "69491e1f1fa4642dd07bd4e6"
+  },
+  "perm_id": 10,
+  "name": "个人信息",
+  "resource_route": "/",
+  "resource_services": [
+    {
+      "service": "/dashboard/Dashboard/GetUserInfo",
+      "extra": ""
+    }
+  ],
+  "scope": "mconfigcenter_dashboard",
+  "pid": 0,
+  "resource_type": 1,
+  "created_at": {
+    "$date": "2025-12-22T10:31:59.816Z"
+  },
+  "updated_at": {
+    "$date": "2025-12-23T15:42:35.704Z"
+  },
+  "extra": ""
+},
+{
+  "_id": {
+    "$oid": "69491e7d1fa4642dd07bd4e7"
+  },
+  "perm_id": 11,
+  "name": "角色管理",
+  "resource_route": "/rbac/role",
+  "resource_services": [
+    {
+      "service": "/dashboard/Dashboard/ListRoleConf",
+      "extra": ""
+    }
+  ],
+  "scope": "mconfigcenter_dashboard",
+  "pid": 5,
+  "resource_type": 1,
+  "created_at": {
+    "$date": "2025-12-22T10:33:33.216Z"
+  },
+  "updated_at": {
+    "$date": "2026-01-09T06:38:46.901Z"
+  },
+  "extra": ""
+},
+{
+  "_id": {
+    "$oid": "69492cb41fa4642dd07bd4e8"
+  },
+  "perm_id": 12,
+  "name": "刷新菜单",
+  "resource_route": "/rbac/menu#refreshMenu",
+  "resource_services": [
+    {
+      "service": "/dashboard/Dashboard/ListMenuConf",
+      "extra": ""
+    }
+  ],
+  "scope": "mconfigcenter_dashboard",
+  "pid": 1,
+  "resource_type": 2,
+  "created_at": {
+    "$date": "2025-12-22T11:34:12.044Z"
+  },
+  "updated_at": {
+    "$date": "2026-01-09T06:36:04.789Z"
+  },
+  "extra": ""
+},
+{
+  "_id": {
+    "$oid": "69492ceb1fa4642dd07bd4e9"
+  },
+  "perm_id": 13,
+  "name": "修改菜单",
+  "resource_route": "/rbac/menu#editMenu",
+  "resource_services": [
+    {
+      "service": "/dashboard/Dashboard/UpdateMenuConf",
+      "extra": ""
+    }
+  ],
+  "scope": "mconfigcenter_dashboard",
+  "pid": 1,
+  "resource_type": 2,
+  "created_at": {
+    "$date": "2025-12-22T11:35:07.945Z"
+  },
+  "updated_at": {
+    "$date": "2026-01-09T06:35:53.961Z"
+  },
+  "extra": ""
+},
+{
+  "_id": {
+    "$oid": "694ae33984ea7aead2fc0967"
+  },
+  "perm_id": 2001,
+  "name": "增加角色",
+  "resource_route": "/rbac/role#addRole",
+  "resource_services": [
+    {
+      "service": "/dashboard/Dashboard/AddRoleConf",
+      "extra": ""
+    }
+  ],
+  "scope": "mconfigcenter_dashboard",
+  "pid": 11,
+  "resource_type": 2,
+  "extra": "",
+  "created_at": {
+    "$date": "2025-12-23T18:45:13.332Z"
+  },
+  "updated_at": {
+    "$date": "2025-12-23T18:45:13.332Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ae36984ea7aead2fc0968"
+  },
+  "perm_id": 2002,
+  "name": "编辑角色",
+  "resource_route": "/rbac/role#editRole",
+  "resource_services": [
+    {
+      "service": "/dashbaord/Dashboard/UpdateRole",
+      "extra": ""
+    }
+  ],
+  "scope": "mconfigcenter_dashboard",
+  "pid": 11,
+  "resource_type": 2,
+  "extra": "",
+  "created_at": {
+    "$date": "2025-12-23T18:46:01.341Z"
+  },
+  "updated_at": {
+    "$date": "2025-12-23T18:46:01.341Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ae44f84ea7aead2fc096b"
+  },
+  "perm_id": 2005,
+  "name": "删除角色",
+  "resource_route": "/rbac/role#deleteRole",
+  "resource_services": [
+    {
+      "service": "/dashboard/Dashboard/DeleteRoleConf",
+      "extra": ""
+    }
+  ],
+  "scope": "mconfigcenter_dashboard",
+  "pid": 11,
+  "resource_type": 2,
+  "extra": "",
+  "created_at": {
+    "$date": "2025-12-23T18:49:51.667Z"
+  },
+  "updated_at": {
+    "$date": "2026-01-09T06:36:40.002Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694d14e75118798e5ff70e73"
+  },
+  "perm_id": 4,
+  "name": "用户管理",
+  "resource_route": "/rbac/user",
+  "resource_services": [
+    {
+      "service": "/dashboard/Dashboard/ListUser",
+      "extra": ""
+    },
+    {
+      "service": "/dashboard/Dashboard/ListRoleConf",
+      "extra": ""
+    }
+  ],
+  "scope": "mconfigcenter_dashboard",
+  "pid": 5,
+  "resource_type": 1,
+  "extra": "",
+  "created_at": {
+    "$date": "2025-12-25T10:41:43.656Z"
+  },
+  "updated_at": {
+    "$date": "2026-01-09T06:37:16.321Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694d16b35118798e5ff70e75"
+  },
+  "perm_id": 6,
+  "name": "增加菜单",
+  "resource_route": "/rbac/user#addUser",
+  "resource_services": [
+    {
+      "service": "/dashboard/Dashboard/AddUser",
+      "extra": ""
+    },
+    {
+      "service": "/dashboard/Dashboard/ListRoleConf",
+      "extra": ""
+    }
+  ],
+  "scope": "mconfigcenter_dashboard",
+  "pid": 4,
+  "resource_type": 2,
+  "extra": "",
+  "created_at": {
+    "$date": "2025-12-25T10:49:23.611Z"
+  },
+  "updated_at": {
+    "$date": "2025-12-25T10:49:23.611Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694d17095118798e5ff70e76"
+  },
+  "perm_id": 7,
+  "name": "更新用户",
+  "resource_route": "/rbac/user#editUser",
+  "resource_services": [
+    {
+      "extra": "",
+      "service": "/dashbaord/Dashbaord/UpdateUser"
+    },
+    {
+      "service": "/dashboard/Dashboard/ListRoleConf",
+      "extra": ""
+    }
+  ],
+  "scope": "mconfigcenter_dashboard",
+  "pid": 4,
+  "resource_type": 2,
+  "extra": "",
+  "created_at": {
+    "$date": "2025-12-25T10:50:49.798Z"
+  },
+  "updated_at": {
+    "$date": "2026-01-09T06:37:27.937Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694d17445118798e5ff70e77"
+  },
+  "perm_id": 8,
+  "name": "删除用户",
+  "resource_route": "/rbac/user#deleteUser",
+  "resource_services": [
+    {
+      "service": "/dashboard/Dashboard/DeleteUser",
+      "extra": ""
+    },
+    {
+      "service": "/dashboard/Dashboard/ListUser",
+      "extra": ""
+    }
+  ],
+  "scope": "mconfigcenter_dashboard",
+  "pid": 4,
+  "resource_type": 2,
+  "extra": "",
+  "created_at": {
+    "$date": "2025-12-25T10:51:48.699Z"
+  },
+  "updated_at": {
+    "$date": "2025-12-25T10:51:48.699Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694d17c15118798e5ff70e78"
+  },
+  "perm_id": 9,
+  "name": "配置管理",
+  "resource_route": "/config-management",
+  "resource_services": null,
+  "scope": "mconfigcenter_dashboard",
+  "pid": 0,
+  "resource_type": 3,
+  "extra": "",
+  "created_at": {
+    "$date": "2025-12-25T10:53:53.234Z"
+  },
+  "updated_at": {
+    "$date": "2025-12-25T10:53:53.234Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "695fce1ebca5f2ae8d17e260"
+  },
+  "perm_id": 5001,
+  "name": "通用配置",
+  "resource_route": "/config/general",
+  "resource_services": [
+    {
+      "service": "/dashboard/Dashboard/ListConfSchema",
+      "extra": ""
+    }
+  ],
+  "scope": "mconfigcenter_dashboard",
+  "pid": 9,
+  "resource_type": 1,
+  "extra": "",
+  "created_at": {
+    "$date": "2026-01-08T15:32:46.989Z"
+  },
+  "updated_at": {
+    "$date": "2026-01-09T06:44:02.601Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "695fce8bbca5f2ae8d17e261"
+  },
+  "perm_id": 5002,
+  "name": "搜索配置",
+  "resource_route": "/config/general#search",
+  "resource_services": [
+    {
+      "service": "/dashboard/Dashboard/ListGeneralConf",
+      "extra": ""
+    }
+  ],
+  "scope": "mconfigcenter_dashboard",
+  "pid": 5001,
+  "resource_type": 2,
+  "extra": "",
+  "created_at": {
+    "$date": "2026-01-08T15:34:35.865Z"
+  },
+  "updated_at": {
+    "$date": "2026-01-09T06:22:56.435Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "695fcec2bca5f2ae8d17e262"
+  },
+  "perm_id": 5003,
+  "name": "发布配置",
+  "resource_route": "/config/general#publishConfigs",
+  "resource_services": [
+    {
+      "service": "/dashboard/SyncGeneralConfigsToApp",
+      "extra": ""
+    }
+  ],
+  "scope": "mconfigcenter_dashboard",
+  "pid": 5001,
+  "resource_type": 2,
+  "extra": "",
+  "created_at": {
+    "$date": "2026-01-08T15:35:30.261Z"
+  },
+  "updated_at": {
+    "$date": "2026-01-08T15:35:48.307Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "695fcf4bbca5f2ae8d17e263"
+  },
+  "perm_id": 5004,
+  "name": "新增配置",
+  "resource_route": "/config/general#addConfig",
+  "resource_services": [
+    {
+      "service": "/dashboard/Dashboard/AddGeneralConf",
+      "extra": ""
+    }
+  ],
+  "scope": "mconfigcenter_dashboard",
+  "pid": 5001,
+  "resource_type": 2,
+  "extra": "",
+  "created_at": {
+    "$date": "2026-01-08T15:37:47.250Z"
+  },
+  "updated_at": {
+    "$date": "2026-01-09T06:22:36.085Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "695fcf78bca5f2ae8d17e264"
+  },
+  "perm_id": 5005,
+  "name": "删除配置",
+  "resource_route": "/config/general#deleteConfig",
+  "resource_services": [
+    {
+      "service": "/dashboard/Dashboard/DeleteGeneralConf",
+      "extra": ""
+    }
+  ],
+  "scope": "mconfigcenter_dashboard",
+  "pid": 5001,
+  "resource_type": 2,
+  "extra": "",
+  "created_at": {
+    "$date": "2026-01-08T15:38:32.722Z"
+  },
+  "updated_at": {
+    "$date": "2026-01-09T06:22:25.498Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "695fcfacbca5f2ae8d17e265"
+  },
+  "perm_id": 5006,
+  "name": "修改配置",
+  "resource_route": "/config/general#editConfig",
+  "resource_services": [
+    {
+      "service": "/dashboard/Dashboard/UpdateGeneralConf",
+      "extra": ""
+    }
+  ],
+  "scope": "mconfigcenter_dashboard",
+  "pid": 5001,
+  "resource_type": 2,
+  "extra": "",
+  "created_at": {
+    "$date": "2026-01-08T15:39:24.290Z"
+  },
+  "updated_at": {
+    "$date": "2026-01-09T06:48:51.111Z"
+  }
+}]
