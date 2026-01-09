@@ -33,7 +33,7 @@ func main() {
 		log.Fatal(runtimeutil.NewStackErr(err))
 	}
 
-	goconsole.Register("InitMenus", "-i $importDataFilePath", InitMenus)
+	goconsole.Register("InitMenus", "初始化菜单,参数:-i $importDataFilePath:导入菜单mongo数据文件,必须", InitMenus)
 
 	goconsole.Run()
 }
