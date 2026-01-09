@@ -203,8 +203,9 @@ const handleDeleteRole = async function (id: number) {
     } catch (error) {
         ElMessage.error('删除失败')
         return
+    } finally {
+        loading.value = false
     }
-    loading.value = false
     ElMessage.success('删除成功')
 }
 

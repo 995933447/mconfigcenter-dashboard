@@ -31,14 +31,15 @@
 </template>
 
 <style scoped>
-  .login-card {
-    max-width: 600px;
-    opacity: 0.8;
-  }
-  .login-card:hover {
-    opacity: 1;
-    transition: all 0.3s ease-in-out;
-  }
+.login-card {
+  max-width: 600px;
+  opacity: 0.8;
+}
+
+.login-card:hover {
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
+}
 </style>
 
 <script lang="ts" setup>
@@ -71,7 +72,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
 
       let password = validateForm.password
       try {
-        const getRSAKeyResp =  await DashboardService.GetRSAPubKey({})
+        const getRSAKeyResp = await DashboardService.GetRSAPubKey({})
         password = encryptRSA(getRSAKeyResp.key as string, password)
 
         const loginResp = await DashboardService.Login({
@@ -81,10 +82,11 @@ const submitForm = async (formEl: FormInstance | undefined) => {
 
         let expireAt = Number(loginResp.expire_at)
 
-        const userState = new UserAuthState(loginResp.token? loginResp.token : '', expireAt)
+        const userState = new UserAuthState(loginResp.token ? loginResp.token : '', expireAt)
         saveAuthState(userState)
 
         const getUserPermsResp = await DashboardService.ListUserPerm({})
+        userState.isSuperAdmin = getUserPermsResp.is_super_admin as boolean
         const listMenuConfResp = await DashboardService.ListMenuConf({})
         if (listMenuConfResp.list) {
           userState.accessableMenuPaths = []
@@ -101,7 +103,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
         }
 
         saveAuthState(userState)
-        
+
         const router = getRouter()
         if (router) {
           const redirect = (router.currentRoute.value.query.redirect as string) || '/'

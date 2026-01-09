@@ -8,6 +8,7 @@ export class UserAuthState {
     token: string;
     expireAt: number; // unix timestamp in seconds
     accessableMenuPaths: string[]|undefined;
+    isSuperAdmin: boolean|undefined;
     
     constructor(token: string, expireAt: number) {
         this.token = token;
@@ -23,6 +24,9 @@ export class UserAuthState {
     }
 
     isMenuPathAccessable(menuPath: string): boolean {
+        if (this.isSuperAdmin) {
+            return true
+        }
         if (this.accessableMenuPaths?.includes(menuPath)) {
             return true
         }
@@ -58,6 +62,7 @@ export function getAuthState(): UserAuthState | null {
 
     const authState = new UserAuthState(authStateData.token, authStateData.expireAt)
     authState.accessableMenuPaths = authStateData.accessableMenuPaths
+    authState.isSuperAdmin = authStateData.isSuperAdmin
     return authState
 }
 
