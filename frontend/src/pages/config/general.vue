@@ -657,8 +657,6 @@ const handleOpenSaveConfigDialog = function (collName: string, id: string) {
         return
     }
 
-    saveConfigForm.value.collName = collName
-
     saveConfigDialogTitle.value = schema.desc ? schema.desc + "(" + schema.coll_name + ")" : schema.coll_name as string
 
     saveConfigFormJsonSchema.value = JSON.parse(schema.json_schema ?? '{}')
@@ -674,6 +672,8 @@ const handleOpenSaveConfigDialog = function (collName: string, id: string) {
             }
 
             Object.assign(saveConfigForm.value, item)
+            saveConfigForm.value.collName = collName
+            saveConfigForm.value.index_keys = schema.index_keys ?? []
             break
         }
     }
