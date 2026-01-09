@@ -49,7 +49,7 @@ func (s *Dashboard) UpdateGeneralConf(ctx context.Context, req *dashboard.Update
 	})
 	if err != nil {
 		fastlog.Errorf("err:%v", err)
-		return nil, grpc.NewRPCErr(commonerr.ErrCode_ErrCodeInternal)
+		return nil, grpc.NewRPCErrWithMsg(commonerr.ErrCode_ErrCodeInternal, err.Error())
 	}
 
 	return &resp, nil
