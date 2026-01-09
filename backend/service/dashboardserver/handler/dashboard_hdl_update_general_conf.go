@@ -37,7 +37,7 @@ func (s *Dashboard) UpdateGeneralConf(ctx context.Context, req *dashboard.Update
 	b, err := bson.Marshal(m)
 	if err != nil {
 		fastlog.Importantf("err:%v", err)
-		return nil, grpc.NewRPCErr(commonerr.ErrCode_ErrCodeInternal)
+		return nil, grpc.NewRPCErrWithMsg(commonerr.ErrCode_ErrCodeInternal, err.Error())
 	}
 
 	_, err = configcenter.ConfigCenterGRPC().UpdateConfig(ctx, &configcenter.UpdateConfigReq{

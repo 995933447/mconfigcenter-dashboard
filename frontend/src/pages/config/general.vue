@@ -637,11 +637,11 @@ const handleSaveConfig = async function () {
         ElMessage.success("保存成功")
 
         saveConfigForm.value = {}
+        saveConfigDialogVisable.value = false
 
         query()
     } finally {
         loading.value = false
-        saveConfigDialogVisable.value = false
     }
 }
 
