@@ -3,7 +3,7 @@ import { ViteSSG } from 'vite-ssg'
 
 // import "~/styles/element/index.scss";
 
-import ElementPlus from "element-plus";
+import ElementPlus, { ElMessage } from "element-plus";
 // import all element css, uncommented next line
 import "element-plus/dist/index.css";
 
@@ -24,7 +24,7 @@ import 'element-plus/theme-chalk/src/overlay.scss' // the modal class for messag
 import "vue3-json-viewer/dist/vue3-json-viewer.css"
 
 import { setRouter } from './composables/route'
-import { isLogin  }  from './composables/auth'
+import { isLogin, isMenuPathAccessable  }  from './composables/auth'
 import '~/rpc/axios-interceptor'
 
 // if you do not need ssg:
@@ -57,6 +57,11 @@ export const createApp = ViteSSG(
       if (to.path !== '/login' && !finLogin) {
         next({ path: '/login', query: { redirect: to.fullPath } })
       } else {
+        if (!isMenuPathAccessable(to.path)) {
+          ElMessage.error('没有访问权限')
+          next({path: '/'})
+          return
+        }
         next()
       }
     })

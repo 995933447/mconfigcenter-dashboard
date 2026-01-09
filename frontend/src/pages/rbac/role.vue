@@ -23,7 +23,7 @@
     </div>
 
     <div flex justify-left ml-2rem mb-2rem>
-        <el-button type="primary" @click="handleAddRole">新增</el-button>
+        <el-button type="primary" @click="handleAddRole" v-if="isCurrentPageButtonAccessable('addRole')">新增</el-button>
     </div>
 
     <div flex justify-center>
@@ -38,8 +38,8 @@
             </el-table-column>
             、 <el-table-column label="操作">
                 <template #default="scope">
-                    <el-button link type="primary" size="small" @click="handleEditRole(scope.row)">修改</el-button>
-                    <el-popconfirm confirm-button-text="Yes" cancel-button-text="No" :icon="InfoFilled"
+                    <el-button link type="primary" size="small" v-if="isCurrentPageButtonAccessable('editRole')" @click="handleEditRole(scope.row)">修改</el-button>
+                    <el-popconfirm confirm-button-text="Yes" cancel-button-text="No" :icon="InfoFilled" v-if="isCurrentPageButtonAccessable('deleteRole')"
                         icon-color="#626AEF" title="确定删除此角色?" @confirm="handleDeleteRole(scope.row.id)">
                         <template #reference>
                             <el-button link type="danger" size="small">删除</el-button>
@@ -109,6 +109,7 @@ import api from '~/rpc/proto/dashboard'
 import { getOrFetchMenuConfs, fetchMenuConfs } from '~/composables/menuConf'
 import type { Menu } from '~/types/menuConf'
 import type { Role } from '~/types/roleConf'
+import { isCurrentPageButtonAccessable } from '~/composables/auth'
 
 // keep-alive 匹配的是组件的 name 选项，不是 route.name 本身,所以要定义一下组件name
 defineOptions({

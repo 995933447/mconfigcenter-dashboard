@@ -28,17 +28,17 @@
                     v-model:searchConfCollCond="theLeastOneConfCollCond" />
                 <el-form-item>
                     <el-button type="primary" @click="addConfCollCond">添加搜索条件</el-button>
-                    <el-button type="primary" @click="query" :disabled="!fetchConfCond.collName">搜索</el-button>
-                    <el-button type="primary" @click="handleOpenSyncConfigsToAppDialog">发布</el-button>
+                    <el-button type="primary" @click="query" :disabled="!fetchConfCond.collName" v-if="isCurrentPageButtonAccessable('search')">搜索</el-button>
+                    <el-button type="primary" @click="handleOpenSyncConfigsToAppDialog" v-if="isCurrentPageButtonAccessable('publishConfigs')">发布</el-button>
                 </el-form-item>
             </div>
         </el-form>
     </div>
 
     <div flex justify-left ml-2rem mb-2rem>
-        <el-button type="primary" @click='handleOpenSaveConfigDialog(fetchConfCond.collName, "")'>新增</el-button>
+        <el-button type="primary" @click='handleOpenSaveConfigDialog(fetchConfCond.collName, "")' v-if="isCurrentPageButtonAccessable('addConfig')">新增</el-button>
         <el-popconfirm confirm-button-text="Yes" cancel-button-text="No" :icon="InfoFilled" icon-color="#626AEF"
-            title="确定删除?" @confirm="handleDeleteConfigs">
+            title="确定删除?" @confirm="handleDeleteConfigs" v-if="isCurrentPageButtonAccessable('deleteConfig')">
             <template #reference>
                 <el-button type="danger">删除</el-button>
             </template>
@@ -55,8 +55,8 @@
             <el-table-column fixed="right" label="操作" min-width="120">
                 <template #default="scope">
                     <el-button link type="primary" size="small"
-                        @click="handleOpenSaveConfigDialog(currTableCollName, scope.row._id)">修改</el-button>
-                    <el-popconfirm confirm-button-text="Yes" cancel-button-text="No" :icon="InfoFilled"
+                        @click="handleOpenSaveConfigDialog(currTableCollName, scope.row._id)" v-if="isCurrentPageButtonAccessable('editConfig')">修改</el-button>
+                    <el-popconfirm confirm-button-text="Yes" cancel-button-text="No" :icon="InfoFilled" v-if="isCurrentPageButtonAccessable('deleteConfig')">
                         icon-color="#626AEF" title="确定删除?" @confirm="handleDeleteConfig(scope.row)">
                         <template #reference>
                             <el-button link type="danger" size="small">删除</el-button>
@@ -153,6 +153,7 @@ import { InfoFilled } from '@element-plus/icons-vue'
 import FilterConfCondFormItem from '~/components/FilterConfCondFormItem.vue';
 import { ConfCollCond, KeySelectOption } from '~/components/FilterConfCondFormItem.vue';
 import JsonSchemaFormDialog from '~/components/JsonSchemaFormDialog.vue';
+import { isCurrentPageButtonAccessable } from '~/composables/auth';
 
 defineOptions({
     name: "/config/general"

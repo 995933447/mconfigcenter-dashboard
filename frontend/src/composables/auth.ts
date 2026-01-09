@@ -24,9 +24,9 @@ export class UserAuthState {
 
     isMenuPathAccessable(menuPath: string): boolean {
         if (this.accessableMenuPaths?.includes(menuPath)) {
-            return false
+            return true
         }
-        return true
+        return false
     }
 }
 
@@ -50,13 +50,15 @@ export function getAuthState(): UserAuthState | null {
         return null
     }
 
-    const authState = JSON.parse(authStateStr)
+    const authStateData = JSON.parse(authStateStr)
     
-    if (!authState) {
+    if (!authStateData) {
         return null
     }
 
-    return new UserAuthState(authState.token, authState.expireAt)
+    const authState = new UserAuthState(authStateData.token, authStateData.expireAt)
+    authState.accessableMenuPaths = authStateData.accessableMenuPaths
+    return authState
 }
 
 export function saveAuthState(authState: UserAuthState) {
