@@ -11,7 +11,7 @@
                 <el-form-item>
                     <el-button type="primary"
                         @click="handleViewSchemaConfigSchema(fetchConfCond.collName)">查看schema</el-button>
-                    <el-button type="primary" @click="handleOpenUploadConfigSchemaDialog">上传schema</el-button>
+                    <el-button type="primary" @click="handleOpenUploadConfigSchemaDialog" v-if="isCurrentPageButtonAccessable('setConfigSchema')">上传schema</el-button>
                 </el-form-item>
             </div>
 

@@ -89,7 +89,7 @@
     <el-dialog v-model="setRoleMenuDialogVisible" width="30%" :before-close="handleBeforeCloseMenuTreeCheckBoxDialog">
         <el-tree style="max-width: 600px" :data="menuTree" show-checkbox node-key="id" :props="menuTreeProps"
             ref="menuTreeCheckDialogRef" :default-expand-all="true" @check="handleMenuTreeCheck" v-loading="loading"
-            :default-checked-keys="saveRoleForm.permIds" />
+            :default-checked-keys="saveRoleForm.permIds" :check-strictly="false" />
         <template #footer>
             <span class="dialog-footer">
                 <el-button type="primary" @click="refreshMenuTree">刷新菜单</el-button>
@@ -130,6 +130,9 @@ let checkedMenuTreeIds: number[] = []
 const handleMenuTreeCheck = function (menu: Menu, checked: any) {
     checkedMenuTreeIds = []
     for (const checkedKey of checked.checkedKeys) {
+        checkedMenuTreeIds.push(Number(checkedKey))
+    }
+    for (const checkedKey of checked.halfCheckedKeys) {
         checkedMenuTreeIds.push(Number(checkedKey))
     }
 }
