@@ -49,7 +49,10 @@ watch(() => props.saveConfigDialogVisable, (newVal) => {
 })
 
 watch(() => props.saveConfigForm, (newVal) => {
-    localSaveConfigForm.value = newVal
+    localSaveConfigForm.value = initFormDataBySchema(
+      props.saveConfigFormJsonSchema,
+      newVal
+    )
 }, {
     deep: true
 })
@@ -73,4 +76,43 @@ const cancelSaveConfig = async function () {
 const handleCloseSaveConfigDialog = function () {
     cancelSaveConfig()
 }
+
+function initFormDataBySchema(schema: any, data: any): any {
+  if (!schema || typeof schema !== 'object') return data
+
+  const { type, properties, items, default: def } = schema
+
+  // 如果有 default，优先使用
+  if (data == null && def !== undefined) {
+    return def
+  }
+
+  if (type === 'object') {
+    const result: any = {}
+    const src = data ?? {}
+
+    if (properties) {
+      for (const key in properties) {
+        result[key] = initFormDataBySchema(
+          properties[key],
+          src[key]
+        )
+      }
+    }
+    return result
+  }
+
+  if (type === 'array') {
+    const arr = Array.isArray(data) ? data : []
+    return arr.map(item => initFormDataBySchema(items, item))
+  }
+
+  if (type === 'string') return data ?? ''
+  if (type === 'number' || type === 'integer') return data ?? 0
+  if (type === 'boolean') return data ?? false
+
+  return data
+}
+
+
 </script>
