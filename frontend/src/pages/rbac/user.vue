@@ -14,7 +14,7 @@
                 </el-select>
             </el-form-item>
             <el-form-item label="角色" style="width: 15rem;">
-                <el-select v-model="fetchUserListCond.roleId" placeholder="角色" clearable>
+                <el-select v-model="fetchUserListCond.roleId" placeholder="角色" clearable filterable>
                     <el-option :label="item.name" :value="item.id" v-for="item in roleList" />
                 </el-select>
             </el-form-item>

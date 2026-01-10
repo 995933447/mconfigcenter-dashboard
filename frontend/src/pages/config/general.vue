@@ -3,7 +3,7 @@
         <el-form :inline="true">
             <div flex justify-start pl-6rem>
                 <el-form-item label="集合名称" style="width: 20rem;">
-                    <el-select placeholder="集合名称" clearable v-model="fetchConfCond.collName">
+                    <el-select placeholder="集合名称" clearable v-model="fetchConfCond.collName" filterable>
                         <el-option :label="item.coll_name + (item.desc ? ' (' + item.desc + ')' : '')"
                             :value="item.coll_name as string" v-for="item in configSchemaList" />
                     </el-select>
@@ -124,13 +124,13 @@
     <el-dialog width="30%" v-model="syncConfigsToAppDialogVisable" :before-close="handleCloseSyncConfigsToAppDialog">
         <el-form status-icon style="margin-left: 2rem;">
             <el-form-item label="集合名称" style="width: 20rem;">
-                <el-select placeholder="集合名称" clearable multiple v-model="syncConfigsToAppCollNames">
+                <el-select placeholder="集合名称" clearable multiple filterable v-model="syncConfigsToAppCollNames">
                     <el-option :label="item.coll_name + (item.desc ? ' (' + item.desc + ')' : '')"
                         :value="item.coll_name as string" v-for="item in configSchemaList" />
                 </el-select>
             </el-form-item>
             <el-form-item label="订阅组别" style="width: 20rem;">
-                <el-select placeholder="订阅组别" clearable multiple v-model="syncConfigsToAppListenerGroups">
+                <el-select placeholder="订阅组别" clearable multiple filterable v-model="syncConfigsToAppListenerGroups">
                     <el-option :label="item.desc?item.name+'('+item.desc+')':item.name"
                         :value="item.name" v-for="item in listenerGroups" />
                 </el-select>
